@@ -95,12 +95,14 @@ body {
 @media only screen and (max-width: 600px) and (orientation: portrait) {
     .image {
         position: fixed; /* Фиксируем положение картинки */
-        top: 2vh; /* Размещаем картинку вверху экрана */
+        top: 1vh; /* Размещаем картинку вверху экрана */
         left: 0; /* Размещаем картинку в самом левом положении */
         width: 100%; /* Занимаем всю доступную ширину */
         height: auto; /* Автоматически подстраиваем высоту */
         max-height: none; /* Отменяем ограничение на максимальную высоту */
         max-width: none; /* Отменяем ограничение на максимальную ширину */
+        border: 1px transparent;
+        border-radius: 15px;
         transform: none; /* Отменяем transform для мобильных устройств */
     }
 }

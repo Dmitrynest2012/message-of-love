@@ -538,8 +538,8 @@ function updateText() {
             (hours < interval.to.hour || (hours === interval.to.hour && minutes < interval.to.minute))) {
             newText = interval.text;
           
-            if (imageElement.src != 'https://cdn.glitch.global/af9f7b9b-e7a6-44b6-8629-5c3b55fa7e18/image%205.jpeg?v=1708190781461') {
-          imageElement.src = 'https://cdn.glitch.global/af9f7b9b-e7a6-44b6-8629-5c3b55fa7e18/image%205.jpeg?v=1708190781461';
+            if (imageElement.src != 'https://disk.yandex.ru/i/lRKVhhvpcrsJFg') {
+          imageElement.src = 'https://disk.yandex.ru/i/lRKVhhvpcrsJFg';
         };
             
             container.style.background = 'linear-gradient(to bottom, rgba(0, 0, 0, 0), #3e2723, #3e2723)';
@@ -586,7 +586,7 @@ function updateText() {
 
     if (!newText) {
       
-     if (imageElement.src == 'https://cdn.glitch.global/af9f7b9b-e7a6-44b6-8629-5c3b55fa7e18/image%205.jpeg?v=1708190781461') {
+     if (imageElement.src == 'https://disk.yandex.ru/i/lRKVhhvpcrsJFg') {
           setRandomImage();
         };
         container.style.background = 'linear-gradient(to bottom, rgba(0, 0, 0, 0), #3500a8df, #3500a8df)';

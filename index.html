@@ -20,6 +20,7 @@
     <link rel="stylesheet" href="styles.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.16.9/xlsx.full.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/vibrant/2.0.0/vibrant.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"></script>
 </head>
 
 <body>
@@ -52,7 +53,13 @@
 </audio>
 
 
-
+<div class="popup">
+  <h1>Шифрование</h1>
+  <textarea id="inputText" rows="5" cols="50" placeholder="Введите текст для шифрования..."></textarea><br>
+  <button onclick="encryptText()">Зашифровать</button><br>
+  <textarea id="encryptedText" rows="5" cols="50" placeholder="Зашифрованный текст будет отображен здесь..."
+      readonly></textarea>
+</div>
   
 
     

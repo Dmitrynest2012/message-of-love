@@ -187,7 +187,7 @@ document.addEventListener("DOMContentLoaded", function () {
     
     updateTime();
     // Вызываем функцию загрузки данных и отображения после загрузки
-loadDataAndRender();
+    loadDataAndRender();
     setInterval(updateTime, 1000);
     setInterval(updateText, 1000);
   
@@ -312,8 +312,11 @@ async function updateTime() {
 
 let json_min_origin;
 let json_max_origin;
+
+
 let json_min;
 let json_max;
+
 
 // функция для шифрования
 function encryptText() {
@@ -323,66 +326,67 @@ function encryptText() {
     document.getElementById('encryptedText').value = encryptedText;
 }
 
+
 // Функция для расшифровки текста
 function decryptText(encryptedText) {
-    const password = '3Bn#kP9!Hv5@mZsF2&'; // Пароль для расшифровки (ключ)
-    const bytes = CryptoJS.AES.decrypt(encryptedText, password);
-    return bytes.toString(CryptoJS.enc.Utf8);
+const password = '3Bn#kP9!Hv5@mZsF2&'; // Пароль для расшифровки (ключ)
+const bytes = CryptoJS.AES.decrypt(encryptedText, password);
+return bytes.toString(CryptoJS.enc.Utf8);
 }
 
 // Функция для чтения данных из Excel и их расшифровки
 async function readAndDecryptExcel(url) {
-    try {
-        const response = await fetch(url);
-        if (!response.ok) {
-            throw new Error('Network response was not ok');
-        }
-        const buffer = await response.arrayBuffer();
-        const data = new Uint8Array(buffer);
-        const workbook = XLSX.read(data, { type: 'array' });
-        const sheetName = workbook.SheetNames[0];
-        const sheet = workbook.Sheets[sheetName];
-        const jsonData = XLSX.utils.sheet_to_json(sheet, { header: 1 });
+try {
+const response = await fetch(url);
+if (!response.ok) {
+    throw new Error('Network response was not ok');
+}
+const buffer = await response.arrayBuffer();
+const data = new Uint8Array(buffer);
+const workbook = XLSX.read(data, { type: 'array' });
+const sheetName = workbook.SheetNames[0];
+const sheet = workbook.Sheets[sheetName];
+const jsonData = XLSX.utils.sheet_to_json(sheet, { header: 1 });
 
-        // Преобразуем данные в нужный формат, пропуская первую строку и первую колонку
-        const jsonArray = [];
-        for (let i = 1; i < jsonData.length; i++) {
-            const [_, text, interval] = jsonData[i]; // Пропускаем первый элемент (первая колонка)
-            let fromHour, fromMinute, toHour, toMinute;
+// Преобразуем данные в нужный формат, пропуская первую строку и первую колонку
+const jsonArray = [];
+for (let i = 1; i < jsonData.length; i++) {
+    const [_, text, interval] = jsonData[i]; // Пропускаем первый элемент (первая колонка)
+    let fromHour, fromMinute, toHour, toMinute;
 
-            // Извлекаем часы и минуты для времени начала
-            const fromMatch = interval.match(/^(\d+):(\d+)/);
-            if (fromMatch) {
-                fromHour = parseInt(fromMatch[1]);
-                fromMinute = parseInt(fromMatch[2]);
-            } else {
-                fromHour = NaN;
-                fromMinute = NaN;
-            }
-
-            // Извлекаем часы и минуты для времени окончания
-            const toMatch = interval.match(/-(\d+):(\d+)/);
-            if (toMatch) {
-                toHour = parseInt(toMatch[1]);
-                toMinute = parseInt(toMatch[2]);
-            } else {
-                // Если временной интервал не содержит "-", то его продолжительность 0 минут
-                toHour = fromHour;
-                toMinute = 0;
-            }
-
-            jsonArray.push({
-                from: { hour: fromHour, minute: fromMinute },
-                to: { hour: toHour, minute: toMinute },
-                text: decryptText(text.trim()) // Расшифровываем текст и удаляем лишние пробелы
-            });
-        }
-
-        return jsonArray; // Возвращаем массив JSON
-    } catch (error) {
-        console.error('There was a problem with your fetch operation:', error);
-        throw error; // Пробрасываем ошибку дальше
+    // Извлекаем часы и минуты для времени начала
+    const fromMatch = interval.match(/^(\d+):(\d+)/);
+    if (fromMatch) {
+        fromHour = parseInt(fromMatch[1]);
+        fromMinute = parseInt(fromMatch[2]);
+    } else {
+        fromHour = NaN;
+        fromMinute = NaN;
     }
+
+    // Извлекаем часы и минуты для времени окончания
+    const toMatch = interval.match(/-(\d+):(\d+)/);
+    if (toMatch) {
+        toHour = parseInt(toMatch[1]);
+        toMinute = parseInt(toMatch[2]);
+    } else {
+        // Если временной интервал не содержит "-", то его продолжительность 0 минут
+        toHour = fromHour;
+        toMinute = 0;
+    }
+
+    jsonArray.push({
+        from: { hour: fromHour, minute: fromMinute },
+        to: { hour: toHour, minute: toMinute },
+        text: decryptText(text.trim()) // Расшифровываем текст и удаляем лишние пробелы
+    });
+}
+
+return jsonArray; // Возвращаем массив JSON
+} catch (error) {
+console.error('There was a problem with your fetch operation:', error);
+throw error; // Пробрасываем ошибку дальше
+}
 }
 
 // URL файлов Excel
@@ -391,41 +395,32 @@ const excelUrlMax = 'https://raw.githubusercontent.com/Dmitrynest2012/message-of
 
 // Загружаем и расшифровываем данные из Excel
 async function loadData() {
-    try {
-        json_min = await readAndDecryptExcel(excelUrlMin);
-        console.log('json_min:', json_min);
-    } catch (error) {
-        console.error('Error loading and decrypting json_min:', error);
-    }
+try {
+json_min = await readAndDecryptExcel(excelUrlMin);
+console.log('json_min:', json_min);
+} catch (error) {
+console.error('Error loading and decrypting json_min:', error);
+}
 
-    try {
-        json_max = await readAndDecryptExcel(excelUrlMax);
-        console.log('json_max:', json_max);
-    } catch (error) {
-        console.error('Error loading and decrypting json_max:', error);
-    }
+try {
+json_max = await readAndDecryptExcel(excelUrlMax);
+console.log('json_max:', json_max);
+} catch (error) {
+console.error('Error loading and decrypting json_max:', error);
+}
 }
 
 // Вызываем функцию загрузки данных
 loadData();
 
 
-
-
-
-
-
-
-
-
-
 async function loadDataAndRender() {
-    try {
-        await loadData(); // Ждем, пока данные загрузятся
-        updateText(); // После успешной загрузки вызываем функцию обновления текста
-    } catch (error) {
-        console.error('Error loading data:', error);
-    }
+try {
+await loadData(); // Ждем, пока данные загрузятся
+updateText(); // После успешной загрузки вызываем функцию обновления текста
+} catch (error) {
+console.error('Error loading data:', error);
+}
 }
 
 

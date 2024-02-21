@@ -181,8 +181,6 @@ function setRandomImage() {
 
 
 
-
-
 document.addEventListener("DOMContentLoaded", function () {
   
     
@@ -194,6 +192,9 @@ loadDataAndRender();
     setInterval(updateText, 1000);
   
     setRandomImage();
+
+    
+
 
     const container = document.querySelector(".container");
     const dateElement = document.querySelector(".date");
@@ -467,7 +468,7 @@ function updateText() {
             if (imageElement.src != 'https://cdn.glitch.global/af9f7b9b-e7a6-44b6-8629-5c3b55fa7e18/image%205.jpeg?v=1708190781461') {
           imageElement.src = 'https://cdn.glitch.global/af9f7b9b-e7a6-44b6-8629-5c3b55fa7e18/image%205.jpeg?v=1708190781461';
         };
-            
+            document.body.style.background = "linear-gradient(to bottom, black 50%, #3e2723 100%)";
             container.style.background = 'linear-gradient(to bottom, rgba(0, 0, 0, 0), #3e2723, #3e2723)';
           
             // Скрыть элемент блока катрена
@@ -515,6 +516,7 @@ function updateText() {
      if (imageElement.src == 'https://cdn.glitch.global/af9f7b9b-e7a6-44b6-8629-5c3b55fa7e18/image%205.jpeg?v=1708190781461') {
           setRandomImage();
         };
+        document.body.style.background = "linear-gradient(to bottom, black 50%, rgba(0, 2, 141, 0.815) 100%)";
         container.style.background = 'linear-gradient(to bottom, rgba(0, 0, 0, 0), #3500a8df, #3500a8df)';
         // Отобразить элемент
         document.querySelector('.quatrain').style.display = 'block';

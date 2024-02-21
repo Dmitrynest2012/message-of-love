@@ -450,8 +450,8 @@ function readExcelToJson(url) {
 
 
 // URL файлов Excel
-const excelUrlMin = 'https://github.com/Dmitrynest2012/message-of-love/blob/0c028ae6e2ea176d46bb7dd5565171be294721a1/json_min.xlsx';
-const excelUrlMax = 'https://github.com/Dmitrynest2012/message-of-love/blob/0c028ae6e2ea176d46bb7dd5565171be294721a1/json_min.xlsx';
+const excelUrlMin = 'json_min.xlsx';
+const excelUrlMax = 'json_min.xlsx';
 
 // Загружаем и читаем файлы Excel, сохраняем данные в переменные json_min и json_max
 async function loadData() {

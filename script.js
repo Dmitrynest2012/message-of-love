@@ -468,8 +468,26 @@ function updateText() {
             if (imageElement.src != 'https://cdn.glitch.global/af9f7b9b-e7a6-44b6-8629-5c3b55fa7e18/image%205.jpeg?v=1708190781461') {
           imageElement.src = 'https://cdn.glitch.global/af9f7b9b-e7a6-44b6-8629-5c3b55fa7e18/image%205.jpeg?v=1708190781461';
         };
+
+
+
+
+ // Применение стилей из медиа-запроса
+    if (window.matchMedia("(max-width: 600px) and (orientation: portrait)").matches) {
+       document.body.style.background = "linear-gradient(to bottom, black 0%, black 100%)"; 
+    } else {
+      
             document.body.style.background = "linear-gradient(to bottom, black 50%, #3e2723 100%)";
-            container.style.background = 'linear-gradient(to bottom, rgba(0, 0, 0, 0), #3e2723, #3e2723)';
+     
+ 
+    }
+      
+
+
+
+
+
+         container.style.background = 'linear-gradient(to bottom, rgba(0, 0, 0, 0), #3e2723, #3e2723)';
           
             // Скрыть элемент блока катрена
             document.querySelector('.quatrain').style.display = 'none';

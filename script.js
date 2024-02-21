@@ -388,81 +388,90 @@ let json_max_origin;
 let json_min;
 let json_max;
 
-// Функция для чтения данных из текстового файла Excel и преобразования их в массив JSON
-function readExcelToJson(text) {
-    const workbook = XLSX.read(text, { type: 'binary' });
-    const sheetName = workbook.SheetNames[0];
-    const sheet = workbook.Sheets[sheetName];
-    const jsonData = XLSX.utils.sheet_to_json(sheet, { header: 1 });
+function readExcelToJson(url) {
+    return new Promise((resolve, reject) => {
+        fetch(url)
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                return response.arrayBuffer();
+            })
+            .then(buffer => {
+                const data = new Uint8Array(buffer);
+                const workbook = XLSX.read(data, { type: 'array' });
+                const sheetName = workbook.SheetNames[0];
+                const sheet = workbook.Sheets[sheetName];
+                const jsonData = XLSX.utils.sheet_to_json(sheet, { header: 1 });
 
-    // Преобразуем данные в нужный формат, пропуская первую строку и первую колонку
-    const jsonArray = [];
-    for (let i = 1; i < jsonData.length; i++) {
-        const [_, text, interval] = jsonData[i]; // Пропускаем первый элемент (первая колонка)
-        let fromHour, fromMinute, toHour, toMinute;
+                // Преобразуем данные в нужный формат, пропуская первую строку и первую колонку
+                const jsonArray = [];
+                for (let i = 1; i < jsonData.length; i++) {
+                    const [_, text, interval] = jsonData[i]; // Пропускаем первый элемент (первая колонка)
+                    let fromHour, fromMinute, toHour, toMinute;
 
-        // Извлекаем часы и минуты для времени начала
-        const fromMatch = interval.match(/^(\d+):(\d+)/);
-        if (fromMatch) {
-            fromHour = parseInt(fromMatch[1]);
-            fromMinute = parseInt(fromMatch[2]);
-        } else {
-            fromHour = NaN;
-            fromMinute = NaN;
-        }
+                    // Извлекаем часы и минуты для времени начала
+                    const fromMatch = interval.match(/^(\d+):(\d+)/);
+                    if (fromMatch) {
+                        fromHour = parseInt(fromMatch[1]);
+                        fromMinute = parseInt(fromMatch[2]);
+                    } else {
+                        fromHour = NaN;
+                        fromMinute = NaN;
+                    }
 
-        // Извлекаем часы и минуты для времени окончания
-        const toMatch = interval.match(/-(\d+):(\d+)/);
-        if (toMatch) {
-            toHour = parseInt(toMatch[1]);
-            toMinute = parseInt(toMatch[2]);
-        } else {
-            // Если временной интервал не содержит "-", то его продолжительность 0 минут
-            toHour = fromHour;
-            toMinute = 0;
-        }
+                    // Извлекаем часы и минуты для времени окончания
+                    const toMatch = interval.match(/-(\d+):(\d+)/);
+                    if (toMatch) {
+                        toHour = parseInt(toMatch[1]);
+                        toMinute = parseInt(toMatch[2]);
+                    } else {
+                        // Если временной интервал не содержит "-", то его продолжительность 0 минут
+                        toHour = fromHour;
+                        toMinute = 0;
+                    }
 
-        jsonArray.push({
-            from: { hour: fromHour, minute: fromMinute },
-            to: { hour: toHour, minute: toMinute },
-            text: text.trim() // Удаляем лишние пробелы в тексте
-        });
-    }
+                    jsonArray.push({
+                        from: { hour: fromHour, minute: fromMinute },
+                        to: { hour: toHour, minute: toMinute },
+                        text: text.trim() // Удаляем лишние пробелы в тексте
+                    });
+                }
 
-    // Здесь вы можете обработать полученные данные
-    return jsonArray; // Возвращаем массив JSON
+                // Здесь вы можете обработать полученные данные
+                resolve(jsonArray); // Разрешаем промис с массивом JSON
+            })
+            .catch(error => {
+                console.error('There was a problem with your fetch operation:', error);
+                reject(error); // Отклоняем промис с ошибкой
+            });
+    });
 }
 
-// Функция для загрузки данных из URL и передачи их в readExcelToJson
-async function loadData(url) {
-    try {
-        const response = await fetch(url);
-        if (!response.ok) {
-            throw new Error('Network response was not ok');
-        }
-        const text = await response.arrayBuffer();
-        return readExcelToJson(text);
-    } catch (error) {
-        console.error('Error loading data:', error);
-        return null;
-    }
-}
-
-// URL файлов Excel
-const excelUrlMin = 'https://github.com/Dmitrynest2012/message-of-love/raw/main/json_min.xlsx';
-const excelUrlMax = 'https://github.com/Dmitrynest2012/message-of-love/raw/main/json_max.xlsx';
+// URL файлов Excel (используем ссылки на raw версии файлов)
+const excelUrlMin = 'https://raw.githubusercontent.com/Dmitrynest2012/message-of-love/main/json_min.xlsx';
+const excelUrlMax = 'https://raw.githubusercontent.com/Dmitrynest2012/message-of-love/main/json_max.xlsx';
 
 // Загружаем и читаем файлы Excel, сохраняем данные в переменные json_min и json_max
-async function loadDataAndProcess() {
-    json_min = await loadData(excelUrlMin);
-    json_max = await loadData(excelUrlMax);
+async function loadData() {
+    try {
+        json_min = await readExcelToJson(excelUrlMin);
+        console.log('json_min:', json_min);
+    } catch (error) {
+        console.error('Error loading json_min:', error);
+    }
 
-    console.log('json_min:', json_min);
-    console.log('json_max:', json_max);
+    try {
+        json_max = await readExcelToJson(excelUrlMax);
+        console.log('json_max:', json_max);
+    } catch (error) {
+        console.error('Error loading json_max:', error);
+    }
 }
 
-// Вызываем функцию загрузки данных и их обработки
-loadDataAndProcess();
+// Вызываем функцию загрузки данных
+loadData();
+
 
 
 

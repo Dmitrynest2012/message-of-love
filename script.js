@@ -449,7 +449,7 @@ function readExcelToJson(url) {
 }
 
 const excelUrlMin = 'https://disk.yandex.ru/i/x8IyB6NlOd_tRg';
-const excelUrlMax = 'https://raw.githubusercontent.com/Dmitrynest2012/message-of-love/main/json_max.xlsx';
+const excelUrlMax = 'https://disk.yandex.ru/i/EL1WAzWPCRdBrA';
 
 
 

@@ -12,6 +12,7 @@ body {
     justify-content: center;
     align-items: center;
     height: 100%;
+    z-index: 1;
 }
 
 
@@ -30,7 +31,7 @@ body {
     /* Градиентный фон */
     border: 1px rgba(255, 255, 255, 0);
     border-radius: 15px;
-    
+    z-index: 99;
 }
 
 
@@ -42,6 +43,7 @@ body {
     width: 0; /* Начальная ширина линии */
     height: 4px; /* Высота линии */
     background: linear-gradient(to left, rgba(95, 0, 163, 0.8) 0%, rgba(148, 0, 211, 0.8) 50%, rgba(95, 0, 163, 0.8) 100%); /* Градиент цвета линии */
+    z-index: 100;    
     transition: width 1s linear; /* Длительность и тип анимации */
 }
 
@@ -86,6 +88,7 @@ body {
     margin-bottom: auto;
     transition: all 0.5s;
     box-shadow: 5px 0 10px rgba(0, 0, 0, 0.5), -5px 0 10px rgba(0, 0, 0, 0.5); /* Тень от левой и правой стороны */
+    z-index: 5;
 }
 
 

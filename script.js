@@ -474,7 +474,7 @@ function updateText() {
 
  // Применение стилей из медиа-запроса
     if (window.matchMedia("(max-width: 600px) and (orientation: portrait)").matches) {
-       document.body.style.background = "linear-gradient(to bottom, black 0%, black 100%)"; 
+        
     } else {
       
             document.body.style.background = "linear-gradient(to bottom, black 50%, #3e2723 100%)";
@@ -541,7 +541,7 @@ function updateText() {
 
     // Применение стилей из медиа-запроса
     if (window.matchMedia("(max-width: 600px) and (orientation: portrait)").matches) {
-       document.body.style.background = "linear-gradient(to bottom, black 0%, black 100%)"; 
+       
     } else {
         document.body.style.background = "linear-gradient(to bottom, black 50%, rgba(0, 2, 141, 0.815) 100%)";
  

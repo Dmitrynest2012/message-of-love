@@ -82,8 +82,11 @@ body {
 
 
 .image {
-    margin-top: 0;
+    margin-top: 1vh;
     margin-bottom: auto;
+    border: 1px transparent;
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
     transition: all 0.5s;
     box-shadow: 5px 0 10px rgba(0, 0, 0, 0.5), -5px 0 10px rgba(0, 0, 0, 0.5); /* Тень от левой и правой стороны */
     z-index: 5;
@@ -99,9 +102,6 @@ body {
         height: auto; /* Автоматически подстраиваем высоту */
         max-height: none; /* Отменяем ограничение на максимальную высоту */
         max-width: none; /* Отменяем ограничение на максимальную ширину */
-        border: 1px transparent;
-        border-top-left-radius: 15px;
-        border-top-right-radius: 15px;
         transform: none; /* Отменяем transform для мобильных устройств */
     }
 }

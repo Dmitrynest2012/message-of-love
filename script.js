@@ -448,7 +448,7 @@ function readExcelToJson(url) {
     });
 }
 
-const excelUrlMin = 'https://raw.githubusercontent.com/Dmitrynest2012/message-of-love/main/json_min.xlsx';
+const excelUrlMin = 'https://disk.yandex.ru/i/x8IyB6NlOd_tRg';
 const excelUrlMax = 'https://raw.githubusercontent.com/Dmitrynest2012/message-of-love/main/json_max.xlsx';
 
 

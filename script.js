@@ -1,94 +1,19 @@
-// Массив четверостишьи
-const quatrains = [
-  {
-    title: "Посыл",
-    date: "08.07.16",
-    text: [
-      "Посыл – не только единое",
-      "И сокровенно сильное!",
-      "Это просто необходимое",
-      "для Единения посильного!"
-    ],
-    link: "https://blagayavest.info/poems/2016-07-08"
-  },
-  {
-    title: "Посыл – подсказка",
-    date: "11.07.16",
-    text: [
-      "Посыл – подсказка, Посыл – напутствие!",
-      "Посыл же лучше всяких слов!",
-      "Он открывает Души присутствие",
-      "Там, где не надо больше слов!"
-    ],
-    link: "https://blagayavest.info/poems/11.07.16.html"
-  },
-  {
-    title: "Посылы",
-    date: "04.10.16",
-    text: [
-      "Посылы важны, не спорю!",
-      "Образ для всех ЕДИН!",
-      "Пространство придётся строить,",
-      "Но точно “один в один”!"
-    ],
-    link: "https://blagayavest.info/poems/04.10.16.html"
-  },
-  {
-    title: "Посыл",
-    date: "26.10.16",
-    text: [
-      "Посыл вам нужен обязательно!",
-      "И в этом весь смысл!",
-      "Мир изменится безотлагательно,",
-      "Если правильная мысль!"
-    ],
-    link: "https://blagayavest.info/poems/26.10.16.html"
-  },
-  {
-    title: "Тризна",
-    date: "17.11.16",
-    text: [
-      "Посыл замечен и с Неба!",
-      "Росток уже творит серьёзно!",
-      "Ещё вчера была небыль,",
-      "Сегодня уже всё возможно!"
-    ],
-    link: "https://blagayavest.info/poems/17.11.16.html"
-  },
-  {
-    title: "Посыл",
-    date: "04.12.16",
-    text: [
-      "Каждый Посыл – стресс,",
-      "И не только для голограмм!",
-      "Он приобретает вес",
-      "При выполнении Программ!"
-    ],
-    link: "https://blagayavest.info/poems/04.12.16.html"
-  },
-  {
-    title: "Обращение",
-    date: "27.01.17",
-    text: [
-      "Попробуйте! У вас получится!",
-      "Ритмом Посылов раскачать!",
-      "Сердце цивилизации качнётся,",
-      "Цивилизация начнёт дышать!"
-    ],
-    link: "https://blagayavest.info/poems/27.01.17.html"
-  },
-  {
-    title: "Один за всех или Пророк*",
-    date: "25.07.17",
-    text: [
-      "Часть Меня внутри человека!",
-      "Истина – производная Бога!",
-      "Служение на века",
-      "Проявляется в Посыле и в Боге!"
-    ],
-    link: "https://blagayavest.info/poems/25.07.17.html"
-  }
-];
+
+
+
+
+
+
+let quatrains;
+
+fetch('quatrains.json')
+  .then(response => response.json())
+  .then(data => {
+    quatrains = data;
+    // Вызываем функцию displayRandomQuatrain после успешного чтения файла JSON
+    displayRandomQuatrain();
+  })
+  .catch(error => console.error('Ошибка при чтении файла:', error));
 
 // Функция для выбора случайного четверостишия
 function getRandomQuatrain() {
@@ -102,7 +27,7 @@ function displayRandomQuatrain() {
   const randomQuatrain = getRandomQuatrain();
 
   const quatrainText = randomQuatrain.text.map(line => `<p>${line}</p>`).join('');
-  
+
   // Проверяем, есть ли звездочка в конце строки названия катрена
   let titleLines = randomQuatrain.title.split('*');
   let quatrainInfo = '';
@@ -125,6 +50,7 @@ function displayRandomQuatrain() {
   quatrainElement.innerHTML = '';
   quatrainElement.appendChild(quatrainLink);
 }
+
 
 
 

@@ -212,9 +212,9 @@ function updateButtonState() {
 
 // Массив ссылок на картинки
 const imageLinks = [
-  'https://cdn.glitch.global/af9f7b9b-e7a6-44b6-8629-5c3b55fa7e18/Default_space_stars_0.jpg?v=1708360387249',
-  'https://cdn.glitch.global/af9f7b9b-e7a6-44b6-8629-5c3b55fa7e18/Default_space_stars_0%20(2).jpg?v=1708419565436',
-  'https://cdn.glitch.global/af9f7b9b-e7a6-44b6-8629-5c3b55fa7e18/Default_space_Pleiades_0%20(2).jpg?v=1708421340565',
+  'https://github.com/Dmitrynest2012/message-of-love/raw/main/message-random-1.jpg',
+  'https://github.com/Dmitrynest2012/message-of-love/raw/main/message-random-2.jpg',
+  'https://github.com/Dmitrynest2012/message-of-love/raw/main/message-random-3.jpg',
   // Добавьте здесь остальные ссылки на картинки
 ];
 

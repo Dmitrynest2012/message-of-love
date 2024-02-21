@@ -448,9 +448,9 @@ function readExcelToJson(url) {
     });
 }
 
-// URL файлов Excel (используем ссылки на raw версии файлов)
 const excelUrlMin = 'https://raw.githubusercontent.com/Dmitrynest2012/message-of-love/main/json_min.xlsx';
 const excelUrlMax = 'https://raw.githubusercontent.com/Dmitrynest2012/message-of-love/main/json_max.xlsx';
+
 
 
 // Загружаем и читаем файлы Excel, сохраняем данные в переменные json_min и json_max

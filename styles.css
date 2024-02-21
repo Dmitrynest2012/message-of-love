@@ -72,10 +72,8 @@ body {
         max-width: none;
         text-align: center;
         padding: 20px;
-        background: linear-gradient(to bottom, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0.6), #3e2723);
+        background: linear-gradient(to bottom, rgba(0, 0, 0, 1), rgba(0, 0, 0, 1), #3e2723);
         color: white;
-        border: 1px rgba(255, 255, 255, 0);
-        border-radius: 15px;
     }
 }
 
@@ -102,7 +100,8 @@ body {
         max-height: none; /* Отменяем ограничение на максимальную высоту */
         max-width: none; /* Отменяем ограничение на максимальную ширину */
         border: 1px transparent;
-        border-top-radius: 15px;
+        border-top-left-radius: 15px;
+        border-top-right-radius: 15px;
         transform: none; /* Отменяем transform для мобильных устройств */
     }
 }

@@ -212,7 +212,7 @@ function updateButtonState() {
 
 // Массив ссылок на картинки
 const imageLinks = [
-  'https://cdn.glitch.global/af9f7b9b-e7a6-44b6-8629-5c3b55fa7e18/Default_space_stars_0.jpg?v=1708360387249',
+  'https://disk.yandex.ru/i/o7Zjunw1Qa9o6w',
   'https://cdn.glitch.global/af9f7b9b-e7a6-44b6-8629-5c3b55fa7e18/Default_space_stars_0%20(2).jpg?v=1708419565436',
   'https://cdn.glitch.global/af9f7b9b-e7a6-44b6-8629-5c3b55fa7e18/Default_space_Pleiades_0%20(2).jpg?v=1708421340565',
   // Добавьте здесь остальные ссылки на картинки

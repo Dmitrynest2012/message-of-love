@@ -13,7 +13,7 @@ fetch('quatrains.json')
     // Вызываем функцию displayRandomQuatrain после успешного чтения файла JSON
     displayRandomQuatrain();
   })
-  .catch(error => console.error('Ошибка при чтении файла:', error));
+  // .catch(error => console.error('Ошибка при чтении файла:', error));
 
 // Функция для выбора случайного четверостишия
 function getRandomQuatrain() {
@@ -25,7 +25,7 @@ function getRandomQuatrain() {
 function displayRandomQuatrain() {
   // Проверяем, есть ли данные в переменной quatrains
   if (!quatrains || quatrains.length === 0) {
-    console.error('Отсутствуют данные в переменной quatrains');
+    // console.error('Отсутствуют данные в переменной quatrains');
     return;
   }
 
@@ -242,18 +242,18 @@ if ('mediaDevices' in navigator && 'getUserMedia' in navigator.mediaDevices && '
         navigator.mediaDevices.getUserMedia({ audio: true })
         .then(function(stream) {
             // Пользователь разрешил использование аудио
-            console.log('Доступ к аудио разрешен');
+            // console.log('Доступ к аудио разрешен');
             // Устанавливаем флаг в локальном хранилище, чтобы не предлагать снова
             localStorage.setItem('audioPermissionRequested', true);
         })
         .catch(function(err) {
             // Пользователь отказал в доступе или произошла ошибка
-            console.log('Доступ к аудио отклонен или произошла ошибка: ' + err);
+            // console.log('Доступ к аудио отклонен или произошла ошибка: ' + err);
         });
     }
 } else {
     // Браузер не поддерживает запрос на доступ к аудио или локальное хранилище
-    console.log('API запроса на доступ к аудио или локальное хранилище не поддерживается');
+    // console.log('API запроса на доступ к аудио или локальное хранилище не поддерживается');
 }
 
 
@@ -308,7 +308,7 @@ async function fetchMoscowTime() {
         const data = await response.json();
         return new Date(data.utc_datetime);
     } catch (error) {
-        console.error('Ошибка при получении времени по Москве:', error);
+        // console.error('Ошибка при получении времени по Москве:', error);
         return new Date();
     }
 }
@@ -419,7 +419,7 @@ for (let i = 1; i < jsonData.length; i++) {
 
 return jsonArray; // Возвращаем массив JSON
 } catch (error) {
-console.error('There was a problem with your fetch operation:', error);
+// console.error('There was a problem with your fetch operation:', error);
 throw error; // Пробрасываем ошибку дальше
 }
 }
@@ -432,16 +432,16 @@ const excelUrlMax = 'https://raw.githubusercontent.com/Dmitrynest2012/message-of
 async function loadData() {
 try {
 json_min = await readAndDecryptExcel(excelUrlMin);
-console.log('json_min:', json_min);
+// console.log('json_min:', json_min);
 } catch (error) {
-console.error('Error loading and decrypting json_min:', error);
+// console.error('Error loading and decrypting json_min:', error);
 }
 
 try {
 json_max = await readAndDecryptExcel(excelUrlMax);
-console.log('json_max:', json_max);
+// console.log('json_max:', json_max);
 } catch (error) {
-console.error('Error loading and decrypting json_max:', error);
+// console.error('Error loading and decrypting json_max:', error);
 }
 }
 
@@ -454,7 +454,7 @@ try {
 await loadData(); // Ждем, пока данные загрузятся
 updateText(); // После успешной загрузки вызываем функцию обновления текста
 } catch (error) {
-console.error('Error loading data:', error);
+// console.error('Error loading data:', error);
 }
 }
 
@@ -487,8 +487,8 @@ function updateText() {
     const textElement = document.querySelector(".text");
     const dayOfMonth = now.getDate();
   
-    console.log('json_min:', json_min);
-    console.log('json_max:', json_max);
+    // console.log('json_min:', json_min);
+    // console.log('json_max:', json_max);
 
 
     json = (dayOfMonth === 8 || dayOfMonth === 17 || dayOfMonth === 26) && (
@@ -497,7 +497,7 @@ function updateText() {
 
     let newText = "";
   
-    console.log('Значение json:', json); // Выводим значение json в консоль
+    // console.log('Значение json:', json); // Выводим значение json в консоль
 
     for (const interval of json) {
         if ((hours > interval.from.hour || (hours === interval.from.hour && minutes >= interval.from.minute)) &&
@@ -545,7 +545,7 @@ function updateText() {
                     if (navigator.vibrate) {
                         navigator.vibrate(3000);
                     } else {
-                        console.log("Устройство не поддерживает вибрацию.");
+                        // console.log("Устройство не поддерживает вибрацию.");
                     }
                     lineElement.style.width = "0";
                     setTimeout(() => {
@@ -667,7 +667,7 @@ function playSoundAndVibration() {
             // Если есть поддержка вибрации
             navigator.vibrate(3000); // Вибрация на 2 секунды
     } else {
-        console.log("Устройство не поддерживает вибрацию.");
+        // console.log("Устройство не поддерживает вибрацию.");
     }
 }
 
@@ -679,9 +679,9 @@ let wakeLock = null;
 const requestWakeLock = async () => {
   try {
     wakeLock = await navigator.wakeLock.request('screen');
-    console.log('Wake Lock активирован');
+    // console.log('Wake Lock активирован');
   } catch (err) {
-    console.error(`${err.name}, ${err.message}`);
+    // console.error(`${err.name}, ${err.message}`);
   }
 };
 
@@ -693,10 +693,10 @@ window.addEventListener('unload', () => {
   if (wakeLock) {
     wakeLock.release()
       .then(() => {
-        console.log('Wake Lock деактивирован');
+        // console.log('Wake Lock деактивирован');
       })
       .catch((err) => {
-        console.error(`${err.name}, ${err.message}`);
+        // console.error(`${err.name}, ${err.message}`);
       });
   }
 });

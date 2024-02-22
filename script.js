@@ -104,8 +104,10 @@ function pauseAudio() {
   }
 }
 
-// Определение переменной состояния кнопки
+// Определение переменных состояния кнопки и элементов кнопки
 let isAudioActive = false;
+const audioButton = document.getElementById('audioButton');
+const audioIcon = document.getElementById('audioIcon');
 
 // Получение значения переменной состояния кнопки из локального хранилища при загрузке страницы
 window.addEventListener('load', () => {
@@ -126,12 +128,9 @@ function toggleAudio() {
 
 // Функция для обновления внешнего вида кнопки в соответствии с состоянием
 function updateButtonState() {
-    const audioButton = document.getElementById('audioButton');
-    const audioIcon = document.getElementById('audioIcon');
-
     if (isAudioActive) {
         playAudio();
-        audioButton.style.backgroundColor = 'rgba(128, 0, 128, 0.3)';
+        audioButton.style.backgroundColor = 'rgba(128, 0, 128, 0.5)';
         audioIcon.innerHTML = '&#x1F50A;'; // Символ колонки/звука
     } else {
         pauseAudio();
@@ -140,6 +139,17 @@ function updateButtonState() {
     }
 }
 
+// Добавляем обработчик события наведения мыши на кнопку
+audioButton.addEventListener('mouseenter', function() {
+    // Задаем цвет фона кнопке
+    audioButton.style.backgroundColor = 'rgba(128, 0, 128, 0.5)';
+});
+
+// Добавляем обработчик события увода мыши с кнопки
+audioButton.addEventListener('mouseleave', function() {
+    // Возвращаем исходный цвет фона кнопке
+    audioButton.style.backgroundColor = isAudioActive ? 'rgba(128, 0, 128, 0.5)' : 'rgba(128, 0, 128, 0.15)';
+});
 
 
 

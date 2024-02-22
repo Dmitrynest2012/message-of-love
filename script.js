@@ -23,6 +23,12 @@ function getRandomQuatrain() {
 
 // Функция для отображения случайного четверостишия на сайте
 function displayRandomQuatrain() {
+  // Проверяем, есть ли данные в переменной quatrains
+  if (!quatrains || quatrains.length === 0) {
+    console.error('Отсутствуют данные в переменной quatrains');
+    return;
+  }
+
   const quatrainElement = document.querySelector('.quatrain');
   const randomQuatrain = getRandomQuatrain();
 
@@ -50,6 +56,7 @@ function displayRandomQuatrain() {
   quatrainElement.innerHTML = '';
   quatrainElement.appendChild(quatrainLink);
 }
+
 
 
 

@@ -270,6 +270,7 @@ body {
 /* Медиа-запрос для портретного режима */
 @media (orientation: portrait) {
     #quatrain {
+  right: -10px; /* Расположить блок справа */
   font-size: 10px; 
   background-color: rgba(53, 0, 168, 0.25); /* Изменяем цвет фона при наведении */
     }

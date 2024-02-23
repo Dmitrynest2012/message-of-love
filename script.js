@@ -717,3 +717,8 @@ window.addEventListener('unload', () => {
 displayRandomQuatrain();
 // Вызываем функцию для обновления случайного четверостишия каждые 5 минут
 setInterval(displayRandomQuatrain, 5 * 60 * 1000);
+
+
+
+
+// Для хтмл запаска <meta property="og:url" content="https://message-of-love.glitch.me/">

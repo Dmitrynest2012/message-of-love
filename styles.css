@@ -258,7 +258,7 @@ body {
   padding: 10px;
   border: 1px solid rgba(255, 255, 255, 0.2);
   border-radius: 15px;
-  background-color: rgba(255, 255, 255, 0);
+  background-color: rgba(53, 0, 168, 0.25);
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   position: fixed; /* Зафиксировать блок */
   top: 0; /* Расположить блок сверху */
@@ -272,7 +272,6 @@ body {
     #quatrain {
   right: -10px; /* Расположить блок справа */
   font-size: 10px; 
-  background-color: rgba(53, 0, 168, 0.25); /* Изменяем цвет фона при наведении */
     }
 }
 

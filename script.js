@@ -57,6 +57,9 @@ function displayRandomQuatrain() {
   quatrainElement.appendChild(quatrainLink);
 }
 
+
+
+
 // Установка значения атрибута src для элемента с id="audioSource"
 const audioSource = document.getElementById('audioSource');
 
@@ -79,7 +82,9 @@ function getRandomSong() {
 
             
             audioSource.src = song_link;
-            console.log(audioSource.src);
+            
+            // Обновление элемента <audio>, чтобы использовать новый источник
+            audioPlayer.load();
 
             // Здесь можно выполнить другие действия с полученными данными
         })
@@ -87,7 +92,6 @@ function getRandomSong() {
 }
 
 // Теперь мы можем вызывать функцию getRandomSong() в любом месте кода для получения случайной песни
-
 
 
 

@@ -126,13 +126,6 @@ function playAudio() {
   let audioPlayer = document.getElementById('audioPlayer');
   if (audioPlayer.paused) {
     audioPlayer.play();
-
-    // Добавляем обработчик события ended для аудиоплеера
-    audioPlayer.addEventListener('ended', function() {
-    // Вызываем функцию для получения случайной песни когда прошлая завершилась
-    getRandomSong();
-});
-
   }
 }
 
@@ -143,6 +136,12 @@ function pauseAudio() {
     audioPlayer.pause();
   }
 }
+
+// Добавляем обработчик события ended для аудиоплеера
+audioPlayer.addEventListener('ended', function() {
+    // Вызываем функцию для получения случайной песни когда прошлая завершилась
+    getRandomSong();
+});
 
 // Определение переменных состояния кнопки и элементов кнопки
 let isAudioActive = false;

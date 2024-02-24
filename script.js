@@ -195,7 +195,8 @@ audioPlayer.addEventListener('ended', function() {
 
     // Проверяем, включен ли аудиоплеер, и если да, то необходимо запустить воспроизведение новой песни
     if (audioPlayer.paused && isAudioActive) {
-        playAudio();
+        audioPlayer.load(); // Загружаем аудио
+        audioPlayer.play(); // Запускаем воспроизведение
     }
 });
 

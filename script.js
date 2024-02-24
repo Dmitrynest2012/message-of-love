@@ -192,12 +192,8 @@ audioButton.addEventListener('mouseleave', function() {
 audioPlayer.addEventListener('ended', function() {
     // Вызываем функцию для получения случайной песни когда прошлая завершилась
     getRandomSong();
-
-    // Проверяем, включен ли аудиоплеер, и если да, то необходимо запустить воспроизведение новой песни
-    if (isAudioActive) {
-        audioPlayer.load(); // Загружаем аудио
-        audioPlayer.play(); // Запускаем воспроизведение
-    }
+    audioPlayer.play(); // Запускаем воспроизведение
+    
 });
 
 

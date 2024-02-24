@@ -141,7 +141,13 @@ function pauseAudio() {
 audioPlayer.addEventListener('ended', function() {
     // Вызываем функцию для получения случайной песни когда прошлая завершилась
     getRandomSong();
+
+    // Проверяем, включен ли аудиоплеер, и если да, то необходимо запустить воспроизведение новой песни
+    if (!audioPlayer.paused) {
+        audioPlayer.play();
+    }
 });
+
 
 // Определение переменных состояния кнопки и элементов кнопки
 let isAudioActive = false;

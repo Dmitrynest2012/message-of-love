@@ -123,7 +123,7 @@ let audioPlayer = document.getElementById('audioPlayer');
 
 // Функция для запуска аудиоплеера
 function playAudio() {
-  let audioPlayer = document.getElementById('audioPlayer');
+  
   if (audioPlayer.paused) {
     audioPlayer.play();
   }
@@ -131,7 +131,7 @@ function playAudio() {
 
 // Функция для остановки аудиоплеера
 function pauseAudio() {
-  let audioPlayer = document.getElementById('audioPlayer');
+  
   if (!audioPlayer.paused) {
     audioPlayer.pause();
   }

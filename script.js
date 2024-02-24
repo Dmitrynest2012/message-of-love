@@ -65,7 +65,7 @@ let song_link; // ссылка песни
 
 
 function getRandomSong() {
-    fetch('песни.json')
+    fetch('music.json')
         .then(response => response.json())
         .then(data => {
             // Получение случайного объекта из массива
@@ -230,7 +230,7 @@ function setRandomImage() {
 document.addEventListener("DOMContentLoaded", function () {
   
     
-    
+    getRandomSong();
     updateTime();
     // Вызываем функцию загрузки данных и отображения после загрузки
     loadDataAndRender();

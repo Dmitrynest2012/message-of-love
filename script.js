@@ -59,6 +59,34 @@ function displayRandomQuatrain() {
 
 
 
+let name_of_the_song; // название песни
+let songwriter; // автор песни
+let song_link; // ссылка песни
+
+
+function getRandomSong() {
+    fetch('песни.json')
+        .then(response => response.json())
+        .then(data => {
+            // Получение случайного объекта из массива
+            const randomSong = data[Math.floor(Math.random() * data.length)];
+
+            // Присваивание значений переменным
+            name_of_the_song = randomSong.название;
+            songwriter = randomSong.автор;
+            song_link = randomSong.ссылка;
+
+            // Установка значения атрибута src для элемента с id="audioSource"
+            const audioSource = document.getElementById('audioSource');
+            audioSource.src = song_link;
+
+            // Здесь можно выполнить другие действия с полученными данными
+        })
+        .catch(error => console.error('Ошибка:', error));
+}
+
+// Теперь мы можем вызывать функцию getRandomSong() в любом месте кода для получения случайной песни
+
 
 
 
@@ -158,7 +186,7 @@ const imageLinks = [
   'https://github.com/Dmitrynest2012/message-of-love/raw/main/message-random-1.jpg',
   'https://github.com/Dmitrynest2012/message-of-love/raw/main/message-random-2.jpg',
   'https://github.com/Dmitrynest2012/message-of-love/raw/main/message-random-3.jpg',
-  'https://github.com/Dmitrynest2012/message-of-love/raw/main/message-random-4.png',
+  'https://github.com/Dmitrynest2012/message-of-love/raw/main/message-random-4.jpg',
   // Добавьте здесь остальные ссылки на картинки
 ];
 

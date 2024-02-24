@@ -188,13 +188,11 @@ audioButton.addEventListener('mouseleave', function() {
 });
 
 
-// Добавляем обработчик события ended для аудиоплеера
-audioPlayer.addEventListener('ended', function() {
-    // Вызываем функцию для получения случайной песни когда прошлая завершилась
+// Проверяем, находится ли аудиоплеер на паузе и включен ли он, и если да, то загружаем аудио и запускаем воспроизведение
+if (audioPlayer.paused && isAudioActive) {
     getRandomSong();
     audioPlayer.play(); // Запускаем воспроизведение
-    audioIcon.innerHTML = '&#x1F507;'; // Символ выключенной колонки/звука
-});
+}
 
 
 

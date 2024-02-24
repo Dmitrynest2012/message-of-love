@@ -57,11 +57,12 @@ function displayRandomQuatrain() {
   quatrainElement.appendChild(quatrainLink);
 }
 
+// Установка значения атрибута src для элемента с id="audioSource"
+const audioSource = document.getElementById('audioSource');
 
-
-let name_of_the_song; // название песни
-let songwriter; // автор песни
-let song_link; // ссылка песни
+let name_of_the_song = ''; // название песни
+let songwriter = ''; // автор песни
+let song_link = ''; // ссылка песни
 
 
 function getRandomSong() {
@@ -76,9 +77,9 @@ function getRandomSong() {
             songwriter = randomSong.автор;
             song_link = randomSong.ссылка;
 
-            // Установка значения атрибута src для элемента с id="audioSource"
-            const audioSource = document.getElementById('audioSource');
+            
             audioSource.src = song_link;
+            console.log(audioSource.src);
 
             // Здесь можно выполнить другие действия с полученными данными
         })

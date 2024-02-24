@@ -193,7 +193,7 @@ audioPlayer.addEventListener('ended', function() {
     // Вызываем функцию для получения случайной песни когда прошлая завершилась
     getRandomSong();
     audioPlayer.play(); // Запускаем воспроизведение
-    
+    audioIcon.innerHTML = '&#x1F507;'; // Символ выключенной колонки/звука
 });
 
 

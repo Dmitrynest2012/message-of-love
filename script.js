@@ -544,6 +544,7 @@ function updateText() {
     // Проверяем, находится ли аудиоплеер на паузе и включен ли он, и если да, то загружаем аудио и запускаем воспроизведение
 if (audioPlayer.paused && isAudioActive) {
     getRandomSong();
+    audioPlayer.stop(); // Запускаем воспроизведение
     audioPlayer.play(); // Запускаем воспроизведение
 }
 

@@ -230,7 +230,7 @@ function setRandomImage() {
 document.addEventListener("DOMContentLoaded", function () {
   
     
-    getRandomSong();
+    
     updateTime();
     // Вызываем функцию загрузки данных и отображения после загрузки
     loadDataAndRender();

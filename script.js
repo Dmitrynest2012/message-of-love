@@ -137,16 +137,7 @@ function pauseAudio() {
   }
 }
 
-// Добавляем обработчик события ended для аудиоплеера
-audioPlayer.addEventListener('ended', function() {
-    // Вызываем функцию для получения случайной песни когда прошлая завершилась
-    getRandomSong();
 
-    // Проверяем, включен ли аудиоплеер, и если да, то необходимо запустить воспроизведение новой песни
-    if (!audioPlayer.paused) {
-        audioPlayer.play();
-    }
-});
 
 
 // Определение переменных состояния кнопки и элементов кнопки
@@ -195,6 +186,19 @@ audioButton.addEventListener('mouseleave', function() {
     // Возвращаем исходный цвет фона кнопке
     audioButton.style.backgroundColor = isAudioActive ? 'rgba(128, 0, 128, 0.5)' : 'rgba(128, 0, 128, 0.15)';
 });
+
+
+// Добавляем обработчик события ended для аудиоплеера
+audioPlayer.addEventListener('ended', function() {
+    // Вызываем функцию для получения случайной песни когда прошлая завершилась
+    getRandomSong();
+
+    // Проверяем, включен ли аудиоплеер, и если да, то необходимо запустить воспроизведение новой песни
+    if (audioPlayer.paused && isAudioActive) {
+        audioPlayer.play();
+    }
+});
+
 
 
 

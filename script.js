@@ -199,6 +199,7 @@ const imageLinks = [
   'https://github.com/Dmitrynest2012/message-of-love/raw/main/message-random-2.jpg',
   'https://github.com/Dmitrynest2012/message-of-love/raw/main/message-random-3.jpg',
   'https://github.com/Dmitrynest2012/message-of-love/raw/main/message-random-4.png',
+  'https://github.com/Dmitrynest2012/message-of-love/raw/main/message-random-5.jpg',
   // Добавьте здесь остальные ссылки на картинки
 ];
 

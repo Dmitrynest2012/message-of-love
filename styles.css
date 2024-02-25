@@ -251,15 +251,13 @@ body {
     background-color: rgba(128, 0, 128, 0.5); /* Цвет заднего фона при включенной кнопке */
 }
 
-/* Медиа-запрос для портретного режима 
+/* Медиа-запрос для портретного режима */
 @media (orientation: portrait) {
     #audioButton {
-        top: auto;
-        bottom: 20px; 
-        left: 20px; 
+        left: 15px; 
     }
 }
-*/
+
 
 
 .quatrain {

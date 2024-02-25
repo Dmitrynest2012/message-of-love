@@ -541,13 +541,15 @@ function updateText() {
     // console.log('json_min:', json_min);
     // console.log('json_max:', json_max);
 
-    // Проверяем, находится ли аудиоплеер на паузе и включен ли он, и если да, то загружаем аудио и запускаем воспроизведение
+// Проверяем, находится ли аудиоплеер на паузе и включен ли он, и если да, то загружаем аудио и запускаем воспроизведение
 if (audioPlayer.paused && isAudioActive) {
-    audioPlayer.stop(); // Запускаем воспроизведение
-    getRandomSong();
-    
-    audioPlayer.play(); // Запускаем воспроизведение
+    audioPlayer.pause(); // Останавливаем текущее воспроизведение
+    getRandomSong(); // Получаем следующую песню
+
+    audioPlayer.load(); // Загружаем новую песню
+    audioPlayer.play(); // Запускаем воспроизведение новой песни
 }
+
 
 
     json = (dayOfMonth === 8 || dayOfMonth === 17 || dayOfMonth === 26) && (

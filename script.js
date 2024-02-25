@@ -547,7 +547,13 @@ if (audioPlayer.paused && isAudioActive) {
     getRandomSong(); // Получаем следующую песню
 
     audioPlayer.load(); // Загружаем новую песню
-    audioPlayer.play(); // Запускаем воспроизведение новой песни
+    audioPlayer.play().then(_ => {
+        // Обработчик успешного запуска воспроизведения
+        console.log('Воспроизведение начато');
+    }).catch(error => {
+        // Обработчик ошибки запуска воспроизведения
+        console.error('Ошибка запуска воспроизведения:', error);
+    });
 }
 
 

@@ -608,10 +608,12 @@ if (audioPlayer.paused && isAudioActive) {
             const intervalDuration = (interval.to.hour - hours) * 3600 + (interval.to.minute - minutes) * 60 - now.getSeconds();
             if (!lineElement) {
                 const container = document.querySelector(".container");
+                const containerWidth = container.offsetWidth; // Получаем текущую ширину контейнера
                 lineElement = document.createElement("div");
                 lineElement.classList.add("line");
                 document.body.appendChild(lineElement);
                 lineElement.style.transition = `width ${intervalDuration}s linear`;
+                lineElement.style.maxWidth = `${containerWidth}px`; // Устанавливаем максимальную ширину линии
                 setTimeout(() => {
                     lineElement.style.width = "100%";
                 }, 100);

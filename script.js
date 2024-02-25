@@ -615,7 +615,7 @@ if (audioPlayer.paused && isAudioActive) {
                 lineElement.style.transition = `width ${intervalDuration}s linear`;
                 lineElement.style.maxWidth = `${containerWidth}px`; // Устанавливаем максимальную ширину линии
                 setTimeout(() => {
-                    lineElement.style.width = "100%";
+                    lineElement.style.width = lineElement.style.maxWidth;
                 }, 100);
                 setTimeout(() => {
                     playSoundAndVibration();

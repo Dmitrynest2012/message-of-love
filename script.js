@@ -579,8 +579,8 @@ if (audioPlayer.paused && isAudioActive) {
             (hours < interval.to.hour || (hours === interval.to.hour && minutes < interval.to.minute))) {
             newText = interval.text;
           
-            if (imageElement.src != 'https://cdn.glitch.global/af9f7b9b-e7a6-44b6-8629-5c3b55fa7e18/image%205.jpeg?v=1708190781461') {
-          imageElement.src = 'https://cdn.glitch.global/af9f7b9b-e7a6-44b6-8629-5c3b55fa7e18/image%205.jpeg?v=1708190781461';
+            if (imageElement.src != 'https://github.com/Dmitrynest2012/message-of-love/raw/main/message-base-1.png') {
+          imageElement.src = 'https://github.com/Dmitrynest2012/message-of-love/raw/main/message-base-1.png';
         };
 
 
@@ -645,7 +645,7 @@ if (audioPlayer.paused && isAudioActive) {
 
     if (!newText) {
       
-     if (imageElement.src == 'https://cdn.glitch.global/af9f7b9b-e7a6-44b6-8629-5c3b55fa7e18/image%205.jpeg?v=1708190781461') {
+     if (imageElement.src == 'https://github.com/Dmitrynest2012/message-of-love/raw/main/message-base-1.png') {
           setRandomImage();
         };
 
@@ -734,7 +734,7 @@ if (audioPlayer.paused && isAudioActive) {
 
 function playSoundAndVibration() {
     // Воспроизводим звук
-    const audio = new Audio('https://cdn.glitch.global/af9f7b9b-e7a6-44b6-8629-5c3b55fa7e18/14-30%20%D0%9A%D0%BE%D0%BB%D0%BE%D0%BA%D0%BE%D0%BB.wav?v=1708276523227');
+    const audio = new Audio('https://raw.githubusercontent.com/Dmitrynest2012/message-of-love/main/sound_of_a_bell.wav');
     audio.play();
 
     // Воспроизводим вибрацию

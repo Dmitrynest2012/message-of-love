@@ -144,11 +144,6 @@ function pauseAudio() {
 let isAudioActive = false;
 const audioButton = document.getElementById('audioButton');
 const audioIcon = document.getElementById('audioIcon');
-audioButton.id = 'audioButton';
-audioButton.className = 'audio-button';
-audioButton.innerHTML = '<span id="audioIcon">&#128263;</span>'; // Добавляем иконку
-audioButton.onclick = toggleAudio; // Привязываем функцию toggleAudio к событию клика на кнопке
-
 
 // Получение значения переменной состояния кнопки из локального хранилища при загрузке страницы
 window.addEventListener('load', () => {
@@ -195,25 +190,7 @@ audioButton.addEventListener('mouseleave', function() {
 
 
 
-// Функция для перемещения кнопки между контейнером и body в зависимости от ориентации экрана
-function toggleAudioButtonPlacement() {
-    
-    
 
-  
-    if (window.matchMedia("(orientation: portrait)").matches) {
-      // Если экран в портретном режиме, добавляем аудио кнопку внутрь контейнера
-      container.appendChild(audioButton);
-    } else {
-      // Если экран в альбомном режиме, выносим аудио кнопку из контейнера и добавляем в body
-      document.body.appendChild(audioButton);
-    }
-  }
-  
-  // Вызываем функцию при загрузке страницы и при изменении ориентации экрана
-  window.addEventListener("load", toggleAudioButtonPlacement);
-  window.addEventListener("orientationchange", toggleAudioButtonPlacement);
-  
 
 
 // Массив ссылок на картинки

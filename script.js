@@ -725,39 +725,7 @@ if (audioPlayer.paused && isAudioActive) {
 
 
 
-    // Получаем элементы
-const scrollbar = document.createElement('div');
-scrollbar.classList.add('scrollbar');
-container.appendChild(scrollbar);
 
-// Добавляем обработчик события скроллинга
-container.addEventListener('scroll', function() {
-  // Если текст переполняет контейнер, отображаем скроллбар
-  if (container.scrollHeight > container.clientHeight) {
-    scrollbar.style.opacity = '1';
-  } else {
-    scrollbar.style.opacity = '0';
-  }
-});
-
-// Создаем элементы для скрытия части текста
-const topGradient = document.createElement('div');
-topGradient.classList.add('gradient', 'top');
-const bottomGradient = document.createElement('div');
-bottomGradient.classList.add('gradient', 'bottom');
-container.prepend(topGradient);
-container.append(bottomGradient);
-
-// Добавляем обработчик события изменения размеров контейнера
-window.addEventListener('resize', function() {
-  updateGradients();
-});
-
-// Функция для обновления скрытых частей текста
-function updateGradients() {
-  topGradient.style.height = `${container.scrollTop}px`;
-  bottomGradient.style.height = `${container.scrollHeight - container.clientHeight - container.scrollTop}px`;
-}
 
 }
 

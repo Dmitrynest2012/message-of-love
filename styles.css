@@ -52,7 +52,7 @@ body {
 
 
 .line {
-    position: fixed;
+    position: relative;
     bottom: 10px;
     left: 50%; /* Появление линии с середины контейнера */
     transform: translateX(-50%); /* Центрирование линии */
@@ -85,6 +85,7 @@ body {
         left: 0;
         transform: translateX(-5%);
         width: 100vw;
+        height: 40vh;
         max-width: none;
         text-align: center;
         padding: 20px;

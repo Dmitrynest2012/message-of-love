@@ -721,6 +721,33 @@ if (audioPlayer.paused && isAudioActive) {
     const parts = newText.split('*');
     const html = parts.map((part, index) => `<span${index % 2 !== 0 ? ' class="animated"' : ''}>${part}</span>`).join('');
     textElement.innerHTML = html;
+
+
+
+
+    // Получаем элементы
+const parent = document.querySelector('.container');
+
+
+// Создаем элемент вертикальной полоски прокрутки
+const scrollbar = document.createElement('div');
+scrollbar.classList.add('scrollbar');
+parent.appendChild(scrollbar);
+
+// Проверяем, переполняет ли текстовый контент родительский элемент по вертикали
+if (textElement.scrollHeight > parent.clientHeight) {
+  scrollbar.style.display = 'block'; // Показываем полоску прокрутки
+}
+
+// Добавляем обработчик события прокрутки для скрытия/показа полоски прокрутки
+textElement.addEventListener('scroll', function() {
+  if (textElement.scrollTop === 0) {
+    scrollbar.style.opacity = '0';
+  } else {
+    scrollbar.style.opacity = '1';
+  }
+});
+
 }
 
 

@@ -726,27 +726,38 @@ if (audioPlayer.paused && isAudioActive) {
 
 
     // Получаем элементы
-const parent = document.querySelector('.container');
-
-
-// Создаем элемент вертикальной полоски прокрутки
 const scrollbar = document.createElement('div');
 scrollbar.classList.add('scrollbar');
-parent.appendChild(scrollbar);
+container.appendChild(scrollbar);
 
-// Проверяем, переполняет ли текстовый контент родительский элемент по вертикали
-if (textElement.scrollHeight > parent.clientHeight) {
-  scrollbar.style.display = 'block'; // Показываем полоску прокрутки
-}
-
-// Добавляем обработчик события прокрутки для скрытия/показа полоски прокрутки
-textElement.addEventListener('scroll', function() {
-  if (textElement.scrollTop === 0) {
-    scrollbar.style.opacity = '0';
-  } else {
+// Добавляем обработчик события скроллинга
+container.addEventListener('scroll', function() {
+  // Если текст переполняет контейнер, отображаем скроллбар
+  if (container.scrollHeight > container.clientHeight) {
     scrollbar.style.opacity = '1';
+  } else {
+    scrollbar.style.opacity = '0';
   }
 });
+
+// Создаем элементы для скрытия части текста
+const topGradient = document.createElement('div');
+topGradient.classList.add('gradient', 'top');
+const bottomGradient = document.createElement('div');
+bottomGradient.classList.add('gradient', 'bottom');
+container.prepend(topGradient);
+container.append(bottomGradient);
+
+// Добавляем обработчик события изменения размеров контейнера
+window.addEventListener('resize', function() {
+  updateGradients();
+});
+
+// Функция для обновления скрытых частей текста
+function updateGradients() {
+  topGradient.style.height = `${container.scrollTop}px`;
+  bottomGradient.style.height = `${container.scrollHeight - container.clientHeight - container.scrollTop}px`;
+}
 
 }
 

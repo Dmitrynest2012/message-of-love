@@ -449,3 +449,25 @@ body {
     margin-right: 10px;
 }
 
+
+
+
+
+
+
+
+
+
+
+
+.table-container {
+    position: relative;
+    top: auto;
+    left: auto;
+    width: 100%;
+    height: 100%;
+    background-color: aquamarine;
+    overflow-y: auto; /* Включаем вертикальную прокрутку */
+    max-height: 300px; /* Максимальная высота контейнера */
+    z-index: 120;
+}

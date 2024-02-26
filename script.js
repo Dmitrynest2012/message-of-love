@@ -67,6 +67,9 @@ let name_of_the_song = ''; // название песни
 let songwriter = ''; // автор песни
 let song_link = ''; // ссылка песни
 
+// Получаем ссылки на элементы заголовка песни и имени исполнителя
+const songTitleElement = document.getElementById('songTitle');
+const artistNameElement = document.getElementById('artistName');
 
 function getRandomSong() {
     fetch('music.json')
@@ -85,6 +88,13 @@ function getRandomSong() {
             
             // Обновление элемента <audio>, чтобы использовать новый источник
             audioPlayer.load();
+
+            
+
+// Подставляем значения переменных в текст элементов
+songTitleElement.textContent = name_of_the_song;
+artistNameElement.textContent = songwriter;
+
 
             // Здесь можно выполнить другие действия с полученными данными
         })
@@ -175,17 +185,27 @@ function updateButtonState() {
     }
 }
 
+// Получаем ссылку на элемент информации о песне
+const songInfo = document.getElementById('songInfo');
+
 // Добавляем обработчик события наведения мыши на кнопку
 audioButton.addEventListener('mouseenter', function() {
     // Задаем цвет фона кнопке
     audioButton.style.backgroundColor = 'rgba(128, 0, 128, 0.75)';
+    if(isAudioActive){
+    // Делаем элемент информации о песне видимым
+    songInfo.style.visibility = 'visible';
+    }
 });
 
 // Добавляем обработчик события увода мыши с кнопки
 audioButton.addEventListener('mouseleave', function() {
     // Возвращаем исходный цвет фона кнопке
     audioButton.style.backgroundColor = isAudioActive ? 'rgba(128, 0, 128, 0.5)' : 'rgba(128, 0, 128, 0.15)';
+    // Делаем элемент информации о песне невидимым
+    songInfo.style.visibility = 'hidden';
 });
+
 
 
 

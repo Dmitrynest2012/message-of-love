@@ -112,7 +112,7 @@ body {
     border: 1px transparent;
     border-top-left-radius: 15px;
     border-top-right-radius: 15px;
-    box-shadow: 5px 0 10px rgba(0, 0, 0, 0.5), -5px 0 10px rgba(0, 0, 0, 0.5); /* Тень от левой и правой стороны */
+    
     z-index: 2;
     transition: all 0.5s;
 
@@ -338,3 +338,48 @@ body {
     opacity: 1;
   }
   
+
+  .image-container {
+    position: relative;
+    overflow: hidden; /* Обрезает все, что выходит за пределы контейнера */
+    /* Другие параметры изображения */
+    box-shadow: 5px 0 10px rgba(0, 0, 0, 0.5), -5px 0 10px rgba(0, 0, 0, 0.5); /* Тень от левой и правой стороны */
+}
+
+.image-container img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Чтобы изображение занимало всю область */
+}
+
+.song-info {
+    position: absolute;
+    top: 20px;
+    right: -100%; /* Добавляем отрицательный отступ справа */
+    padding-right: 20px; /* Дополнительный отступ для текста */
+    display: inline-block;
+    animation: slideText 40s linear infinite;
+    opacity: 0.7; /* Прозрачность текста */
+    z-index: 90;
+    white-space: nowrap; /* Текст всегда остается на одной строке */
+    visibility: hidden; /* По умолчанию скрываем элемент */
+}
+
+@keyframes slideText {
+    0% { right: -50%; } /* Начальное положение справа */
+    100% { right: 100%; } /* Конечное положение справа */
+}
+
+
+/* Стили для заголовка песни */
+#songTitle {
+    margin-right: 10px;
+    font-weight: bold;
+}
+
+/* Стили для имени исполнителя */
+#artistName {
+    margin-right: 10px;
+}
+

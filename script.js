@@ -1,7 +1,8 @@
 
 
 
-
+// Объявляем переменные для времени до события
+let hoursLeft, minutesLeft, secondsLeft;
 
 
 let quatrains;
@@ -105,6 +106,36 @@ artistNameElement.textContent = songwriter;
 
 
 
+
+
+
+function handleNotifications(hoursLeft, minutesLeft, secondsLeft, newText) {
+    // Проверяем поддержку уведомлений в браузере
+    if ("Notification" in window) {
+        // Проверяем, показывали ли уже запрос на разрешение уведомлений
+        if (!localStorage.getItem('notificationPermissionRequested')) {
+            // Запрашиваем разрешение на отправку уведомлений
+            Notification.requestPermission().then(function(permission) {
+                if (permission === "granted") {
+                    // Устанавливаем флаг о том, что запрос был показан
+                    localStorage.setItem('notificationPermissionRequested', true);
+                }
+            });
+        }
+
+        // Проверяем, остается ли 5 минут или менее до события
+        if (hoursLeft === 0 && minutesLeft * 60 + secondsLeft <= 5 * 60 && !newText) {
+            // Проверяем текущий статус разрешения на уведомления
+            if (Notification.permission === "granted") {
+                // Определяем текст уведомления в зависимости от оставшегося времени
+                var notificationText = (secondsLeft <= 0) ? "Внимание! Осталось менее 5 минут до подготовки к Посылу." : "Готовность. Осталось 5 минут до подготовки к Посылу.";
+                
+                // Отправляем уведомление
+                var notification = new Notification(notificationText);
+            }
+        }
+    }
+}
 
 
 
@@ -359,9 +390,9 @@ for (let i = 0; i < json.length; i++) {
     for (let j = 0; j < 3; j++) {
         const cell = row.insertCell();
         if (j === 0) {
-            if (i >= 2) {
-                // Если это первый столбец и номер строки >= 3, вставляем номер строки
-                cell.textContent = i - 1; // Нумерация начинается с 1
+            if (i < 6) {
+                // Если это первый столбец и номер строки < 6, вставляем номер строки с учетом смещения
+                cell.textContent = i + 1;
             }
             cell.style.width = '5%'; // Устанавливаем очень маленькую ширину для первого столбца
         } else if (j === 1) {
@@ -382,8 +413,8 @@ for (let i = 0; i < json.length; i++) {
         const rowCount = table.rows.length;
 
         // Установка размера текста в зависимости от количества строк
-        if (rowCount >= 1) {
-            cell.style.fontSize = '12px'; // Задаем размер текста в пикселях для 1-6 строк
+        if (i < 6) {
+            cell.style.fontSize = '12px'; // Задаем размер текста в пикселях для первых 6 строк
         } else if (rowCount <= 14) {
             cell.style.fontSize = '3px'; // Задаем размер текста в пикселях для 7-14 строк
         } else {
@@ -395,18 +426,6 @@ for (let i = 0; i < json.length; i++) {
         cell.style.border = '2px solid rgba(128, 0, 128, 0.8)'; // Светло-фиолетовая граница
     }
 }
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -483,8 +502,15 @@ function setRandomImage() {
 
 
 
+
+
 document.addEventListener("DOMContentLoaded", function () {
   
+
+    // Вызываем функцию для обработки уведомлений
+    handleNotifications();
+
+
 
     
     getRandomSong();
@@ -790,8 +816,6 @@ updateText(); // После успешной загрузки вызываем �
 
 
 
-
-
 let json = null; // Начальное значение
 
 let isSoundAndVibrationPlayed = false; // Добавляем переменную для отслеживания проигрывания звука и вибрации
@@ -830,11 +854,13 @@ if (audioPlayer.paused && isAudioActive) {
 toggleTable();
 
 
+
     json = (dayOfMonth === 8 || dayOfMonth === 17 || dayOfMonth === 26) && (
         (hours === 10 && minutes >= 55) || (hours === 11) || (hours === 12 && minutes < 5)
     ) ? json_max : json_min;
 
     let newText = "";
+    
   
     // console.log('Значение json:', json); // Выводим значение json в консоль
 
@@ -951,6 +977,9 @@ toggleTable();
         }
     }
 
+    
+    
+
     // Если не был найден посыл в текущем дне
     if (!nextSending) {
         // Определяем первый посыл на следующий день
@@ -958,22 +987,26 @@ toggleTable();
         firstSending.setDate(firstSending.getDate() + 1);
         firstSending.setHours(json[0].from.hour, json[0].from.minute, 0);
 
+        
+
         // Вычисляем время до первого посыл на следующий день
         const timeDiff = Math.max(firstSending - now, 0);
         nextSendingDate = firstSending;
 
-        const hoursLeft = Math.floor(timeDiff / (1000 * 60 * 60));
-        const minutesLeft = Math.floor((timeDiff % (1000 * 60 * 60)) / (1000 * 60));
-        const secondsLeft = Math.floor((timeDiff % (1000 * 60)) / 1000);
+        hoursLeft = Math.floor(timeDiff / (1000 * 60 * 60));
+        minutesLeft = Math.floor((timeDiff % (1000 * 60 * 60)) / (1000 * 60));
+        secondsLeft = Math.floor((timeDiff % (1000 * 60)) / 1000);
 
         newText = `До следующего Посыла: ${hoursLeft} ч. ${minutesLeft} мин. ${secondsLeft} сек.`;
+
+        
     } else {
         // Вычисляем время до ближайшего посыл в текущем дне
         const timeDiff = Math.max(nextSending - now, 0);
 
-        const hoursLeft = Math.floor(timeDiff / (1000 * 60 * 60));
-        const minutesLeft = Math.floor((timeDiff % (1000 * 60 * 60)) / (1000 * 60));
-        const secondsLeft = Math.floor((timeDiff % (1000 * 60)) / 1000);
+        hoursLeft = Math.floor(timeDiff / (1000 * 60 * 60));
+        minutesLeft = Math.floor((timeDiff % (1000 * 60 * 60)) / (1000 * 60));
+        secondsLeft = Math.floor((timeDiff % (1000 * 60)) / 1000);
 
         newText = `До следующего Посыла: ${hoursLeft} ч. ${minutesLeft} мин. ${secondsLeft} сек.`;
     } 
@@ -982,6 +1015,8 @@ toggleTable();
             lineElement = null;
         }
     }
+
+    
 
     const parts = newText.split('*');
     const html = parts.map((part, index) => `<span${index % 2 !== 0 ? ' class="animated"' : ''}>${part}</span>`).join('');

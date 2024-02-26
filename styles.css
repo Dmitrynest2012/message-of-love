@@ -154,13 +154,22 @@ body {
     font-family: 'Orbitron', sans-serif; /* Используем шрифт Orbitron для времени */
 
     margin: 0 auto; /* Центрируем текст по горизонтали */
+    text-shadow: 
+        2px 2px 5px rgba(48, 48, 48, 0.5), /* Тень вправо-вниз */
+        -2px -2px 5px rgba(48, 48, 48, 0.5), /* Тень влево-вверх */
+        2px -2px 5px rgba(48, 48, 48, 0.5), /* Тень вправо-вверх */
+        -2px 2px 5px rgba(48, 48, 48, 0.5); /* Тень влево-вниз */
 }
 
 .moscow-time {
     font-size: 0.75rem;
     font-family: 'Play', sans-serif; /* Используем шрифт Orbitron для времени */
     color: rgb(195, 195, 195);
-
+    text-shadow: 
+        2px 2px 5px rgba(48, 48, 48, 0.5), /* Тень вправо-вниз */
+        -2px -2px 5px rgba(48, 48, 48, 0.5), /* Тень влево-вверх */
+        2px -2px 5px rgba(48, 48, 48, 0.5), /* Тень вправо-вверх */
+        -2px 2px 5px rgba(48, 48, 48, 0.5); /* Тень влево-вниз */
 }
 
 .text {

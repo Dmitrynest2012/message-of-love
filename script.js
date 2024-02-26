@@ -280,6 +280,14 @@ document.addEventListener("DOMContentLoaded", function () {
     const now = new Date();
     const dayOfMonth = now.getDate();
 
+    // Устанавливаем тени для элемента даты
+    dateElement.style.textShadow = `
+    2px 2px 4px rgba(48, 48, 48, 0.6), /* Тень вправо-вниз */
+    -2px -2px 4px rgba(48, 48, 48, 0.6), /* Тень влево-вверх */
+    2px -2px 4px rgba(48, 48, 48, 0.6), /* Тень вправо-вверх */
+    -2px 2px 4px rgba(48, 48, 48, 0.6) /* Тень влево-вниз */
+    `;
+
     // Установка актуальной даты
     const options = { year: 'numeric', month: 'long', day: 'numeric' };
     let dateString = now.toLocaleDateString('ru-RU', options);

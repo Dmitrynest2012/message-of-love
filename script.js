@@ -567,7 +567,7 @@ if (audioPlayer.paused && isAudioActive) {
 
 
     json = (dayOfMonth === 8 || dayOfMonth === 17 || dayOfMonth === 26) && (
-        (hours === 10 && minutes >= 55) || (hours === 11) || (hours === 12 && minutes < 6)
+        (hours === 10 && minutes >= 55) || (hours === 11) || (hours === 12 && minutes < 5)
     ) ? json_max : json_min;
 
     let newText = "";

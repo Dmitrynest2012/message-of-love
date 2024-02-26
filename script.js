@@ -366,32 +366,44 @@ async function fetchMoscowTime() {
 }
 
 async function updateTime() {
-    // Получаем текущее локальное время
-    const localTime = new Date();
-    const localTimestamp = localTime.getTime();
+    try {
+        // Асинхронно получаем время по Москве из API
+        const moscowTime = await fetchMoscowTime();
+        const moscowTimestamp = moscowTime.getTime();
 
-    // Обновляем время на странице
-    const timeElement = document.querySelector(".time");
-    const hours = localTime.getHours();
-    const minutes = localTime.getMinutes();
-    const seconds = localTime.getSeconds();
-    timeElement.textContent = `${hours < 10 ? '0' + hours : hours}:${minutes < 10 ? '0' + minutes : minutes}:${seconds < 10 ? '0' + seconds : seconds}`;
+        // Получаем текущее локальное время
+        const localTime = new Date();
+        const localTimestamp = localTime.getTime();
 
-    // Асинхронно получаем время по Москве
-    const moscowTime = await fetchMoscowTime();
-    const moscowTimestamp = moscowTime.getTime();
+        // Определяем, используем ли время из API или локальное время
+        let displayTime;
+        if (moscowTimestamp > localTimestamp) {
+            displayTime = moscowTime;
+        } else {
+            displayTime = localTime;
+        }
 
-    // Если время из API новее, обновляем время на странице
-    if (moscowTimestamp > localTimestamp) {
-        const moscowHours = moscowTime.getHours();
-        const moscowMinutes = moscowTime.getMinutes();
-        const moscowSeconds = moscowTime.getSeconds();
-        timeElement.textContent = `${moscowHours < 10 ? '0' + moscowHours : moscowHours}:${moscowMinutes < 10 ? '0' + moscowMinutes : moscowMinutes}:${moscowSeconds < 10 ? '0' + moscowSeconds : moscowSeconds}`;
+        // Обновляем время на странице
+        const timeElement = document.querySelector(".time");
+        const hours = displayTime.getHours();
+        const minutes = displayTime.getMinutes();
+        const seconds = displayTime.getSeconds();
+        timeElement.textContent = `${hours < 10 ? '0' + hours : hours}:${minutes < 10 ? '0' + minutes : minutes}:${seconds < 10 ? '0' + seconds : seconds}`;
+    } catch (error) {
+        console.error('Error fetching Moscow time:', error);
+        // Если возникла ошибка при получении времени из API, используем локальное время
+        const localTime = new Date();
+        const hours = localTime.getHours();
+        const minutes = localTime.getMinutes();
+        const seconds = localTime.getSeconds();
+        const timeElement = document.querySelector(".time");
+        timeElement.textContent = `${hours < 10 ? '0' + hours : hours}:${minutes < 10 ? '0' + minutes : minutes}:${seconds < 10 ? '0' + seconds : seconds}`;
     }
-
-    // Вызываем функцию снова на следующем кадре анимации
-    requestAnimationFrame(updateTime);
 }
+
+// Вызываем функцию снова через 5 секунд
+setTimeout(updateTime, 5000);
+
 
 
 

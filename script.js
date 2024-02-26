@@ -262,6 +262,17 @@ function setRandomImage() {
 
 document.addEventListener("DOMContentLoaded", function () {
   
+    // Проверяем поддержку уведомлений в браузере
+if ("Notification" in window) {
+    // Запрашиваем разрешение на отправку уведомлений
+    Notification.requestPermission().then(function(permission) {
+        if (permission === "granted") {
+            // Отправляем уведомление
+            var notification = new Notification("Вы получили уведомление");
+        }
+    });
+}
+
     
     getRandomSong();
     updateTime();

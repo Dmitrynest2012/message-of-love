@@ -363,7 +363,7 @@ body {
     opacity: 0.7; /* Прозрачность текста */
     z-index: 90;
     white-space: nowrap; /* Текст всегда остается на одной строке */
-    visibility: hidden; /* По умолчанию скрываем элемент */
+    
 }
 
 @keyframes slideText {

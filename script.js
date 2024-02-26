@@ -155,14 +155,21 @@ let isAudioActive = false;
 const audioButton = document.getElementById('audioButton');
 const audioIcon = document.getElementById('audioIcon');
 
-// Получение значения переменной состояния кнопки из локального хранилища при загрузке страницы
+// Получение значения переменной состояния кнопки изображения из локального хранилища при загрузке страницы
 window.addEventListener('load', () => {
     const storedAudioStatus = localStorage.getItem('isAudioActive');
     if (storedAudioStatus !== null) {
         isAudioActive = JSON.parse(storedAudioStatus);
         updateButtonState();
     }
+
+    const storedImageStatus = localStorage.getItem('isImageActive');
+    if (storedImageStatus !== null) {
+        isImageActive = JSON.parse(storedImageStatus);
+        updateImageButtonState();
+    }
 });
+
 
 // Функция для обновления состояния кнопки и сохранения состояния в локальное хранилище
 function toggleAudio() {
@@ -208,6 +215,136 @@ audioButton.addEventListener('mouseleave', function() {
 
 
 
+
+
+
+let isImageActive = false;
+
+// Функция для обновления состояния кнопки изображения и сохранения состояния в локальное хранилище
+function toggleImage() {
+    isImageActive = !isImageActive; // Инвертируем состояние кнопки изображения
+    updateImageButtonState(); // Обновляем состояние кнопки изображения
+    // Сохраняем состояние кнопки изображения в локальное хранилище
+    localStorage.setItem('isImageActive', JSON.stringify(isImageActive));
+}
+
+
+// Функция для обновления внешнего вида кнопки изображения в соответствии с состоянием
+function updateImageButtonState() {
+    if (isImageActive) {
+        imageButton.style.backgroundColor = 'rgba(128, 0, 128, 0.5)';
+        imageIcon.innerHTML = '&#x1F4CB;'; // Значок "Записная книжка"
+    } else {
+        imageButton.style.backgroundColor = 'rgba(128, 0, 128, 0.15)';
+        imageIcon.innerHTML = '&#x1F4CB;'; // Значок "Записная книжка"
+    }
+}
+
+
+
+
+
+// Получаем ссылку на элемент кнопки изображения
+const imageButton = document.getElementById('imageButton');
+
+// Добавляем обработчик события наведения мыши на кнопку изображения
+imageButton.addEventListener('mouseenter', function() {
+    // Задаем цвет фона кнопке
+    imageButton.style.backgroundColor = 'rgba(128, 0, 128, 0.75)'; // Новый цвет фона кнопки
+});
+
+// Добавляем обработчик события увода мыши с кнопки изображения
+imageButton.addEventListener('mouseleave', function() {
+    // Возвращаем исходный цвет фона кнопки
+    imageButton.style.backgroundColor = isImageActive ? 'rgba(128, 0, 128, 0.5)' : 'rgba(128, 0, 128, 0.15)';
+});
+
+
+
+
+// Проверка ориентации устройства
+function checkOrientation() {
+    if (window.matchMedia("(orientation: portrait)").matches) {
+        const existingTable = document.querySelector('table');
+        if (existingTable) {
+            existingTable.style.width = '80%';
+            existingTable.style.height = '70vh';
+        }
+    }
+}
+
+
+
+// Получаем элемент с идентификатором "imageContainer"
+var imageContainerElement = document.getElementById("imageContainer");
+
+
+let tableCreated = false; // Флаг для отслеживания создания таблицы
+
+// Функция для создания или удаления таблицы в зависимости от состояния переменной isImageActive
+function toggleTable() {
+    if (isImageActive && !tableCreated) {
+        // Создаем таблицу только если она еще не создана
+        const table = document.createElement('table');
+        
+        table.style.border = '2px solid rgba(128, 0, 128, 0.8)'; // Темно-фиолетовая рамка
+
+table.style.borderRadius = '20px'; // Более сильное закругление
+
+        table.style.backgroundColor = 'rgba(128, 0, 128, 0.2)';
+        table.style.backgroundClip = 'padding-box';
+
+        table.style.position = 'fixed';
+        table.style.top = '25%';
+        table.style.left = '50%';
+        table.style.transform = 'translate(-50%, -25%)';
+        // Устанавливаем ширину и высоту таблицы
+        table.style.width = '75%';
+        table.style.height = '70vh';
+        table.style.zIndex = '100';
+        table.style.backdropFilter = 'blur(5px)';
+        
+        // Создаем заголовок таблицы
+        const thead = table.createTHead();
+        const headerRow = thead.insertRow();
+        const headers = ['Номер', 'Посыл / Заповедь', 'Время [мск]'];
+        headers.forEach(headerText => {
+            const th = document.createElement('th');
+            th.textContent = headerText;
+            th.style.textAlign = 'center';
+            headerRow.appendChild(th);
+        });
+
+        // Добавляем 14 строк с данными
+        for (let i = 1; i <= 14; i++) {
+            const row = table.insertRow();
+            for (let j = 0; j < 3; j++) {
+                const cell = row.insertCell();
+                cell.textContent = `Данные ${i}-${j+1}`;
+                cell.style.textAlign = 'center';
+                cell.style.padding = '10px';
+                cell.style.backgroundColor = 'rgba(128, 0, 128, 0.4)';
+                cell.style.border = '2px solid rgba(128, 0, 128, 0.8)'; // Светло-фиолетовая граница
+
+            }
+        }
+
+        // Добавляем таблицу на страницу
+        document.body.appendChild(table);
+        
+        // Устанавливаем флаг, что таблица создана
+        tableCreated = true;
+        checkOrientation();
+    } else if (!isImageActive && tableCreated) {
+        // Удаляем таблицу, если она существует и необходимо ее скрыть
+        const existingTable = document.querySelector('table');
+        if (existingTable) {
+            existingTable.remove();
+            // Сбрасываем флаг
+            tableCreated = false;
+        }
+    }
+}
 
 
 
@@ -604,7 +741,7 @@ if (audioPlayer.paused && isAudioActive) {
     });
 }
 
-
+toggleTable();
 
 
     json = (dayOfMonth === 8 || dayOfMonth === 17 || dayOfMonth === 26) && (

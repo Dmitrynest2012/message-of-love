@@ -262,16 +262,27 @@ function setRandomImage() {
 
 document.addEventListener("DOMContentLoaded", function () {
   
-    // Проверяем поддержку уведомлений в браузере
+// Проверяем поддержку уведомлений в браузере
 if ("Notification" in window) {
-    // Запрашиваем разрешение на отправку уведомлений
-    Notification.requestPermission().then(function(permission) {
-        if (permission === "granted") {
-            // Отправляем уведомление
-            var notification = new Notification("Вы получили уведомление");
-        }
-    });
+    // Проверяем текущий статус разрешения на уведомления
+    if (Notification.permission === "granted") {
+        // Отправляем уведомление
+        var notification = new Notification("Вы получили уведомление");
+    } else if (Notification.permission !== "denied") {
+        // Запрашиваем разрешение на отправку уведомлений
+        Notification.requestPermission().then(function(permission) {
+            if (permission === "granted") {
+                // Отправляем уведомление
+                var notification = new Notification("Вы получили уведомление");
+            }
+        });
+    }
 }
+
+
+
+
+
 
     
     getRandomSong();

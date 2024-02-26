@@ -162,10 +162,11 @@ body {
     animation: slideGradient 10s infinite cubic-bezier(0.4, 0, 0.2, 1);
     font-family: 'Play', sans-serif;
     /* Добавляем более равномерные и менее сильные тени во все стороны */
-    text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.02),
-                 -1px -1px 1px rgba(0, 0, 0, 0.02),
-                 1px -1px 1px rgba(0, 0, 0, 0.02),
-                 -1px 1px 1px rgba(0, 0, 0, 0.02);
+    text-shadow: 
+        2px 2px 5px rgba(48, 48, 48, 0.5), /* Тень вправо-вниз */
+        -2px -2px 5px rgba(48, 48, 48, 0.5), /* Тень влево-вверх */
+        2px -2px 5px rgba(48, 48, 48, 0.5), /* Тень вправо-вверх */
+        -2px 2px 5px rgba(48, 48, 48, 0.5); /* Тень влево-вниз */
 }
 
 
@@ -349,7 +350,7 @@ body {
 .image-container img {
     display: block;
     width: 100%;
-    height: 100%;
+    height: 50%;
     object-fit: cover; /* Чтобы изображение занимало всю область */
 }
 
@@ -363,8 +364,14 @@ body {
     opacity: 0.7; /* Прозрачность текста */
     z-index: 90;
     white-space: nowrap; /* Текст всегда остается на одной строке */
-    
+    visibility: hidden; /* По умолчанию скрываем элемент */
+    text-shadow: 
+        2px 2px 5px rgba(128, 0, 128, 0.5), /* Тень вправо-вниз */
+        -2px -2px 5px rgba(128, 0, 128, 0.5), /* Тень влево-вверх */
+        2px -2px 5px rgba(128, 0, 128, 0.5), /* Тень вправо-вверх */
+        -2px 2px 5px rgba(128, 0, 128, 0.5); /* Тень влево-вниз */
 }
+
 
 @keyframes slideText {
     0% { right: -50%; } /* Начальное положение справа */

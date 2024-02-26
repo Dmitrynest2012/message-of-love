@@ -185,10 +185,10 @@ body {
     font-family: 'Play', sans-serif;
     /* Добавляем более равномерные и менее сильные тени во все стороны */
     text-shadow: 
-        2px 2px 5px rgba(48, 48, 48, 0.5), /* Тень вправо-вниз */
-        -2px -2px 5px rgba(48, 48, 48, 0.5), /* Тень влево-вверх */
-        2px -2px 5px rgba(48, 48, 48, 0.5), /* Тень вправо-вверх */
-        -2px 2px 5px rgba(48, 48, 48, 0.5); /* Тень влево-вниз */
+        2px 2px 3px rgba(48, 48, 48, 0.1), /* Тень вправо-вниз */
+        -2px -2px 3px rgba(48, 48, 48, 0.1), /* Тень влево-вверх */
+        2px -2px 3px rgba(48, 48, 48, 0.1), /* Тень вправо-вверх */
+        -2px 2px 3px rgba(48, 48, 48, 0.1); /* Тень влево-вниз */
 }
 
 
@@ -204,7 +204,7 @@ body {
 
 
 .text .animated {
-    background: radial-gradient(circle, rgb(238, 0, 238), rgb(255, 255, 255));
+    background: radial-gradient(circle, rgb(255, 100, 255), rgb(255, 255, 255));
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;

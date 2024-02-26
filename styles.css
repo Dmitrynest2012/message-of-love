@@ -87,7 +87,7 @@ body {
 @media only screen and (max-width: 600px) and (orientation: portrait) {
     .container {
         position: fixed;
-        top: 51vh;
+        top: 50.75vh;
         left: 0;
         transform: translateX(-5%);
         width: 100vw;

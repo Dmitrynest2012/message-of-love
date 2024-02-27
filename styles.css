@@ -116,6 +116,9 @@ body {
         background: linear-gradient(to bottom, rgba(0, 0, 0, 1), rgba(0, 0, 0, 1), #3e2723);
         color: white;
         overflow-y: auto; /* Включаем вертикальную прокрутку при необходимости */
+        border: 1px solid rgba(0, 0, 0, 0);
+        border-bottom-left-radius: 40px;
+        border-bottom-right-radius: 40px;
     }
 }
 

@@ -49,7 +49,7 @@ body {
     border: 1px solid rgba(255, 255, 255, 0.1);
     border-radius: 15px;
     z-index: 3;
-    transition: background 0.5s linear; /* Длительность и тип анимации */
+    transition: background 0.5s linear, height 0.5s ease, width 0.5s ease; /* Длительность и тип анимации для изменения цвета фона, высоты и ширины */
 }
 
 .container::after {
@@ -162,6 +162,8 @@ body {
         -2px 2px 5px rgba(48, 48, 48, 0.5); /* Тень влево-вниз */
 }
 
+
+
 .moscow-time {
     font-size: 0.75rem;
     font-family: 'Play', sans-serif; /* Используем шрифт Orbitron для времени */
@@ -199,7 +201,11 @@ body {
         font-family: 'Play', sans-serif; /* Используем шрифт Play для остального текста */
         font-size: 0.8rem;
         width: 85vw;
-
+        text-shadow: 
+        1px 1px 1px rgba(48, 48, 48, 0.1), /* Тень вправо-вниз */
+        -1px -1px 1px rgba(48, 48, 48, 0.1), /* Тень влево-вверх */
+        1px -1px 1px rgba(48, 48, 48, 0.1), /* Тень вправо-вверх */
+        -1px 1px 1px rgba(48, 48, 48, 0.1); /* Тень влево-вниз */
     }
 }
 

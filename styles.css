@@ -335,6 +335,89 @@ body {
 
 
 
+#table-container {
+    width: 65%; /* Ширина */
+    height: 70vh; /* Высота */
+    position: fixed; /* Фиксированное позиционирование */
+    max-height: 70vh; /* Максимальная высота */
+    top: 25%; /* Положение сверху */
+    left: 50%; /* Положение слева */
+    transform: translate(-50%, -25%); /* Позиционирование по центру */
+    /* Добавляем прокрутку, если содержимое выходит за пределы контейнера */
+    overflow: auto;
+    /* Обрезаем содержимое, если оно выходит за пределы контейнера */
+    overflow-x: hidden; /* Обрезаем содержимое по горизонтали */
+    overflow-y: auto; /* Разрешаем вертикальную прокрутку */
+    /* Добавляем стили для обрезки содержимого, если оно выходит за пределы */
+    border: 2px solid rgba(128, 0, 128, 0.8); /* Темно-фиолетовая рамка */
+    border-radius: 20px; /* Более сильное закругление */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.4); /* Тень */
+    background-color: rgba(128, 0, 128, 0.2); /* Фоновый цвет */
+    background-clip: padding-box; /* Область отображения фона */
+    backdrop-filter: blur(5px); /* Эффект размытия заднего плана */
+    z-index: 99; /* Индекс слоя */
+}
+
+
+#my-table.unique-table {
+    position: fixed; /* Фиксированное позиционирование */
+    max-height: 70vh; /* Максимальная высота */
+    top: 0%; /* Положение сверху */
+    left: 50%; /* Положение слева */
+    transform: translate(-50%, -0%); /* Позиционирование по центру */
+    width: 95%; /* Ширина */
+    height: 100%; /* Высота */
+    padding: 10px; /* Отступы */
+    z-index: 100; /* Индекс слоя */
+    
+}
+
+
+#table-container::-webkit-scrollbar {
+    width: 12px; /* Ширина полосы прокрутки */
+    
+}
+
+#table-container::-webkit-scrollbar-track {
+    background: rgba(39, 0, 29, 0.226); /* Цвет фона трека */
+    border-top-right-radius: 15px; /* Закругление нижнего правого угла */
+    border-bottom-right-radius: 15px; /* Закругление нижнего правого угла */
+
+    z-index: 95; /* Индекс слоя */
+}
+
+#table-container::-webkit-scrollbar-thumb {
+    background: rgba(128, 0, 128, 0.8); /* Цвет полосы прокрутки */
+    border-radius: 15px; /* Радиус скругления углов полосы */
+}
+
+@media only screen and (max-width: 600px) and (orientation: portrait) {
+    #table-container {
+        width: 95%; /* Ширина */
+        height: 85%; /* Высота */
+        position: fixed; /* Фиксированное позиционирование */
+        max-height: 85%; /* Максимальная высота */
+        top: 10%; /* Положение сверху */
+        left: 50%; /* Положение слева */
+        transform: translate(-50%, -10%); /* Позиционирование по центру */
+        /* Добавляем прокрутку, если содержимое выходит за пределы контейнера */
+        overflow: auto;
+        /* Обрезаем содержимое, если оно выходит за пределы контейнера */
+        overflow-x: hidden; /* Обрезаем содержимое по горизонтали */
+        overflow-y: auto; /* Разрешаем вертикальную прокрутку */
+        /* Добавляем стили для обрезки содержимого, если оно выходит за пределы */
+        border: 2px solid rgba(128, 0, 128, 0.8); /* Темно-фиолетовая рамка */
+        border-radius: 20px; /* Более сильное закругление */
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.4); /* Тень */
+        background-color: rgba(128, 0, 128, 0.2); /* Фоновый цвет */
+        background-clip: padding-box; /* Область отображения фона */
+        backdrop-filter: blur(5px); /* Эффект размытия заднего плана */
+        z-index: 99; /* Индекс слоя */
+        font-size: 0.8rem; /* Уменьшенный размер текста */
+    }
+}
+
+
 
 .quatrain {
   font-family: Play, sans-serif;
@@ -473,14 +556,4 @@ body {
 
 
 
-.table-container {
-    position: relative;
-    top: auto;
-    left: auto;
-    width: 100%;
-    height: 100%;
-    background-color: aquamarine;
-    overflow-y: auto; /* Включаем вертикальную прокрутку */
-    max-height: 300px; /* Максимальная высота контейнера */
-    z-index: 120;
-}
+

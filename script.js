@@ -306,9 +306,7 @@ function checkOrientation() {
     if (window.matchMedia("(orientation: portrait)").matches) {
         const existingTable = document.querySelector('table');
         if (existingTable) {
-            existingTable.style.width = '80vw';
-            existingTable.style.height = '50vh';
-            existingTable.style.overflowY = 'auto';
+            
 
             // Определение количества строк в таблице
             const rowCount = existingTable.querySelectorAll('tr').length;
@@ -317,11 +315,8 @@ function checkOrientation() {
             const cells = existingTable.querySelectorAll('td, th');
             cells.forEach(cell => {
                 if (rowCount >= 1) {
-                    cell.style.fontSize = '9px'; // Задаем размер текста в пикселях для 1-6 строк
-                } else if (rowCount <= 14) {
-                    cell.style.fontSize = '2px'; // Задаем размер текста в пикселях для 7-14 строк
-                } else {
-                    cell.style.fontSize = '1px'; // Задаем размер текста в пикселях для больше чем 14 строк
+                    cell.style.fontSize = '10px'; // Задаем размер текста в пикселях для 1-6 строк
+                 
                 }
             });
         }
@@ -343,43 +338,20 @@ let tableCreated = false; // Флаг для отслеживания созда
 // Функция для создания или удаления таблицы в зависимости от состояния переменной isImageActive
 function toggleTable() {
     if (isImageActive && !tableCreated) {
-        // Создаем таблицу только если она еще не создана
+        // Создаем таблицу и ее родительский контейнер только если они еще не созданы
+        // Создаем контейнер для таблицы
+        const tableContainer = document.createElement('div');
+        tableContainer.id = 'table-container'; // Уникальный идентификатор контейнера
+        tableContainer.classList.add('unique-container'); // Уникальный класс контейнера
+
+
+
+
         const table = document.createElement('table');
         table.id = 'my-table'; // Устанавливаем id для таблицы
-        
-        table.style.border = '2px solid rgba(128, 0, 128, 0.8)'; // Темно-фиолетовая рамка
-
-table.style.borderRadius = '20px'; // Более сильное закругление
-
-        table.style.backgroundColor = 'rgba(128, 0, 128, 0.2)';
-        table.style.backgroundClip = 'padding-box';
-
-        table.style.position = 'fixed';
-        table.style.overflowY = 'auto'; // Добавляем вертикальную прокрутку
-table.style.maxHeight = '70vh'; // Устанавливаем максимальную высоту для прокрутки
+        table.classList.add('unique-table'); // Добавляем уникальный класс для таблицы
 
 
-        table.style.top = '25%';
-        table.style.left = '50%';
-        table.style.transform = 'translate(-50%, -25%)';
-        // Устанавливаем ширину и высоту таблицы
-        table.style.width = '65%';
-        table.style.height = '70vh';
-        table.style.padding = '10px 10px 10px 10px'; // Устанавливаем отступы по 20px со всех сторон таблицы
-
-
-        // Добавляем таблице тень со всех сторон
-table.style.boxShadow = '0 0 10px rgba(0, 0, 0, 0.4)';
-
-
-        table.style.zIndex = '100';
-        table.style.backdropFilter = 'blur(5px)';
-
-        
-
-
-
-        
         // Создаем заголовок таблицы
         const thead = table.createTHead();
         const headerRow = thead.insertRow();
@@ -416,45 +388,41 @@ for (let i = 0; i < json.length; i++) {
         }
         cell.style.textAlign = 'center';
         cell.style.padding = '5px';
+        cell.style.fontSize = '14px';
 
         // Определение количества строк в таблице
         const rowCount = table.rows.length;
 
-        // Установка размера текста в зависимости от количества строк
-        if (i < 6) {
-            cell.style.fontSize = '12px'; // Задаем размер текста в пикселях для первых 6 строк
-        } else if (rowCount <= 14) {
-            cell.style.fontSize = '3px'; // Задаем размер текста в пикселях для 7-14 строк
-        } else {
-            cell.style.fontSize = '2px'; // Задаем размер текста в пикселях для больше чем 14 строк
-        }
+        
 
         // Установка стилей для ячеек таблицы
-        cell.style.backgroundColor = 'rgba(58, 0, 59, 0.7)';
+        cell.style.backgroundColor = 'rgba(58, 0, 59, 0.8)';
         cell.style.border = '2px solid rgba(128, 0, 128, 0.8)'; // Светло-фиолетовая граница
     }
 }
 
+        
 
+        // Добавляем таблицу в контейнер
+    tableContainer.appendChild(table);
 
-        // Добавляем таблицу на страницу
-        document.body.appendChild(table);
+    // Добавляем контейнер на страницу
+    document.body.appendChild(tableContainer);
         
         
         // Устанавливаем флаг, что таблица создана
-        tableCreated = true;
-        checkOrientation();
-    } else if (!isImageActive && tableCreated) {
-        // Удаляем таблицу, если она существует и необходимо ее скрыть
-        const existingTable = document.querySelector('table');
-        if (existingTable) {
-            existingTable.remove();
-            // Сбрасываем флаг
-            tableCreated = false;
-        }
+    tableCreated = true;
+    checkOrientation();
+} else if (!isImageActive && tableCreated) {
+    // Удаляем контейнер с таблицей, если он существует и необходимо его скрыть
+    const existingContainer = document.getElementById('table-container');
+    if (existingContainer) {
+        existingContainer.remove();
+        // Сбрасываем флаг
+        tableCreated = false;
     }
 }
-
+}
 
 
 

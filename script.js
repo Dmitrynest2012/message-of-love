@@ -109,7 +109,9 @@ artistNameElement.textContent = songwriter;
 
 
 
-function handleNotifications(hoursLeft, minutesLeft, secondsLeft, newText) {
+let notificationShown = false;
+
+function handleNotifications() {
     // Проверяем поддержку уведомлений в браузере
     if ("Notification" in window) {
         // Проверяем, показывали ли уже запрос на разрешение уведомлений
@@ -125,13 +127,19 @@ function handleNotifications(hoursLeft, minutesLeft, secondsLeft, newText) {
 
         // Проверяем, остается ли 5 минут или менее до события
         if (hoursLeft === 0 && minutesLeft * 60 + secondsLeft <= 5 * 60 && !newText) {
-            // Проверяем текущий статус разрешения на уведомления
-            if (Notification.permission === "granted") {
-                // Определяем текст уведомления в зависимости от оставшегося времени
-                var notificationText = (secondsLeft <= 0) ? "Внимание! Осталось менее 5 минут до подготовки к Посылу." : "Готовность. Осталось 5 минут до подготовки к Посылу.";
-                
-                // Отправляем уведомление
-                var notification = new Notification(notificationText);
+            // Если уведомление еще не было показано, показываем его
+            if (!notificationShown) {
+                // Проверяем текущий статус разрешения на уведомления
+                if (Notification.permission === "granted") {
+                    // Определяем текст уведомления в зависимости от оставшегося времени
+                    var notificationText = (secondsLeft <= 0) ? "Внимание! Осталось менее 5 минут до подготовки к Посылу." : "Готовность. Осталось 5 минут до подготовки к Посылу.";
+                    
+                    // Отправляем уведомление
+                    var notification = new Notification(notificationText);
+
+                    // Устанавливаем флаг, что уведомление было показано
+                    notificationShown = true;
+                }
             }
         }
     }
@@ -506,10 +514,7 @@ function setRandomImage() {
 
 document.addEventListener("DOMContentLoaded", function () {
   
-
-    // Вызываем функцию для обработки уведомлений
-    handleNotifications();
-
+    
 
 
     
@@ -853,6 +858,8 @@ if (audioPlayer.paused && isAudioActive) {
 
 toggleTable();
 
+ // Запускаем систему уведомлений
+ setInterval(handleNotifications, 2000); // Вызываем каждые 2 секунды
 
 
     json = (dayOfMonth === 8 || dayOfMonth === 17 || dayOfMonth === 26) && (

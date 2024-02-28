@@ -338,7 +338,7 @@ body {
 
 
 #table-container {
-    width: 65%; /* Ширина */
+    width: 0; /* Ширина */
     height: 70vh; /* Высота */
     position: fixed; /* Фиксированное позиционирование */
     max-height: 70vh; /* Максимальная высота */
@@ -358,10 +358,24 @@ body {
     background-clip: padding-box; /* Область отображения фона */
     backdrop-filter: blur(5px); /* Эффект размытия заднего плана */
     z-index: 99; /* Индекс слоя */
-    transition: all 0.5s; /* Применяем CSS-транзицию */
+    opacity: 0; /* Начальное значение прозрачности */
+    transition: width 0.5s, opacity 0.5s; /* Добавляем CSS-транзицию для ширины и прозрачности */
 }
 
+/* Применяем стили после создания элемента */
+#table-container.show {
+    width: 65%; /* Ширина */
+    height: 70vh; /* Высота */
+    opacity: 1; /* Устанавливаем полную прозрачность при отображении */
+}
 
+/* Дополнительные стили для портретного режима */
+@media screen and (orientation: portrait) {
+    #table-container.show {
+        width: 95%; /* Увеличиваем ширину в портретном режиме */
+        height: 80vh; /* Высота */
+    }
+}
 
 
 #my-table.unique-table {
@@ -397,7 +411,7 @@ body {
 
 @media only screen and (max-width: 600px) and (orientation: portrait) {
     #table-container {
-        width: 95%; /* Ширина */
+        width: 0%; /* Ширина */
         height: 85%; /* Высота */
         position: fixed; /* Фиксированное позиционирование */
         max-height: 85%; /* Максимальная высота */

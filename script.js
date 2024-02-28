@@ -444,7 +444,13 @@ tableContainer.appendChild(openTableButton);
 
     // Добавляем контейнер на страницу
     document.body.appendChild(tableContainer);
-        
+
+    
+
+setTimeout(function() {
+    document.getElementById('table-container').classList.add('show');
+}, 100); // Применяем класс show через 100 миллисекунд
+
         
         // Устанавливаем флаг, что таблица создана
     tableCreated = true;
@@ -453,13 +459,18 @@ tableContainer.appendChild(openTableButton);
     // Удаляем контейнер с таблицей, если он существует и необходимо его скрыть
     const existingContainer = document.getElementById('table-container');
     if (existingContainer) {
-        existingContainer.remove();
-        // Сбрасываем флаг
-        tableCreated = false;
+        // Удаляем класс 'show', чтобы запустить анимацию скрытия
+        existingContainer.classList.remove('show');
+        // Ждем завершения анимации, прежде чем удалять контейнер
+        setTimeout(function() {
+            existingContainer.remove();
+            // Сбрасываем флаг
+            tableCreated = false;
+        }, 500); // Подождите 500 миллисекунд, чтобы анимация завершилась
     }
 }
-}
 
+}
 
 
 

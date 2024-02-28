@@ -5,6 +5,7 @@
 let hoursLeft, minutesLeft, secondsLeft;
 
 let eventType = "";
+let isIntervalActive = false;
 
 let quatrains;
 
@@ -73,11 +74,11 @@ let song_link = ''; // ссылка песни
 const songTitleElement = document.getElementById('songTitle');
 const artistNameElement = document.getElementById('artistName');
 
-function getRandomSong(eventType) {
+function getRandomSong(eventType, isIntervalActive) {
     let jsonFile;
-    if (eventType === 'обычное') {
+    if (eventType === 'обычное' && !isIntervalActive) {
         jsonFile = 'free-music.json';
-    } else if (eventType === 'часовое') {
+    } else if ((eventType === 'обычное' && isIntervalActive) || (eventType === 'часовое' && isIntervalActive)) {
         jsonFile = 'main-music.json';
     } 
 
@@ -540,7 +541,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     
     if (typeof eventType !== 'undefined') {
-        getRandomSong(eventType);
+        getRandomSong(eventType, isIntervalActive);
     } 
     
     updateTime();
@@ -863,7 +864,7 @@ function updateText() {
 if (audioPlayer.paused && isAudioActive) {
     audioPlayer.pause(); // Останавливаем текущее воспроизведение
 
-    getRandomSong(eventType); // Получаем следующую песню
+    getRandomSong(eventType, isIntervalActive); // Получаем следующую песню
 
     audioPlayer.src = song_link; // Устанавливаем новую песню в качестве источника для аудиоплеера
     audioPlayer.load(); // Загружаем новую песню
@@ -924,7 +925,7 @@ openTableButton.addEventListener('click', function() {
             (hours < interval.to.hour || (hours === interval.to.hour && minutes < interval.to.minute))) {
             newText = interval.text;
 
-            
+            isIntervalActive = true;
 
           
             if (imageElement.src != 'https://github.com/Dmitrynest2012/message-of-love/raw/main/message-base-1.png') {
@@ -998,7 +999,7 @@ openTableButton.addEventListener('click', function() {
           setRandomImage();
         };
 
-
+        isIntervalActive = false;
 
 
 

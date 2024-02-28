@@ -17,51 +17,50 @@ document.addEventListener('DOMContentLoaded', function() {
     screenshotBtn.addEventListener('click', handleScreenshotButtonClick);
 });
 
-// Функция для обработки нажатия на кнопку скриншота
-function handleScreenshotButtonClick() {
-    const screenshotBtn = document.getElementById('screenshot-button');
-    // Скрываем кнопку перед созданием скриншота
-    screenshotBtn.style.display = 'none';
+function convertHtmlToPdf() {
+    // Данные для аутентификации на сервисе PDFCrowd
+    const username = 'dmitrynest';
+    const apiKey = '437b0d373139aa9f5ef2cc83c080bbe4';
 
-    try {
-        // Применяем стили для скрытия ненужных элементов при печати
-        const style = document.createElement('style');
-        style.innerHTML = `
-            /* Скрываем ссылку на документ */
-            a[href]:after {
-                display: none !important;
-            }
-    
-            /* Скрываем дату печати */
-            .date, .date::after {
-                display: none !important;
-            }
-    
-            /* Скрываем название документа */
-            .document-title {
-                display: none !important;
-            }
-            @media print {
-                /* Скрываем поля при печати */
-                @page {
-                    margin: 0;
-                }
-            }
-            
-        `;
-        document.head.appendChild(style);
+    // URL и имя файла для конвертации
+    const url = 'https://example.com';
+    const fileName = 'document.pdf';
 
-        // Вызываем стандартную функцию печати страницы
-        window.print();
+    // Формируем данные для запроса
+    const requestData = {
+        url: url,
+        pdf: fileName
+    };
 
-        // Показываем кнопку после вызова печати
-        screenshotBtn.style.display = 'flex';
+    // Отправляем запрос на конвертацию HTML в PDF
+    fetch('https://pdfcrowd.com/api/pdf/convert/html/', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization': 'Basic ' + btoa(username + ':' + apiKey)
+        },
+        body: JSON.stringify(requestData)
+    })
+    .then(response => {
+        if (!response.ok) {
+            throw new Error('Ошибка при конвертации в PDF: ' + response.statusText);
+        }
+        return response.blob();
+    })
+    .then(pdfBlob => {
+        // Преобразуем полученный Blob в URL
+        const pdfUrl = URL.createObjectURL(pdfBlob);
 
-        // Удаляем добавленные стили после печати
-        style.remove();
-    } catch (error) {
-        console.error('Ошибка при вызове печати страницы:', error);
-        // Показываем кнопку в случае ошибки
-        screenshotBtn.style.display = 'flex';
-    }
+        // Открываем PDF в новой вкладке
+        window.open(pdfUrl, '_blank');
+    })
+    .catch(error => {
+        console.error('Ошибка при конвертации в PDF:', error);
+    });
 }
+
+// Вызываем функцию для выполнения конвертации
+convertHtmlToPdf();
+
+
+

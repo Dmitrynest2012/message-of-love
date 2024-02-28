@@ -8,9 +8,7 @@ let eventType = "";
 let isIntervalActive = false;
 let isButtonClicked = false; // Флаг, указывающий, был ли уже выполнен клик по кнопке
 
-const containerScrollbar = document.querySelector('.container::-webkit-scrollbar');
-const containerScrollbarTrack = document.querySelector('.container::-webkit-scrollbar-track');
-const containerScrollbarThumb = document.querySelector('.container::-webkit-scrollbar-thumb');
+
 
 let quatrains;
 
@@ -954,21 +952,7 @@ openTableButton.addEventListener('click', function() {
 
             isIntervalActive = true;
 
-            // Применяем стили к скроллбару
-        containerScrollbar.style.position = 'fixed';
-        containerScrollbar.style.width = '12px';
-        containerScrollbar.style.border = '1px solid rgba(174, 0, 255, 0)';
-        containerScrollbar.style.borderTopRightRadius = '0px';
-        containerScrollbar.style.borderBottomRightRadius = '0px';
-        containerScrollbar.style.zIndex = '80';
-    
-        containerScrollbarTrack.style.width = '12px';
-        containerScrollbarTrack.style.background = '7d4f47';
-        containerScrollbarTrack.style.borderTopRightRadius = '0px';
-        containerScrollbarTrack.style.borderBottomRightRadius = '0px';
-    
-        containerScrollbarThumb.style.background = '#3e2723';
-        containerScrollbarThumb.style.borderRadius = '15px 15px 15px 15px';
+            
 
           
             if (imageElement.src != 'https://github.com/Dmitrynest2012/message-of-love/raw/main/message-base-1.png') {
@@ -1209,18 +1193,3 @@ setInterval(displayRandomQuatrain, 5 * 60 * 1000);
 
 
 
-// Применяем стили к скроллбару
-containerScrollbar.style.position = 'fixed';
-containerScrollbar.style.width = '12px';
-containerScrollbar.style.border = '1px solid rgba(174, 0, 255, 0)';
-containerScrollbar.style.borderTopRightRadius = '0px';
-containerScrollbar.style.borderBottomRightRadius = '0px';
-containerScrollbar.style.zIndex = '80';
-
-containerScrollbarTrack.style.width = '12px';
-containerScrollbarTrack.style.background = 'rgba(42, 0, 167, 0.801)';
-containerScrollbarTrack.style.borderTopRightRadius = '0px';
-containerScrollbarTrack.style.borderBottomRightRadius = '0px';
-
-containerScrollbarThumb.style.background = 'rgba(23, 0, 77, 0.8)';
-containerScrollbarThumb.style.borderRadius = '15px 15px 15px 15px';

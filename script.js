@@ -410,7 +410,7 @@ for (let i = 0; i < json.length; i++) {
 
     cell.addEventListener('mouseover', function() {
         // Применяем стиль при наведении
-        cell.style.border = '2px solid rgba(128, 0, 128, 0.8)';
+        cell.style.border = '2px solid rgba(255, 255, 255, 0.6)';
         cell.style.backgroundColor = 'rgba(33, 0, 54, 0.8)';
         // Добавляем стиль для градиентной тени
         cell.style.boxShadow = 'inset 0 0 20px rgba(255, 255, 255, 0.3)';

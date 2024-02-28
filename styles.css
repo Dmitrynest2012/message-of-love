@@ -395,6 +395,9 @@ body {
 
 #table-container::-webkit-scrollbar {
     width: 12px; /* Ширина полосы прокрутки */
+    border: 1px solid rgba(174, 0, 255, 0);
+    border-top-right-radius: 15px;
+    border-bottom-right-radius: 15px;
     
 }
 
@@ -402,13 +405,13 @@ body {
     background: rgba(39, 0, 29, 0.226); /* Цвет фона трека */
     border-top-right-radius: 15px; /* Закругление нижнего правого угла */
     border-bottom-right-radius: 15px; /* Закругление нижнего правого угла */
-
+    background-clip: padding-box; /* Область отображения фона */
     z-index: 95; /* Индекс слоя */
 }
 
 #table-container::-webkit-scrollbar-thumb {
     background: rgba(128, 0, 128, 0.8); /* Цвет полосы прокрутки */
-    border-radius: 15px; /* Радиус скругления углов полосы */
+    border-radius: 15px 70px 70px 15px; /* Радиус скругления углов полосы */
 }
 
 @media only screen and (max-width: 600px) and (orientation: portrait) {

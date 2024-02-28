@@ -4,6 +4,7 @@
 // Объявляем переменные для времени до события
 let hoursLeft, minutesLeft, secondsLeft;
 
+let eventType = "";
 
 let quatrains;
 
@@ -72,8 +73,15 @@ let song_link = ''; // ссылка песни
 const songTitleElement = document.getElementById('songTitle');
 const artistNameElement = document.getElementById('artistName');
 
-function getRandomSong() {
-    fetch('music.json')
+function getRandomSong(eventType) {
+    let jsonFile;
+    if (eventType === 'обычное') {
+        jsonFile = 'free-music.json';
+    } else if (eventType === 'часовое') {
+        jsonFile = 'main-music.json';
+    } 
+
+    fetch(jsonFile)
         .then(response => response.json())
         .then(data => {
             // Получение случайного объекта из массива
@@ -84,23 +92,19 @@ function getRandomSong() {
             songwriter = randomSong.автор;
             song_link = randomSong.ссылка;
 
-            
             audioSource.src = song_link;
-            
-            // Обновление элемента <audio>, чтобы использовать новый источник
             audioPlayer.load();
 
-            
-
-// Подставляем значения переменных в текст элементов
-songTitleElement.textContent = name_of_the_song;
-artistNameElement.textContent = songwriter;
-
+            // Подставляем значения переменных в текст элементов
+            songTitleElement.textContent = name_of_the_song;
+            artistNameElement.textContent = songwriter;
 
             // Здесь можно выполнить другие действия с полученными данными
         })
         .catch(error => console.error('Ошибка:', error));
 }
+
+
 
 // Теперь мы можем вызывать функцию getRandomSong() в любом месте кода для получения случайной песни
 
@@ -535,7 +539,10 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
     
-    getRandomSong();
+    if (typeof eventType !== 'undefined') {
+        getRandomSong(eventType);
+    } 
+    
     updateTime();
     // Вызываем функцию загрузки данных и отображения после загрузки
     loadDataAndRender();
@@ -856,7 +863,7 @@ function updateText() {
 if (audioPlayer.paused && isAudioActive) {
     audioPlayer.pause(); // Останавливаем текущее воспроизведение
 
-    getRandomSong(); // Получаем следующую песню
+    getRandomSong(eventType); // Получаем следующую песню
 
     audioPlayer.src = song_link; // Устанавливаем новую песню в качестве источника для аудиоплеера
     audioPlayer.load(); // Загружаем новую песню
@@ -897,6 +904,16 @@ openTableButton.addEventListener('click', function() {
         (hours === 10 && minutes >= 55) || (hours === 11) || (hours === 12 && minutes < 5)
     ) ? json_max : json_min;
 
+    if (json === json_min) {
+        eventType = 'обычное';
+    } else if (json === json_max) {
+        eventType = 'часовое';
+    } else {
+        console.error('Некорректное значение переменной json');
+    }
+
+    
+
     let newText = "";
     
   
@@ -906,6 +923,9 @@ openTableButton.addEventListener('click', function() {
         if ((hours > interval.from.hour || (hours === interval.from.hour && minutes >= interval.from.minute)) &&
             (hours < interval.to.hour || (hours === interval.to.hour && minutes < interval.to.minute))) {
             newText = interval.text;
+
+            
+
           
             if (imageElement.src != 'https://github.com/Dmitrynest2012/message-of-love/raw/main/message-base-1.png') {
           imageElement.src = 'https://github.com/Dmitrynest2012/message-of-love/raw/main/message-base-1.png';

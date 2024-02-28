@@ -504,7 +504,7 @@ body {
   position: fixed; /* Зафиксировать блок */
   top: 0; /* Расположить блок сверху */
   right: 0; /* Расположить блок справа */
-  transition: background-color 0.3s; /* Плавный переход цвета фона при наведении */
+  transition: background-color 0.3s, color 0.3s; /* Плавный переход цвета фона и текста при наведении */
   z-index: 99;
 }
 

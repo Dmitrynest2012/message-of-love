@@ -449,7 +449,7 @@ tableContainer.appendChild(openTableButton);
 
 setTimeout(function() {
     document.getElementById('table-container').classList.add('show');
-}, 100); // Применяем класс show через 100 миллисекунд
+}, 500); // Применяем класс show через 100 миллисекунд
 
         
         // Устанавливаем флаг, что таблица создана

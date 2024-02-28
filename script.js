@@ -540,7 +540,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
     
-    if (typeof eventType !== 'undefined') {
+    if (typeof eventType !== 'undefined' && typeof isIntervalActive !== 'undefined') {
         getRandomSong(eventType, isIntervalActive);
     } 
     

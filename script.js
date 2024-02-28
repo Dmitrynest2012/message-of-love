@@ -405,6 +405,30 @@ for (let i = 0; i < json.length; i++) {
         // Установка стилей для ячеек таблицы
         cell.style.backgroundColor = 'rgba(58, 0, 59, 0.8)';
         cell.style.border = '2px solid rgba(128, 0, 128, 0.8)'; // Светло-фиолетовая граница
+        cell.style.transition = 'background-color 0.3s, box-shadow 0.3s'; // Добавляем CSS-переходы для плавной анимации смены цвета заднего фона и тени
+
+
+    cell.addEventListener('mouseover', function() {
+        // Применяем стиль при наведении
+        cell.style.border = '2px solid rgba(128, 0, 128, 0.8)';
+        cell.style.backgroundColor = 'rgba(33, 0, 54, 0.8)';
+        // Добавляем стиль для градиентной тени
+        cell.style.boxShadow = 'inset 0 0 20px rgba(255, 255, 255, 0.3)';
+        
+    });
+
+    cell.addEventListener('mouseout', function() {
+        // Удаляем стиль при уводе курсора с ячейки
+        cell.style.border = '2px solid rgba(128, 0, 128, 0.8)'; // Светло-фиолетовая граница
+        cell.style.backgroundColor = 'rgba(58, 0, 59, 0.8)';
+        // Удаляем стиль для градиентной тени
+        cell.style.boxShadow = 'none';
+    });
+
+
+
+
+        
     }
 }
 

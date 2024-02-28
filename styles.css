@@ -67,8 +67,8 @@ body {
 
 
 .line {
-    position: fixed;
-    bottom: 0;
+    position: sticky;
+    top: 0;
     left: 50%; /* Появление линии с середины контейнера */
     transform: translateX(-50%); /* Центрирование линии */
     width: 0; /* Начальная ширина линии */
@@ -78,7 +78,7 @@ body {
     transition: width 1s linear; /* Длительность и тип анимации */
 }
 
-
+/*
 @media only screen and (max-width: 600px) and (orientation: portrait) {
     .line {
         bottom: auto;
@@ -89,7 +89,7 @@ body {
         
     }
 }
-
+*/
 
 
 

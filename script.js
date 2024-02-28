@@ -335,6 +335,9 @@ var imageContainerElement = document.getElementById("imageContainer");
 
 // Создаем кнопку
 const openTableButton = document.createElement('button');
+// Добавляем класс для другой кнопки
+openTableButton.classList.add('special-button');
+openTableButton.innerHTML = '&#128270;'; // Юникод значок камеры
 
 
 let tableCreated = false; // Флаг для отслеживания создания таблицы
@@ -406,7 +409,8 @@ for (let i = 0; i < json.length; i++) {
 }
 
 
-openTableButton.textContent = 'Открыть таблицу в новой вкладке';
+
+
 // Добавляем кнопку в документ
 tableContainer.appendChild(openTableButton);
         
@@ -834,14 +838,14 @@ if (audioPlayer.paused && isAudioActive) {
 
 toggleTable();
 
-// Добавляем обработчик события для кнопки
+// Добавляем обработчик события для кнопки открытия таблицы
 openTableButton.addEventListener('click', function() {
     // Получаем HTML-содержимое таблицы
     const tableHTML = document.getElementById('my-table').outerHTML;
     // Открываем новую вкладку и вставляем HTML-содержимое таблицы
     const newTab = window.open();
     newTab.document.write(`
-    <html>
+        <html>
             <head>
                 <title>Открытая таблица</title>
                 <style>
@@ -880,59 +884,17 @@ openTableButton.addEventListener('click', function() {
     const newTabTable = newTab.document.getElementById('my-table');
     const cells = newTabTable.getElementsByTagName('td');
     for (let cell of cells) {
-        cell.style.backgroundColor = '#ffffff'; // Применяем белый цвет фона к ячейкам
+        cell.style.backgroundColor = '#fff'; // Применяем белый цвет фона к ячейкам
         cell.style.border = '1px solid black'; // Применяем черные границы к ячейкам
+        
     }
 
-    // Создаем кнопку с иконкой камеры
-const screenshotButton = document.createElement('button');
-screenshotButton.id = 'screenshot-button';
-screenshotButton.innerHTML = '&#128247;'; // Юникод значок камеры
-screenshotButton.style.fontSize = '24px'; // Размер шрифта для иконки
-screenshotButton.style.marginTop = '5px'; // Вертикальный отступ от прочих элементов
-screenshotButton.style.width = '40px'; // Установите нужные размеры кнопки
-screenshotButton.style.height = '40px'; // Установите нужные размеры кнопки
-screenshotButton.style.display = 'flex'; // Устанавливаем flex-контейнер
-screenshotButton.style.justifyContent = 'center'; // Центрируем содержимое по горизонтали
-screenshotButton.style.alignItems = 'center'; // Центрируем содержимое по вертикали
+    
 
-
-// Добавляем кнопку на страницу
-newTab.document.body.appendChild(screenshotButton);
-
-
-    // Добавляем обработчик события для кнопки скриншота
-const screenshotBtn = newTab.document.getElementById('screenshot-button');
-screenshotBtn.addEventListener('click', function() {
-    // Скрываем кнопку перед созданием скриншота
-    screenshotBtn.style.display = 'none';
-    // Создаем скриншот текущей страницы
-    html2canvas(newTab.document.body).then(canvas => {
-        // Преобразуем канвас в URL изображения
-        const imageUrl = canvas.toDataURL('image/jpeg');
-        // Создаем элемент ссылки для скачивания скриншота
-        const downloadLink = newTab.document.createElement('a');
-        downloadLink.href = imageUrl;
-        downloadLink.download = 'screenshot.jpg'; // Имя файла для сохранения
-        // Добавляем ссылку на страницу и автоматически вызываем клик по ней
-        newTab.document.body.appendChild(downloadLink);
-        downloadLink.click();
-        // Удаляем ссылку после скачивания файла
-        downloadLink.remove();
-        // Показываем кнопку после создания скриншота
-        screenshotBtn.style.display = 'block';
-    });
+   
+    
 });
 
-
-
-
-
-
-
-
-
-});
 
 
  // Запускаем систему уведомлений

@@ -1,6 +1,5 @@
 
 
-
 // Объявляем переменные для времени до события
 let hoursLeft, minutesLeft, secondsLeft;
 
@@ -8,9 +7,11 @@ let eventType = "";
 let isIntervalActive = false;
 let isButtonClicked = false; // Флаг, указывающий, был ли уже выполнен клик по кнопке
 
-const containerScrollbar = document.querySelector('.container::-webkit-scrollbar');
-const containerScrollbarTrack = document.querySelector('.container::-webkit-scrollbar-track');
-const containerScrollbarThumb = document.querySelector('.container::-webkit-scrollbar-thumb');
+        const containerScrollbar = document.querySelector('.container::-webkit-scrollbar');
+        const containerScrollbarTrack = document.querySelector('.container::-webkit-scrollbar-track');
+        const containerScrollbarThumb = document.querySelector('.container::-webkit-scrollbar-thumb');
+
+
 
 let quatrains;
 
@@ -465,6 +466,12 @@ setTimeout(function() {
         // Устанавливаем флаг, что таблица создана
     tableCreated = true;
     checkOrientation();
+    container.style.overflowY = 'hidden'; // Прячем скроллбар
+
+
+
+    
+
 } else if (!isImageActive && tableCreated) {
     // Удаляем контейнер с таблицей, если он существует и необходимо его скрыть
     const existingContainer = document.getElementById('table-container');
@@ -476,6 +483,8 @@ setTimeout(function() {
             existingContainer.remove();
             // Сбрасываем флаг
             tableCreated = false;
+            container.style.overflowY = 'auto';
+
         }, 500); // Подождите 500 миллисекунд, чтобы анимация завершилась
     }
 }
@@ -585,16 +594,6 @@ document.addEventListener("DOMContentLoaded", function () {
     } else {
         prefix += "Ежедневные Посылы. ";
     }
-
-    dateElement.style.left = '0px';
-
-    // Устанавливаем позицию и отступы в медиа запросе для портретного режима
-if (window.matchMedia("(orientation: portrait)").matches) {
-    dateElement.style.position = 'relative';
-    dateElement.style.left = '12px';
-}
-
-
     dateElement.textContent = `${prefix}${dateString}`;
     // Установка шрифта для элемента dateElement
     dateElement.style.fontFamily = "Play";
@@ -952,6 +951,7 @@ openTableButton.addEventListener('click', function() {
 
             isIntervalActive = true;
 
+
             // Применяем стили к скроллбару
         containerScrollbar.style.position = 'fixed';
         containerScrollbar.style.width = '12px';
@@ -1042,8 +1042,6 @@ openTableButton.addEventListener('click', function() {
 
         isIntervalActive = false;
 
-        
-
 
 
     // Применение стилей из медиа-запроса
@@ -1060,11 +1058,27 @@ openTableButton.addEventListener('click', function() {
 
         container.style.background = 'linear-gradient(to bottom, rgba(0, 0, 0, 0), #3500a8df, #3500a8df)';
 
-
-
-
-
         
+    
+        // Применяем стили к скроллбару
+        containerScrollbar.style.position = 'fixed';
+        containerScrollbar.style.width = '12px';
+        containerScrollbar.style.border = '1px solid rgba(174, 0, 255, 0)';
+        containerScrollbar.style.borderTopRightRadius = '0px';
+        containerScrollbar.style.borderBottomRightRadius = '0px';
+        containerScrollbar.style.zIndex = '80';
+    
+        containerScrollbarTrack.style.width = '12px';
+        containerScrollbarTrack.style.background = 'rgba(42, 0, 167, 0.801)';
+        containerScrollbarTrack.style.borderTopRightRadius = '0px';
+        containerScrollbarTrack.style.borderBottomRightRadius = '0px';
+    
+        containerScrollbarThumb.style.background = 'rgba(23, 0, 77, 0.8)';
+        containerScrollbarThumb.style.borderRadius = '15px 15px 15px 15px';
+
+
+
+
         // Отобразить элемент
         document.querySelector('.quatrain').style.display = 'block';
       
@@ -1122,9 +1136,6 @@ openTableButton.addEventListener('click', function() {
             lineElement = null;
         }
     }
-
-    
-
 
     
 
@@ -1203,22 +1214,3 @@ setInterval(displayRandomQuatrain, 5 * 60 * 1000);
 
 
 // Для хтмл запаска <meta property="og:url" content="https://message-of-love.glitch.me/">
-
-
-
-
-// Применяем стили к скроллбару
-containerScrollbar.style.position = 'fixed';
-containerScrollbar.style.width = '12px';
-containerScrollbar.style.border = '1px solid rgba(174, 0, 255, 0)';
-containerScrollbar.style.borderTopRightRadius = '0px';
-containerScrollbar.style.borderBottomRightRadius = '0px';
-containerScrollbar.style.zIndex = '80';
-
-containerScrollbarTrack.style.width = '12px';
-containerScrollbarTrack.style.background = 'rgba(42, 0, 167, 0.801)';
-containerScrollbarTrack.style.borderTopRightRadius = '0px';
-containerScrollbarTrack.style.borderBottomRightRadius = '0px';
-
-containerScrollbarThumb.style.background = 'rgba(23, 0, 77, 0.8)';
-containerScrollbarThumb.style.borderRadius = '15px 15px 15px 15px';

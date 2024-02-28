@@ -113,7 +113,7 @@ body {
         top: 50.75vh;
         left: 0;
         transform: translateX(-5%);
-        width: 100vw;
+        width: 98vw;
         max-width: none;
         text-align: center;
         padding: 20px;
@@ -121,8 +121,55 @@ body {
         color: white;
         overflow-y: auto; /* Включаем вертикальную прокрутку при необходимости */
         border: 1px solid rgba(0, 0, 0, 0);
-        border-bottom-left-radius: 40px;
-        border-bottom-right-radius: 40px;
+        border-radius: 0px;
+    }
+}
+
+
+@media only screen and (max-width: 600px) and (orientation: portrait) {
+.container::after {
+    content: ''; /* Обязательно для псевдоэлементов */
+    position: absolute;
+    top: 0%; /* Расположить подложку под элементом .container */
+    left: 0;
+    width: 100%;
+    height: 100%; /* Высота подложки может быть на ваш выбор */
+    background: rgba(255, 255, 255, 0.1); /* Прозрачный фон */
+    border-radius: 0px;
+    backdrop-filter: blur(3px); /* Размытие подложки */
+    z-index: -1; /* Поместить подложку под элемент .quatrain */
+  }
+}
+
+@media only screen and (max-width: 600px) and (orientation: portrait) {
+    .container::-webkit-scrollbar {
+        position: absolute;
+        right: -20px;
+        width: 12px; /* Ширина полосы прокрутки */
+        border: 1px solid rgba(174, 0, 255, 0);
+        border-top-right-radius: 0px;
+        border-bottom-right-radius: 0px;
+        z-index: 80;
+    }
+}
+
+@media only screen and (max-width: 600px) and (orientation: portrait) {
+    .container::-webkit-scrollbar-track {
+        position: absolute;
+        right: -20px;
+        width: 12px; /* Ширина полосы прокрутки */
+        background: rgba(173, 173, 173, 0.315); /* Цвет фона трека */
+        border-top-right-radius: 0px; /* Закругление нижнего правого угла */
+        border-bottom-right-radius: 0px; /* Закругление нижнего правого угла */
+    }
+}
+
+@media only screen and (max-width: 600px) and (orientation: portrait) {
+    .container::-webkit-scrollbar-thumb {
+        position: absolute;
+        right: -20px;
+        background: rgba(0, 0, 0, 0.534); /* Цвет полосы прокрутки */
+        border-radius: 15px 15px 15px 15px; /* Радиус скругления углов полосы */
     }
 }
 
@@ -161,6 +208,8 @@ body {
 
 
 .time {
+    position: relative;
+    left: 0px;
     font-size: 2rem;
     font-family: 'Orbitron', sans-serif; /* Используем шрифт Orbitron для времени */
 
@@ -172,9 +221,17 @@ body {
         -2px 2px 5px rgba(48, 48, 48, 0.5); /* Тень влево-вниз */
 }
 
-
+@media only screen and (max-width: 600px) and (orientation: portrait) {
+    .time {
+        position: relative;
+        left: 12px;
+        
+    }
+}
 
 .moscow-time {
+    position: relative;
+    left: 0px;
     font-size: 0.75rem;
     font-family: 'Play', sans-serif; /* Используем шрифт Orbitron для времени */
     color: rgb(195, 195, 195);
@@ -185,7 +242,17 @@ body {
         -2px 2px 5px rgba(48, 48, 48, 0.5); /* Тень влево-вниз */
 }
 
+@media only screen and (max-width: 600px) and (orientation: portrait) {
+    .moscow-time {
+        position: relative;
+        left: 12px;
+        
+    }
+}
+
 .text {
+    position: relative;
+    left: 0px;
     font-size: 1.1rem;
     margin-top: 20px;
     width: 80%;
@@ -208,6 +275,8 @@ body {
 
 @media only screen and (max-width: 600px) and (orientation: portrait) {
     .text {
+        position: relative;
+        left: 12px;
         font-family: 'Play', sans-serif; /* Используем шрифт Play для остального текста */
         font-size: 0.8rem;
         width: 85vw;

@@ -81,9 +81,11 @@ body {
 
 @media only screen and (max-width: 600px) and (orientation: portrait) {
     .line {
-        position: sticky;
         bottom: auto;
+        position: sticky;
         top: 0; 
+        
+        
         
     }
 }

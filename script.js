@@ -465,6 +465,7 @@ setTimeout(function() {
         // Устанавливаем флаг, что таблица создана
     tableCreated = true;
     checkOrientation();
+    container.style.overflowY = 'hidden'; // Прячем скроллбар
 } else if (!isImageActive && tableCreated) {
     // Удаляем контейнер с таблицей, если он существует и необходимо его скрыть
     const existingContainer = document.getElementById('table-container');
@@ -474,6 +475,7 @@ setTimeout(function() {
         // Ждем завершения анимации, прежде чем удалять контейнер
         setTimeout(function() {
             existingContainer.remove();
+            container.style.overflowY = 'auto'; // Разрешаем скроллбар
             // Сбрасываем флаг
             tableCreated = false;
         }, 500); // Подождите 500 миллисекунд, чтобы анимация завершилась

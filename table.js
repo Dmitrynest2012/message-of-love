@@ -55,13 +55,13 @@ function handleScreenshotButtonClick() {
         window.print();
 
         // Показываем кнопку после вызова печати
-        screenshotBtn.style.display = 'block';
+        screenshotBtn.style.display = 'flex';
 
         // Удаляем добавленные стили после печати
         style.remove();
     } catch (error) {
         console.error('Ошибка при вызове печати страницы:', error);
         // Показываем кнопку в случае ошибки
-        screenshotBtn.style.display = 'block';
+        screenshotBtn.style.display = 'flex';
     }
 }

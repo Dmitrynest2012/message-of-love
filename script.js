@@ -838,62 +838,17 @@ if (audioPlayer.paused && isAudioActive) {
 
 toggleTable();
 
-// Добавляем обработчик события для кнопки открытия таблицы
 openTableButton.addEventListener('click', function() {
     // Получаем HTML-содержимое таблицы
     const tableHTML = document.getElementById('my-table').outerHTML;
-    // Открываем новую вкладку и вставляем HTML-содержимое таблицы
-    const newTab = window.open();
-    newTab.document.write(`
-        <html>
-            <head>
-                <title>Открытая таблица</title>
-                <style>
-                    /* Ваши стили здесь */
-                    /* Например: */
-                    body {
-                        font-family: Arial, sans-serif;
-                        background-color: white; /* Белый цвет фона */
-                    }
-                    table {
-                        width: 100%;
-                        border-collapse: collapse;
-                        background-color: white; /* Белый цвет фона таблицы */
-                    }
-                    th, td {
-                        border: 1px solid black;
-                        padding: 8px;
-                        text-align: center;
-                        background-color: white; /* Белый цвет фона ячеек */
-                    }
-                    th {
-                        background-color: gold; /* Золотой цвет фона заголовка таблицы */
-                    }
-                    tr:nth-child(even) {
-                        background-color: #f2f2f2;
-                    }
-                </style>
-            </head>
-            <body>
-                ${tableHTML}
-            </body>
-        </html>
-    `);
 
-    // Применяем стили к ячейкам таблицы
-    const newTabTable = newTab.document.getElementById('my-table');
-    const cells = newTabTable.getElementsByTagName('td');
-    for (let cell of cells) {
-        cell.style.backgroundColor = '#fff'; // Применяем белый цвет фона к ячейкам
-        cell.style.border = '1px solid black'; // Применяем черные границы к ячейкам
-        
-    }
+    // Отправляем данные в буферный скрипт
+    localStorage.setItem('tableHTML', tableHTML);
 
-    
-
-   
-    
+    // Открываем новую вкладку с table.html
+    window.open('table.html');
 });
+
 
 
 

@@ -18,6 +18,10 @@ for (let cell of cells) {
 }
 
 
+
+
+
+
     // Очищаем данные из локального хранилища после использования
     localStorage.removeItem('tableHTML');
 });

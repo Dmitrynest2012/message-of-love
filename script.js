@@ -6,6 +6,7 @@ let hoursLeft, minutesLeft, secondsLeft;
 
 let eventType = "";
 let isIntervalActive = false;
+let isButtonClicked = false; // Флаг, указывающий, был ли уже выполнен клик по кнопке
 
 let quatrains;
 
@@ -884,15 +885,25 @@ if (audioPlayer.paused && isAudioActive) {
 toggleTable();
 
 openTableButton.addEventListener('click', function() {
-    // Получаем HTML-содержимое таблицы
-    const tableHTML = document.getElementById('my-table').outerHTML;
+    if (!isButtonClicked) { // Проверяем, не было ли уже выполнено нажатие
+        // Получаем HTML-содержимое таблицы
+        const tableHTML = document.getElementById('my-table').outerHTML;
 
-    // Отправляем данные в буферный скрипт
-    localStorage.setItem('tableHTML', tableHTML);
+        // Отправляем данные в буферный скрипт
+        localStorage.setItem('tableHTML', tableHTML);
 
-    // Открываем новую вкладку с table.html
-    window.open('table.html');
+        // Открываем новую вкладку с table.html
+        window.open('table.html');
+
+        isButtonClicked = true; // Устанавливаем флаг в true, чтобы указать, что кнопка была нажата
+
+        // Сбрасываем флаг через 3 секунды
+        setTimeout(function() {
+            isButtonClicked = false; // Устанавливаем флаг обратно в false
+        }, 2000); // 2000 миллисекунд = 2 секунды
+    }
 });
+
 
 
 

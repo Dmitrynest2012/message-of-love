@@ -669,10 +669,26 @@ if ('mediaDevices' in navigator && 'getUserMedia' in navigator.mediaDevices && '
 });
 
 
+// Функция для проверки, зажаты ли клавиши Shift, Control и Space одновременно
+function areAllKeysPressed(event) {
+    return event.shiftKey && event.ctrlKey && event.code === "Space";
+}
+
+// Обработчик события нажатия клавиши
+document.addEventListener("keydown", function(event) {
+    // Проверяем, зажаты ли клавиши Shift, Control и Space одновременно
+    if (areAllKeysPressed(event)) {
+        // Выполняем действие
+        clearLocalStorage();
+    }
+});
+
+// Функция для очистки локального хранилища
 function clearLocalStorage() {
     localStorage.clear();
     alert('Локальное хранилище было успешно очищено.');
 }
+
 
 
 

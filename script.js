@@ -77,11 +77,10 @@ let song_link = ''; // ссылка песни
 const songTitleElement = document.getElementById('songTitle');
 const artistNameElement = document.getElementById('artistName');
 
-function getRandomSong(eventType, isIntervalActive) {
-    let jsonFile;
-    if (eventType === 'обычное' && !isIntervalActive) {
-        jsonFile = 'free-music.json';
-        fetch(jsonFile)
+function getRandomSong() {
+    
+    
+        fetch('main-music.json')
         .then(response => response.json())
         .then(data => {
             // Получение случайного объекта из массива
@@ -101,29 +100,7 @@ function getRandomSong(eventType, isIntervalActive) {
 
             // Здесь можно выполнить другие действия с полученными данными
         })
-    } else if ((eventType === 'обычное' && isIntervalActive) || (eventType === 'часовое' && isIntervalActive)) {
-        jsonFile = 'main-music.json';
-        fetch(jsonFile)
-        .then(response => response.json())
-        .then(data => {
-            // Получение случайного объекта из массива
-            const randomSong = data[Math.floor(Math.random() * data.length)];
-
-            // Присваивание значений переменным
-            name_of_the_song = randomSong.название;
-            songwriter = randomSong.автор;
-            song_link = randomSong.ссылка;
-
-            audioSource.src = song_link;
-            audioPlayer.load();
-
-            // Подставляем значения переменных в текст элементов
-            songTitleElement.textContent = name_of_the_song;
-            artistNameElement.textContent = songwriter;
-
-            // Здесь можно выполнить другие действия с полученными данными
-        })
-    } 
+   
 
     
         
@@ -566,9 +543,9 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
     
-    if (typeof eventType !== 'undefined' && typeof isIntervalActive !== 'undefined') {
-        getRandomSong(eventType, isIntervalActive);
-    } 
+    
+        getRandomSong();
+    
     
     updateTime();
     // Вызываем функцию загрузки данных и отображения после загрузки
@@ -916,7 +893,7 @@ function updateText() {
 if (audioPlayer.paused && isAudioActive) {
     audioPlayer.pause(); // Останавливаем текущее воспроизведение
 
-    getRandomSong(eventType, isIntervalActive); // Получаем следующую песню
+    getRandomSong(); // Получаем следующую песню
 
     audioPlayer.src = song_link; // Устанавливаем новую песню в качестве источника для аудиоплеера
     audioPlayer.load(); // Загружаем новую песню

@@ -1013,6 +1013,8 @@ openTableButton.addEventListener('click', function() {
             // Здесь можно выполнить другие действия с полученными данными
         });
 
+        playSoundAndVibration();
+
     };
 
 
@@ -1108,7 +1110,7 @@ openTableButton.addEventListener('click', function() {
             // Здесь можно выполнить другие действия с полученными данными
         });
 
-
+        
 
           
         };
@@ -1235,7 +1237,7 @@ function playSoundAndVibration() {
     // Воспроизводим вибрацию
     if (navigator.vibrate) {
             // Если есть поддержка вибрации
-            navigator.vibrate(3000); // Вибрация на 2 секунды
+            navigator.vibrate(1500); // Вибрация на 2 секунды
     } else {
         // console.log("Устройство не поддерживает вибрацию.");
     }

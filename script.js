@@ -750,7 +750,7 @@ async function updateTime() {
         const seconds = displayTime.getSeconds();
         timeElement.textContent = `${hours < 10 ? '0' + hours : hours}:${minutes < 10 ? '0' + minutes : minutes}:${seconds < 10 ? '0' + seconds : seconds}`;
     } catch (error) {
-        console.error('Error fetching Moscow time:', error);
+        //console.error('Error fetching Moscow time:', error);
         // Если возникла ошибка при получении времени из API, используем локальное время
         const localTime = new Date();
         const hours = localTime.getHours();
@@ -972,7 +972,7 @@ openTableButton.addEventListener('click', function() {
     } else if (json === json_max) {
         eventType = 'часовое';
     } else {
-        console.error('Некорректное значение переменной json');
+        //console.error('Некорректное значение переменной json');
     }
 
     

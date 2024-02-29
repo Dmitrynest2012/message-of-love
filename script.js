@@ -893,26 +893,7 @@ function updateText() {
     // console.log('json_min:', json_min);
     // console.log('json_max:', json_max);
 
-// Проверяем, находится ли аудиоплеер на паузе и включен ли он, и если да, то загружаем аудио и запускаем воспроизведение
-if (audioPlayer.paused && isAudioActive) {
-    audioPlayer.pause(); // Останавливаем текущее воспроизведение
 
-    getRandomSong(); // Получаем следующую песню
-
-    audioPlayer.src = song_link; // Устанавливаем новую песню в качестве источника для аудиоплеера
-    audioPlayer.load(); // Загружаем новую песню
-
-    // Добавляем обработчик события loadedmetadata, который вызывается, когда метаданные аудиофайла (например, продолжительность) загружены
-    audioPlayer.addEventListener('loadedmetadata', function() {
-        audioPlayer.play().then(_ => {
-            // Обработчик успешного запуска воспроизведения
-            // console.log('Воспроизведение начато');
-        }).catch(error => {
-            // Обработчик ошибки запуска воспроизведения
-            // console.error('Ошибка запуска воспроизведения:', error);
-        });
-    });
-}
 
 toggleTable();
 
@@ -969,9 +950,30 @@ openTableButton.addEventListener('click', function() {
             newText = interval.text;
 
             isIntervalActive = true;
+
             // Вызов функции каждые 1 секунд
 setInterval(updateJsonFile, 2000); // 1000 миллисекунд = 5 секунд
             
+              // Проверяем, находится ли аудиоплеер на паузе и включен ли он, и если да, то загружаем аудио и запускаем воспроизведение
+if (isAudioActive) {
+    audioPlayer.pause(); // Останавливаем текущее воспроизведение
+
+    getRandomSong(); // Получаем следующую песню
+
+    audioPlayer.src = song_link; // Устанавливаем новую песню в качестве источника для аудиоплеера
+    audioPlayer.load(); // Загружаем новую песню
+
+    // Добавляем обработчик события loadedmetadata, который вызывается, когда метаданные аудиофайла (например, продолжительность) загружены
+    audioPlayer.addEventListener('loadedmetadata', function() {
+        audioPlayer.play().then(_ => {
+            // Обработчик успешного запуска воспроизведения
+            // console.log('Воспроизведение начато');
+        }).catch(error => {
+            // Обработчик ошибки запуска воспроизведения
+            // console.error('Ошибка запуска воспроизведения:', error);
+        });
+    });
+}
 
           
             if (imageElement.src != 'https://github.com/Dmitrynest2012/message-of-love/raw/main/message-base-1.png') {
@@ -1048,8 +1050,16 @@ setInterval(updateJsonFile, 2000); // 1000 миллисекунд = 5 секун
 
 
 
-          // Проверяем, находится ли аудиоплеер на паузе и включен ли он, и если да, то загружаем аудио и запускаем воспроизведение
-if (audioPlayer.paused && isAudioActive) {
+          
+        };
+
+        isIntervalActive = false;
+
+        // Вызов функции каждые 1 секунд
+setInterval(updateJsonFile, 2000); // 1000 миллисекунд = 5 секунд
+
+        // Проверяем, находится ли аудиоплеер на паузе и включен ли он, и если да, то загружаем аудио и запускаем воспроизведение
+if (isAudioActive) {
     audioPlayer.pause(); // Останавливаем текущее воспроизведение
 
     getRandomSong(); // Получаем следующую песню
@@ -1068,12 +1078,8 @@ if (audioPlayer.paused && isAudioActive) {
         });
     });
 }
-        };
 
-        isIntervalActive = false;
-
-        // Вызов функции каждые 1 секунд
-setInterval(updateJsonFile, 2000); // 1000 миллисекунд = 5 секунд
+        
 
 
 

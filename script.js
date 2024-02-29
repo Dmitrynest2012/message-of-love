@@ -442,7 +442,7 @@ for (let i = 0; i < json.length; i++) {
 
 
 // Добавляем кнопку в документ
-tableContainer.appendChild(openTableButton);
+document.body.appendChild(openTableButton);
         
 
         // Добавляем таблицу в контейнер
@@ -474,6 +474,8 @@ setTimeout(function() {
             container.style.overflowY = 'auto'; // Разрешаем скроллбар
             // Сбрасываем флаг
             tableCreated = false;
+            // Удаляем кнопку
+            openTableButton.remove();
         }, 500); // Подождите 500 миллисекунд, чтобы анимация завершилась
     }
 }

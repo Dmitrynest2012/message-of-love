@@ -67,8 +67,8 @@ body {
 
 
 .line {
-    position: sticky;
-    top: 0;
+    position: fixed;
+    bottom: 0;
     left: 50%; /* Появление линии с середины контейнера */
     transform: translateX(-50%); /* Центрирование линии */
     width: 0; /* Начальная ширина линии */
@@ -78,18 +78,17 @@ body {
     transition: width 1s linear; /* Длительность и тип анимации */
 }
 
-/*
+
 @media only screen and (max-width: 600px) and (orientation: portrait) {
     .line {
-        bottom: auto;
-        position: sticky;
-        top: 0; 
+
+        display: none;
         
         
         
     }
 }
-*/
+
 
 
 
@@ -169,7 +168,7 @@ body {
     .container::-webkit-scrollbar-thumb {
 
         background: rgba(0, 0, 0, 0.534); /* Цвет полосы прокрутки */
-        border-radius: 15px 15px 15px 15px; /* Радиус скругления углов полосы */
+        
     }
 }
 
@@ -509,55 +508,54 @@ body {
 
 
 .special-button {
-    position: sticky;
-    border: 1px solid #8A2BE2; /* Ярко-фиолетовый бордер */
-    border-radius: 15px; /* Кнопка полностью закруглена */
-    background-color: rgba(96, 31, 158, 0.8); /* Полупрозрачный темно-фиолетовый фон */
-    backdrop-filter: blur(3px); /* Размытие заднего фона */
-    color: #ffffff; /* Белый цвет текста */
-    font-size: 15px; /* Уменьшенный размер шрифта */
-    display: flex; /* Флекс-контейнер для центрирования содержимого */
-    justify-content: center; /* Центрируем содержимое по горизонтали */
-    align-items: center; /* Центрируем содержимое по вертикали */
-    padding: 4px; /* Уменьшенные поля внутри кнопки */
-    cursor: pointer; /* Изменение вида курсора при наведении */
-    top: 4px;
-    left: 0.25%;
-    z-index: 105;
-    width: 28px; /* Начальная ширина кнопки */
-    height: 28px; /* Начальная высота кнопки */
-    transition: all 0.5s; /* Плавное изменение размеров и скругления углов при наведении */
+    position: fixed; /* Фиксированное позиционирование */
+    bottom: 20px;  /* Отступ от нижней границы вьюпорта */
+    left: 150px; /* Отступ от правой границы вьюпорта */
+    width: 50px; /* Ширина кнопки */
+    height: 50px; /* Высота кнопки */
+    border-radius: 50%; /* Круглая форма */
+    background-color: rgba(128, 0, 128, 0.1); /* Фиолетовый цвет с полупрозрачностью */
+    color: rgba(255, 255, 255, 0.5); /* Цвет иконки с альфа-каналом 0.7 */
+    font-size: 24px; /* Размер иконки */
+    border: 1px solid rgba(128, 0, 128, 0.8); /* Тонкий бордер с альфа-каналом 0.5 */
+    cursor: pointer; /* Устанавливаем курсор в виде указателя */
+    transition: all 0.3s; /* Плавный переход  */
+    z-index: 50;
+    display: flex; /* Используем flexbox для центрирования */
+    justify-content: center; /* Центрирование по горизонтали */
+    align-items: center; /* Центрирование по вертикали */
 }
 
 .special-button:hover {
-    width: 166px; /* Увеличиваем ширину кнопки при наведении */
-    height: 28px; /* Увеличиваем высоту кнопки при наведении */
+    width: 260px; /* Увеличиваем ширину кнопки при наведении */
     border-radius: 15px; /* Увеличиваем радиус скругления углов при наведении */
     background-color: rgba(138, 43, 226, 0.8); /* Полупрозрачный темно-фиолетовый фон */
 }
 
 .special-button:hover::after {
     content: "Версия для печати"; /* Текст, который будет отображаться при наведении */
-
+    color: rgba(255, 255, 255, 1); /* Цвет иконки с альфа-каналом 0.7 */
     white-space: nowrap; /* Предотвращаем перенос текста на новую строку */
 }
 
+@media only screen and (max-width: 600px) and (orientation: portrait) {
+.special-button {
 
-/* Дополнительные стили для положения кнопки на мобильных устройствах */
-@media screen and (orientation: portrait) {
-    .special-button {
-        top: 13px;
-        left: 1px; /* Левый отступ на 15% ширины экрана */
-        width: 20px; /* Начальная ширина кнопки */
-        height: 20px; /* Начальная высота кнопки */
-        padding: 1px; /* Уменьшенные поля внутри кнопки */
-    }
+    left: 135px; /* Отступ от правой границы вьюпорта */
+
+}
 }
 
-/* Стили для иконки камеры */
-.special-button > span {
-    font-size: inherit; /* Используем размер шрифта родительского элемента */
+
+@media only screen and (max-width: 600px) and (orientation: portrait) {
+.special-button:hover {
+    width: 200px; /* Увеличиваем ширину кнопки при наведении */
+    font-size: 19px; /* Размер иконки */
 }
+}
+
+
+
 
 
 

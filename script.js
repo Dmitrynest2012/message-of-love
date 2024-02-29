@@ -81,11 +81,7 @@ function getRandomSong(eventType, isIntervalActive) {
     let jsonFile;
     if (eventType === 'обычное' && !isIntervalActive) {
         jsonFile = 'free-music.json';
-    } else if ((eventType === 'обычное' && isIntervalActive) || (eventType === 'часовое' && isIntervalActive)) {
-        jsonFile = 'main-music.json';
-    } 
-
-    fetch(jsonFile)
+        fetch(jsonFile)
         .then(response => response.json())
         .then(data => {
             // Получение случайного объекта из массива
@@ -105,7 +101,32 @@ function getRandomSong(eventType, isIntervalActive) {
 
             // Здесь можно выполнить другие действия с полученными данными
         })
-        //.catch(error => console.error('Ошибка:', error));
+    } else if ((eventType === 'обычное' && isIntervalActive) || (eventType === 'часовое' && isIntervalActive)) {
+        jsonFile = 'main-music.json';
+        fetch(jsonFile)
+        .then(response => response.json())
+        .then(data => {
+            // Получение случайного объекта из массива
+            const randomSong = data[Math.floor(Math.random() * data.length)];
+
+            // Присваивание значений переменным
+            name_of_the_song = randomSong.название;
+            songwriter = randomSong.автор;
+            song_link = randomSong.ссылка;
+
+            audioSource.src = song_link;
+            audioPlayer.load();
+
+            // Подставляем значения переменных в текст элементов
+            songTitleElement.textContent = name_of_the_song;
+            artistNameElement.textContent = songwriter;
+
+            // Здесь можно выполнить другие действия с полученными данными
+        })
+    } 
+
+    
+        
 }
 
 
@@ -904,10 +925,10 @@ if (audioPlayer.paused && isAudioActive) {
     audioPlayer.addEventListener('loadedmetadata', function() {
         audioPlayer.play().then(_ => {
             // Обработчик успешного запуска воспроизведения
-            console.log('Воспроизведение начато');
+            // console.log('Воспроизведение начато');
         }).catch(error => {
             // Обработчик ошибки запуска воспроизведения
-            console.error('Ошибка запуска воспроизведения:', error);
+            // console.error('Ошибка запуска воспроизведения:', error);
         });
     });
 }

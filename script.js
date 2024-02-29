@@ -955,7 +955,7 @@ openTableButton.addEventListener('click', function() {
 setInterval(updateJsonFile, 2000); // 1000 миллисекунд = 5 секунд
             
               // Проверяем, находится ли аудиоплеер на паузе и включен ли он, и если да, то загружаем аудио и запускаем воспроизведение
-if (isAudioActive) {
+if (!audioPlayer.paused && isAudioActive) {
     audioPlayer.pause(); // Останавливаем текущее воспроизведение
 
     getRandomSong(); // Получаем следующую песню
@@ -1059,7 +1059,7 @@ if (isAudioActive) {
 setInterval(updateJsonFile, 2000); // 1000 миллисекунд = 5 секунд
 
         // Проверяем, находится ли аудиоплеер на паузе и включен ли он, и если да, то загружаем аудио и запускаем воспроизведение
-if (isAudioActive) {
+if (!audioPlayer.paused && isAudioActive) {
     audioPlayer.pause(); // Останавливаем текущее воспроизведение
 
     getRandomSong(); // Получаем следующую песню

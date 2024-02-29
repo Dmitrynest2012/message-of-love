@@ -33,20 +33,162 @@ body::before {
 }
 
 
-.popup {
+.uPmH {
     position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background-color: #fff;
-    border-radius: 10px;
+    top: 0;
+    left: 0;
     padding: 20px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    text-align: center;
-    display: none;
-    z-index: 200;
+    margin-top: 20px;
+    margin-left: 20px;
+    font-family: Arial, sans-serif;
+    background-color: rgba(53, 0, 168, 0.25);
+    color: gold; /* Золотой цвет текста */
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 15px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s, color 0.3s; /* Плавный переход цвета фона и текста при наведении */
+    z-index: 99;
 }
 
+  .uPmH::after {
+      content: ''; /* Обязательно для псевдоэлементов */
+      position: absolute;
+      top: 0%; /* Расположить подложку под элементом .quatrain */
+      left: 0;
+      width: 100%;
+      height: 100%; /* Высота подложки может быть на ваш выбор */
+      background: rgba(255, 255, 255, 0.1); /* Прозрачный фон */
+      border-radius: 15px;
+      backdrop-filter: blur(3px); /* Размытие подложки */
+      z-index: -1; /* Поместить подложку под элемент .quatrain */
+    }
+
+    @media only screen and (max-width: 600px) and (orientation: portrait) {
+        .uPmH {
+        left: -10px; /* Расположить блок справа */
+        font-size: 10px;      
+        }
+    }
+
+
+    h1 {
+        font-family: "Play";
+        font-size: 20px;
+        color: white;
+    }
+
+    .popup {
+        position: fixed;
+        top: 105px; /* Отступ сверху */
+        left: 20px; /* Отступ слева */
+        padding: 15px;
+        background-color: rgba(53, 0, 168, 0.25);
+        color: black; /* Цвет текста черный */
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        border-radius: 15px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        transition: background-color 0.3s, color 0.3s; /* Плавный переход цвета фона и текста при наведении */
+        z-index: 99;
+        display: none;
+    }
+
+    .popup::after {
+        content: ''; /* Обязательно для псевдоэлементов */
+        position: absolute;
+        top: 0%; /* Расположить подложку под элементом .quatrain */
+        left: 0;
+        width: 100%;
+        height: 100%; /* Высота подложки может быть на ваш выбор */
+        background: rgba(255, 255, 255, 0.1); /* Прозрачный фон */
+        border-radius: 15px;
+        backdrop-filter: blur(3px); /* Размытие подложки */
+        z-index: -1; /* Поместить подложку под элемент .quatrain */
+      }
+    
+    
+    /* Медиа-запрос для портретного режима */
+    @media (orientation: portrait) {
+        .popup {
+            display: none;
+        }
+    }
+    
+    .inputText {
+        width: calc(100% - 25px); /* Учитываем отступы по 20px с каждой стороны */
+        padding: 10px;
+        margin-top: 10px;
+        font-family: "Play";
+        color: rgb(255, 255, 255);
+        border: 2px solid rgb(134, 134, 134); /* Лавандовая рамка */
+        border-radius: 8px; /* Закругленные углы */
+        background-color: rgba(22, 22, 22, 0.8); /* Лавандовый цвет с полупрозрачностью */
+        z-index: 171; /* Индекс слоя */
+        transition: border-color 0.5s;
+    }
+    
+    /* Стиль при наведении */
+    .inputText:hover {
+        border-color: rgb(149, 0, 255); /* Фиолетовый цвет */
+    }
+    
+    /* Стиль при фокусе */
+    .inputText:focus {
+        border-color: rgb(255, 0, 255); /* Темно-фиолетовый цвет */
+    }
+
+
+
+
+
+
+    .encryptedText {
+        width: calc(100% - 25px); /* Учитываем отступы по 20px с каждой стороны */
+        padding: 10px;
+        color: rgb(234, 0, 255);
+        margin-top: 10px;
+        font-family: "Play";
+        border: 2px solid rgb(134, 134, 134); /* Лавандовая рамка */
+        border-radius: 8px; /* Закругленные углы */
+        background-color: rgba(22, 22, 22, 0.8); /* Лавандовый цвет с полупрозрачностью */
+        z-index: 171; /* Индекс слоя */
+        transition: border-color 0.5s;
+    }
+    
+    /* Стиль при наведении */
+    .encryptedText:hover {
+        border-color: rgb(149, 0, 255); /* Фиолетовый цвет */
+    }
+    
+    /* Стиль при фокусе */
+    .encryptedText:focus {
+        border-color: rgb(255, 0, 255); /* Темно-фиолетовый цвет */
+    }
+    
+    
+    
+    .encryptText {
+
+        background-color: rgba(0, 0, 0, 0.5); /* Черный цвет фона */
+        color: white; /* Белый цвет текста */
+        border: 1px solid rgba(134, 134, 134, 0.521); /* Убираем границу */
+        border-radius: 15px; /* Закругленные углы */
+        padding: 10px 20px; /* Внутренний отступ */
+        font-size: 16px; /* Размер шрифта */
+        cursor: pointer; /* Изменяем курсор при наведении */
+        transition: background-color 0.2s, color 0.3s, padding 0.2s; /* Плавные переходы */
+    }
+    
+    .encryptText:hover {
+        border: 1px solid rgba(76, 0, 255, 0.63); /* Убираем границу */
+        background-color: rgb(62, 0, 179); /* Белый цвет фона при наведении */
+        color: rgb(255, 255, 255); /* Черный цвет текста при наведении */
+    }
+    
+    .encryptText:active {
+        color: rgb(195, 0, 255); /* Белый цвет текста */
+        background-color: rgb(97, 55, 177); /* Белый цвет фона при наведении */
+    }
+    
 
 
 .container {
@@ -778,6 +920,35 @@ body::before {
 
 
 
+.get-access-button {
+    position: fixed; /* Позиционирование абсолютно относительно родителя */
+    top: 66.4%; /* Положение сверху на 50% высоты родительского элемента */
+    right: 23px; /* Отступ от правого края */
+
+    background-color: rgba(0, 0, 0, 0.774); /* Черный цвет заднего фона */
+    color: white; /* Белый цвет текста */
+    border: 1px solid rgba(255, 255, 255, 0); /* Белый бордер */
+    border-radius: 10px; /* Закругленные углы */
+    padding: 5px 10px; /* Внутренние отступы */
+    font-family: 'Play', sans-serif; /* Используем шрифт Orbitron для времени */
+    font-size: 15px; /* Размер шрифта */
+    font-weight: bold;
+    cursor: pointer; /* Курсор при наведении */
+
+
+    /* Эффект размытия заднего плана */
+    backdrop-filter: blur(5px);
+    z-index: 190;
+}
+
+.get-access-button:hover {
+    background-color: rgba(83, 45, 187, 0.9); /* Используем rgba() с непрозрачным значением */
+
+}
+
+.get-access-button:active {
+    transform: scale(0.95); /* Уменьшение размера при нажатии */
+}
 
 
 

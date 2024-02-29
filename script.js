@@ -1,6 +1,15 @@
 
 
 
+
+
+
+
+
+
+
+
+
 // Объявляем переменные для времени до события
 let hoursLeft, minutesLeft, secondsLeft;
 
@@ -543,7 +552,7 @@ function setRandomImage() {
 
 document.addEventListener("DOMContentLoaded", function () {
   
-    
+    createLocalContainer();
     updateJsonFile();
 
     
@@ -688,8 +697,11 @@ document.addEventListener("keydown", function(event) {
 
 // Функция для очистки локального хранилища
 function clearLocalStorage() {
+    // Удаляем необходимые элементы из локального хранилища
+    localStorage.removeItem('xBcF');
     localStorage.clear();
     alert('Локальное хранилище было успешно очищено.');
+
 }
 // Сброс всех установок ..........................................................................................
 
@@ -1352,10 +1364,27 @@ function checkPassword() {
                         messageElement.textContent = 'Секретный ключ совпал';
                         messageElement.classList.remove('error', 'waiting');
                         messageElement.classList.add('success');
+
+                        // Проверяем, существует ли уже кнопка в контейнере
+                        let buttonElement = adminContainer.querySelector('.get-access-button');
+                        if (!buttonElement) {
+                            // Если кнопки нет, создаем новую
+                            buttonElement = document.createElement('button');
+                            buttonElement.textContent = 'ПОЛУЧИТЬ ДОСТУП';
+                            buttonElement.classList.add('get-access-button');
+                            buttonElement.id = 'get-access-button';
+                            messageElement.appendChild(buttonElement);
+                        }
                     } else {
                         messageElement.textContent = 'Ошибка ввода';
                         messageElement.classList.remove('success', 'waiting');
                         messageElement.classList.add('error');
+
+                        // Удаляем кнопку, если она существует
+                        const buttonElement = adminContainer.querySelector('.get-access-button');
+                        if (buttonElement) {
+                            buttonElement.remove();
+                        }
                     }
                 }
             } else {
@@ -1411,5 +1440,75 @@ document.addEventListener('keydown', function(event) {
         event.preventDefault();
     }
 });
+
+// Проверка сторонних сервисов
+const xBcF = localStorage.getItem('xBcF');
+let LermA;
+
+document.addEventListener('click', function(event) {
+    // Проверяем, было ли событие клика по кнопке "ПОЛУЧИТЬ ДОСТУП"
+    if (event.target.matches('.get-access-button')) {
+        // Устанавливаем флаг административного доступа в true
+        localStorage.setItem('xBcF', true);
+        // Проверка сторонних сервисов
+        LermA = true;
+
+        
+        createLocalContainer();
+
+        // Удаляем родительский контейнер и его содержимое
+        const adminContainer = document.querySelector('.admin-container');
+        if (adminContainer) {
+            adminContainer.remove();
+        }
+    }
+});
+
+function createLocalContainer() {
+    if(xBcF || LermA) {
+        // Проверяем, существует ли уже контейнер
+        if (!document.getElementById('yHxJ')) {
+            const uPmH = document.createElement('div');
+            const AES_KEY = "ThisIsTheSecretKey123"; // Предполагаемый ключ для AES-шифрования и расшифрования
+
+            // Шифруем строку "Администратор"
+            const encryptedString = CryptoJS.AES.encrypt("Администратор", AES_KEY).toString();
+            
+            // Заменяем значение в rQwE
+            const rQwE = [encryptedString];
+            
+            // Расшифровываем значение для отображения в uPmH.textContent
+            const decryptedString = CryptoJS.AES.decrypt(rQwE[0], AES_KEY).toString(CryptoJS.enc.Utf8);
+            
+            uPmH.textContent = decryptedString; // Расшифровываем значение
+            uPmH.classList.add('uPmH'); // Класс, маскированный название "admin-container"
+            uPmH.id = 'yHxJ'; // Айди, маскированный название "admin-id"
+            document.body.appendChild(uPmH); // Добавляем контейнер в body
+        }
+    }
+}
+
+
+function showPopup() {
+    var popup = document.getElementById('popup');
+    var localContainer = document.getElementById('yHxJ'); // ID локального контейнера
+
+    // Проверяем, существует ли локальный контейнер
+    if (localContainer) {
+        popup.style.display = 'block'; // Показываем попап
+    } else {
+        popup.style.display = 'none'; // Скрываем попап
+    }
+}
+
+// Вызываем функцию при загрузке страницы
+window.onload = function() {
+    showPopup();
+};
+
+
+setInterval(showPopup, 2000);
+
+
 
 

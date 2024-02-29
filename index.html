@@ -71,12 +71,13 @@
   </audio>
 
 
-<div class="popup">
-  <h1>Шифрование</h1>
-  <textarea id="inputText" rows="5" cols="50" placeholder="Введите текст для шифрования..."></textarea><br>
-  <button onclick="encryptText()">Зашифровать</button><br>
-  <textarea id="encryptedText" rows="5" cols="50" placeholder="Зашифрованный текст будет отображен здесь..."
+<div id="popup" class="popup">
+  <h1>КОСМ Шифрование</h1><button class="encryptText" onclick="encryptText()">Зашифровать</button><br>
+  <textarea id="inputText" class="inputText" rows="5" cols="50" placeholder="Введите текст для шифрования..."></textarea><br>
+  
+  <textarea id="encryptedText" class="encryptedText" rows="5" cols="50" placeholder="Зашифрованный текст будет отображен здесь..."
       readonly></textarea>
+      
 </div>
   
 

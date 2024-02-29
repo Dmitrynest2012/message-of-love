@@ -969,7 +969,8 @@ openTableButton.addEventListener('click', function() {
             newText = interval.text;
 
             isIntervalActive = true;
-            
+            // Вызов функции каждые 1 секунд
+setInterval(updateJsonFile, 2000); // 1000 миллисекунд = 5 секунд
             
 
           
@@ -1071,7 +1072,8 @@ if (audioPlayer.paused && isAudioActive) {
 
         isIntervalActive = false;
 
-        
+        // Вызов функции каждые 1 секунд
+setInterval(updateJsonFile, 2000); // 1000 миллисекунд = 5 секунд
 
 
 
@@ -1245,5 +1247,4 @@ function updateJsonFile() {
     // Далее вы можете использовать переменную jsonFileRandomMusic по вашему усмотрению
 }
 
-// Вызов функции каждые 1 секунд
-setInterval(updateJsonFile, 1000); // 1000 миллисекунд = 5 секунд
+

@@ -126,6 +126,9 @@ body {
 }
 
 
+
+
+
 @media only screen and (max-width: 600px) and (orientation: portrait) {
 .container::after {
     content: ''; /* Обязательно для псевдоэлементов */
@@ -142,7 +145,7 @@ body {
   }
 }
 
-@media only screen and (max-width: 600px) and (orientation: portrait) {
+@media only screen and (max-width: 800px) and (orientation: portrait) {
     .container::-webkit-scrollbar {
         width: 2.5vw; /* Ширина полосы прокрутки */
         border: 1px solid rgba(174, 0, 255, 0);
@@ -152,7 +155,7 @@ body {
     }
 }
 
-@media only screen and (max-width: 600px) and (orientation: portrait) {
+@media only screen and (max-width: 800px) and (orientation: portrait) {
     .container::-webkit-scrollbar-track {
 
         
@@ -162,7 +165,7 @@ body {
     }
 }
 
-@media only screen and (max-width: 600px) and (orientation: portrait) {
+@media only screen and (max-width: 800px) and (orientation: portrait) {
     .container::-webkit-scrollbar-thumb {
 
         background: rgba(0, 0, 0, 0.534); /* Цвет полосы прокрутки */

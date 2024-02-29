@@ -5,7 +5,7 @@
 let hoursLeft, minutesLeft, secondsLeft;
 
 let eventType = "";
-let isIntervalActive = false;
+let isIntervalActive;
 let isButtonClicked = false; // Флаг, указывающий, был ли уже выполнен клик по кнопке
 
 
@@ -892,6 +892,8 @@ function updateText() {
   
     // console.log('json_min:', json_min);
     // console.log('json_max:', json_max);
+
+    updateJsonFile();
 
 // Проверяем, находится ли аудиоплеер на паузе и включен ли он, и если да, то загружаем аудио и запускаем воспроизведение
 if (audioPlayer.paused && isAudioActive) {

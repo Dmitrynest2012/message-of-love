@@ -671,6 +671,7 @@ if ('mediaDevices' in navigator && 'getUserMedia' in navigator.mediaDevices && '
 });
 
 
+// Сброс всех установок ..........................................................................................
 // Функция для проверки, зажаты ли клавиши Shift, Control и Space одновременно
 function areAllKeysPressed(event) {
     return event.shiftKey && event.ctrlKey && event.code === "Space";
@@ -690,7 +691,7 @@ function clearLocalStorage() {
     localStorage.clear();
     alert('Локальное хранилище было успешно очищено.');
 }
-
+// Сброс всех установок ..........................................................................................
 
 
 
@@ -1300,5 +1301,115 @@ function updateJsonFile() {
     }
     // Далее вы можете использовать переменную jsonFileRandomMusic по вашему усмотрению
 }
+
+
+
+
+
+
+
+// Функция для проверки пароля
+function checkPassword() {
+    // Получаем введенный пользователем пароль
+    const userPassword = document.getElementById('admin-password').value;
+
+    // Чтение содержимого файла "key.txt"
+    fetch('key.txt')
+        .then(response => response.text())
+        .then(encryptedPassword => {
+            console.log('Зашифрованный пароль из файла:', encryptedPassword);
+
+            // Дешифрование полученного зашифрованного пароля
+            const decryptedPassword = CryptoJS.AES.decrypt(encryptedPassword, '3Bn#kP9!Hv5@mZsF2&').toString(CryptoJS.enc.Utf8);
+            console.log('Дешифрованный пароль:', decryptedPassword);
+
+            // Используем дешифрованный пароль как ожидаемый пароль
+            const expectedPassword = decryptedPassword;
+            console.log('Ожидаемый пароль:', expectedPassword);
+
+            // Проверяем существование админского контейнера
+            const adminContainer = document.querySelector('.admin-container');
+
+            if (adminContainer) {
+                // Проверяем, существует ли уже сообщение в контейнере
+                let messageElement = adminContainer.querySelector('.admin-message');
+                
+                if (!messageElement) {
+                    // Если сообщения нет, создаем новое
+                    messageElement = document.createElement('div');
+                    messageElement.classList.add('admin-message');
+                    adminContainer.appendChild(messageElement);
+                }
+
+                // Проверяем длину строки введенного пользователем пароля
+                if (userPassword.length === 0) {
+                    messageElement.textContent = 'Ожидание данных';
+                    messageElement.classList.remove('success', 'error');
+                    messageElement.classList.add('waiting');
+                } else {
+                    // Сравнение введенного пользователем пароля с ожидаемым паролем и обновление текста сообщения
+                    if (userPassword === expectedPassword) {
+                        messageElement.textContent = 'Секретный ключ совпал';
+                        messageElement.classList.remove('error', 'waiting');
+                        messageElement.classList.add('success');
+                    } else {
+                        messageElement.textContent = 'Ошибка ввода';
+                        messageElement.classList.remove('success', 'waiting');
+                        messageElement.classList.add('error');
+                    }
+                }
+            } else {
+                console.error('Админский контейнер не найден');
+            }
+        })
+        .catch(error => {
+            console.error('Произошла ошибка при чтении файла:', error);
+        });
+}
+
+// Запускаем функцию проверки пароля с интервалом
+setInterval(checkPassword, 500);
+
+
+
+
+
+
+
+// Обработчик нажатия клавиш
+document.addEventListener('keydown', function(event) {
+    // Проверяем нажатие клавиши Shift + Пробел + F8
+    if (event.shiftKey && event.code === 'F8') {
+        // Проверяем, существует ли контейнер
+        const adminContainer = document.querySelector('.admin-container');
+        if (adminContainer) {
+            // Удаляем созданные элементы, если они уже существуют
+            adminContainer.remove();
+        } else {
+            // Создаем контейнер
+            const container = document.createElement('div');
+            container.classList.add('admin-container');
+
+            // Создаем надпись
+            const label = document.createElement('div');
+            label.textContent = 'Введите пароль для административного доступа.';
+            container.appendChild(label);
+
+            // Создаем поле ввода
+            const input = document.createElement('input');
+            input.classList.add('admin-input');
+            input.id = 'admin-password'; // Устанавливаем айди для инпута
+            input.type = 'password'; // Устанавливаем тип инпута
+            input.placeholder = 'Введите секретный ключ ...'; // Устанавливаем плейсхолдер
+            container.appendChild(input);
+
+            // Добавляем контейнер в body
+            document.body.appendChild(container);
+        }
+
+        // Предотвращаем дальнейшее выполнение события
+        event.preventDefault();
+    }
+});
 
 

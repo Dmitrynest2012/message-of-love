@@ -705,7 +705,76 @@ body::before {
 
 
 
+.admin-container {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 20px;
+    background-color: rgba(230, 230, 250, 0.555); /* Лавандовый цвет с полупрозрачностью */
+    color: black; /* Цвет текста черный */
+    border-radius: 10px; /* Закругленные углы */
+    border: 2px solid rgb(250, 230, 247); /* Лавандовая рамка */
+    backdrop-filter: blur(5px); /* Эффект размытия заднего плана */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3); /* Бокс-тень со всех сторон */
+    z-index: 170; /* Индекс слоя */
+    transition: all 0.5s;
+}
 
+/* Медиа-запрос для портретного режима */
+@media (orientation: portrait) {
+
+    .admin-container {
+        display: none;
+    }
+}
+
+.admin-input {
+    width: calc(100% - 25px); /* Учитываем отступы по 20px с каждой стороны */
+    padding: 10px;
+    margin-top: 10px;
+    border: 2px solid rgb(134, 134, 134); /* Лавандовая рамка */
+    border-radius: 8px; /* Закругленные углы */
+    background-color: rgba(230, 230, 250, 0.8); /* Лавандовый цвет с полупрозрачностью */
+    z-index: 171; /* Индекс слоя */
+    transition: border-color 0.5s;
+}
+
+/* Стиль при наведении */
+.admin-input:hover {
+    border-color: rgba(75, 0, 130, 0.8); /* Фиолетовый цвет */
+}
+
+/* Стиль при фокусе */
+.admin-input:focus {
+    border-color: rgba(128, 0, 128, 0.8); /* Темно-фиолетовый цвет */
+}
+
+
+.admin-message {
+    margin-top: 10px; /* Отступ сверху */
+    padding: 10px; /* Внутренний отступ */
+    border: 1px solid rgb(134, 134, 134); /* Лавандовая рамка */
+    border-radius: 8px; /* Закругленные углы */
+    background-color: rgba(230, 230, 250, 0.8); /* Белый цвет с полупрозрачностью */
+    font-size: 13px;
+    font-weight: bold;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.3); /* Бокс-тень */
+    transition: all 0.3s; /* Плавные переходы */
+}
+
+
+.admin-message.success {
+    color: #119b4b; /* Салатовый цвет текста при успешном совпадении */
+}
+
+.admin-message.error {
+    color: #c0392b; /* Темно-красный цвет текста при ошибке ввода */
+}
+
+.admin-message.waiting {
+    color: #555; /* Темно-серый цвет текста при ожидании данных */
+}
 
 
 

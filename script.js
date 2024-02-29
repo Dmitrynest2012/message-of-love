@@ -971,13 +971,27 @@ openTableButton.addEventListener('click', function() {
             newText = interval.text;
 
             isIntervalActive = true;
-            // Вызов функции каждые 1 секунд
-            updateJsonFile();
             
+            // Вызов функции каждые 1 секунд
+          if (isIntervalActive) {
+            jsonFileRandomMusic = 'main-music.json';
+        } else {
+            jsonFileRandomMusic = 'free-music.json';
+        }
             
           
             if (imageElement.src != 'https://github.com/Dmitrynest2012/message-of-love/raw/main/message-base-1.png') {
           imageElement.src = 'https://github.com/Dmitrynest2012/message-of-love/raw/main/message-base-1.png';
+          isIntervalActive = true;
+
+          // Вызов функции каждые 1 секунд
+          if (isIntervalActive) {
+            jsonFileRandomMusic = 'main-music.json';
+        } else {
+            jsonFileRandomMusic = 'free-music.json';
+        }
+
+
           fetch(jsonFileRandomMusic)
         .then(response => response.json())
         .then(data => {
@@ -1065,8 +1079,13 @@ openTableButton.addEventListener('click', function() {
      if (imageElement.src == 'https://github.com/Dmitrynest2012/message-of-love/raw/main/message-base-1.png') {
 
           setRandomImage();
+          isIntervalActive = false;
           // Вызов функции каждые 1 секунд
-          updateJsonFile();
+          if (isIntervalActive) {
+            jsonFileRandomMusic = 'main-music.json';
+        } else {
+            jsonFileRandomMusic = 'free-music.json';
+        }
 
           fetch(jsonFileRandomMusic)
         .then(response => response.json())
@@ -1096,7 +1115,14 @@ openTableButton.addEventListener('click', function() {
 
         isIntervalActive = false;
         
+        // Вызов функции каждые 1 секунд
+        if (isIntervalActive) {
+            jsonFileRandomMusic = 'main-music.json';
+        } else {
+            jsonFileRandomMusic = 'free-music.json';
+        }
 
+        
 
 
     // Применение стилей из медиа-запроса

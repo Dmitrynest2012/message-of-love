@@ -13,8 +13,23 @@ body {
     justify-content: center;
     align-items: center;
     height: 100%;
+    opacity: 1;
     z-index: 1;
-    transition: background 0.5s linear; /* Длительность и тип анимации */
+    transition: opacity 0.3s, background 0.3s linear; /* Длительность и тип анимации */
+}
+
+body::before {
+    opacity: 0;
+}
+
+@media only screen and (max-width: 600px) and (orientation: portrait) {
+    body {
+
+        overflow-y: auto; /* Разрешаем вертикальную прокрутку */
+        
+        
+        
+    }
 }
 
 

@@ -771,21 +771,30 @@ let json_min;
 let json_max;
 
 
+// "Скрытое" значение ключа
+const hiddenKey = ['34426E235E6B503921487635406D5A73463226'];
+
+// Функция для дешифровки ключа
+function decryptKey(hiddenKey) {
+    return hiddenKey[0].split('').map(hex => String.fromCharCode(parseInt(hex, 16))).join('');
+}
+
 // функция для шифрования
 function encryptText() {
     const inputText = document.getElementById('inputText').value;
-    const password = '3Bn#kP9!Hv5@mZsF2&'; // Пароль для шифрования (ключ)
-    const encryptedText = CryptoJS.AES.encrypt(inputText, password).toString();
+    const key = decryptKey(hiddenKey); // Получаем оригинальный ключ
+    const encryptedText = CryptoJS.AES.encrypt(inputText, key).toString();
     document.getElementById('encryptedText').value = encryptedText;
 }
 
-
 // Функция для расшифровки текста
 function decryptText(encryptedText) {
-const password = '3Bn#kP9!Hv5@mZsF2&'; // Пароль для расшифровки (ключ)
-const bytes = CryptoJS.AES.decrypt(encryptedText, password);
-return bytes.toString(CryptoJS.enc.Utf8);
+    const key = decryptKey(hiddenKey); // Получаем оригинальный ключ
+    const bytes = CryptoJS.AES.decrypt(encryptedText, key);
+    return bytes.toString(CryptoJS.enc.Utf8);
 }
+
+
 
 // Функция для чтения данных из Excel и их расшифровки
 async function readAndDecryptExcel(url) {

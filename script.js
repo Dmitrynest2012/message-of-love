@@ -72,6 +72,8 @@ const audioSource = document.getElementById('audioSource');
 let name_of_the_song = ''; // название песни
 let songwriter = ''; // автор песни
 let song_link = ''; // ссылка песни
+let jsonFileRandomMusic; // Объявляем переменную глобально по ссылке на список музыки.
+
 
 // Получаем ссылки на элементы заголовка песни и имени исполнителя
 const songTitleElement = document.getElementById('songTitle');
@@ -79,8 +81,8 @@ const artistNameElement = document.getElementById('artistName');
 
 function getRandomSong() {
     
-    
-        fetch('main-music.json')
+        
+        fetch(jsonFileRandomMusic)
         .then(response => response.json())
         .then(data => {
             // Получение случайного объекта из массива
@@ -542,7 +544,7 @@ function setRandomImage() {
 document.addEventListener("DOMContentLoaded", function () {
   
     
-
+    updateJsonFile();
 
     
     
@@ -967,7 +969,7 @@ openTableButton.addEventListener('click', function() {
             newText = interval.text;
 
             isIntervalActive = true;
-
+            
             
 
           
@@ -1040,6 +1042,31 @@ openTableButton.addEventListener('click', function() {
       
      if (imageElement.src == 'https://github.com/Dmitrynest2012/message-of-love/raw/main/message-base-1.png') {
           setRandomImage();
+
+
+
+
+
+          // Проверяем, находится ли аудиоплеер на паузе и включен ли он, и если да, то загружаем аудио и запускаем воспроизведение
+if (audioPlayer.paused && isAudioActive) {
+    audioPlayer.pause(); // Останавливаем текущее воспроизведение
+
+    getRandomSong(); // Получаем следующую песню
+
+    audioPlayer.src = song_link; // Устанавливаем новую песню в качестве источника для аудиоплеера
+    audioPlayer.load(); // Загружаем новую песню
+
+    // Добавляем обработчик события loadedmetadata, который вызывается, когда метаданные аудиофайла (например, продолжительность) загружены
+    audioPlayer.addEventListener('loadedmetadata', function() {
+        audioPlayer.play().then(_ => {
+            // Обработчик успешного запуска воспроизведения
+            // console.log('Воспроизведение начато');
+        }).catch(error => {
+            // Обработчик ошибки запуска воспроизведения
+            // console.error('Ошибка запуска воспроизведения:', error);
+        });
+    });
+}
         };
 
         isIntervalActive = false;
@@ -1208,4 +1235,15 @@ setInterval(displayRandomQuatrain, 5 * 60 * 1000);
 
 
 
+function updateJsonFile() {
 
+    if (isIntervalActive) {
+        jsonFileRandomMusic = 'main-music.json';
+    } else {
+        jsonFileRandomMusic = 'free-music.json';
+    }
+    // Далее вы можете использовать переменную jsonFileRandomMusic по вашему усмотрению
+}
+
+// Вызов функции каждые 1 секунд
+setInterval(updateJsonFile, 1000); // 1000 миллисекунд = 5 секунд

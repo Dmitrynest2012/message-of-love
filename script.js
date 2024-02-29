@@ -105,7 +105,7 @@ function getRandomSong(eventType, isIntervalActive) {
 
             // Здесь можно выполнить другие действия с полученными данными
         })
-        .catch(error => console.error('Ошибка:', error));
+        //.catch(error => console.error('Ошибка:', error));
 }
 
 

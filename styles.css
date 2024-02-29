@@ -17,6 +17,16 @@ body {
     transition: background 0.5s linear; /* Длительность и тип анимации */
 }
 
+@media only screen and (max-width: 600px) and (orientation: portrait) {
+    body {
+
+        overflow-y: auto; /* Разрешаем вертикальную прокрутку */
+        
+        
+        
+    }
+}
+
 
 .popup {
     position: fixed;

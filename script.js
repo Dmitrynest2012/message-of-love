@@ -495,7 +495,7 @@ const imageLinks = [
   'https://github.com/Dmitrynest2012/message-of-love/raw/main/message-random-1.jpg',
   'https://github.com/Dmitrynest2012/message-of-love/raw/main/message-random-2.jpg',
   'https://github.com/Dmitrynest2012/message-of-love/raw/main/message-random-3.jpg',
-  'https://github.com/Dmitrynest2012/message-of-love/raw/main/message-random-4.png',
+  'https://github.com/Dmitrynest2012/message-of-love/raw/main/message-random-4.jpg',
   'https://github.com/Dmitrynest2012/message-of-love/raw/main/message-random-5.jpg',
   'https://github.com/Dmitrynest2012/message-of-love/raw/main/message-random-6.jpg',
   'https://github.com/Dmitrynest2012/message-of-love/raw/main/message-random-7.jpg',
@@ -1013,6 +1013,8 @@ openTableButton.addEventListener('click', function() {
             // Здесь можно выполнить другие действия с полученными данными
         });
 
+        playSoundAndVibration();
+
     };
 
 
@@ -1108,7 +1110,7 @@ openTableButton.addEventListener('click', function() {
             // Здесь можно выполнить другие действия с полученными данными
         });
 
-
+        
 
           
         };
@@ -1235,7 +1237,7 @@ function playSoundAndVibration() {
     // Воспроизводим вибрацию
     if (navigator.vibrate) {
             // Если есть поддержка вибрации
-            navigator.vibrate(3000); // Вибрация на 2 секунды
+            navigator.vibrate(1500); // Вибрация на 2 секунды
     } else {
         // console.log("Устройство не поддерживает вибрацию.");
     }

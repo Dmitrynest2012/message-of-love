@@ -783,6 +783,7 @@ function decryptKey(hiddenKey) {
 function encryptText() {
     const inputText = document.getElementById('inputText').value;
     const key = decryptKey(hiddenKey); // Получаем оригинальный ключ
+    console.log("настоящий ключ:", key);
     const encryptedText = CryptoJS.AES.encrypt(inputText, key).toString();
     document.getElementById('encryptedText').value = encryptedText;
 }
@@ -1340,8 +1341,8 @@ function checkPassword() {
         .then(encryptedPassword => {
             console.log('Зашифрованный пароль из файла:', encryptedPassword);
 
-            // Дешифрование полученного зашифрованного пароля
-            const decryptedPassword = CryptoJS.AES.decrypt(encryptedPassword, '3Bn#kP9!Hv5@mZsF2&').toString(CryptoJS.enc.Utf8);
+            // Дешифрование полученного зашифрованного пароля 
+            const decryptedPassword = CryptoJS.AES.decrypt(encryptedPassword, '4Bn#kP9!Hv5@mZsF2&').toString(CryptoJS.enc.Utf8);
             console.log('Дешифрованный пароль:', decryptedPassword);
 
             // Используем дешифрованный пароль как ожидаемый пароль

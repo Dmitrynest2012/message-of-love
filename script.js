@@ -771,8 +771,8 @@ let json_min;
 let json_max;
 
 
-// "Скрытое" значение ключа
-const hiddenKey = ['34426E235E6B503921487635406D5A73463226'];
+// "Скрытое" значение ключа (обфусцированное)
+const hiddenKey = ['33426E235E6B503921487635406D5A73463226'];
 
 // Функция для дешифровки ключа
 function decryptKey(hiddenKey) {
@@ -794,6 +794,7 @@ function decryptText(encryptedText) {
     const bytes = CryptoJS.AES.decrypt(encryptedText, key);
     return bytes.toString(CryptoJS.enc.Utf8);
 }
+
 
 
 

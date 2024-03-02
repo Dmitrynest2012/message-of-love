@@ -1279,7 +1279,12 @@ if (hoursLeft = 0 && minutesLeft <= 5) {
     if (buttonT) {
         buttonT.disabled = false;
     }
-}
+}  
+
+
+
+
+
     } 
         if (lineElement) {
             lineElement.remove();

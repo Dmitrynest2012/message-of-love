@@ -1357,7 +1357,7 @@ function checkPassword() {
             
 
             // Дешифрование полученного зашифрованного пароля
-            const decryptedPassword = CryptoJS.AES.decrypt('U2FsdGVkX1+Q0REYIvTY+t8ml5pFPrTMGieZ7MKGOefqIQiDkN7uSXi2wlPNUU1l', decryptText('U2FsdGVkX1+eJn88DIhrl/QhJ0lepA+QUndutqQoJXaQtg6wpO7ikN3pig1gnDOR')).toString(CryptoJS.enc.Utf8);
+            const decryptedPassword = CryptoJS.AES.decrypt('U2FsdGVkX1+Q0REYIvTY+t8ml5pFPrTMGieZ7MKGOefqIQiDkN7uSXi2wlPNUU1l', decryptText('U2FsdGVkX1+yXQvK/Dj8nYyfVEuidGrZTyCAkEB2FHR9qFF6qEa1TOfGarhgGG3d')).toString(CryptoJS.enc.Utf8);
 
             console.log('Дешифрованный пароль:', decryptedPassword);
 

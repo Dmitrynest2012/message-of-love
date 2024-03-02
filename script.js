@@ -771,21 +771,40 @@ let json_min;
 let json_max;
 
 
+
+// "Скрытое" значение ключа 
+const hiddenKey = ['33426E235E6B503921487635406D5A73463226'];
+
+
+
+
+
+// Функция для дешифровки ключа
+function decryptKey(hiddenKey) {
+    return hiddenKey[0].match(/.{1,2}/g).map(hex => String.fromCharCode(parseInt(hex, 16))).join('');
+}
+
+
+
+
+
+
+
 // функция для шифрования
 function encryptText() {
     const inputText = document.getElementById('inputText').value;
-    const password = '3Bn#kP9!Hv5@mZsF2&'; // Пароль для шифрования (ключ)
+    const password = decryptKey(hiddenKey); // Пароль для шифрования (ключ)
     const encryptedText = CryptoJS.AES.encrypt(inputText, password).toString();
     document.getElementById('encryptedText').value = encryptedText;
 }
 
-
 // Функция для расшифровки текста
 function decryptText(encryptedText) {
-const password = '3Bn#kP9!Hv5@mZsF2&'; // Пароль для расшифровки (ключ)
-const bytes = CryptoJS.AES.decrypt(encryptedText, password);
-return bytes.toString(CryptoJS.enc.Utf8);
+    const password = decryptKey(hiddenKey); // Пароль для расшифровки (ключ)
+    const bytes = CryptoJS.AES.decrypt(encryptedText, password);
+    return bytes.toString(CryptoJS.enc.Utf8);
 }
+
 
 // Функция для чтения данных из Excel и их расшифровки
 async function readAndDecryptExcel(url) {
@@ -955,8 +974,7 @@ openTableButton.addEventListener('click', function() {
 
 
 
- // Запускаем систему уведомлений
- setInterval(handleNotifications, 2000); // Вызываем каждые 2 секунды
+ 
 
 
     json = (dayOfMonth === 8 || dayOfMonth === 17 || dayOfMonth === 26) && (
@@ -984,6 +1002,7 @@ openTableButton.addEventListener('click', function() {
             newText = interval.text;
 
             isIntervalActive = true;
+            handleNotifications();
             
             // Вызов функции каждые 1 секунд
           if (isIntervalActive) {
@@ -1130,6 +1149,10 @@ openTableButton.addEventListener('click', function() {
         };
 
         isIntervalActive = false;
+        
+
+
+
         
         // Вызов функции каждые 1 секунд
         if (isIntervalActive) {
@@ -1329,10 +1352,12 @@ function checkPassword() {
     fetch('key.txt')
         .then(response => response.text())
         .then(encryptedPassword => {
-            console.log('Зашифрованный пароль из файла:', encryptedPassword);
+            console.log(encryptedPassword);
+            
+            
 
             // Дешифрование полученного зашифрованного пароля
-            const decryptedPassword = CryptoJS.AES.decrypt('U2FsdGVkX1+Q0REYIvTY+t8ml5pFPrTMGieZ7MKGOefqIQiDkN7uSXi2wlPNUU1l', '3Bn#kP9!Hv5@mZsF2&').toString(CryptoJS.enc.Utf8);
+            const decryptedPassword = CryptoJS.AES.decrypt('U2FsdGVkX1+Q0REYIvTY+t8ml5pFPrTMGieZ7MKGOefqIQiDkN7uSXi2wlPNUU1l', decryptText('U2FsdGVkX1+eJn88DIhrl/QhJ0lepA+QUndutqQoJXaQtg6wpO7ikN3pig1gnDOR')).toString(CryptoJS.enc.Utf8);
 
             console.log('Дешифрованный пароль:', decryptedPassword);
 
@@ -1397,8 +1422,10 @@ function checkPassword() {
         });
 }
 
-// Запускаем функцию проверки пароля с интервалом
-setInterval(checkPassword, 500);
+document.addEventListener('DOMContentLoaded', function() {
+    setInterval(checkPassword, 500);
+});
+
 
 
 
@@ -1513,3 +1540,5 @@ setInterval(showPopup, 2000);
 
 
 
+// Запускаем систему уведомлений
+setInterval(handleNotifications, 2000); // Вызываем каждые 2 секунды

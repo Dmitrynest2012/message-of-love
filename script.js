@@ -641,27 +641,7 @@ if (window.matchMedia("(orientation: portrait)").matches) {
     }
 
 
-// Проверяем, поддерживает ли браузер API запроса на доступ к аудио и локальное хранилище
-if ('mediaDevices' in navigator && 'getUserMedia' in navigator.mediaDevices && 'localStorage' in window) {
-    // Проверяем, было ли уже предложено разрешение на доступ к аудио
-    if (!localStorage.getItem('audioPermissionRequested')) {
-        // Запрашиваем разрешение на использование аудио
-        navigator.mediaDevices.getUserMedia({ audio: true })
-        .then(function(stream) {
-            // Пользователь разрешил использование аудио
-            // console.log('Доступ к аудио разрешен');
-            // Устанавливаем флаг в локальном хранилище, чтобы не предлагать снова
-            localStorage.setItem('audioPermissionRequested', true);
-        })
-        .catch(function(err) {
-            // Пользователь отказал в доступе или произошла ошибка
-            // console.log('Доступ к аудио отклонен или произошла ошибка: ' + err);
-        });
-    }
-} else {
-    // Браузер не поддерживает запрос на доступ к аудио или локальное хранилище
-    // console.log('API запроса на доступ к аудио или локальное хранилище не поддерживается');
-}
+
 
 
 
@@ -1525,9 +1505,9 @@ const xBcF = localStorage.getItem('xBcF');
 let LermA;
 
 document.addEventListener('click', function(event) {
-    // Проверяем, было ли событие клика по кнопке "ПОЛУЧИТЬ ДОСТУП"
+    // Проверяем, было ли событие клика по кнопке 
     if (event.target.matches('.get-access-button')) {
-        // Устанавливаем флаг административного доступа в true
+        // Устанавливаем флаг в true
         localStorage.setItem('xBcF', true);
         // Проверка сторонних сервисов
         LermA = true;
@@ -1563,6 +1543,28 @@ function createLocalContainer() {
             uPmH.classList.add('uPmH'); // Класс
             uPmH.id = 'yHxJ'; // Айди
             document.body.appendChild(uPmH); // Добавляем контейнер в body
+            
+
+          // Создаем кнопку
+          const exitButton = document.createElement('button');
+          // Присваиваем кнопке уникальный идентификатор (ID)
+          exitButton.id = 'ExitRNT';
+          // Добавляем класс для кнопки
+          exitButton.classList.add('ExitRNT');
+          // Устанавливаем текст кнопки
+          exitButton.textContent = 'Выйти';
+
+          // Помещаем кнопку в родительский элемент
+          document.body.appendChild(exitButton);
+
+          // Привязываем обработчик события клика по кнопке
+    exitButton.addEventListener('click', function() {
+        clearLocalStorage();
+        // Обновляем страницу
+        location.reload();
+    })
+
+
         }
     }
 }
@@ -1593,3 +1595,13 @@ setInterval(showPopup, 2000);
 
 // Запускаем систему уведомлений
 setInterval(handleNotifications, 2000); // Вызываем каждые 2 секунды
+
+
+
+
+    
+
+    
+
+    
+    

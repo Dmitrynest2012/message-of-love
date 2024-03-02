@@ -303,6 +303,22 @@ function updateImageButtonState() {
 // Получаем ссылку на элемент кнопки изображения
 const imageButton = document.getElementById('imageButton');
 
+// Функция для делания кнопки неактивной
+function disableButton() {
+    const button = document.getElementById('imageButton');
+    if (button) {
+        button.disabled = true;
+    }
+}
+
+// Функция для делания кнопки активной
+function enableButton() {
+    const button = document.getElementById('imageButton');
+    if (button) {
+        button.disabled = false;
+    }
+}
+
 // Добавляем обработчик события наведения мыши на кнопку изображения
 imageButton.addEventListener('mouseenter', function() {
     // Задаем цвет фона кнопке
@@ -352,9 +368,14 @@ var imageContainerElement = document.getElementById("imageContainer");
 
 // Создаем кнопку
 const openTableButton = document.createElement('button');
+// Присваиваем кнопке уникальный идентификатор (ID)
+openTableButton.id = 'openTableButton';
 // Добавляем класс для другой кнопки
 openTableButton.classList.add('special-button');
 openTableButton.innerHTML = '&#128270;'; // Юникод значок камеры
+
+
+
 
 
 let tableCreated = false; // Флаг для отслеживания создания таблицы
@@ -1156,6 +1177,7 @@ openTableButton.addEventListener('click', function() {
             jsonFileRandomMusic = 'main-music.json';
         } else {
             jsonFileRandomMusic = 'free-music.json';
+
         }
 
         
@@ -1224,6 +1246,20 @@ openTableButton.addEventListener('click', function() {
 
         newText = `До следующего Посыла: ${hoursLeft} ч. ${minutesLeft} мин. ${secondsLeft} сек.`;
 
+        if (hoursLeft >= 0 && minutesLeft > 5) {
+            const buttonT = document.getElementById('imageButton');
+            if (buttonT) {
+                buttonT.disabled = true;
+            }
+        }   
+        if (hoursLeft = 0 && minutesLeft <= 5) {
+            const buttonT = document.getElementById('imageButton');
+            if (buttonT) {
+                buttonT.disabled = false;
+            }
+        }    
+
+
         
     } else {
         // Вычисляем время до ближайшего посыл в текущем дне
@@ -1234,6 +1270,21 @@ openTableButton.addEventListener('click', function() {
         secondsLeft = Math.floor((timeDiff % (1000 * 60)) / 1000);
 
         newText = `До следующего Посыла: ${hoursLeft} ч. ${minutesLeft} мин. ${secondsLeft} сек.`;
+
+
+       
+if (hoursLeft >= 0 && minutesLeft > 5) {
+    const buttonT = document.getElementById('imageButton');
+    if (buttonT) {
+        buttonT.disabled = true;
+    }
+}
+if (hoursLeft = 0 && minutesLeft <= 5) {
+    const buttonT = document.getElementById('imageButton');
+    if (buttonT) {
+        buttonT.disabled = false;
+    }
+}
     } 
         if (lineElement) {
             lineElement.remove();

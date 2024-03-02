@@ -552,6 +552,16 @@ body::before {
     background-color: rgba(128, 0, 128, 0.5); /* Цвет заднего фона при включенной кнопке */
 }
 
+/* Стиль для кнопки, когда она в состоянии disabled */
+.image-button:disabled {
+    background-color: rgba(48, 48, 48, 0.1); /* Фоновый цвет кнопки при disabled */
+    color: rgba(255, 255, 255, 0.3); /* Цвет иконки при disabled */
+    border: 1px solid rgba(173, 173, 173, 0.185); /* Бордер при disabled */
+    cursor: not-allowed; /* Курсор в режиме not-allowed при disabled */
+    pointer-events: none; /* Отключаем события мыши при disabled */
+    opacity: 0.9; /* Прозрачность при disabled */
+}
+
 /* Медиа-запрос для портретного режима */
 @media (orientation: portrait) {
     #imageButton {

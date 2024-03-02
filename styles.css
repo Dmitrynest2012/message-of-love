@@ -40,7 +40,7 @@ body::before {
     padding: 20px;
     margin-top: 20px;
     margin-left: 20px;
-    font-family: Arial, sans-serif;
+    font-family: 'Play', sans-serif;
     background-color: rgba(53, 0, 168, 0.25);
     color: gold; /* Золотой цвет текста */
     border: 1px solid rgba(255, 255, 255, 0.2);

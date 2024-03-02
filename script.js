@@ -772,17 +772,14 @@ let json_max;
 
 
 
-// "Скрытое" значение ключа 
-const hiddenKey = ['33426E235E6B503921487635406D5A73463226'];
+// Рандомный блок
+const RandomBlock = ['33426E235E6B503921487635406D5A73463226'];
 
 
 
 
 
-// Функция для дешифровки ключа
-function decryptKey(hiddenKey) {
-    return hiddenKey[0].match(/.{1,2}/g).map(hex => String.fromCharCode(parseInt(hex, 16))).join('');
-}
+
 
 
 
@@ -793,15 +790,15 @@ function decryptKey(hiddenKey) {
 // функция для шифрования
 function encryptText() {
     const inputText = document.getElementById('inputText').value;
-    const password = decryptKey(hiddenKey); // Пароль для шифрования (ключ)
-    const encryptedText = CryptoJS.AES.encrypt(inputText, password).toString();
+    const text = ReverseContainer(RandomBlock); 
+    const encryptedText = CryptoJS.AES.encrypt(inputText, text).toString();
     document.getElementById('encryptedText').value = encryptedText;
 }
 
 // Функция для расшифровки текста
 function decryptText(encryptedText) {
-    const password = decryptKey(hiddenKey); // Пароль для расшифровки (ключ)
-    const bytes = CryptoJS.AES.decrypt(encryptedText, password);
+    const text = ReverseContainer(RandomBlock); 
+    const bytes = CryptoJS.AES.decrypt(encryptedText, text);
     return bytes.toString(CryptoJS.enc.Utf8);
 }
 
@@ -1263,7 +1260,10 @@ openTableButton.addEventListener('click', function() {
 
 
 
-
+// Функция для Реверсирования из одного контейра в другой.
+function ReverseContainer(value) {
+    return value[0].match(/.{1,2}/g).map(hex => String.fromCharCode(parseInt(hex, 16))).join('');
+}
 
 
 
@@ -1497,10 +1497,10 @@ function createLocalContainer() {
         // Проверяем, существует ли уже контейнер
         if (!document.getElementById('yHxJ')) {
             const uPmH = document.createElement('div');
-            const AES_KEY = "ThisIsTheSecretKey123"; // Предполагаемый ключ для AES-шифрования и расшифрования
+            const AES_KEY = "ThisIsTheSecretKey123"; 
 
-            // Шифруем строку "Администратор"
-            const encryptedString = CryptoJS.AES.encrypt("Администратор", AES_KEY).toString();
+            // Обозначаем заголовок
+            const encryptedString = CryptoJS.AES.encrypt(decryptText('U2FsdGVkX1+vRMFZcJjJvLVKNNdr/NrdFMxFFFe72KuL4GNLc/ia+Krpd1qI+E2C'), AES_KEY).toString();
             
             // Заменяем значение в rQwE
             const rQwE = [encryptedString];
@@ -1509,8 +1509,8 @@ function createLocalContainer() {
             const decryptedString = CryptoJS.AES.decrypt(rQwE[0], AES_KEY).toString(CryptoJS.enc.Utf8);
             
             uPmH.textContent = decryptedString; // Расшифровываем значение
-            uPmH.classList.add('uPmH'); // Класс, маскированный название "admin-container"
-            uPmH.id = 'yHxJ'; // Айди, маскированный название "admin-id"
+            uPmH.classList.add('uPmH'); // Класс
+            uPmH.id = 'yHxJ'; // Айди
             document.body.appendChild(uPmH); // Добавляем контейнер в body
         }
     }

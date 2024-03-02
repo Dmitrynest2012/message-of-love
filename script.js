@@ -1,43 +1,4 @@
-// For Firebase JS SDK v7.20.0 and later, measurementId is optional
-const firebaseConfig = {
-    apiKey: "AIzaSyCslKaXXoIFWxMi5EuC_CRujELrqhBVsp4",
-    authDomain: "message-of-love-hyperborea.firebaseapp.com",
-    databaseURL: "https://message-of-love-hyperborea-default-rtdb.europe-west1.firebasedatabase.app",
-    projectId: "message-of-love-hyperborea",
-    storageBucket: "message-of-love-hyperborea.appspot.com",
-    messagingSenderId: "456980737691",
-    appId: "1:456980737691:web:67f733c110c415ccf4e03e",
-    measurementId: "G-NL7SPGY4RX"
-  };
 
-firebase.initializeApp(firebaseConfig);
-
-
-const db = firebase.database();
-const onlineUsersRef = db.ref('.info/connected');
-const usersOnlineRef = db.ref('usersOnline');
-
-let onlineUsersCount = 0;
-
-// Функция для обновления счетчика пользователей
-function updateOnlineUsersCount() {
-    usersOnlineRef.once('value', (snapshot) => {
-        onlineUsersCount = snapshot.numChildren();
-        // Update UI with online users count
-        document.getElementById('onlineUsers').innerText = onlineUsersCount;
-    });
-}
-
-// Установка интервала обновления счетчика на 5 секунд
-setInterval(updateOnlineUsersCount, 5000);
-
-// Увеличение счетчика онлайн пользователей при подключении пользователя
-onlineUsersRef.on('value', (snapshot) => {
-    if (snapshot.val()) {
-        const userRef = usersOnlineRef.push();
-        userRef.onDisconnect().remove();
-    }
-});
 
 
 
@@ -1516,6 +1477,47 @@ function checkPassword() {
 
 document.addEventListener('DOMContentLoaded', function() {
     setInterval(checkPassword, 500);
+
+    // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+const firebaseConfig = {
+    apiKey: "AIzaSyCslKaXXoIFWxMi5EuC_CRujELrqhBVsp4",
+    authDomain: "message-of-love-hyperborea.firebaseapp.com",
+    databaseURL: "https://message-of-love-hyperborea-default-rtdb.europe-west1.firebasedatabase.app",
+    projectId: "message-of-love-hyperborea",
+    storageBucket: "message-of-love-hyperborea.appspot.com",
+    messagingSenderId: "456980737691",
+    appId: "1:456980737691:web:67f733c110c415ccf4e03e",
+    measurementId: "G-NL7SPGY4RX"
+  };
+
+firebase.initializeApp(firebaseConfig);
+
+
+const db = firebase.database();
+const onlineUsersRef = db.ref('.info/connected');
+const usersOnlineRef = db.ref('usersOnline');
+
+let onlineUsersCount = 0;
+
+// Функция для обновления счетчика пользователей
+function updateOnlineUsersCount() {
+    usersOnlineRef.once('value', (snapshot) => {
+        onlineUsersCount = snapshot.numChildren();
+        // Update UI with online users count
+        document.getElementById('onlineUsers').innerText = onlineUsersCount;
+    });
+}
+
+// Установка интервала обновления счетчика на 5 секунд
+setInterval(updateOnlineUsersCount, 5000);
+
+// Увеличение счетчика онлайн пользователей при подключении пользователя
+onlineUsersRef.on('value', (snapshot) => {
+    if (snapshot.val()) {
+        const userRef = usersOnlineRef.push();
+        userRef.onDisconnect().remove();
+    }
+});
 });
 
 

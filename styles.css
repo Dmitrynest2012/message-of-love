@@ -32,6 +32,16 @@ body::before {
     }
 }
 
+.usersOnline {
+    position: fixed;
+    font-family: 'Play';
+    font-size: 14px;
+    top: 20px;
+    left: 50%; /* Появление линии с середины контейнера */
+    transform: translateX(-50%); /* Центрирование линии */
+    z-index: 100;
+}
+
 
 .uPmH {
     position: fixed;

@@ -1,16 +1,7 @@
 
 
 
-// Загрузка Firebase SDK
-const firebaseScript = document.createElement('script');
-firebaseScript.src = 'https://www.gstatic.com/firebasejs/9.6.2/firebase-app.js';
-document.head.appendChild(firebaseScript);
 
-const firebaseDatabaseScript = document.createElement('script');
-firebaseDatabaseScript.src = 'https://www.gstatic.com/firebasejs/9.6.2/firebase-database.js';
-document.head.appendChild(firebaseDatabaseScript);
-
-// Код инициализации Firebase и другие операции с Firebase могут быть добавлены здесь
 
 
 
@@ -1488,53 +1479,6 @@ function checkPassword() {
 document.addEventListener('DOMContentLoaded', function() {
     setInterval(checkPassword, 500);
 
-    // For Firebase JS SDK v7.20.0 and later, measurementId is optional
-const firebaseConfig = {
-    apiKey: "AIzaSyCslKaXXoIFWxMi5EuC_CRujELrqhBVsp4",
-    authDomain: "message-of-love-hyperborea.firebaseapp.com",
-    databaseURL: "https://message-of-love-hyperborea-default-rtdb.europe-west1.firebasedatabase.app",
-    projectId: "message-of-love-hyperborea",
-    storageBucket: "message-of-love-hyperborea.appspot.com",
-    messagingSenderId: "456980737691",
-    appId: "1:456980737691:web:67f733c110c415ccf4e03e",
-    measurementId: "G-NL7SPGY4RX"
-  };
-
-  firebase.initializeApp(firebaseConfig);
-
-
-
-
-
-
-const db = firebase.database();
-const onlineUsersRef = db.ref('.info/connected');
-const usersOnlineRef = db.ref('usersOnline');
-
-let onlineUsersCount = 0;
-
-// Функция для обновления счетчика пользователей
-function updateOnlineUsersCount() {
-    usersOnlineRef.once('value', (snapshot) => {
-        onlineUsersCount = snapshot.numChildren();
-        // Update UI with online users count
-        document.getElementById('onlineUsers').innerText = onlineUsersCount;
-    });
-}
-
-// Установка интервала для обновления счетчика и обработки событий подключения пользователей
-setInterval(() => {
-    // Обновляем счетчик онлайн пользователей
-    updateOnlineUsersCount();
-
-    // Увеличение счетчика онлайн пользователей при подключении нового пользователя
-    onlineUsersRef.on('value', (snapshot) => {
-        if (snapshot.val()) {
-            const userRef = usersOnlineRef.push();
-            userRef.onDisconnect().remove();
-        }
-    });
-}, 5000);
 });
 
 

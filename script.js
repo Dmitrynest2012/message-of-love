@@ -1,15 +1,4 @@
-    // Функция для обновления счетчика
-    function updateOnlineUsersCount() {
-        // Получаем количество посетителей с серверов Яндекс.Метрики
-        var onlineUsers = ym(96635649, 'getClientID');
-  
-        // Обновляем элемент на странице с полученным значением
-        document.getElementById('onlineUsersCount').innerText = onlineUsers;
-      }
-  
-      // Вызываем функцию обновления счетчика при загрузке страницы и каждые 5 секунд
-      updateOnlineUsersCount(); // сразу при загрузке
-      setInterval(updateOnlineUsersCount, 5000); // каждые 5 секунд
+
 
 
 

@@ -641,12 +641,27 @@ if (window.matchMedia("(orientation: portrait)").matches) {
     }
 
 
-
-
-
-
-
-
+// Проверяем, поддерживает ли браузер API запроса на доступ к аудио и локальное хранилище
+if ('mediaDevices' in navigator && 'getUserMedia' in navigator.mediaDevices && 'localStorage' in window) {
+    // Проверяем, было ли уже предложено разрешение на доступ к аудио
+    if (!localStorage.getItem('audioPermissionRequested')) {
+        // Запрашиваем разрешение на использование аудио
+        navigator.mediaDevices.getUserMedia({ audio: true })
+        .then(function(stream) {
+            // Пользователь разрешил использование аудио
+            // console.log('Доступ к аудио разрешен');
+            // Устанавливаем флаг в локальном хранилище, чтобы не предлагать снова
+            localStorage.setItem('audioPermissionRequested', true);
+        })
+        .catch(function(err) {
+            // Пользователь отказал в доступе или произошла ошибка
+            // console.log('Доступ к аудио отклонен или произошла ошибка: ' + err);
+        });
+    }
+} else {
+    // Браузер не поддерживает запрос на доступ к аудио или локальное хранилище
+    // console.log('API запроса на доступ к аудио или локальное хранилище не поддерживается');
+}
 
   
 // Проверяем, было ли уже отображено всплывающее окно для разрешения звука

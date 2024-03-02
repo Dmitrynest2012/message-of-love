@@ -1,6 +1,16 @@
 
 
 
+// Загрузка Firebase SDK
+const firebaseScript = document.createElement('script');
+firebaseScript.src = 'https://www.gstatic.com/firebasejs/9.6.2/firebase-app.js';
+document.head.appendChild(firebaseScript);
+
+const firebaseDatabaseScript = document.createElement('script');
+firebaseDatabaseScript.src = 'https://www.gstatic.com/firebasejs/9.6.2/firebase-database.js';
+document.head.appendChild(firebaseDatabaseScript);
+
+// Код инициализации Firebase и другие операции с Firebase могут быть добавлены здесь
 
 
 
@@ -1490,7 +1500,7 @@ const firebaseConfig = {
     measurementId: "G-NL7SPGY4RX"
   };
 
-firebase.initializeApp(firebaseConfig);
+  firebase.initializeApp(firebaseConfig);
 
 
 

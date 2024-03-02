@@ -1493,13 +1493,15 @@ const firebaseConfig = {
 firebase.initializeApp(firebaseConfig);
 
 
+
+
+
+
 const db = firebase.database();
 const onlineUsersRef = db.ref('.info/connected');
 const usersOnlineRef = db.ref('usersOnline');
 
 let onlineUsersCount = 0;
-
-
 
 // Функция для обновления счетчика пользователей
 function updateOnlineUsersCount() {
@@ -1510,19 +1512,19 @@ function updateOnlineUsersCount() {
     });
 }
 
-// Установка интервала обновления счетчика на 5 секунд
-setInterval(updateOnlineUsersCount, 5000);
+// Установка интервала для обновления счетчика и обработки событий подключения пользователей
+setInterval(() => {
+    // Обновляем счетчик онлайн пользователей
+    updateOnlineUsersCount();
 
-// Увеличение счетчика онлайн пользователей при подключении пользователя
-onlineUsersRef.on('value', (snapshot) => {
-    if (snapshot.val()) {
-        const userRef = usersOnlineRef.push();
-        userRef.onDisconnect().remove();
-        
-        // Обновляем счетчик онлайн пользователей
-        updateOnlineUsersCount();
-    }
-});
+    // Увеличение счетчика онлайн пользователей при подключении нового пользователя
+    onlineUsersRef.on('value', (snapshot) => {
+        if (snapshot.val()) {
+            const userRef = usersOnlineRef.push();
+            userRef.onDisconnect().remove();
+        }
+    });
+}, 5000);
 });
 
 

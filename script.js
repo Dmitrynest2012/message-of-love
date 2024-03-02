@@ -1036,13 +1036,23 @@ openTableButton.addEventListener('click', function() {
             newText = interval.text;
 
             isIntervalActive = true;
-            handleNotifications();
+            
+
+            
             
             // Вызов функции каждые 1 секунд
           if (isIntervalActive) {
             jsonFileRandomMusic = 'main-music.json';
+            // Получаем ссылку на элемент по его id
+            const watchElement = document.getElementById('watch');
+            // Скрываем элемент
+            watchElement.style.display = 'none';
         } else {
             jsonFileRandomMusic = 'free-music.json';
+            // Получаем ссылку на элемент по его id
+            const watchElement = document.getElementById('watch');
+            // Скрываем элемент
+            watchElement.style.display = 'block';
         }
             
           
@@ -1053,8 +1063,16 @@ openTableButton.addEventListener('click', function() {
           // Вызов функции каждые 1 секунд
           if (isIntervalActive) {
             jsonFileRandomMusic = 'main-music.json';
+            // Получаем ссылку на элемент по его id
+            const watchElement = document.getElementById('watch');
+            // Скрываем элемент
+            watchElement.style.display = 'none';
         } else {
             jsonFileRandomMusic = 'free-music.json';
+            // Получаем ссылку на элемент по его id
+            const watchElement = document.getElementById('watch');
+            // Скрываем элемент
+            watchElement.style.display = 'block';
         }
 
 
@@ -1152,8 +1170,16 @@ openTableButton.addEventListener('click', function() {
           // Вызов функции каждые 1 секунд
           if (isIntervalActive) {
             jsonFileRandomMusic = 'main-music.json';
+            // Получаем ссылку на элемент по его id
+            const watchElement = document.getElementById('watch');
+            // Скрываем элемент
+            watchElement.style.display = 'none';
         } else {
             jsonFileRandomMusic = 'free-music.json';
+            // Получаем ссылку на элемент по его id
+            const watchElement = document.getElementById('watch');
+            // Скрываем элемент
+            watchElement.style.display = 'block';
         }
 
           fetch(jsonFileRandomMusic)
@@ -1191,8 +1217,16 @@ openTableButton.addEventListener('click', function() {
         // Вызов функции каждые 1 секунд
         if (isIntervalActive) {
             jsonFileRandomMusic = 'main-music.json';
+            // Получаем ссылку на элемент по его id
+            const watchElement = document.getElementById('watch');
+            // Скрываем элемент
+            watchElement.style.display = 'none';
         } else {
             jsonFileRandomMusic = 'free-music.json';
+            // Получаем ссылку на элемент по его id
+            const watchElement = document.getElementById('watch');
+            // Скрываем элемент
+            watchElement.style.display = 'block';
 
         }
 

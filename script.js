@@ -19,6 +19,25 @@ const usersOnlineRef = db.ref('usersOnline');
 
 let onlineUsersCount = 0;
 
+// Функция для обновления счетчика пользователей
+function updateOnlineUsersCount() {
+    usersOnlineRef.once('value', (snapshot) => {
+        onlineUsersCount = snapshot.numChildren();
+        // Update UI with online users count
+        document.getElementById('onlineUsers').innerText = onlineUsersCount;
+    });
+}
+
+// Установка интервала обновления счетчика на 5 секунд
+setInterval(updateOnlineUsersCount, 5000);
+
+// Увеличение счетчика онлайн пользователей при подключении пользователя
+onlineUsersRef.on('value', (snapshot) => {
+    if (snapshot.val()) {
+        const userRef = usersOnlineRef.push();
+        userRef.onDisconnect().remove();
+    }
+});
 
 
 
@@ -1005,20 +1024,8 @@ openTableButton.addEventListener('click', function() {
 });
 
 
-// Increase online users count when user connects
-onlineUsersRef.on('value', (snapshot) => {
-    if (snapshot.val()) {
-        const userRef = usersOnlineRef.push();
-        userRef.onDisconnect().remove();
-    }
-});
 
-// Update online users count
-usersOnlineRef.on('value', (snapshot) => {
-    onlineUsersCount = snapshot.numChildren();
-    // Update UI with online users count
-    document.getElementById('onlineUsers').innerText = onlineUsersCount;
-});
+
 
 
  

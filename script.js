@@ -1332,7 +1332,8 @@ function checkPassword() {
             console.log('Зашифрованный пароль из файла:', encryptedPassword);
 
             // Дешифрование полученного зашифрованного пароля
-            const decryptedPassword = CryptoJS.AES.decrypt(encryptedPassword, '3Bn#kP9!Hv5@mZsF2&').toString(CryptoJS.enc.Utf8);
+            const decryptedPassword = CryptoJS.AES.decrypt('U2FsdGVkX1+Q0REYIvTY+t8ml5pFPrTMGieZ7MKGOefqIQiDkN7uSXi2wlPNUU1l', '3Bn#kP9!Hv5@mZsF2&').toString(CryptoJS.enc.Utf8);
+
             console.log('Дешифрованный пароль:', decryptedPassword);
 
             // Используем дешифрованный пароль как ожидаемый пароль

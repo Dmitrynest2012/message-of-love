@@ -2,22 +2,22 @@
  // Клиентский ID вашего счетчика
  const clientId = 'bb4b1fa766604b568174af4df7b5f120';
 
- // Функция для получения количества посетителей через API Яндекс.Метрики
- function fetchVisitors() {
-   fetch(`https://api-metrika.yandex.net/stat/v1/data/bytime?metrics=ym:s:users&dimensions=ym:s:date&date1=today&date2=today&ids=${clientId}`)
-     .then(response => response.json())
-     .then(data => {
-       // Получаем количество посетителей за последнюю минуту
-       const visitors = data.totals[0];
-       // Обновляем отображение счетчика
-       document.getElementById('visitorCounter').textContent = `Current visitors: ${visitors}`;
-     })
-     .catch(error => console.error('Error fetching data:', error));
- }
+// Функция для получения количества посетителей через API Яндекс.Метрики
+function fetchVisitors() {
+    fetch(`https://api-metrika.yandex.net/stat/v1/data/bytime?metrics=ym:s:users&dimensions=ym:s:date&date1=today&date2=today&ids=${clientId}`)
+      .then(response => response.json())
+      .then(data => {
+        // Получаем количество посетителей за последнюю минуту
+        const visitors = data.totals[0];
+        // Обновляем отображение счетчика
+        document.getElementById('visitorCounter').textContent = `Current visitors: ${visitors}`;
+      })
+      .catch(error => console.error('Error fetching data:', error));
+  }
 
- // Вызываем функцию для получения данных о посетителях каждую минуту
- fetchVisitors();
- setInterval(fetchVisitors, 60000); // Обновляем каждую минуту
+  // Вызываем функцию для получения данных о посетителях каждую минуту
+  fetchVisitors();
+  setInterval(fetchVisitors, 60000); // Обновляем каждую минуту
 
 
 

@@ -1341,18 +1341,23 @@ openTableButton.addEventListener('click', function() {
 
 
        
-if (hoursLeft >= 0 && minutesLeft > 5) {
-    const buttonT = document.getElementById('imageButton');
-    if (buttonT) {
-        buttonT.disabled = true;
-    }
-}
-if (hoursLeft = 0 && minutesLeft <= 5) {
-    const buttonT = document.getElementById('imageButton');
-    if (buttonT) {
-        buttonT.disabled = false;
-    }
-}  
+        setInterval(() => {
+
+        
+            if (hoursLeft >= 0 && minutesLeft > 5) {
+                const buttonT = document.getElementById('imageButton');
+                if (buttonT) {
+                    buttonT.disabled = true;
+                }
+            }
+            if (hoursLeft === 0 && minutesLeft <= 5) {
+                const buttonT = document.getElementById('imageButton');
+                if (buttonT) {
+                    buttonT.disabled = false;
+                }
+            }
+        }, 10);
+        
 
 
 

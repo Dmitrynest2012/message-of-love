@@ -89,6 +89,7 @@ body::before {
     border: 1px solid rgba(255, 255, 255, 0.2);
     border-radius: 15px; /* Радиус скругления углов */
     overflow-y: auto; /* Включаем вертикальную прокрутку при необходимости */
+    overflow-x: hidden;
     font-family: 'Play';
     font-weight: bold;
     text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5); /* Горизонтальное смещение, вертикальное смещение, размытие, цвет */
@@ -102,7 +103,7 @@ body::before {
       position: fixed;
       top: 0%; /* Расположить подложку под элементом .quatrain */
       left: 0%;
-      width: 100%;
+      width: calc(100% + 12px);
       height: 270%; /* Высота подложки может быть на ваш выбор */
       background: rgba(255, 255, 255, 0.1); /* Прозрачный фон */
       border-radius: 15px;
@@ -576,7 +577,7 @@ body::before {
         top: 50.75vh;
         left: 0;
         transform: translateX(-5%);
-        width: 95vw;
+        width: calc(100% - 12px);
         max-width: none;
         text-align: center;
         padding: 20px;
@@ -610,7 +611,7 @@ body::before {
 
 @media only screen and (max-width: 800px) and (orientation: portrait) {
     .container::-webkit-scrollbar {
-        width: 2.5vw; /* Ширина полосы прокрутки */
+        width: 17px; /* Ширина полосы прокрутки */
         border: 1px solid rgba(174, 0, 255, 0);
         border-top-right-radius: 0px;
         border-bottom-right-radius: 0px;
@@ -926,7 +927,7 @@ body::before {
     top: 0%; /* Положение сверху */
     left: 50%; /* Положение слева */
     transform: translate(-50%, -0%); /* Позиционирование по центру */
-    width: 95%; /* Ширина */
+    width: calc(100% - 12px); /* Ширина */
     height: 100%; /* Высота */
     padding: 10px; /* Отступы */
     z-index: 100; /* Индекс слоя */

@@ -38,12 +38,21 @@ body::before {
     padding: 2px 10px 2px 10px;
     font-family: 'Play';
     font-size: 12px;
-    color: rgb(148, 118, 255);
+    color: rgb(194, 177, 255);
     background-color: rgba(53, 0, 168, 0.25);
     border: 1px solid rgba(255, 255, 255, 0.2);
     border-radius: 15px;
-
+    cursor: pointer; /* Изменяем курсор при наведении */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    transition: all 0.5s;
     z-index: 100; 
+}
+
+.buttonBuild:hover {
+    color: rgb(216, 206, 255);
+    background-color: rgba(72, 0, 228, 0.795);
+    border: 1px solid rgba(234, 148, 255, 0.514);
+
 }
 
 .buttonBuild:after {

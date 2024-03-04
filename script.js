@@ -1750,7 +1750,7 @@ function insertDescription(container, description) {
             return `<p>${line.trim()}</p>`;
         } else {
             // Остальные строки с тегом <br>
-            return `<p> -${line.trim()}</p>`;
+            return `<p> - ${line.trim()}</p>`;
         }
     }).join('');
 

@@ -1333,7 +1333,7 @@ openTableButton.addEventListener('click', function() {
                 buttonT.disabled = false;
             }
         }
-    }, 1000);   
+    }, 100);   
 
     
 
@@ -1366,7 +1366,7 @@ openTableButton.addEventListener('click', function() {
                     buttonT.disabled = false;
                 }
             }
-        }, 1000);
+        }, 100);
         
 
 

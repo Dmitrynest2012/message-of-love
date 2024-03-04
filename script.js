@@ -621,6 +621,8 @@ document.addEventListener("DOMContentLoaded", function () {
     const now = new Date();
     const dayOfMonth = now.getDate();
 
+    dateElement.style.backgroundColor = '#00000000';
+
     // Устанавливаем тени для элемента даты
     dateElement.style.textShadow = `
     2px 2px 4px rgba(48, 48, 48, 0.6), /* Тень вправо-вниз */

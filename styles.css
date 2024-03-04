@@ -119,6 +119,14 @@ body::before {
     }
 }
 
+@media only screen and (max-width: 600px) and (orientation: portrait) {
+    .history-container:after {
+
+    height: 300%; /* Высота подложки может быть на ваш выбор */
+        
+    }
+}
+
 
 
     .history-container::-webkit-scrollbar {

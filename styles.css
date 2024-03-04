@@ -49,9 +49,9 @@ body::before {
 }
 
 .buttonBuild:hover {
-    color: rgb(216, 206, 255);
-    background-color: rgba(72, 0, 228, 0.795);
-    border: 1px solid rgba(234, 148, 255, 0.514);
+    color: rgb(235, 230, 255);
+    background-color: rgba(81, 0, 255, 0.856);
+    border: 1px solid rgba(223, 93, 255, 0.514);
 
 }
 
@@ -76,6 +76,116 @@ body::before {
         
     }
 }
+
+.history-container {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 10px;
+    width: 400px; /* Ширина контейнера */
+    height: 500px; /* Высота контейнера */
+    background-color: rgba(42, 0, 134, 0.5);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 15px; /* Радиус скругления углов */
+    overflow-y: auto; /* Включаем вертикальную прокрутку при необходимости */
+    font-family: 'Play';
+    font-weight: bold;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5); /* Горизонтальное смещение, вертикальное смещение, размытие, цвет */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3); /* Тень */
+    transition: all 0.5s;
+    z-index: 300;
+}
+
+.history-container:after {
+    content: ''; /* Обязательно для псевдоэлементов */
+      position: absolute;
+      top: 0%; /* Расположить подложку под элементом .quatrain */
+      left: 0;
+      width: 100%;
+      height: 120%; /* Высота подложки может быть на ваш выбор */
+      background: rgba(255, 255, 255, 0.1); /* Прозрачный фон */
+      border-radius: 15px;
+      backdrop-filter: blur(9px); /* Размытие подложки */
+      z-index: -1; /* Поместить подложку под элемент .quatrain */
+}
+
+@media only screen and (max-width: 600px) and (orientation: portrait) {
+    .history-container {
+
+    width: 80%; /* Ширина контейнера */
+    height: 70%; /* Высота контейнера */
+        
+    }
+}
+
+
+
+    .history-container::-webkit-scrollbar {
+        width: 12px; /* Ширина полосы прокрутки */
+        border: 1px solid rgba(174, 0, 255, 0);
+        border-top-right-radius: 15px;
+        border-bottom-right-radius: 15px;
+        z-index: 299; /* Индекс слоя */
+    }
+
+
+
+    .history-container::-webkit-scrollbar-track {
+
+        
+        background: rgba(39, 0, 29, 0.068); /* Цвет фона трека */
+        border-top-right-radius: 15px; /* Закругление нижнего правого угла */
+        border-bottom-right-radius: 15px; /* Закругление нижнего правого угла */
+        background-clip: padding-box; /* Область отображения фона */
+        backdrop-filter: blur(9px); /* Размытие подложки */
+        
+    }
+
+
+
+    .history-container::-webkit-scrollbar-thumb {
+
+        background: rgba(21, 0, 70, 0.904); /* Цвет полосы прокрутки */
+        border-radius: 15px 70px 70px 15px; /* Радиус скругления углов полосы */
+        
+    }
+
+
+
+    
+    
+    
+    
+    
+
+
+
+
+
+
+
+
+/* Стили для содержимого истории изменений */
+.history-content {
+    font-weight: bold;
+}
+
+/* Стили для даты */
+.date {
+    font-weight: bold;
+    color: #d5a8ff; /* Светло-фиолетовый цвет */
+    text-decoration: underline; /* Подчеркивание */
+}
+
+
+/* Стили для описания изменения */
+.change {
+    color: white; /* Белый цвет */
+    font-weight:300;
+}
+
+
 
 .usersOnline {
     position: fixed;

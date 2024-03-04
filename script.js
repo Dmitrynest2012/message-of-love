@@ -162,23 +162,7 @@ function handleNotifications() {
             });
         }
 
-        // Проверяем, остается ли 5 минут или менее до события
-        if (hoursLeft === 0 && minutesLeft * 60 + secondsLeft <= 5 * 60 && !newText) {
-            // Если уведомление еще не было показано, показываем его
-            if (!notificationShown) {
-                // Проверяем текущий статус разрешения на уведомления
-                if (Notification.permission === "granted") {
-                    // Определяем текст уведомления в зависимости от оставшегося времени
-                    var notificationText = (secondsLeft <= 0) ? "Внимание! Осталось менее 5 минут до подготовки к Посылу." : "Готовность. Осталось 5 минут до подготовки к Посылу.";
-                    
-                    // Отправляем уведомление
-                    var notification = new Notification(notificationText);
-
-                    // Устанавливаем флаг, что уведомление было показано
-                    notificationShown = true;
-                }
-            }
-        }
+        
     }
 }
 
@@ -619,7 +603,8 @@ window.addEventListener('unload', () => {
 
 document.addEventListener("DOMContentLoaded", function () {
   
-    requestWakeLock();
+    requestWakeLock(); // Запрещаем авто-отключение экрана пока открыт сайт.
+    handleNotifications(); // Первый запрос на разрешение Уведомлений на сайте.
     
     createLocalContainer();
     updateJsonFile();
@@ -1071,16 +1056,7 @@ openTableButton.addEventListener('click', function() {
 
             isIntervalActive = true;
             
-            setInterval(() => {
-    
-                if (hoursLeft == 0 && minutesLeft <= 5) {
-                    if (buttonT) {
-                        buttonT.disabled = false;
-                    }
-                } else if(hoursLeft >= 0 && minutesLeft >= 6) {
-                    buttonT.disabled = true;
-                }
-            }, 100);
+            
             
             
             // Вызов функции каждые 1 секунд
@@ -1117,13 +1093,14 @@ openTableButton.addEventListener('click', function() {
           isIntervalActive = true;
 
           setInterval(() => {
-    
-            if (hoursLeft == 0 && minutesLeft <= 5) {
+            if (hoursLeft === 0 && minutesLeft <= 5) {
                 if (buttonT) {
                     buttonT.disabled = false;
                 }
-            } else if(hoursLeft >= 0 && minutesLeft >= 6) {
-                buttonT.disabled = true;
+            } else {
+                if (buttonT) {
+                    buttonT.disabled = true;
+                }
             }
         }, 100);
 
@@ -1252,13 +1229,14 @@ openTableButton.addEventListener('click', function() {
             isIntervalActive = false;
 
             setInterval(() => {
-    
-                if (hoursLeft == 0 && minutesLeft <= 5) {
+                if (hoursLeft === 0 && minutesLeft <= 5) {
                     if (buttonT) {
                         buttonT.disabled = false;
                     }
-                } else if(hoursLeft >= 0 && minutesLeft >= 6) {
-                    buttonT.disabled = true;
+                } else {
+                    if (buttonT) {
+                        buttonT.disabled = true;
+                    }
                 }
             }, 100);
   
@@ -1318,16 +1296,7 @@ openTableButton.addEventListener('click', function() {
 
         isIntervalActive = false;
         
-        setInterval(() => {
-    
-            if (hoursLeft == 0 && minutesLeft <= 5) {
-                if (buttonT) {
-                    buttonT.disabled = false;
-                }
-            } else if(hoursLeft >= 0 && minutesLeft >= 6) {
-                buttonT.disabled = true;
-            }
-        }, 100);
+        
 
 
         
@@ -1426,8 +1395,37 @@ openTableButton.addEventListener('click', function() {
         newText = `До следующего Посыла: ${hoursLeft} ч. ${minutesLeft} мин. ${secondsLeft} сек.`;
 
 
+        setInterval(() => {
+            if (hoursLeft === 0 && minutesLeft <= 5) {
+                if (buttonT) {
+                    buttonT.disabled = false;
+                }
+            } else {
+                if (buttonT) {
+                    buttonT.disabled = true;
+                }
+            }
+        }, 100);
         
+
         
+         // Проверяем, остается ли 5 минут или менее до события
+if (hoursLeft === 0 && minutesLeft * 60 + secondsLeft <= 5 * 60) {
+    // Если уведомление еще не было показано, показываем его
+    if (!notificationShown) {
+        // Проверяем текущий статус разрешения на уведомления
+        if (Notification.permission === "granted") {
+            // Определяем текст уведомления в зависимости от оставшегося времени
+            var notificationText = (secondsLeft <= 0) ? "Внимание! Осталось менее 5 минут до подготовки к Посылу." : "Готовность. Осталось 5 минут до подготовки к Посылу.";
+            
+            // Отправляем уведомление
+            var notification = new Notification(notificationText);
+
+            // Устанавливаем флаг, что уведомление было показано
+            notificationShown = true;
+        }
+    }
+}       
      
 
     
@@ -1444,9 +1442,36 @@ openTableButton.addEventListener('click', function() {
 
         newText = `До следующего Посыла: ${hoursLeft} ч. ${minutesLeft} мин. ${secondsLeft} сек.`;
 
+        setInterval(() => {
+            if (hoursLeft === 0 && minutesLeft <= 5) {
+                if (buttonT) {
+                    buttonT.disabled = false;
+                }
+            } else {
+                if (buttonT) {
+                    buttonT.disabled = true;
+                }
+            }
+        }, 100);
 
        
-        
+        // Проверяем, остается ли 5 минут или менее до события
+if (hoursLeft === 0 && minutesLeft * 60 + secondsLeft <= 5 * 60) {
+    // Если уведомление еще не было показано, показываем его
+    if (!notificationShown) {
+        // Проверяем текущий статус разрешения на уведомления
+        if (Notification.permission === "granted") {
+            // Определяем текст уведомления в зависимости от оставшегося времени
+            var notificationText = (secondsLeft <= 0) ? "Внимание! Осталось менее 5 минут до подготовки к Посылу." : "Готовность. Осталось 5 минут до подготовки к Посылу.";
+            
+            // Отправляем уведомление
+            var notification = new Notification(notificationText);
+
+            // Устанавливаем флаг, что уведомление было показано
+            notificationShown = true;
+        }
+    }
+}
 
         
             
@@ -1760,8 +1785,7 @@ setInterval(showPopup, 2000);
 
 
 
-// Запускаем систему уведомлений
-setInterval(handleNotifications, 2000); // Вызываем каждые 2 секунды
+
 
 
 

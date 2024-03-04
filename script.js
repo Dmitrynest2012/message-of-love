@@ -1065,17 +1065,26 @@ openTableButton.addEventListener('click', function() {
             // Получаем ссылку на элемент по его id
             const watchElement = document.getElementById('watch');
             const titleVisitorsElement = document.getElementById('titleVisitors');
+            const buttonBuild = document.getElementById('buttonBuild');
             // Скрываем элемент
             watchElement.style.display = 'none';
             titleVisitorsElement.style.display = 'none';
+            if(xBcF){
+                buttonBuild.display = 'block';
+                } else {
+                    buttonBuild.display = 'none';
+                }
         } else {
             jsonFileRandomMusic = 'free-music.json';
             // Получаем ссылку на элемент по его id
             const watchElement = document.getElementById('watch');
             const titleVisitorsElement = document.getElementById('titleVisitors');
+            const buttonBuild = document.getElementById('buttonBuild');
             // Скрываем элемент
             watchElement.style.display = 'block';
             titleVisitorsElement.style.display = 'block';
+            buttonBuild.display = 'block';
+
         }
             
           
@@ -1089,17 +1098,26 @@ openTableButton.addEventListener('click', function() {
             // Получаем ссылку на элемент по его id
             const watchElement = document.getElementById('watch');
             const titleVisitorsElement = document.getElementById('titleVisitors');
+            const buttonBuild = document.getElementById('buttonBuild');
             // Скрываем элемент
             watchElement.style.display = 'none';
             titleVisitorsElement.style.display = 'none';
+            if(xBcF){
+                buttonBuild.display = 'block';
+                } else {
+                    buttonBuild.display = 'none';
+                }
         } else {
             jsonFileRandomMusic = 'free-music.json';
             // Получаем ссылку на элемент по его id
             const watchElement = document.getElementById('watch');
             const titleVisitorsElement = document.getElementById('titleVisitors');
+            const buttonBuild = document.getElementById('buttonBuild');
             // Скрываем элемент
             watchElement.style.display = 'block';
             titleVisitorsElement.style.display = 'block';
+            buttonBuild.display = 'block';
+
         }
 
 
@@ -1204,17 +1222,26 @@ openTableButton.addEventListener('click', function() {
               // Получаем ссылку на элемент по его id
               const watchElement = document.getElementById('watch');
               const titleVisitorsElement = document.getElementById('titleVisitors');
+              const buttonBuild = document.getElementById('buttonBuild');
               // Скрываем элемент
               watchElement.style.display = 'none';
               titleVisitorsElement.style.display = 'none';
+              if(xBcF){
+                buttonBuild.display = 'block';
+                } else {
+                    buttonBuild.display = 'none';
+                }
           } else {
               jsonFileRandomMusic = 'free-music.json';
               // Получаем ссылку на элемент по его id
               const watchElement = document.getElementById('watch');
               const titleVisitorsElement = document.getElementById('titleVisitors');
+              const buttonBuild = document.getElementById('buttonBuild');
               // Скрываем элемент
               watchElement.style.display = 'block';
               titleVisitorsElement.style.display = 'block';
+              buttonBuild.display = 'block';
+
           }
   
             fetch(jsonFileRandomMusic)
@@ -1255,17 +1282,26 @@ openTableButton.addEventListener('click', function() {
             // Получаем ссылку на элемент по его id
             const watchElement = document.getElementById('watch');
             const titleVisitorsElement = document.getElementById('titleVisitors');
+            const buttonBuild = document.getElementById('buttonBuild');
             // Скрываем элемент
             watchElement.style.display = 'none';
             titleVisitorsElement.style.display = 'none';
+            if(xBcF){
+                buttonBuild.display = 'block';
+                } else {
+                    buttonBuild.display = 'none';
+                }
         } else {
             jsonFileRandomMusic = 'free-music.json';
             // Получаем ссылку на элемент по его id
             const watchElement = document.getElementById('watch');
             const titleVisitorsElement = document.getElementById('titleVisitors');
+            const buttonBuild = document.getElementById('buttonBuild');
             // Скрываем элемент
             watchElement.style.display = 'block';
             titleVisitorsElement.style.display = 'block';
+            buttonBuild.display = 'block';
+
         }
 
         

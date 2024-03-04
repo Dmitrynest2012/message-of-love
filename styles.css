@@ -109,6 +109,7 @@ body::before {
       border-radius: 15px;
       backdrop-filter: blur(9px); /* Размытие подложки */
       z-index: -1; /* Поместить подложку под элемент .quatrain */
+      transition: all 0.5s;
 }
 
 @media only screen and (max-width: 600px) and (orientation: portrait) {
@@ -123,7 +124,7 @@ body::before {
 @media only screen and (max-width: 600px) and (orientation: portrait) {
     .history-container:after {
 
-    height: 270%; /* Высота подложки может быть на ваш выбор */
+    height: 310%; /* Высота подложки может быть на ваш выбор */
         
     }
 }

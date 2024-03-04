@@ -1028,6 +1028,21 @@ openTableButton.addEventListener('click', function() {
     }
 
     
+    setInterval(() => {
+    if (hoursLeft >= 0 && minutesLeft > 5) {
+        const buttonT = document.getElementById('imageButton');
+        if (buttonT) {
+            buttonT.disabled = true;
+        }
+    }
+    if (hoursLeft === 0 && minutesLeft <= 5) {
+        const buttonT = document.getElementById('imageButton');
+        if (buttonT) {
+            buttonT.disabled = false;
+        }
+    }
+}, 100);
+
 
     let newText = "";
     
@@ -1320,20 +1335,9 @@ openTableButton.addEventListener('click', function() {
         newText = `До следующего Посыла: ${hoursLeft} ч. ${minutesLeft} мин. ${secondsLeft} сек.`;
 
 
-        setInterval(() => {
-        if (hoursLeft >= 0 && minutesLeft > 5) {
-            const buttonT = document.getElementById('imageButton');
-            if (buttonT) {
-                buttonT.disabled = true;
-            }
-        }
-        if (hoursLeft === 0 && minutesLeft <= 5) {
-            const buttonT = document.getElementById('imageButton');
-            if (buttonT) {
-                buttonT.disabled = false;
-            }
-        }
-    }, 100);   
+        
+        
+     
 
     
 
@@ -1351,22 +1355,10 @@ openTableButton.addEventListener('click', function() {
 
 
        
-        setInterval(() => {
+        
 
         
-            if (hoursLeft >= 0 && minutesLeft > 5) {
-                const buttonT = document.getElementById('imageButton');
-                if (buttonT) {
-                    buttonT.disabled = true;
-                }
-            }
-            if (hoursLeft === 0 && minutesLeft <= 5) {
-                const buttonT = document.getElementById('imageButton');
-                if (buttonT) {
-                    buttonT.disabled = false;
-                }
-            }
-        }, 100);
+            
         
 
 

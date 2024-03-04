@@ -640,6 +640,7 @@ document.addEventListener("DOMContentLoaded", function () {
         dateElement.style.color = "gold";
     } else {
         prefix += "Ежедневные Посылы. ";
+        dateElement.style.color = "white";
     }
 
     dateElement.style.left = '0px';

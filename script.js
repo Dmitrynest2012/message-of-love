@@ -21,7 +21,7 @@ function fetchVisitors() {
 
 
 
-
+  
 
 
 
@@ -595,6 +595,9 @@ function setRandomImage() {
 
 document.addEventListener("DOMContentLoaded", function () {
   
+
+    const buttonT = document.getElementById('imageButton');
+    buttonT.disabled = true;
     createLocalContainer();
     updateJsonFile();
 
@@ -1314,18 +1317,21 @@ openTableButton.addEventListener('click', function() {
 
         newText = `До следующего Посыла: ${hoursLeft} ч. ${minutesLeft} мин. ${secondsLeft} сек.`;
 
+
+        setInterval(() => {
         if (hoursLeft >= 0 && minutesLeft > 5) {
             const buttonT = document.getElementById('imageButton');
             if (buttonT) {
                 buttonT.disabled = true;
             }
-        }   
-        if (hoursLeft = 0 && minutesLeft <= 5) {
+        }
+        if (hoursLeft === 0 && minutesLeft <= 5) {
             const buttonT = document.getElementById('imageButton');
             if (buttonT) {
                 buttonT.disabled = false;
             }
-        }    
+        }
+    }, 1000);   
 
 
         
@@ -1356,7 +1362,7 @@ openTableButton.addEventListener('click', function() {
                     buttonT.disabled = false;
                 }
             }
-        }, 10);
+        }, 1000);
         
 
 

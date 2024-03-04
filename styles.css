@@ -104,7 +104,7 @@ body::before {
       top: 0%; /* Расположить подложку под элементом .quatrain */
       left: 0%;
       width: calc(100% + 12px);
-      height: 270%; /* Высота подложки может быть на ваш выбор */
+      height: 500%; /* Высота подложки может быть на ваш выбор */
       background: rgba(255, 255, 255, 0.1); /* Прозрачный фон */
       border-radius: 15px;
       backdrop-filter: blur(9px); /* Размытие подложки */
@@ -124,7 +124,7 @@ body::before {
 @media only screen and (max-width: 600px) and (orientation: portrait) {
     .history-container:after {
 
-    height: 310%; /* Высота подложки может быть на ваш выбор */
+    height: 590%; /* Высота подложки может быть на ваш выбор */
         
     }
 }
@@ -575,7 +575,7 @@ body::before {
 @media only screen and (max-width: 600px) and (orientation: portrait) {
     .container {
         position: fixed;
-        top: 50.75vh;
+        top: 50.7vh;
         left: 0;
         transform: translateX(-5%);
         width: calc(100% - 12px);

@@ -954,6 +954,7 @@ updateText(); // После успешной загрузки вызываем �
 let json = null; // Начальное значение
 
 let isSoundAndVibrationPlayed = false; // Добавляем переменную для отслеживания проигрывания звука и вибрации
+const buttonT = document.getElementById('imageButton');
 
 function updateText() {
     const now = new Date();
@@ -1031,18 +1032,7 @@ openTableButton.addEventListener('click', function() {
     }
 
     
-    setInterval(() => {
     
-    if (hoursLeft == 0 && minutesLeft <= 5) {
-        const buttonT = document.getElementById('imageButton');
-        if (buttonT) {
-            buttonT.disabled = false;
-        }
-    } else {
-        const buttonT = document.getElementById('imageButton');
-        buttonT.disabled = true;
-    }
-}, 100);
 
 
     let newText = "";
@@ -1057,7 +1047,16 @@ openTableButton.addEventListener('click', function() {
 
             isIntervalActive = true;
             
-
+            setInterval(() => {
+    
+                if (hoursLeft == 0 && minutesLeft <= 5) {
+                    if (buttonT) {
+                        buttonT.disabled = false;
+                    }
+                } else if(hoursLeft >= 0 && minutesLeft >= 6) {
+                    buttonT.disabled = true;
+                }
+            }, 100);
             
             
             // Вызов функции каждые 1 секунд
@@ -1070,9 +1069,9 @@ openTableButton.addEventListener('click', function() {
             // Скрываем элемент
             watchElement.style.display = 'none';
             titleVisitorsElement.style.display = 'none';
-            if(xBcF){
+            if(xBcF == 1){
                 buttonBuild.display = 'block';
-                } else {
+                } else if (xBcF == 0 || xBcF == false) {
                     buttonBuild.display = 'none';
                 }
         } else {
@@ -1093,6 +1092,17 @@ openTableButton.addEventListener('click', function() {
           imageElement.src = 'https://github.com/Dmitrynest2012/message-of-love/raw/main/message-base-1.png';
           isIntervalActive = true;
 
+          setInterval(() => {
+    
+            if (hoursLeft == 0 && minutesLeft <= 5) {
+                if (buttonT) {
+                    buttonT.disabled = false;
+                }
+            } else if(hoursLeft >= 0 && minutesLeft >= 6) {
+                buttonT.disabled = true;
+            }
+        }, 100);
+
           // Вызов функции каждые 1 секунд
           if (isIntervalActive) {
             jsonFileRandomMusic = 'main-music.json';
@@ -1103,9 +1113,9 @@ openTableButton.addEventListener('click', function() {
             // Скрываем элемент
             watchElement.style.display = 'none';
             titleVisitorsElement.style.display = 'none';
-            if(xBcF){
+            if(xBcF == 1){
                 buttonBuild.display = 'block';
-                } else {
+                } else if (xBcF == 0 || xBcF == false) {
                     buttonBuild.display = 'none';
                 }
         } else {
@@ -1216,6 +1226,17 @@ openTableButton.addEventListener('click', function() {
 
             setRandomImage();
             isIntervalActive = false;
+
+            setInterval(() => {
+    
+                if (hoursLeft == 0 && minutesLeft <= 5) {
+                    if (buttonT) {
+                        buttonT.disabled = false;
+                    }
+                } else if(hoursLeft >= 0 && minutesLeft >= 6) {
+                    buttonT.disabled = true;
+                }
+            }, 100);
   
             // Вызов функции каждые 1 секунд
             if (isIntervalActive) {
@@ -1227,9 +1248,9 @@ openTableButton.addEventListener('click', function() {
               // Скрываем элемент
               watchElement.style.display = 'none';
               titleVisitorsElement.style.display = 'none';
-              if(xBcF){
+              if(xBcF == 1){
                 buttonBuild.display = 'block';
-                } else {
+                } else if (xBcF == 0 || xBcF == false) {
                     buttonBuild.display = 'none';
                 }
           } else {
@@ -1273,7 +1294,16 @@ openTableButton.addEventListener('click', function() {
 
         isIntervalActive = false;
         
-
+        setInterval(() => {
+    
+            if (hoursLeft == 0 && minutesLeft <= 5) {
+                if (buttonT) {
+                    buttonT.disabled = false;
+                }
+            } else if(hoursLeft >= 0 && minutesLeft >= 6) {
+                buttonT.disabled = true;
+            }
+        }, 100);
 
 
         
@@ -1287,9 +1317,9 @@ openTableButton.addEventListener('click', function() {
             // Скрываем элемент
             watchElement.style.display = 'none';
             titleVisitorsElement.style.display = 'none';
-            if(xBcF){
+            if(xBcF == 1){
                 buttonBuild.display = 'block';
-                } else {
+                } else if (xBcF == 0 || xBcF == false) {
                     buttonBuild.display = 'none';
                 }
         } else {

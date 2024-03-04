@@ -265,7 +265,7 @@ body::before {
     .titleVisitors {
         position: fixed;
         top: auto;
-        right: 25px;
+        right: 30px;
         bottom: 9.5px;
         opacity: 0.4;
         

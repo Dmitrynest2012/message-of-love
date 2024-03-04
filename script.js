@@ -586,7 +586,31 @@ function setRandomImage() {
 
 
 
+let wakeLock = null;
 
+const requestWakeLock = async () => {
+  try {
+    wakeLock = await navigator.wakeLock.request('screen');
+    // console.log('Wake Lock активирован');
+  } catch (err) {
+    // console.error(`${err.name}, ${err.message}`);
+  }
+};
+
+
+
+// Освобождение Wake Lock при закрытии страницы
+window.addEventListener('unload', () => {
+  if (wakeLock) {
+    wakeLock.release()
+      .then(() => {
+        // console.log('Wake Lock деактивирован');
+      })
+      .catch((err) => {
+        // console.error(`${err.name}, ${err.message}`);
+      });
+  }
+});
 
 
 
@@ -595,7 +619,7 @@ function setRandomImage() {
 
 document.addEventListener("DOMContentLoaded", function () {
   
-
+    requestWakeLock();
     
     createLocalContainer();
     updateJsonFile();
@@ -1484,32 +1508,7 @@ function playSoundAndVibration() {
 
 
 
-let wakeLock = null;
 
-const requestWakeLock = async () => {
-  try {
-    wakeLock = await navigator.wakeLock.request('screen');
-    // console.log('Wake Lock активирован');
-  } catch (err) {
-    // console.error(`${err.name}, ${err.message}`);
-  }
-};
-
-// Запрос Wake Lock при загрузке страницы
-document.addEventListener('DOMContentLoaded', requestWakeLock);
-
-// Освобождение Wake Lock при закрытии страницы
-window.addEventListener('unload', () => {
-  if (wakeLock) {
-    wakeLock.release()
-      .then(() => {
-        // console.log('Wake Lock деактивирован');
-      })
-      .catch((err) => {
-        // console.error(`${err.name}, ${err.message}`);
-      });
-  }
-});
 
 
 

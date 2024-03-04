@@ -596,8 +596,7 @@ function setRandomImage() {
 document.addEventListener("DOMContentLoaded", function () {
   
 
-    const buttonT = document.getElementById('imageButton');
-    buttonT.disabled = true;
+    
     createLocalContainer();
     updateJsonFile();
 
@@ -1175,56 +1174,59 @@ openTableButton.addEventListener('click', function() {
     }
 
     if (!newText) {
+
+
+        setInterval(() => {
+
+            if (imageElement.src == 'https://github.com/Dmitrynest2012/message-of-love/raw/main/message-base-1.png') {
+
+            setRandomImage();
+            isIntervalActive = false;
+  
+            // Вызов функции каждые 1 секунд
+            if (isIntervalActive) {
+              jsonFileRandomMusic = 'main-music.json';
+              // Получаем ссылку на элемент по его id
+              const watchElement = document.getElementById('watch');
+              const titleVisitorsElement = document.getElementById('titleVisitors');
+              // Скрываем элемент
+              watchElement.style.display = 'none';
+              titleVisitorsElement.style.display = 'none';
+          } else {
+              jsonFileRandomMusic = 'free-music.json';
+              // Получаем ссылку на элемент по его id
+              const watchElement = document.getElementById('watch');
+              const titleVisitorsElement = document.getElementById('titleVisitors');
+              // Скрываем элемент
+              watchElement.style.display = 'block';
+              titleVisitorsElement.style.display = 'block';
+          }
+  
+            fetch(jsonFileRandomMusic)
+          .then(response => response.json())
+          .then(data => {
+              // Получение случайного объекта из массива
+              const randomSong = data[Math.floor(Math.random() * data.length)];
+  
+              // Присваивание значений переменным
+              name_of_the_song = randomSong.название;
+              songwriter = randomSong.автор;
+              song_link = randomSong.ссылка;
+  
+              audioSource.src = song_link;
+              audioPlayer.load();
+  
+              // Подставляем значения переменных в текст элементов
+              songTitleElement.textContent = name_of_the_song;
+              artistNameElement.textContent = songwriter;
+  
+              // Здесь можно выполнить другие действия с полученными данными
+          });  
+          };
+
+        }, 1000);
       
-     if (imageElement.src == 'https://github.com/Dmitrynest2012/message-of-love/raw/main/message-base-1.png') {
-
-          setRandomImage();
-          isIntervalActive = false;
-
-          // Вызов функции каждые 1 секунд
-          if (isIntervalActive) {
-            jsonFileRandomMusic = 'main-music.json';
-            // Получаем ссылку на элемент по его id
-            const watchElement = document.getElementById('watch');
-            const titleVisitorsElement = document.getElementById('titleVisitors');
-            // Скрываем элемент
-            watchElement.style.display = 'none';
-            titleVisitorsElement.style.display = 'none';
-        } else {
-            jsonFileRandomMusic = 'free-music.json';
-            // Получаем ссылку на элемент по его id
-            const watchElement = document.getElementById('watch');
-            const titleVisitorsElement = document.getElementById('titleVisitors');
-            // Скрываем элемент
-            watchElement.style.display = 'block';
-            titleVisitorsElement.style.display = 'block';
-        }
-
-          fetch(jsonFileRandomMusic)
-        .then(response => response.json())
-        .then(data => {
-            // Получение случайного объекта из массива
-            const randomSong = data[Math.floor(Math.random() * data.length)];
-
-            // Присваивание значений переменным
-            name_of_the_song = randomSong.название;
-            songwriter = randomSong.автор;
-            song_link = randomSong.ссылка;
-
-            audioSource.src = song_link;
-            audioPlayer.load();
-
-            // Подставляем значения переменных в текст элементов
-            songTitleElement.textContent = name_of_the_song;
-            artistNameElement.textContent = songwriter;
-
-            // Здесь можно выполнить другие действия с полученными данными
-        });
-
-        
-
-          
-        };
+     
 
         isIntervalActive = false;
         
@@ -1332,6 +1334,8 @@ openTableButton.addEventListener('click', function() {
             }
         }
     }, 1000);   
+
+    
 
 
         

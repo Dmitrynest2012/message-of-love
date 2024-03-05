@@ -1065,6 +1065,13 @@ openTableButton.addEventListener('click', function() {
                     buttonT.disabled = true;
                 }
             }
+
+            const buttonBuild = document.getElementById('buttonBuild');
+            if(xBcF == 1){
+                buttonBuild.style.display = 'block';
+                } else if (xBcF == 0 || xBcF == false) {
+                    buttonBuild.style.display = 'none';
+                }
             
             
             // Вызов функции каждые 1 секунд
@@ -1078,11 +1085,7 @@ openTableButton.addEventListener('click', function() {
             watchElement.style.display = 'none';
             titleVisitorsElement.style.display = 'none';
             // Применение стилей из медиа-запроса
-            if(xBcF == 1){
-                buttonBuild.style.display = 'block';
-                } else if (xBcF == 0 || xBcF == false) {
-                    buttonBuild.style.display = 'none';
-                }
+
         } else {
             jsonFileRandomMusic = 'free-music.json';
             // Получаем ссылку на элемент по его id
@@ -1419,19 +1422,8 @@ openTableButton.addEventListener('click', function() {
             if (hoursLeft === 0 && minutesLeft <= 5) {
                 if (buttonT) {
                     buttonT.disabled = false;
-                }
-            } else {
-                if (buttonT) {
-                    buttonT.disabled = true;
-                }
-            }
-        
-        
 
-        
-         // Проверяем, остается ли 5 минут или менее до события
-if (hoursLeft === 0 && minutesLeft * 60 + secondsLeft <= 5 * 60) {
-    // Если уведомление еще не было показано, показываем его
+                    // Если уведомление еще не было показано, показываем его
     if (!notificationShown) {
         // Проверяем текущий статус разрешения на уведомления
         if (Notification.permission === "granted") {
@@ -1445,7 +1437,19 @@ if (hoursLeft === 0 && minutesLeft * 60 + secondsLeft <= 5 * 60) {
             notificationShown = true;
         }
     }
-}       
+                }
+            } else {
+                if (buttonT) {
+                    buttonT.disabled = true;
+                }
+            }
+        
+        
+
+        
+         
+    
+       
      
 
     
@@ -1466,18 +1470,8 @@ if (hoursLeft === 0 && minutesLeft * 60 + secondsLeft <= 5 * 60) {
             if (hoursLeft === 0 && minutesLeft <= 5) {
                 if (buttonT) {
                     buttonT.disabled = false;
-                }
-            } else {
-                if (buttonT) {
-                    buttonT.disabled = true;
-                }
-            }
-        
 
-       
-        // Проверяем, остается ли 5 минут или менее до события
-if (hoursLeft === 0 && minutesLeft * 60 + secondsLeft <= 5 * 60) {
-    // Если уведомление еще не было показано, показываем его
+                    // Если уведомление еще не было показано, показываем его
     if (!notificationShown) {
         // Проверяем текущий статус разрешения на уведомления
         if (Notification.permission === "granted") {
@@ -1491,7 +1485,18 @@ if (hoursLeft === 0 && minutesLeft * 60 + secondsLeft <= 5 * 60) {
             notificationShown = true;
         }
     }
-}
+                }
+            } else {
+                if (buttonT) {
+                    buttonT.disabled = true;
+                }
+            }
+        
+
+       
+        
+    
+
 
         
             

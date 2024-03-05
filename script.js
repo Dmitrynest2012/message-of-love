@@ -1040,7 +1040,7 @@ function checkAndShowNotification() {
     }
 }
 
-setInterval(checkAndShowNotification, 1000); // Вызываем функцию каждую секунду
+setInterval(checkAndShowNotification, 500); // Вызываем функцию каждую секунду
 
 
  

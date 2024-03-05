@@ -1021,9 +1021,23 @@ openTableButton.addEventListener('click', function() {
 });
 
 
+// Система браузерных уведомлений.
+if (hoursLeft === 0 && minutesLeft <= 5) {
+    // Если уведомление еще не было показано или осталось ровно 5 минут
+    if (!notificationShown || (hoursLeft === 0 && minutesLeft === 5)) {
+        // Проверяем текущий статус разрешения на уведомления
+        if (Notification.permission === "granted") {
+            // Определяем текст уведомления в зависимости от оставшегося времени
+            var notificationText = (minutesLeft < 5) ? "Внимание! Осталось менее 5 минут до подготовки к Посылу." : "Готовность. Осталось 5 минут до подготовки к Посылу.";
+            
+            // Отправляем уведомление
+            var notification = new Notification(notificationText);
 
-
-
+            // Устанавливаем флаг, что уведомление было показано
+            notificationShown = true;
+        }
+    }
+}
 
  
 

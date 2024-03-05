@@ -579,7 +579,7 @@ body::before {
 @media only screen and (max-width: 600px) and (orientation: portrait) {
     .container {
         position: fixed;
-        top: 50.25vh;
+        top: 49.75vh;
         left: 0;
         transform: translateX(-5%);
         width: calc(100% - 12px);

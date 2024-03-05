@@ -1425,34 +1425,7 @@ openTableButton.addEventListener('click', function() {
 
 
         
-            if (hoursLeft === 0 && minutesLeft <= 5) {
-                const buttonT = document.getElementById('imageButton');
-                if (buttonT) {
-                    buttonT.disabled = false; 
-                }
-            } else {
-                const buttonT = document.getElementById('imageButton');
-                if (buttonT) {
-                    buttonT.disabled = true;
-                }
-            }
-        
-        
-
-        // Если уведомление еще не было показано, показываем его
-    if (!notificationShown) {
-        // Проверяем текущий статус разрешения на уведомления
-        if (Notification.permission === "granted") {
-            // Определяем текст уведомления в зависимости от оставшегося времени
-            var notificationText = (secondsLeft <= 0) ? "Внимание! Осталось менее 5 минут до подготовки к Посылу." : "Готовность. Осталось 5 минут до подготовки к Посылу.";
             
-            // Отправляем уведомление
-            var notification = new Notification(notificationText);
-
-            // Устанавливаем флаг, что уведомление было показано
-            notificationShown = true;
-        }
-    }
          
     
        
@@ -1473,35 +1446,7 @@ openTableButton.addEventListener('click', function() {
         newText = `До следующего Посыла: ${hoursLeft} ч. ${minutesLeft} мин. ${secondsLeft} сек.`;
 
         
-            if (hoursLeft === 0 && minutesLeft <= 5) {
-                const buttonT = document.getElementById('imageButton');
-                if (buttonT) {
-                    buttonT.disabled = false;
-                }
-            } else {
-                const buttonT = document.getElementById('imageButton');
-                if (buttonT) {
-                    buttonT.disabled = true;
-                }
-            }
-        
-
-       
-        
-    // Если уведомление еще не было показано, показываем его
-    if (!notificationShown) {
-        // Проверяем текущий статус разрешения на уведомления
-        if (Notification.permission === "granted") {
-            // Определяем текст уведомления в зависимости от оставшегося времени
-            var notificationText = (secondsLeft <= 0) ? "Внимание! Осталось менее 5 минут до подготовки к Посылу." : "Готовность. Осталось 5 минут до подготовки к Посылу.";
             
-            // Отправляем уведомление
-            var notification = new Notification(notificationText);
-
-            // Устанавливаем флаг, что уведомление было показано
-            notificationShown = true;
-        }
-    }
 
 
         

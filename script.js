@@ -1310,7 +1310,7 @@ openTableButton.addEventListener('click', function() {
         isIntervalActive = false;
         
         
-
+      
 
         
         // Вызов функции каждые 1 секунд
@@ -1339,11 +1339,12 @@ openTableButton.addEventListener('click', function() {
             // Получаем ссылку на элемент по его id
             const watchElement = document.getElementById('watch');
             const titleVisitorsElement = document.getElementById('titleVisitors');
+            const buttonBuild = document.getElementById('buttonBuild');
             // Скрываем элемент
             watchElement.style.display = 'block';
             titleVisitorsElement.style.display = 'block';
             // Применение стилей из медиа-запроса
-    
+            buttonBuild.style.display = 'block';
 
         }
 

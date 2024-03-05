@@ -963,7 +963,7 @@ updateText(); // После успешной загрузки вызываем �
 let json = null; // Начальное значение
 
 let isSoundAndVibrationPlayed = false; // Добавляем переменную для отслеживания проигрывания звука и вибрации
-
+const buttonT = document.getElementById('imageButton');
 
 function updateText() {
     const now = new Date();
@@ -1071,10 +1071,10 @@ openTableButton.addEventListener('click', function() {
             // Применение стилей из медиа-запроса
     if (window.matchMedia("(max-width: 600px) and (orientation: portrait)").matches) {
         const buttonBuild = document.getElementById('buttonBuild');
-        buttonBuild.display = 'none';
+        buttonBuild.style.display = 'none';
     } else {
         const buttonBuild = document.getElementById('buttonBuild');
-        buttonBuild.display = 'block';
+        buttonBuild.style.display = 'block';
             
  
     }
@@ -1121,10 +1121,10 @@ openTableButton.addEventListener('click', function() {
             // Применение стилей из медиа-запроса
     if (window.matchMedia("(max-width: 600px) and (orientation: portrait)").matches) {
         const buttonBuild = document.getElementById('buttonBuild');
-        buttonBuild.display = 'none';
+        buttonBuild.style.display = 'none';
     } else {
         const buttonBuild = document.getElementById('buttonBuild');
-        buttonBuild.display = 'block';
+        buttonBuild.style.display = 'block';
             
  
     }
@@ -1240,7 +1240,7 @@ openTableButton.addEventListener('click', function() {
             setRandomImage();
             isIntervalActive = false;
 
-            setInterval(() => {
+            
                 if (hoursLeft === 0 && minutesLeft <= 5) {
                     if (buttonT) {
                         buttonT.disabled = false;
@@ -1250,7 +1250,7 @@ openTableButton.addEventListener('click', function() {
                         buttonT.disabled = true;
                     }
                 }
-            }, 100);
+            
   
             // Вызов функции каждые 1 секунд
             if (isIntervalActive) {
@@ -1263,9 +1263,9 @@ openTableButton.addEventListener('click', function() {
               watchElement.style.display = 'none';
               titleVisitorsElement.style.display = 'none';
               if(xBcF == 1){
-                buttonBuild.display = 'block';
+                buttonBuild.style.display = 'block';
                 } else if (xBcF == 0 || xBcF == false) {
-                    buttonBuild.display = 'none';
+                    buttonBuild.style.display = 'none';
                 }
           } else {
               jsonFileRandomMusic = 'free-music.json';
@@ -1318,22 +1318,18 @@ openTableButton.addEventListener('click', function() {
             // Получаем ссылку на элемент по его id
             const watchElement = document.getElementById('watch');
             const titleVisitorsElement = document.getElementById('titleVisitors');
+            const buttonBuild = document.getElementById('buttonBuild');
             
             // Скрываем элемент
             watchElement.style.display = 'none';
             titleVisitorsElement.style.display = 'none';
 
 
-            // Применение стилей из медиа-запроса
-    if (window.matchMedia("(max-width: 600px) and (orientation: portrait)").matches) {
-        const buttonBuild = document.getElementById('buttonBuild');
-        buttonBuild.display = 'none';
-    } else {
-        const buttonBuild = document.getElementById('buttonBuild');
-        buttonBuild.display = 'block';
-            
- 
-    }
+            if(xBcF == 1){
+                buttonBuild.style.display = 'block';
+                } else if (xBcF == 0 || xBcF == false) {
+                    buttonBuild.style.display = 'none';
+                }
 
 
             

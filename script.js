@@ -1056,7 +1056,15 @@ openTableButton.addEventListener('click', function() {
 
             isIntervalActive = true;
             
-            
+            if (isIntervalActive) {
+                if (buttonT) {
+                    buttonT.disabled = false;
+                }
+            } else {
+                if (buttonT) {
+                    buttonT.disabled = true;
+                }
+            }
             
             
             // Вызов функции каждые 1 секунд
@@ -1065,19 +1073,16 @@ openTableButton.addEventListener('click', function() {
             // Получаем ссылку на элемент по его id
             const watchElement = document.getElementById('watch');
             const titleVisitorsElement = document.getElementById('titleVisitors');
+            const buttonBuild = document.getElementById('buttonBuild');
             // Скрываем элемент
             watchElement.style.display = 'none';
             titleVisitorsElement.style.display = 'none';
             // Применение стилей из медиа-запроса
-    if (window.matchMedia("(max-width: 600px) and (orientation: portrait)").matches) {
-        const buttonBuild = document.getElementById('buttonBuild');
-        buttonBuild.style.display = 'none';
-    } else {
-        const buttonBuild = document.getElementById('buttonBuild');
-        buttonBuild.style.display = 'block';
-            
- 
-    }
+            if(xBcF == 1){
+                buttonBuild.style.display = 'block';
+                } else if (xBcF == 0 || xBcF == false) {
+                    buttonBuild.style.display = 'none';
+                }
         } else {
             jsonFileRandomMusic = 'free-music.json';
             // Получаем ссылку на элемент по его id
@@ -1114,20 +1119,16 @@ openTableButton.addEventListener('click', function() {
             // Получаем ссылку на элемент по его id
             const watchElement = document.getElementById('watch');
             const titleVisitorsElement = document.getElementById('titleVisitors');
+            const buttonBuild = document.getElementById('buttonBuild');
             // Скрываем элемент
             watchElement.style.display = 'none';
             titleVisitorsElement.style.display = 'none';
             
-            // Применение стилей из медиа-запроса
-    if (window.matchMedia("(max-width: 600px) and (orientation: portrait)").matches) {
-        const buttonBuild = document.getElementById('buttonBuild');
-        buttonBuild.style.display = 'none';
-    } else {
-        const buttonBuild = document.getElementById('buttonBuild');
-        buttonBuild.style.display = 'block';
-            
- 
-    }
+            if(xBcF == 1){
+                buttonBuild.style.display = 'block';
+                } else if (xBcF == 0 || xBcF == false) {
+                    buttonBuild.style.display = 'none';
+                }
 
 
 

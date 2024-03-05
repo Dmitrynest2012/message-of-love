@@ -1221,7 +1221,7 @@ openTableButton.addEventListener('click', function() {
     if (!newText) {
 
 
-        setInterval(() => {
+       
 
             if (imageElement.src == 'https://github.com/Dmitrynest2012/message-of-love/raw/main/message-base-1.png') {
 
@@ -1290,7 +1290,7 @@ openTableButton.addEventListener('click', function() {
           });  
           };
 
-        }, 1000);
+        
       
      
 

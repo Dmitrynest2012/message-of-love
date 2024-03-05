@@ -1424,7 +1424,17 @@ openTableButton.addEventListener('click', function() {
         newText = `До следующего Посыла: ${hoursLeft} ч. ${minutesLeft} мин. ${secondsLeft} сек.`;
 
 
-        
+        if (hoursLeft === 0 && minutesLeft <= 5) {
+            const buttonT = document.getElementById('imageButton');
+            if (buttonT) {
+                buttonT.disabled = false;
+            }
+        } else {
+            const buttonT = document.getElementById('imageButton');
+            if (buttonT) {
+                buttonT.disabled = true;
+            }
+        }
             
          
     
@@ -1446,7 +1456,22 @@ openTableButton.addEventListener('click', function() {
         newText = `До следующего Посыла: ${hoursLeft} ч. ${minutesLeft} мин. ${secondsLeft} сек.`;
 
         
-            
+            if (hoursLeft === 0 && minutesLeft <= 5) {
+                const buttonT = document.getElementById('imageButton');
+                if (buttonT) {
+                    buttonT.disabled = false;
+                }
+            } else {
+                const buttonT = document.getElementById('imageButton');
+                if (buttonT) {
+                    buttonT.disabled = true;
+                }
+            }
+        
+
+       
+        
+    
 
 
         

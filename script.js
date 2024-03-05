@@ -963,7 +963,7 @@ updateText(); // После успешной загрузки вызываем �
 let json = null; // Начальное значение
 
 let isSoundAndVibrationPlayed = false; // Добавляем переменную для отслеживания проигрывания звука и вибрации
-const buttonT = document.getElementById('imageButton');
+
 
 function updateText() {
     const now = new Date();
@@ -1057,10 +1057,12 @@ openTableButton.addEventListener('click', function() {
             isIntervalActive = true;
             
             if (isIntervalActive) {
+                const buttonT = document.getElementById('imageButton');
                 if (buttonT) {
                     buttonT.disabled = false;
                 }
             } else {
+                const buttonT = document.getElementById('imageButton');
                 if (buttonT) {
                     buttonT.disabled = true;
                 }
@@ -1069,7 +1071,7 @@ openTableButton.addEventListener('click', function() {
             const buttonBuild = document.getElementById('buttonBuild');
             if(xBcF == 1 || xBcF == true){
                 buttonBuild.style.display = 'block';
-                } else if (xBcF == 0 || xBcF == false) {
+                } else if (xBcF == 0 || xBcF == false || xBcF == undefined) {
                     buttonBuild.style.display = 'none';
                 }
             
@@ -1106,10 +1108,12 @@ openTableButton.addEventListener('click', function() {
 
           
             if (hoursLeft === 0 && minutesLeft <= 5) {
+                const buttonT = document.getElementById('imageButton');
                 if (buttonT) {
                     buttonT.disabled = false;
                 }
             } else {
+                const buttonT = document.getElementById('imageButton');
                 if (buttonT) {
                     buttonT.disabled = true;
                 }
@@ -1129,7 +1133,7 @@ openTableButton.addEventListener('click', function() {
             
             if(xBcF == 1 || xBcF == true){
                 buttonBuild.style.display = 'block';
-                } else if (xBcF == 0 || xBcF == false) {
+                } else if (xBcF == 0 || xBcF == false || xBcF == undefined) {
                     buttonBuild.style.display = 'none';
                 }
 
@@ -1246,11 +1250,13 @@ openTableButton.addEventListener('click', function() {
 
             
                 if (hoursLeft === 0 && minutesLeft <= 5) {
+                    const buttonT = document.getElementById('imageButton');
                     if (buttonT) {
                         buttonT.disabled = false;
                     }
                 } else {
                     if (buttonT) {
+                    const buttonT = document.getElementById('imageButton');
                         buttonT.disabled = true;
                     }
                 }
@@ -1266,9 +1272,9 @@ openTableButton.addEventListener('click', function() {
               // Скрываем элемент
               watchElement.style.display = 'none';
               titleVisitorsElement.style.display = 'none';
-              if(xBcF == 1){
+              if(xBcF == 1 || xBcF == true){
                 buttonBuild.style.display = 'block';
-                } else if (xBcF == 0 || xBcF == false) {
+                } else if (xBcF == 0 || xBcF == false || xBcF == undefined) {
                     buttonBuild.style.display = 'none';
                 }
           } else {
@@ -1329,9 +1335,9 @@ openTableButton.addEventListener('click', function() {
             titleVisitorsElement.style.display = 'none';
 
 
-            if(xBcF == 1){
+            if(xBcF == 1 || xBcF == true){
                 buttonBuild.style.display = 'block';
-                } else if (xBcF == 0 || xBcF == false) {
+                } else if (xBcF == 0 || xBcF == false || xBcF == undefined) {
                     buttonBuild.style.display = 'none';
                 }
 
@@ -1420,10 +1426,20 @@ openTableButton.addEventListener('click', function() {
 
         
             if (hoursLeft === 0 && minutesLeft <= 5) {
+                const buttonT = document.getElementById('imageButton');
                 if (buttonT) {
-                    buttonT.disabled = false;
+                    buttonT.disabled = false; 
+                }
+            } else {
+                const buttonT = document.getElementById('imageButton');
+                if (buttonT) {
+                    buttonT.disabled = true;
+                }
+            }
+        
+        
 
-                    // Если уведомление еще не было показано, показываем его
+        // Если уведомление еще не было показано, показываем его
     if (!notificationShown) {
         // Проверяем текущий статус разрешения на уведомления
         if (Notification.permission === "granted") {
@@ -1437,16 +1453,6 @@ openTableButton.addEventListener('click', function() {
             notificationShown = true;
         }
     }
-                }
-            } else {
-                if (buttonT) {
-                    buttonT.disabled = true;
-                }
-            }
-        
-        
-
-        
          
     
        
@@ -1468,10 +1474,21 @@ openTableButton.addEventListener('click', function() {
 
         
             if (hoursLeft === 0 && minutesLeft <= 5) {
+                const buttonT = document.getElementById('imageButton');
                 if (buttonT) {
                     buttonT.disabled = false;
+                }
+            } else {
+                const buttonT = document.getElementById('imageButton');
+                if (buttonT) {
+                    buttonT.disabled = true;
+                }
+            }
+        
 
-                    // Если уведомление еще не было показано, показываем его
+       
+        
+    // Если уведомление еще не было показано, показываем его
     if (!notificationShown) {
         // Проверяем текущий статус разрешения на уведомления
         if (Notification.permission === "granted") {
@@ -1485,17 +1502,6 @@ openTableButton.addEventListener('click', function() {
             notificationShown = true;
         }
     }
-                }
-            } else {
-                if (buttonT) {
-                    buttonT.disabled = true;
-                }
-            }
-        
-
-       
-        
-    
 
 
         

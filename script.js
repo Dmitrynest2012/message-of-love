@@ -963,7 +963,7 @@ updateText(); // После успешной загрузки вызываем �
 let json = null; // Начальное значение
 
 let isSoundAndVibrationPlayed = false; // Добавляем переменную для отслеживания проигрывания звука и вибрации
-const buttonT = document.getElementById('imageButton');
+
 
 function updateText() {
     const now = new Date();
@@ -1065,15 +1065,19 @@ openTableButton.addEventListener('click', function() {
             // Получаем ссылку на элемент по его id
             const watchElement = document.getElementById('watch');
             const titleVisitorsElement = document.getElementById('titleVisitors');
-            const buttonBuild = document.getElementById('buttonBuild');
             // Скрываем элемент
             watchElement.style.display = 'none';
             titleVisitorsElement.style.display = 'none';
-            if(xBcF == 1){
-                buttonBuild.display = 'block';
-                } else if (xBcF == 0 || xBcF == false) {
-                    buttonBuild.display = 'none';
-                }
+            // Применение стилей из медиа-запроса
+    if (window.matchMedia("(max-width: 600px) and (orientation: portrait)").matches) {
+        const buttonBuild = document.getElementById('buttonBuild');
+        buttonBuild.display = 'none';
+    } else {
+        const buttonBuild = document.getElementById('buttonBuild');
+        buttonBuild.display = 'block';
+            
+ 
+    }
         } else {
             jsonFileRandomMusic = 'free-music.json';
             // Получаем ссылку на элемент по его id
@@ -1092,7 +1096,7 @@ openTableButton.addEventListener('click', function() {
           imageElement.src = 'https://github.com/Dmitrynest2012/message-of-love/raw/main/message-base-1.png';
           isIntervalActive = true;
 
-          setInterval(() => {
+          
             if (hoursLeft === 0 && minutesLeft <= 5) {
                 if (buttonT) {
                     buttonT.disabled = false;
@@ -1102,7 +1106,7 @@ openTableButton.addEventListener('click', function() {
                     buttonT.disabled = true;
                 }
             }
-        }, 100);
+        
 
           // Вызов функции каждые 1 секунд
           if (isIntervalActive) {
@@ -1110,15 +1114,23 @@ openTableButton.addEventListener('click', function() {
             // Получаем ссылку на элемент по его id
             const watchElement = document.getElementById('watch');
             const titleVisitorsElement = document.getElementById('titleVisitors');
-            const buttonBuild = document.getElementById('buttonBuild');
             // Скрываем элемент
             watchElement.style.display = 'none';
             titleVisitorsElement.style.display = 'none';
-            if(xBcF == 1){
-                buttonBuild.display = 'block';
-                } else if (xBcF == 0 || xBcF == false) {
-                    buttonBuild.display = 'none';
-                }
+            
+            // Применение стилей из медиа-запроса
+    if (window.matchMedia("(max-width: 600px) and (orientation: portrait)").matches) {
+        const buttonBuild = document.getElementById('buttonBuild');
+        buttonBuild.display = 'none';
+    } else {
+        const buttonBuild = document.getElementById('buttonBuild');
+        buttonBuild.display = 'block';
+            
+ 
+    }
+
+
+
         } else {
             jsonFileRandomMusic = 'free-music.json';
             // Получаем ссылку на элемент по его id
@@ -1306,25 +1318,35 @@ openTableButton.addEventListener('click', function() {
             // Получаем ссылку на элемент по его id
             const watchElement = document.getElementById('watch');
             const titleVisitorsElement = document.getElementById('titleVisitors');
-            const buttonBuild = document.getElementById('buttonBuild');
+            
             // Скрываем элемент
             watchElement.style.display = 'none';
             titleVisitorsElement.style.display = 'none';
-            if(xBcF == 1){
-                buttonBuild.display = 'block';
-                } else if (xBcF == 0 || xBcF == false) {
-                    buttonBuild.display = 'none';
-                }
+
+
+            // Применение стилей из медиа-запроса
+    if (window.matchMedia("(max-width: 600px) and (orientation: portrait)").matches) {
+        const buttonBuild = document.getElementById('buttonBuild');
+        buttonBuild.display = 'none';
+    } else {
+        const buttonBuild = document.getElementById('buttonBuild');
+        buttonBuild.display = 'block';
+            
+ 
+    }
+
+
+            
         } else {
             jsonFileRandomMusic = 'free-music.json';
             // Получаем ссылку на элемент по его id
             const watchElement = document.getElementById('watch');
             const titleVisitorsElement = document.getElementById('titleVisitors');
-            const buttonBuild = document.getElementById('buttonBuild');
             // Скрываем элемент
             watchElement.style.display = 'block';
             titleVisitorsElement.style.display = 'block';
-            buttonBuild.display = 'block';
+            // Применение стилей из медиа-запроса
+    
 
         }
 
@@ -1395,7 +1417,7 @@ openTableButton.addEventListener('click', function() {
         newText = `До следующего Посыла: ${hoursLeft} ч. ${minutesLeft} мин. ${secondsLeft} сек.`;
 
 
-        setInterval(() => {
+        
             if (hoursLeft === 0 && minutesLeft <= 5) {
                 if (buttonT) {
                     buttonT.disabled = false;
@@ -1405,7 +1427,7 @@ openTableButton.addEventListener('click', function() {
                     buttonT.disabled = true;
                 }
             }
-        }, 100);
+        
         
 
         
@@ -1442,7 +1464,7 @@ if (hoursLeft === 0 && minutesLeft * 60 + secondsLeft <= 5 * 60) {
 
         newText = `До следующего Посыла: ${hoursLeft} ч. ${minutesLeft} мин. ${secondsLeft} сек.`;
 
-        setInterval(() => {
+        
             if (hoursLeft === 0 && minutesLeft <= 5) {
                 if (buttonT) {
                     buttonT.disabled = false;
@@ -1452,7 +1474,7 @@ if (hoursLeft === 0 && minutesLeft * 60 + secondsLeft <= 5 * 60) {
                     buttonT.disabled = true;
                 }
             }
-        }, 100);
+        
 
        
         // Проверяем, остается ли 5 минут или менее до события

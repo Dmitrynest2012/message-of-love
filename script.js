@@ -1067,7 +1067,7 @@ openTableButton.addEventListener('click', function() {
             }
 
             const buttonBuild = document.getElementById('buttonBuild');
-            if(xBcF == 1){
+            if(xBcF == 1 || xBcF == true){
                 buttonBuild.style.display = 'block';
                 } else if (xBcF == 0 || xBcF == false) {
                     buttonBuild.style.display = 'none';
@@ -1127,7 +1127,7 @@ openTableButton.addEventListener('click', function() {
             watchElement.style.display = 'none';
             titleVisitorsElement.style.display = 'none';
             
-            if(xBcF == 1){
+            if(xBcF == 1 || xBcF == true){
                 buttonBuild.style.display = 'block';
                 } else if (xBcF == 0 || xBcF == false) {
                     buttonBuild.style.display = 'none';

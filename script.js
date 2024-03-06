@@ -1771,7 +1771,7 @@ function createLocalContainer() {
 
         // Создаем заголовок для контейнера
         const title = document.createElement('h1');
-        title.textContent = 'Контент'; // Устанавливаем текст заголовка
+        title.textContent = 'Управление'; // Устанавливаем текст заголовка
 
         // Добавляем заголовок в контейнер
         contentContainer.appendChild(title);
@@ -1803,6 +1803,36 @@ function createLocalContainer() {
 
         // Добавляем кнопку в контейнер "Контент"
         contentContainer.appendChild(directoryButton);
+
+
+
+
+
+// Создаем кнопку "Аналитика"
+const analyticsButton = document.createElement('button');
+analyticsButton.id = 'analyticsButton'; // Устанавливаем уникальный ID
+analyticsButton.classList.add('encryptText'); // Добавляем класс
+analyticsButton.textContent = 'Аналитика'; // Устанавливаем текст кнопки
+
+// Создаем ссылку
+const linkanalytics = document.createElement('a');
+linkanalytics.href = 'https://metrika.yandex.ru/dashboard?group=day&period=week&id=96635649'; // Устанавливаем адрес сайта
+linkanalytics.target = '_blank'; // Открываем ссылку в новой вкладке
+linkanalytics.textContent = analyticsButton.textContent; // Устанавливаем текст ссылки
+linkanalytics.classList.add('directoryLink'); // Добавляем класс ссылке
+
+// Убираем текст из кнопки
+analyticsButton.textContent = '';
+
+// Помещаем ссылку внутрь кнопки
+analyticsButton.appendChild(linkanalytics);
+
+// Добавляем кнопку в контейнер "Контент"
+contentContainer.appendChild(analyticsButton);
+
+
+
+
 
 
 

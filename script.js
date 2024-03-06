@@ -1542,7 +1542,7 @@ function ReverseContainer(value) {
 
 function playSoundAndVibration() {
     // Воспроизводим звук
-    const audio = new Audio('https://raw.githubusercontent.com/Dmitrynest2012/message-of-love/main/sound_of_a_bell.wav');
+    const audio = new Audio('https://raw.githubusercontent.com/Dmitrynest2012/message-of-love/main/sound/sound_of_a_bell.wav');
     audio.play();
 
     // Воспроизводим вибрацию

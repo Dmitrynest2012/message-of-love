@@ -1761,6 +1761,58 @@ function createLocalContainer() {
             uPmH.classList.add('uPmH'); // Класс
             uPmH.id = 'yHxJ'; // Айди
             document.body.appendChild(uPmH); // Добавляем контейнер в body
+
+
+
+            // Создаем контейнер "Контент"
+        const contentContainer = document.createElement('div');
+        contentContainer.id = 'contentContainer'; // Устанавливаем уникальный ID
+        contentContainer.classList.add('contentContainer'); // Добавляем класс
+
+        // Создаем заголовок для контейнера
+        const title = document.createElement('h1');
+        title.textContent = 'Контент'; // Устанавливаем текст заголовка
+
+        // Добавляем заголовок в контейнер
+        contentContainer.appendChild(title);
+
+        // Добавляем контейнер в body
+        document.body.appendChild(contentContainer);
+
+
+
+        // Создаем кнопку "Директория"
+        const directoryButton = document.createElement('button');
+        directoryButton.id = 'directoryButton'; // Устанавливаем уникальный ID
+        directoryButton.classList.add('encryptText'); // Добавляем класс
+        directoryButton.textContent = 'Директория'; // Устанавливаем текст кнопки
+
+        // Создаем ссылку
+        const link = document.createElement('a');
+        link.href = 'https://github.com/Dmitrynest2012/message-of-love'; // Устанавливаем адрес сайта
+        link.target = '_blank'; // Открываем ссылку в новой вкладке
+        link.textContent = directoryButton.textContent; // Устанавливаем текст ссылки
+        link.classList.add('directoryLink'); // Добавляем класс ссылке
+
+
+        // Убираем текст из кнопки
+        directoryButton.textContent = '';
+
+        // Помещаем ссылку внутрь кнопки
+        directoryButton.appendChild(link);
+
+        // Добавляем кнопку в контейнер "Контент"
+        contentContainer.appendChild(directoryButton);
+
+
+
+
+
+
+
+
+
+
             
 
           // Создаем кнопку

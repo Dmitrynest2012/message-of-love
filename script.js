@@ -1025,6 +1025,9 @@ function checkAndShowNotification() {
     if (hoursLeft === 0 && minutesLeft <= 5) {
         // Если уведомление еще не было показано или осталось ровно 5 минут
         if (!notificationShown || (hoursLeft === 0 && minutesLeft === 5)) {
+            // Устанавливаем флаг, что уведомление будет показано
+            notificationShown = true;
+
             // Проверяем текущий статус разрешения на уведомления
             if (Notification.permission === "granted") {
                 // Определяем текст уведомления в зависимости от оставшегося времени
@@ -1032,13 +1035,11 @@ function checkAndShowNotification() {
                 
                 // Отправляем уведомление
                 var notification = new Notification(notificationText);
-
-                // Устанавливаем флаг, что уведомление было показано
-                notificationShown = true;
             }
         }
     }
 }
+
 
 setInterval(checkAndShowNotification, 500); // Вызываем функцию каждую секунду
 

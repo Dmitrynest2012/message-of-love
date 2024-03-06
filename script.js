@@ -1028,7 +1028,7 @@ openTableButton.addEventListener('click', function() {
 function checkAndShowNotification() {
     if (!isIntervalActive && hoursLeft === 0 && minutesLeft <= 5) {
         // Если уведомление еще не было отображено или осталось ровно 5 минут
-        if (!notificationDisplayed || (!isIntervalActive && hoursLeft === 0 && minutesLeft === 5)) {
+        if (!notificationDisplayed) {
             // Устанавливаем флаг, что уведомление будет отображено
             notificationDisplayed = true;
 
@@ -1043,6 +1043,7 @@ function checkAndShowNotification() {
         }
     }
 }
+
 
 
 setInterval(checkAndShowNotification, 500); // Вызываем функцию каждую секунду

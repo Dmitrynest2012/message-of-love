@@ -783,17 +783,10 @@ async function updateTime() {
         const moscowTimestamp = moscowTime.getTime();
         const localTime = new Date();
 
-        // Проверяем, какое время используется: московское или локальное
-        let usedTime;
-        if (moscowTime && Math.abs(moscowTimestamp - localTime.getTime()) < 10000) {
+        // Если время через API получено и разница между ним и локальным временем не слишком большая, используем его
+        if (moscowTime && Math.abs(moscowTimestamp - localTime.getTime()) < 30000) {
             displayTime = moscowTime;
-            usedTime = 'Moscow Time';
-        } else {
-            displayTime = localTime;
-            usedTime = 'Local Time';
         }
-        
-        console.log(`Using ${usedTime}`);
 
         const timeElement = document.querySelector(".time");
         const hours = displayTime.getHours();

@@ -607,7 +607,6 @@ document.addEventListener("DOMContentLoaded", function () {
     requestWakeLock(); // Запрещаем авто-отключение экрана пока открыт сайт.
     handleNotifications(); // Первый запрос на разрешение Уведомлений на сайте.
     updateTime();
-
     createLocalContainer();
     updateJsonFile();
 

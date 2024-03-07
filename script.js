@@ -606,7 +606,6 @@ document.addEventListener("DOMContentLoaded", function () {
   
     requestWakeLock(); // Запрещаем авто-отключение экрана пока открыт сайт.
     handleNotifications(); // Первый запрос на разрешение Уведомлений на сайте.
-    
     createLocalContainer();
     updateJsonFile();
 
@@ -618,7 +617,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // Вызываем функцию загрузки данных и отображения после загрузки
     loadDataAndRender();
-    setInterval(updateTime, 1000);
+    
     setInterval(updateText, 1000);
   
     setRandomImage();
@@ -968,6 +967,7 @@ function updateText() {
     // console.log('json_min:', json_min);
     // console.log('json_max:', json_max);
 
+    updateTime();
     updateJsonFile();
     
 
@@ -1438,7 +1438,7 @@ setInterval(checkAndShowNotification, 1000); // Вызываем функцию 
         minutesLeft = Math.floor((timeDiff % (1000 * 60 * 60)) / (1000 * 60));
         secondsLeft = Math.floor((timeDiff % (1000 * 60)) / 1000);
 
-        newText = `До следующего Посыла: ${hoursLeft} ч. ${minutesLeft} мин.`;
+        newText = `До следующего Посыла: ${hoursLeft} ч. ${minutesLeft} мин. ${secondsLeft} сек.`;
 
 
         if (hoursLeft === 0 && minutesLeft <= 5) {
@@ -1470,7 +1470,7 @@ setInterval(checkAndShowNotification, 1000); // Вызываем функцию 
         minutesLeft = Math.floor((timeDiff % (1000 * 60 * 60)) / (1000 * 60));
         secondsLeft = Math.floor((timeDiff % (1000 * 60)) / 1000);
 
-        newText = `До следующего Посыла: ${hoursLeft} ч. ${minutesLeft} мин.`;
+        newText = `До следующего Посыла: ${hoursLeft} ч. ${minutesLeft} мин. ${secondsLeft} сек.`;
 
         
             if (hoursLeft === 0 && minutesLeft <= 5) {

@@ -618,7 +618,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // Вызываем функцию загрузки данных и отображения после загрузки
     loadDataAndRender();
-    updateTime();
+    setInterval(updateTime, 1000);
     setInterval(updateText, 1000);
   
     setRandomImage();
@@ -969,7 +969,7 @@ function updateText() {
     // console.log('json_max:', json_max);
 
     updateJsonFile();
-    setInterval(updateTime, 1000);
+    
 
 // Проверяем, находится ли аудиоплеер на паузе и включен ли он, и если да, то загружаем аудио и запускаем воспроизведение
 if (audioPlayer.paused && isAudioActive) {

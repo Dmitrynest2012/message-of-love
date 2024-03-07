@@ -1835,6 +1835,7 @@ contentContainer.appendChild(analyticsButton);
 // Создаем кнопку "Загрузить текст 5 минутного Посыла"
 const download5messageButton = document.createElement('button');
 download5messageButton.id = 'download5messageButton'; // Устанавливаем уникальный ID
+download5messageButton.classList.add('encryptText'); // Добавляем класс
 download5messageButton.textContent = 'Загрузить текст 5 минутного Посыла'; // Устанавливаем текст кнопки
 
 // Привязываем обработчик события клика по кнопке
@@ -1845,7 +1846,6 @@ download5messageButton.addEventListener('click', function() {
 // Добавляем кнопку "Загрузить текст 5 минутного Посыла" в контейнер "Контент"
 contentContainer.appendChild(download5messageButton);
 
-// Функция для загрузки файла по ссылке
 function downloadFile() {
     // Создаем ссылку на скачивание файла
     const fileURL = 'https://github.com/Dmitrynest2012/message-of-love/raw/main/json_min.xlsx';
@@ -1853,7 +1853,6 @@ function downloadFile() {
     // Создаем элемент <a> для скачивания файла
     const link = document.createElement('a');
     link.href = fileURL;
-    link.target = '_blank';
     link.download = 'json_min.xlsx'; // Устанавливаем имя файла для скачивания
 
     // Добавляем элемент <a> на страницу и эмулируем клик по нему
@@ -1861,6 +1860,7 @@ function downloadFile() {
     link.click();
     document.body.removeChild(link);
 }
+
 
 
 

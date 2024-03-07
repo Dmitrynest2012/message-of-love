@@ -974,7 +974,7 @@ function updateText() {
     // console.log('json_max:', json_max);
 
     updateJsonFile();
-    setInterval(updateTime, 500);
+    setInterval(updateTime, 1000);
 
 // Проверяем, находится ли аудиоплеер на паузе и включен ли он, и если да, то загружаем аудио и запускаем воспроизведение
 if (audioPlayer.paused && isAudioActive) {

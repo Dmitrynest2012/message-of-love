@@ -615,10 +615,10 @@ document.addEventListener("DOMContentLoaded", function () {
         getRandomSong();
     
     
-    updateTime();
+
     // Вызываем функцию загрузки данных и отображения после загрузки
     loadDataAndRender();
-    setInterval(updateTime, 1000);
+    updateTime();
     setInterval(updateText, 1000);
   
     setRandomImage();
@@ -809,8 +809,7 @@ async function updateTime() {
     }
 }
 
-// Вызываем функцию снова через 5 секунд
-setTimeout(updateTime, 5000);
+
 
 
 
@@ -978,6 +977,7 @@ function updateText() {
     // console.log('json_max:', json_max);
 
     updateJsonFile();
+    setInterval(updateTime, 1000);
 
 // Проверяем, находится ли аудиоплеер на паузе и включен ли он, и если да, то загружаем аудио и запускаем воспроизведение
 if (audioPlayer.paused && isAudioActive) {

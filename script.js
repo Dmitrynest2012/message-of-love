@@ -798,7 +798,7 @@ async function updateTime() {
         }
 
         // Если предыдущее отображаемое время определено и разница во времени небольшая, используем предыдущее отображаемое время
-        if (previousDisplayTime && Math.abs(displayTime.getTime() - previousDisplayTime.getTime()) < 1000) {
+        if (previousDisplayTime && Math.abs(displayTime.getTime() - previousDisplayTime.getTime()) < 500) {
             displayTime = previousDisplayTime;
         }
 
@@ -999,7 +999,7 @@ function updateText() {
     // console.log('json_max:', json_max);
 
     updateJsonFile();
-    setInterval(updateTime, 1000);
+    setInterval(updateTime, 500);
 
 // Проверяем, находится ли аудиоплеер на паузе и включен ли он, и если да, то загружаем аудио и запускаем воспроизведение
 if (audioPlayer.paused && isAudioActive) {

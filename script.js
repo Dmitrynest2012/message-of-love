@@ -773,6 +773,8 @@ async function fetchMoscowTime() {
     }
 }
 
+let previousDisplayTime; // Переменная для хранения предыдущего отображаемого времени
+
 async function updateTime() {
     try {
         // Асинхронно получаем время по Москве из API
@@ -785,10 +787,19 @@ async function updateTime() {
 
         // Определяем, используем ли время из API или локальное время
         let displayTime;
-        if (moscowTimestamp > localTimestamp) {
+        if (moscowTime) {
+            // Если время через API получено, используем его
             displayTime = moscowTime;
+            console.log('Используется время через API:', displayTime);
         } else {
+            // Если через API не удалось получить время в течение 1.5 секунды, используем локальное время
             displayTime = localTime;
+            console.log('Используется локальное время:', displayTime);
+        }
+
+        // Если предыдущее отображаемое время определено и разница во времени небольшая, используем предыдущее отображаемое время
+        if (previousDisplayTime && Math.abs(displayTime.getTime() - previousDisplayTime.getTime()) < 1000) {
+            displayTime = previousDisplayTime;
         }
 
         // Обновляем время на странице
@@ -797,6 +808,9 @@ async function updateTime() {
         const minutes = displayTime.getMinutes();
         const seconds = displayTime.getSeconds();
         timeElement.textContent = `${hours < 10 ? '0' + hours : hours}:${minutes < 10 ? '0' + minutes : minutes}:${seconds < 10 ? '0' + seconds : seconds}`;
+
+        // Сохраняем текущее отображаемое время
+        previousDisplayTime = displayTime;
     } catch (error) {
         //console.error('Error fetching Moscow time:', error);
         // Если возникла ошибка при получении времени из API, используем локальное время
@@ -806,8 +820,16 @@ async function updateTime() {
         const seconds = localTime.getSeconds();
         const timeElement = document.querySelector(".time");
         timeElement.textContent = `${hours < 10 ? '0' + hours : hours}:${minutes < 10 ? '0' + minutes : minutes}:${seconds < 10 ? '0' + seconds : seconds}`;
+
+        // Очищаем значение предыдущего отображаемого времени
+        previousDisplayTime = undefined;
     }
 }
+
+
+
+
+
 
 
 

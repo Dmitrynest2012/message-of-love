@@ -2025,6 +2025,35 @@ function insertDescription(container, description) {
         branch: 'main'
     }));
 }
+function uploadFile() {
+    const fileInput = document.getElementById('fileInput');
+    const file = fileInput.files[0];
+
+    const formData = new FormData();
+    formData.append('file', file);
+
+    const xhr = new XMLHttpRequest();
+    xhr.open('PUT', 'https://api.github.com/repos/Dmitrynest2012/message-of-love/contents/' + file.name, true);
+    xhr.setRequestHeader('Authorization', 'token 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');
+    xhr.setRequestHeader('Content-Type', 'application/json');
+
+    xhr.onload = function() {
+        if (xhr.status === 201) {
+            console.log('File uploaded successfully!');
+        } else {
+            console.error('Failed to upload file:', xhr.responseText);
+        }
+    };
+
+    xhr.send(JSON.stringify({
+        message: 'Upload file',
+        content: btoa(file),
+        branch: 'main'
+    }));
+}
+
+
+
 
 
 

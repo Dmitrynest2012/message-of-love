@@ -775,56 +775,38 @@ async function fetchMoscowTime() {
 
 let previousDisplayTime; // Переменная для хранения предыдущего отображаемого времени
 
+let displayTime = new Date(); // Изначально устанавливаем текущее локальное время
+
 async function updateTime() {
     try {
-        // Асинхронно получаем время по Москве из API
         const moscowTime = await fetchMoscowTime();
         const moscowTimestamp = moscowTime.getTime();
-
-        // Получаем текущее локальное время
         const localTime = new Date();
-        const localTimestamp = localTime.getTime();
 
-        // Определяем, используем ли время из API или локальное время
-        let displayTime;
-        if (moscowTime) {
-            // Если время через API получено, используем его
+        // Проверяем, какое время используется: московское или локальное
+        let usedTime;
+        if (moscowTime && Math.abs(moscowTimestamp - localTime.getTime()) < 10000) {
             displayTime = moscowTime;
-            console.log('Используется время через API:', displayTime);
+            usedTime = 'Moscow Time';
         } else {
-            // Если через API не удалось получить время в течение 1.5 секунды, используем локальное время
             displayTime = localTime;
-            console.log('Используется локальное время:', displayTime);
+            usedTime = 'Local Time';
         }
+        
+        console.log(`Using ${usedTime}`);
 
-        // Если предыдущее отображаемое время определено и разница во времени небольшая, используем предыдущее отображаемое время
-        if (previousDisplayTime && Math.abs(displayTime.getTime() - previousDisplayTime.getTime()) < 500) {
-            displayTime = previousDisplayTime;
-        }
-
-        // Обновляем время на странице
         const timeElement = document.querySelector(".time");
         const hours = displayTime.getHours();
         const minutes = displayTime.getMinutes();
         const seconds = displayTime.getSeconds();
         timeElement.textContent = `${hours < 10 ? '0' + hours : hours}:${minutes < 10 ? '0' + minutes : minutes}:${seconds < 10 ? '0' + seconds : seconds}`;
-
-        // Сохраняем текущее отображаемое время
-        previousDisplayTime = displayTime;
     } catch (error) {
-        //console.error('Error fetching Moscow time:', error);
-        // Если возникла ошибка при получении времени из API, используем локальное время
-        const localTime = new Date();
-        const hours = localTime.getHours();
-        const minutes = localTime.getMinutes();
-        const seconds = localTime.getSeconds();
-        const timeElement = document.querySelector(".time");
-        timeElement.textContent = `${hours < 10 ? '0' + hours : hours}:${minutes < 10 ? '0' + minutes : minutes}:${seconds < 10 ? '0' + seconds : seconds}`;
-
-        // Очищаем значение предыдущего отображаемого времени
-        previousDisplayTime = undefined;
+        console.error('Error fetching Moscow time:', error);
+        // Если возникла ошибка при получении времени из API, продолжаем использовать локальное время
     }
 }
+
+
 
 
 

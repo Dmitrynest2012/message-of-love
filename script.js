@@ -1836,7 +1836,7 @@ contentContainer.appendChild(analyticsButton);
 const download5messageButton = document.createElement('button');
 download5messageButton.id = 'download5messageButton'; // Устанавливаем уникальный ID
 download5messageButton.classList.add('encryptText'); // Добавляем класс
-download5messageButton.textContent = 'Загрузить текст 5 минутного Посыла'; // Устанавливаем текст кнопки
+download5messageButton.textContent = 'Загрузить текст 5 минутных Посылов'; // Устанавливаем текст кнопки
 
 // Привязываем обработчик события клика по кнопке
 download5messageButton.addEventListener('click', function() {

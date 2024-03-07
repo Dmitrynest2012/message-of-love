@@ -1840,13 +1840,13 @@ download5messageButton.textContent = 'Загрузить текст 5 минут
 
 // Привязываем обработчик события клика по кнопке
 download5messageButton.addEventListener('click', function() {
-    downloadFile(); // Вызываем функцию загрузки файла по ссылке
+    downloadFile5(); // Вызываем функцию загрузки файла по ссылке
 });
 
 // Добавляем кнопку "Загрузить текст 5 минутного Посыла" в контейнер "Контент"
 contentContainer.appendChild(download5messageButton);
 
-function downloadFile() {
+function downloadFile5() {
     // Создаем ссылку на скачивание файла
     const fileURL = 'https://github.com/Dmitrynest2012/message-of-love/raw/main/json_min.xlsx';
 
@@ -1863,6 +1863,36 @@ function downloadFile() {
 
 
 
+
+
+// Создаем кнопку "Загрузить текст 5 минутного Посыла"
+const download60messageButton = document.createElement('button');
+download60messageButton.id = 'download60messageButton'; // Устанавливаем уникальный ID
+download60messageButton.classList.add('encryptText'); // Добавляем класс
+download60messageButton.textContent = 'Загрузить текст Часового Посыла'; // Устанавливаем текст кнопки
+
+// Привязываем обработчик события клика по кнопке
+download60messageButton.addEventListener('click', function() {
+    downloadFile60(); // Вызываем функцию загрузки файла по ссылке
+});
+
+// Добавляем кнопку "Загрузить текст 5 минутного Посыла" в контейнер "Контент"
+contentContainer.appendChild(download60messageButton);
+
+function downloadFile60() {
+    // Создаем ссылку на скачивание файла
+    const fileURL = 'https://github.com/Dmitrynest2012/message-of-love/raw/main/json_max.xlsx';
+
+    // Создаем элемент <a> для скачивания файла
+    const link = document.createElement('a');
+    link.href = fileURL;
+    link.download = 'json_max.xlsx'; // Устанавливаем имя файла для скачивания
+
+    // Добавляем элемент <a> на страницу и эмулируем клик по нему
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+}
 
 
 

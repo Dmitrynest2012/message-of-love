@@ -762,29 +762,24 @@ function clearLocalStorage() {
 const RandomBlock = ['33426E235E6B503921487635406D5A73463226'];
 
 
+let displayTime = new Date(); // Изначально устанавливаем текущее локальное время
+
 async function fetchMoscowTime() {
     try {
         const response = await fetch('https://worldtimeapi.org/api/timezone/Europe/Moscow');
         const data = await response.json();
         return new Date(data.utc_datetime);
     } catch (error) {
-        // console.error('Ошибка при получении времени по Москве:', error);
-        return new Date();
+        console.error('Ошибка при получении времени по Москве:', error);
+        return null;
     }
 }
-
-let previousDisplayTime; // Переменная для хранения предыдущего отображаемого времени
-
-let displayTime = new Date(); // Изначально устанавливаем текущее локальное время
 
 async function updateTime() {
     try {
         const moscowTime = await fetchMoscowTime();
-        const moscowTimestamp = moscowTime.getTime();
-        const localTime = new Date();
 
-        // Если время через API получено и разница между ним и локальным временем не слишком большая, используем его
-        if (moscowTime && Math.abs(moscowTimestamp - localTime.getTime()) < 30000) {
+        if (moscowTime) {
             displayTime = moscowTime;
         }
 

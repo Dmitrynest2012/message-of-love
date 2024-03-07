@@ -606,7 +606,7 @@ document.addEventListener("DOMContentLoaded", function () {
   
     requestWakeLock(); // Запрещаем авто-отключение экрана пока открыт сайт.
     handleNotifications(); // Первый запрос на разрешение Уведомлений на сайте.
-    
+    updateTime();
     createLocalContainer();
     updateJsonFile();
 
@@ -1438,7 +1438,7 @@ setInterval(checkAndShowNotification, 1000); // Вызываем функцию 
         minutesLeft = Math.floor((timeDiff % (1000 * 60 * 60)) / (1000 * 60));
         secondsLeft = Math.floor((timeDiff % (1000 * 60)) / 1000);
 
-        newText = `До следующего Посыла: ${hoursLeft} ч. ${minutesLeft} мин.`;
+        newText = `До следующего Посыла: ${hoursLeft} ч. ${minutesLeft} мин. ${secondsLeft} сек.`;
 
 
         if (hoursLeft === 0 && minutesLeft <= 5) {
@@ -1470,7 +1470,7 @@ setInterval(checkAndShowNotification, 1000); // Вызываем функцию 
         minutesLeft = Math.floor((timeDiff % (1000 * 60 * 60)) / (1000 * 60));
         secondsLeft = Math.floor((timeDiff % (1000 * 60)) / 1000);
 
-        newText = `До следующего Посыла: ${hoursLeft} ч. ${minutesLeft} мин.`;
+        newText = `До следующего Посыла: ${hoursLeft} ч. ${minutesLeft} мин. ${secondsLeft} сек.`;
 
         
             if (hoursLeft === 0 && minutesLeft <= 5) {

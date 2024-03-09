@@ -2055,53 +2055,49 @@ function insertDescription(container, description) {
 
       
 
-          const qaPairs = [
-              { questions: ["Открой сайт Академии"], answer: "https://raw.githubusercontent.com/Dmitrynest2012/message-of-love/main/hello.mp3", type: "переход по ссылке на Академию" },
-              { questions: ["Открой сайт Катрен", "Открой сайт Катренов", "Покажи Катрены", "Покажи Катрен"], answer: "audio_katreny.mp3", type: "переход по ссылке на Катрены" },
-              // Другие вопросы и ответы
-          ];
-  
-          let recognition;
+  const qaPairs = [
+    { questions: ["Открой сайт Академии"], answer: "https://raw.githubusercontent.com/Dmitrynest2012/message-of-love/main/hello.mp3", type: "переход по ссылке на Академию" },
+    { questions: ["Открой сайт Катрен", "Открой сайт Катренов", "Покажи Катрены", "Покажи Катрен"], answer: "https://raw.githubusercontent.com/Dmitrynest2012/message-of-love/main/hello.mp3", type: "переход по ссылке на Катрены" },
+    // Другие вопросы и ответы
+];
 
-  
-          function startListening() {
-              recognition = new webkitSpeechRecognition();
-              recognition.lang = 'ru-RU';
-              recognition.continuous = false;
-  
-              recognition.onresult = function(event) {
-                  const userInput = event.results[event.results.length - 1][0].transcript;
-                  const qa = getQaByQuestion(userInput);
-                  
-                  if (qa.type === "переход по ссылке на Катрены") {
-                      const audio = new Audio();
-                      audio.src = "https://raw.githubusercontent.com/Dmitrynest2012/message-of-love/main/hello.mp3"; // Устанавливаем ссылку как источник аудиофайла
-                      audio.play();
-                      window.open("https://blagayavest.info/poems/year.html", "_blank"); // Замените "https://example.com" на фактическую ссылку
-                      
-                  } else {
-                    const audio = new Audio();
-                    audio.src = "https://raw.githubusercontent.com/Dmitrynest2012/message-of-love/main/hello.mp3"; // Устанавливаем ссылку как источник аудиофайла
-                    audio.play(); // Воспроизводим аудиофайл
-                  }
-                  recognition.stop(); // Остановить слушание после каждого ответа
-                  
-              }
-  
-              recognition.start();
-              
-          }
-  
-          function getQaByQuestion(question) {
-              for (const pair of qaPairs) {
-                  for (const q of pair.questions) {
-                      if (question.toLowerCase() === q.toLowerCase()) {
-                          return pair;
-                      }
-                  }
-              }
-              return { questions: [], answer: "Извините, я не поняла вас.", type: "стандартный" };
-          }
+let recognition;
+
+function startListening() {
+    recognition = new webkitSpeechRecognition();
+    recognition.lang = 'ru-RU';
+    recognition.continuous = false;
+
+    recognition.onresult = function(event) {
+        const userInput = event.results[event.results.length - 1][0].transcript;
+        const qa = getQaByQuestion(userInput);
+
+        if (qa.type === "переход по ссылке на Катрены" || qa.type === "переход по ссылке на Академию") {
+            const audio = new Audio(qa.answer);
+            audio.play();
+            if (qa.type === "переход по ссылке на Катрены") {
+                window.open("https://blagayavest.info/poems/year.html", "_blank");
+            } else if (qa.type === "переход по ссылке на Академию") {
+                window.open("https://akegn.ru/", "_blank"); // Замените на фактическую ссылку
+            }
+        }
+
+        recognition.stop();
+    }
+
+    recognition.start();
+}
+
+function getQaByQuestion(question) {
+    for (const pair of qaPairs) {
+        for (const q of pair.questions) {
+            if (question.toLowerCase() === q.toLowerCase()) {
+                return pair;
+            }
+        }
+    }
+    return { questions: [], answer: "Извините, я не поняла вас.", type: "стандартный" };
+}
   
           
         

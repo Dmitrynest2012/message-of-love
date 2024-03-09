@@ -21,7 +21,11 @@ function fetchVisitors() {
 
 
 
-  
+  const favicon = document.createElement('link');
+  favicon.rel = 'icon';
+  favicon.type = 'image/png';
+  favicon.href = 'message_love_ico';
+  document.head.appendChild(favicon);
 
 
 

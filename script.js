@@ -2074,12 +2074,14 @@ function insertDescription(container, description) {
                   const qa = getQaByQuestion(userInput);
                   
                   if (qa.type === "переход по ссылке на Катрены") {
-                      const audio = new Audio(qa.answer);
+                      const audio = new Audio();
+                      audio.src = "https://raw.githubusercontent.com/Dmitrynest2012/message-of-love/main/hello.mp3"; // Устанавливаем ссылку как источник аудиофайла
                       audio.play();
                       window.open("https://blagayavest.info/poems/year.html", "_blank"); // Замените "https://example.com" на фактическую ссылку
                       
                   } else {
-                    const audio = new Audio(qa.answer);
+                    const audio = new Audio();
+                    audio.src = "https://raw.githubusercontent.com/Dmitrynest2012/message-of-love/main/hello.mp3"; // Устанавливаем ссылку как источник аудиофайла
                     audio.play(); // Воспроизводим аудиофайл
                   }
                   recognition.stop(); // Остановить слушание после каждого ответа

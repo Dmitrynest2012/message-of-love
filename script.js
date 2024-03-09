@@ -1091,11 +1091,9 @@ setInterval(checkAndShowNotification, 1000); // Вызываем функцию 
             }
 
             const buttonBuild = document.getElementById('buttonBuild');
-            if(xBcF == 1 || xBcF == true){
+            if(xBcF == 1 || xBcF == true || xBcF){
                 buttonBuild.style.display = 'block';
-                } else if (xBcF == 0 || xBcF == false || xBcF == undefined) {
-                    buttonBuild.style.display = 'none';
-                }
+                } 
             
             
             // Вызов функции каждые 1 секунд
@@ -1119,7 +1117,9 @@ setInterval(checkAndShowNotification, 1000); // Вызываем функцию 
             // Скрываем элемент
             watchElement.style.display = 'block';
             titleVisitorsElement.style.display = 'block';
-            buttonBuild.display = 'block';
+            if(xBcF == 1 || xBcF == true || xBcF){
+                buttonBuild.style.display = 'block';
+                } 
 
         }
             
@@ -1153,11 +1153,9 @@ setInterval(checkAndShowNotification, 1000); // Вызываем функцию 
             watchElement.style.display = 'none';
             titleVisitorsElement.style.display = 'none';
             
-            if(xBcF == 1 || xBcF == true){
+            if(xBcF == 1 || xBcF == true || xBcF){
                 buttonBuild.style.display = 'block';
-                } else if (xBcF == 0 || xBcF == false || xBcF == undefined) {
-                    buttonBuild.style.display = 'none';
-                }
+                } 
 
 
 
@@ -1170,7 +1168,9 @@ setInterval(checkAndShowNotification, 1000); // Вызываем функцию 
             // Скрываем элемент
             watchElement.style.display = 'block';
             titleVisitorsElement.style.display = 'block';
-            buttonBuild.display = 'block';
+            if(xBcF == 1 || xBcF == true || xBcF){
+                buttonBuild.style.display = 'block';
+                } 
 
         }
 
@@ -1294,11 +1294,9 @@ setInterval(checkAndShowNotification, 1000); // Вызываем функцию 
               // Скрываем элемент
               watchElement.style.display = 'none';
               titleVisitorsElement.style.display = 'none';
-              if(xBcF == 1 || xBcF == true){
+              if(xBcF == 1 || xBcF == true || xBcF){
                 buttonBuild.style.display = 'block';
-                } else if (xBcF == 0 || xBcF == false || xBcF == undefined) {
-                    buttonBuild.style.display = 'none';
-                }
+                } 
           } else {
               jsonFileRandomMusic = 'free-music.json';
               // Получаем ссылку на элемент по его id
@@ -1308,7 +1306,9 @@ setInterval(checkAndShowNotification, 1000); // Вызываем функцию 
               // Скрываем элемент
               watchElement.style.display = 'block';
               titleVisitorsElement.style.display = 'block';
-              buttonBuild.display = 'block';
+              if(xBcF == 1 || xBcF == true || xBcF){
+                buttonBuild.style.display = 'block';
+                } 
 
           }
   
@@ -1356,12 +1356,10 @@ setInterval(checkAndShowNotification, 1000); // Вызываем функцию 
             watchElement.style.display = 'none';
             titleVisitorsElement.style.display = 'none';
 
-
-            if(xBcF == 1 || xBcF == true){
+            if(xBcF == 1 || xBcF == true || xBcF){
                 buttonBuild.style.display = 'block';
-                } else if (xBcF == 0 || xBcF == false || xBcF == undefined) {
-                    buttonBuild.style.display = 'none';
-                }
+                } 
+            
 
 
             
@@ -1375,10 +1373,15 @@ setInterval(checkAndShowNotification, 1000); // Вызываем функцию 
             watchElement.style.display = 'block';
             titleVisitorsElement.style.display = 'block';
             // Применение стилей из медиа-запроса
-            buttonBuild.style.display = 'block';
-
+           
+            if(xBcF == 1 || xBcF == true || xBcF){
+                buttonBuild.style.display = 'block';
+                } 
+            
         }
 
+
+        
         
 
 
@@ -1541,7 +1544,7 @@ function ReverseContainer(value) {
 
 function playSoundAndVibration() {
     // Воспроизводим звук
-    const audio = new Audio('https://raw.githubusercontent.com/Dmitrynest2012/message-of-love/main/sound/sound_of_a_bell.wav');
+    const audio = new Audio('https://raw.githubusercontent.com/Dmitrynest2012/message-of-love/main/sound/sound_of_a_bell.mp3');
     audio.play();
 
     // Воспроизводим вибрацию
@@ -1759,6 +1762,8 @@ function createLocalContainer() {
             uPmH.id = 'yHxJ'; // Айди
             document.body.appendChild(uPmH); // Добавляем контейнер в body
 
+            const buttonBuild = document.getElementById('buttonBuild');
+            buttonBuild.style.display = 'block';
 
 
             // Создаем контейнер "Контент"
@@ -2045,11 +2050,61 @@ function insertDescription(container, description) {
 
 
 
+  const buttonAndromeda = document.getElementById('andromeda-button');
+  let buttonAndromedaActive = false;
+
+
+
+  // Функция для обновления состояния кнопки изображения и сохранения состояния в локальное хранилище
+  function toggleAndromeda() {
+    buttonAndromedaActive = true; // Инвертируем состояние кнопки Андромеды
+    updateAndromedaButtonState(); // Обновляем состояние кнопки изображения
+    startListening();
+  }
+  
+  
+  // Функция для обновления внешнего вида кнопки изображения в соответствии с состоянием
+  function updateAndromedaButtonState() {
+      if (buttonAndromedaActive) {
+        buttonAndromeda.style.backgroundColor = 'rgba(128, 0, 128, 0.5)';
+
+      } else {
+        buttonAndromeda.style.backgroundColor = 'rgba(128, 0, 128, 0.15)';
+
+      }
+  }
 
 
 
       
-      
+ // Функция для делания кнопки неактивной
+function disableButtonAndromeda() {
+
+    if (buttonAndromeda) {
+        buttonAndromeda.disabled = true;
+    }
+}
+
+// Функция для делания кнопки активной
+function enableButtonAndromeda() {
+
+    if (buttonAndromeda) {
+        buttonAndromeda.disabled = false;
+    }
+}
+
+
+// Добавляем обработчик события наведения мыши на кнопку изображения
+buttonAndromeda.addEventListener('mouseenter', function() {
+    // Задаем цвет фона кнопке
+    buttonAndromeda.style.backgroundColor = 'rgba(128, 0, 128, 0.75)'; // Новый цвет фона кнопки
+});
+
+// Добавляем обработчик события увода мыши с кнопки изображения
+buttonAndromeda.addEventListener('mouseleave', function() {
+    // Возвращаем исходный цвет фона кнопки
+    buttonAndromeda.style.backgroundColor = buttonAndromedaActive ? 'rgba(128, 0, 128, 0.5)' : 'rgba(128, 0, 128, 0.15)';
+}); 
       
     
 
@@ -2064,9 +2119,12 @@ function insertDescription(container, description) {
 let recognition;
 
 function startListening() {
+    
     recognition = new webkitSpeechRecognition();
     recognition.lang = 'ru-RU';
     recognition.continuous = false;
+
+
 
     recognition.onresult = function(event) {
         const userInput = event.results[event.results.length - 1][0].transcript;
@@ -2084,9 +2142,18 @@ function startListening() {
         }
 
         recognition.stop();
+        setTimeout(function() {
+            buttonAndromedaActive = false; // По истечении 3 секунд выключаем кнопку обратно
+            updateAndromedaButtonState();
+        }, 4000);
     }
 
     recognition.start();
+    setTimeout(function() {
+        buttonAndromedaActive = false; // По истечении 3 секунд выключаем кнопку обратно
+        updateAndromedaButtonState();
+    }, 4000);
+    
 }
 
 function getQaByQuestion(question) {
@@ -2101,6 +2168,8 @@ function getQaByQuestion(question) {
 }
 
   
+
+
           
         
 

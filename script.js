@@ -2056,7 +2056,7 @@ function insertDescription(container, description) {
       
 
           const qaPairs = [
-              { questions: ["Открой сайт Академии"], answer: "hello.m4a", type: "переход по ссылке на Академию" },
+              { questions: ["Открой сайт Академии"], answer: "hello.mp3", type: "переход по ссылке на Академию" },
               { questions: ["Открой сайт Катрен", "Открой сайт Катренов", "Покажи Катрены", "Покажи Катрен"], answer: "audio_katreny.mp3", type: "переход по ссылке на Катрены" },
               // Другие вопросы и ответы
           ];
@@ -2076,16 +2076,16 @@ function insertDescription(container, description) {
                   if (qa.type === "переход по ссылке на Катрены") {
                       playAudio(qa.answer); // Воспроизводим аудиофайл
                       window.open("https://blagayavest.info/poems/year.html", "_blank"); // Замените "https://example.com" на фактическую ссылку
-                      centerText.style.display = 'block';
+                      
                   } else {
                       playAudio(qa.answer); // Воспроизводим аудиофайл
                   }
                   recognition.stop(); // Остановить слушание после каждого ответа
-                  centerText.style.display = 'none';
+                  
               }
   
               recognition.start();
-              centerText.style.display = 'block';
+              
           }
   
           function getQaByQuestion(question) {

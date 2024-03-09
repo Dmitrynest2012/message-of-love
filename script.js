@@ -2074,11 +2074,13 @@ function insertDescription(container, description) {
                   const qa = getQaByQuestion(userInput);
                   
                   if (qa.type === "переход по ссылке на Катрены") {
-                      playAudio(qa.answer); // Воспроизводим аудиофайл
+                      const audio = new Audio(qa.answer);
+                      audio.play();
                       window.open("https://blagayavest.info/poems/year.html", "_blank"); // Замените "https://example.com" на фактическую ссылку
                       
                   } else {
-                      playAudio(qa.answer); // Воспроизводим аудиофайл
+                    const audio = new Audio(qa.answer);
+                    audio.play(); // Воспроизводим аудиофайл
                   }
                   recognition.stop(); // Остановить слушание после каждого ответа
                   
@@ -2099,10 +2101,7 @@ function insertDescription(container, description) {
               return { questions: [], answer: "Извините, я не поняла вас.", type: "стандартный" };
           }
   
-          function playAudio(audioFile) {
-              const audio = new Audio(audioFile);
-              audio.play();
-          }
+          
         
 
 

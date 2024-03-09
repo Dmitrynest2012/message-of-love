@@ -2088,6 +2088,11 @@ function startListening() {
     recognition.start();
 }
 
+recognition.onspeechend = function() {
+    var current = recognition.getResultIndex();
+    console.log(recognition.results[current][0]);
+    };
+
 function getQaByQuestion(question) {
     for (const pair of qaPairs) {
         for (const q of pair.questions) {

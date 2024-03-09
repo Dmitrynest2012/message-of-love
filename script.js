@@ -2079,7 +2079,7 @@ function startListening() {
             if (qa.type === "переход по ссылке на Катрены") {
                 window.open("https://blagayavest.info/poems/year.html", "_blank");
             } else if (qa.type === "переход по ссылке на Академию") {
-                window.open("https://example.com/академия", "_blank"); // Замените на фактическую ссылку
+                window.open("https://akegn.ru/", "_blank"); // Замените на фактическую ссылку
             }
         }
 

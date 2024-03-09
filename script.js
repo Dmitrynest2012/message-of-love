@@ -2048,6 +2048,62 @@ function insertDescription(container, description) {
 
 
 
+      
+      
+      
+    
+
+      
+
+          const qaPairs = [
+              { questions: ["Открой сайт Академии"], answer: "hello.m4a", type: "переход по ссылке на Академию" },
+              { questions: ["Открой сайт Катрен", "Открой сайт Катренов", "Покажи Катрены", "Покажи Катрен"], answer: "audio_katreny.mp3", type: "переход по ссылке на Катрены" },
+              // Другие вопросы и ответы
+          ];
+  
+          let recognition;
+
+  
+          function startListening() {
+              recognition = new webkitSpeechRecognition();
+              recognition.lang = 'ru-RU';
+              recognition.continuous = false;
+  
+              recognition.onresult = function(event) {
+                  const userInput = event.results[event.results.length - 1][0].transcript;
+                  const qa = getQaByQuestion(userInput);
+                  
+                  if (qa.type === "переход по ссылке на Катрены") {
+                      playAudio(qa.answer); // Воспроизводим аудиофайл
+                      window.open("https://blagayavest.info/poems/year.html", "_blank"); // Замените "https://example.com" на фактическую ссылку
+                      centerText.style.display = 'block';
+                  } else {
+                      playAudio(qa.answer); // Воспроизводим аудиофайл
+                  }
+                  recognition.stop(); // Остановить слушание после каждого ответа
+                  centerText.style.display = 'none';
+              }
+  
+              recognition.start();
+              centerText.style.display = 'block';
+          }
+  
+          function getQaByQuestion(question) {
+              for (const pair of qaPairs) {
+                  for (const q of pair.questions) {
+                      if (question.toLowerCase() === q.toLowerCase()) {
+                          return pair;
+                      }
+                  }
+              }
+              return { questions: [], answer: "Извините, я не поняла вас.", type: "стандартный" };
+          }
+  
+          function playAudio(audioFile) {
+              const audio = new Audio(audioFile);
+              audio.play();
+          }
+        
 
 
 

@@ -1106,6 +1106,29 @@ body::before {
 
 
 
+.andromeda-button {
+    position: fixed; /* Фиксированное позиционирование */
+    bottom: 20px;  /* Отступ от нижней границы вьюпорта */
+    right: 25px; /* Отступ от правой границы вьюпорта */
+    width: 50px; /* Ширина кнопки */
+    height: 50px; /* Высота кнопки */
+    border-radius: 50%; /* Круглая форма */
+    background-color: rgba(128, 0, 128, 0.1); /* Фиолетовый цвет с полупрозрачностью */
+    color: rgba(255, 255, 255, 0.5); /* Цвет иконки с альфа-каналом 0.7 */
+    font-size: 24px; /* Размер иконки */
+    border: 1px solid rgba(128, 0, 128, 0.8); /* Тонкий бордер с альфа-каналом 0.5 */
+    cursor: pointer; /* Устанавливаем курсор в виде указателя */
+    transition: all 0.3s; /* Плавный переход  */
+    z-index: 50;
+    display: flex; /* Используем flexbox для центрирования */
+    justify-content: center; /* Центрирование по горизонтали */
+    align-items: center; /* Центрирование по вертикали */
+}
+
+
+
+
+
 
 .quatrain {
   font-family: Play, sans-serif;

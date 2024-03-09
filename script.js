@@ -2056,7 +2056,7 @@ function insertDescription(container, description) {
       
 
           const qaPairs = [
-              { questions: ["Открой сайт Академии"], answer: "hello.mp3", type: "переход по ссылке на Академию" },
+              { questions: ["Открой сайт Академии"], answer: "https://raw.githubusercontent.com/Dmitrynest2012/message-of-love/main/hello.mp3", type: "переход по ссылке на Академию" },
               { questions: ["Открой сайт Катрен", "Открой сайт Катренов", "Покажи Катрены", "Покажи Катрен"], answer: "audio_katreny.mp3", type: "переход по ссылке на Катрены" },
               // Другие вопросы и ответы
           ];

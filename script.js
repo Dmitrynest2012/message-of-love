@@ -27,7 +27,20 @@ function fetchVisitors() {
   favicon.href = 'message_love.ico';
   document.head.appendChild(favicon);
 
+  const appWidgetProvider = new android.appwidget.AppWidgetProvider({
+    onUpdate: function(context, appWidgetManager, appWidgetIds) {
+        const views = new android.widget.RemoteViews(context.getPackageName(), R.layout.widget_layout);
+        const packageName = context.getPackageName();
+        const resourceId = context.getResources().getIdentifier("message_love", "drawable", packageName);
+        views.setImageViewResource(R.id.widget_image, resourceId);
+        
+        appWidgetManager.updateAppWidget(appWidgetIds, views);
+    }
+});
 
+// Регистрируем виджет
+const componentName = new android.content.ComponentName(context, appWidgetProvider.getClass());
+appWidgetManager.updateAppWidget(componentName, views);
 
 
 

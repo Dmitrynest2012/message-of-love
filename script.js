@@ -2179,7 +2179,22 @@ function getQaByQuestion(question) {
 
   
 
+ // Создаем элементы видеоплеера
+ const videoContainer = document.getElementById('video-container');
+ const videoPlayer = document.createElement('video');
+ const source = document.createElement('source');
 
+ // Устанавливаем атрибуты и свойства элементов
+ videoPlayer.id = 'video-player';
+ videoPlayer.controls = true;
+ source.src = 'https://raw.githubusercontent.com/Dmitrynest2012/message-of-love/main/sound/flame_mini.mp4';
+ source.type = 'video/mp4';
+
+ // Добавляем источник видео к элементу видеоплеера
+ videoPlayer.appendChild(source);
+
+ // Добавляем видеоплеер к контейнеру на странице
+ videoContainer.appendChild(videoPlayer);
           
         
 

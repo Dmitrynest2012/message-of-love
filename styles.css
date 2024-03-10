@@ -285,7 +285,7 @@ body::before {
     color: #fff;
     padding: 10px 20px;
     border-radius: 20px;
-    font-family: Arial, sans-serif;
+    font-family: 'Play', sans-serif;
     font-size: 14px;
     opacity: 0.8;
     z-index: 99;
@@ -296,11 +296,15 @@ body::before {
         position: fixed;
         top: 20px;
         left: 15px;
+        opacity: 0.9;
 
-        opacity: 0.4;
-        
     }
 }
+
+
+
+
+
 
 
 .ym-counter-link {

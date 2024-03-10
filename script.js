@@ -1107,6 +1107,7 @@ setInterval(checkAndShowNotification, 1000); // Вызываем функцию 
             watchElement.style.display = 'none';
             titleVisitorsElement.style.display = 'none';
             // Применение стилей из медиа-запроса
+            disableButtonAndromeda();
 
         } else {
             jsonFileRandomMusic = 'free-music.json';
@@ -1120,6 +1121,8 @@ setInterval(checkAndShowNotification, 1000); // Вызываем функцию 
             if(xBcF == 1 || xBcF == true || xBcF){
                 buttonBuild.style.display = 'block';
                 } 
+
+                enableButtonAndromeda();
 
         }
             
@@ -1157,7 +1160,7 @@ setInterval(checkAndShowNotification, 1000); // Вызываем функцию 
                 buttonBuild.style.display = 'block';
                 } 
 
-
+                disableButtonAndromeda();
 
         } else {
             jsonFileRandomMusic = 'free-music.json';
@@ -1171,7 +1174,7 @@ setInterval(checkAndShowNotification, 1000); // Вызываем функцию 
             if(xBcF == 1 || xBcF == true || xBcF){
                 buttonBuild.style.display = 'block';
                 } 
-
+                enableButtonAndromeda();
         }
 
 
@@ -1297,6 +1300,7 @@ setInterval(checkAndShowNotification, 1000); // Вызываем функцию 
               if(xBcF == 1 || xBcF == true || xBcF){
                 buttonBuild.style.display = 'block';
                 } 
+                disableButtonAndromeda();
           } else {
               jsonFileRandomMusic = 'free-music.json';
               // Получаем ссылку на элемент по его id
@@ -1309,7 +1313,7 @@ setInterval(checkAndShowNotification, 1000); // Вызываем функцию 
               if(xBcF == 1 || xBcF == true || xBcF){
                 buttonBuild.style.display = 'block';
                 } 
-
+                enableButtonAndromeda();
           }
   
             fetch(jsonFileRandomMusic)
@@ -1360,7 +1364,7 @@ setInterval(checkAndShowNotification, 1000); // Вызываем функцию 
                 buttonBuild.style.display = 'block';
                 } 
             
-
+                disableButtonAndromeda();
 
             
         } else {
@@ -1377,7 +1381,8 @@ setInterval(checkAndShowNotification, 1000); // Вызываем функцию 
             if(xBcF == 1 || xBcF == true || xBcF){
                 buttonBuild.style.display = 'block';
                 } 
-            
+                
+                enableButtonAndromeda();
         }
 
 
@@ -2111,8 +2116,9 @@ buttonAndromeda.addEventListener('mouseleave', function() {
       
 
   const qaPairs = [
-    { questions: ["Покажи Академию", "Покажи Академи", "Покажи Акодеми", "Покажи Акадими"], answer: "https://raw.githubusercontent.com/Dmitrynest2012/message-of-love/main/hello.mp3", type: "переход по ссылке на Академию" },
-    { questions: ["Открой сайт Катрен", "Открой сайт Катренов", "Покажи Катрены", "Покажи Катрен"], answer: "https://raw.githubusercontent.com/Dmitrynest2012/message-of-love/main/hello.mp3", type: "переход по ссылке на Катрены" },
+    { questions: ["Покажи Академию", "Покажи Академи", "Покажи Акодеми", "Покажи Акадими"], answer: "https://raw.githubusercontent.com/Dmitrynest2012/message-of-love/main/open-site.mp3", type: "переход по ссылке на Академию" },
+    { questions: ["Открой сайт Катрен", "Открой сайт Катренов", "Покажи Катрены", "Покажи Катрен"], answer: "https://raw.githubusercontent.com/Dmitrynest2012/message-of-love/main/open-site.mp3", type: "переход по ссылке на Катрены" },
+    { questions: ["Открой сайт Доктрин", "Открой сайт Доктрины", "Покажи Доктрину", "Покажи Доктрин"], answer: "https://raw.githubusercontent.com/Dmitrynest2012/message-of-love/main/open-site.mp3", type: "переход по ссылке на Доктрину" },
     // Другие вопросы и ответы
 ];
 
@@ -2130,7 +2136,9 @@ function startListening() {
         const userInput = event.results[event.results.length - 1][0].transcript;
         const qa = getQaByQuestion(userInput);
 
-        if (qa.type === "переход по ссылке на Катрены" || qa.type === "переход по ссылке на Академию") {
+        if (qa.type === "переход по ссылке на Катрены" || 
+        qa.type === "переход по ссылке на Академию" ||
+        qa.type === "переход по ссылке на Доктрину" ) {
             const audio = new Audio();
             audio.src = qa.answer; // Устанавливаем ссылку как источник аудиофайла 
             audio.play();
@@ -2138,6 +2146,8 @@ function startListening() {
                 window.open("https://blagayavest.info/poems/year.html", "_blank");
             } else if (qa.type === "переход по ссылке на Академию") {
                 window.open("https://akegn.ru/", "_blank"); // Замените на фактическую ссылку
+            } else if (qa.type === "переход по ссылке на Доктрину") {
+                window.open("https://doktrina.info/", "_blank"); // Замените на фактическую ссылку
             }
         }
 

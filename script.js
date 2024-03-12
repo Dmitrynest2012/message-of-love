@@ -1724,7 +1724,10 @@ function checkPassword() {
 
 document.addEventListener('DOMContentLoaded', function() {
     setInterval(checkPassword, 500);
-
+    // Запрещаем менять ориентацию экрана
+window.addEventListener('orientationchange', function(event) {
+    event.preventDefault();
+}, false);
 });
 
 
@@ -2384,7 +2387,4 @@ if (isOperaBrowser()) {
 }
 
 
-    // Запрещаем менять ориентацию экрана
-window.addEventListener('orientationchange', function(event) {
-    event.preventDefault();
-}, false);
+    

@@ -2222,7 +2222,20 @@ if (isYandexBrowser()) {
     });
 }
 
-    
+  
+// Проверяем, используется ли Opera
+function isOperaBrowser() {
+    return /Opera|OPR\//i.test(navigator.userAgent);
+}
+
+// Пример использования
+if (isOperaBrowser()) {
+    // Логика для браузера Opera
+    document.addEventListener('click', function() {
+        videoPlayer.play();
+    });
+}
+
 
     
     

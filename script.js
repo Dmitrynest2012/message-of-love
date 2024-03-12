@@ -1121,7 +1121,14 @@ setInterval(checkAndShowNotification, 1000); // Вызываем функцию 
             watchElement.style.display = 'block';
             titleVisitorsElement.style.display = 'block';
             videoPlayer.display = 'block';
-            videoPlayer.style.opacity = '0.25';
+            if (isPortrait) {
+                // Ориентация экрана портретная
+                videoPlayer.style.opacity = '1';
+            
+            } else {
+                // Ориентация экрана не портретная
+                videoPlayer.style.opacity = '0.25';
+            }
             if(xBcF == 1 || xBcF == true || xBcF){
                 buttonBuild.style.display = 'block';
                 } 
@@ -1178,7 +1185,14 @@ setInterval(checkAndShowNotification, 1000); // Вызываем функцию 
             watchElement.style.display = 'block';
             titleVisitorsElement.style.display = 'block';
             videoPlayer.display = 'block';
-            videoPlayer.style.opacity = '0.25';
+            if (isPortrait) {
+                // Ориентация экрана портретная
+                videoPlayer.style.opacity = '1';
+            
+            } else {
+                // Ориентация экрана не портретная
+                videoPlayer.style.opacity = '0.25';
+            }
             if(xBcF == 1 || xBcF == true || xBcF){
                 buttonBuild.style.display = 'block';
                 } 

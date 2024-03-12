@@ -2407,3 +2407,8 @@ if (isOperaBrowser()) {
 
 
     
+// Обработчик события изменения ориентации экрана
+window.addEventListener('orientationchange', function() {
+    // Устанавливаем фоновый цвет body в черный
+    document.body.style.backgroundColor = "black";
+}, false);

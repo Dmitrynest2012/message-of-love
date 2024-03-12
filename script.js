@@ -2124,7 +2124,7 @@ buttonAndromeda.addEventListener('mouseleave', function() {
       
 
   const qaPairs = [
-    { questions: ["Покажи Академию", "Покажи Академи", "Покажи Акодеми", "Покажи Акадими"], answer: "https://raw.githubusercontent.com/Dmitrynest2012/message-of-love/main/open_suit.mp3", type: "переход по ссылке на Академию" },
+    { questions: ["Покажи Академию", "Покажи Академи", "Покажи Акодеми", "Покажи Акадими"], answer: "https://raw.githubusercontent.com/Dmitrynest2012/message-of-love/main/open_academy.mp3", type: "переход по ссылке на Академию" },
     { questions: ["Открой сайт Катрен", "Открой сайт Катренов", "Покажи Катрены", "Покажи Катрен"], answer: "https://raw.githubusercontent.com/Dmitrynest2012/message-of-love/main/katrens_opens.mp3", type: "переход по ссылке на Катрены" },
     { questions: ["Открой сайт Доктрин", "Открой сайт Доктрины", "Покажи Доктрину", "Покажи Доктрин"], answer: "https://raw.githubusercontent.com/Dmitrynest2012/message-of-love/main/open_suit.mp3", type: "переход по ссылке на Доктрину" },
 

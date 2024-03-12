@@ -2161,7 +2161,8 @@ function startListening() {
 
         if (qa.type === "переход по ссылке на Катрены" || 
         qa.type === "переход по ссылке на Академию" ||
-        qa.type === "переход по ссылке на Доктрину" ) {
+        qa.type === "переход по ссылке на Доктрину" ||
+        qa.type === "переход по ссылке на сегодняшний катрен" ) {
             const audio = new Audio();
             audio.src = qa.answer; // Устанавливаем ссылку как источник аудиофайла 
             audio.play();
@@ -2171,6 +2172,8 @@ function startListening() {
                 window.open("https://akegn.ru/", "_blank"); // Замените на фактическую ссылку
             } else if (qa.type === "переход по ссылке на Доктрину") {
                 window.open("https://doktrina.info/", "_blank"); // Замените на фактическую ссылку
+            } else if (qa.type === "переход по ссылке на сегодняшний катрен") {
+                window.open(qa.link, "_blank"); // Замените на фактическую ссылку
             }
         }
 

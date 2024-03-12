@@ -2124,9 +2124,9 @@ buttonAndromeda.addEventListener('mouseleave', function() {
       
 
   const qaPairs = [
-    { questions: ["Покажи Академию", "Покажи Академи", "Покажи Акодеми", "Покажи Акадими"], answer: "https://raw.githubusercontent.com/Dmitrynest2012/message-of-love/main/open-site.mp3", type: "переход по ссылке на Академию" },
+    { questions: ["Покажи Академию", "Покажи Академи", "Покажи Акодеми", "Покажи Акадими"], answer: "https://raw.githubusercontent.com/Dmitrynest2012/message-of-love/main/open_suit.mp3", type: "переход по ссылке на Академию" },
     { questions: ["Открой сайт Катрен", "Открой сайт Катренов", "Покажи Катрены", "Покажи Катрен"], answer: "https://raw.githubusercontent.com/Dmitrynest2012/message-of-love/main/katrens_opens.mp3", type: "переход по ссылке на Катрены" },
-    { questions: ["Открой сайт Доктрин", "Открой сайт Доктрины", "Покажи Доктрину", "Покажи Доктрин"], answer: "https://raw.githubusercontent.com/Dmitrynest2012/message-of-love/main/open-site.mp3", type: "переход по ссылке на Доктрину" },
+    { questions: ["Открой сайт Доктрин", "Открой сайт Доктрины", "Покажи Доктрину", "Покажи Доктрин"], answer: "https://raw.githubusercontent.com/Dmitrynest2012/message-of-love/main/open_suit.mp3", type: "переход по ссылке на Доктрину" },
 
     
     // Другие вопросы и ответы
@@ -2159,7 +2159,7 @@ function formatDate(date) {
 // Добавляем ссылку на сегодняшний катрен в массив qaPairs
 qaPairs.push({ 
     questions: ["Покажи сегодняшний катрен"], 
-    answer: "https://raw.githubusercontent.com/Dmitrynest2012/message-of-love/main/open-site.mp3", 
+    answer: "https://raw.githubusercontent.com/Dmitrynest2012/message-of-love/main/open_suit.mp3", 
     type: "переход по ссылке на сегодняшний катрен",
     link: todayCatrenLink
 });
@@ -2167,7 +2167,7 @@ qaPairs.push({
 // Добавляем ссылку на вчерашний катрен в массив qaPairs
 qaPairs.push({ 
     questions: ["Покажи вчерашний катрен"], 
-    answer: "https://raw.githubusercontent.com/Dmitrynest2012/message-of-love/main/open-site.mp3", 
+    answer: "https://raw.githubusercontent.com/Dmitrynest2012/message-of-love/main/open_suit.mp3", 
     type: "переход по ссылке на вчерашний катрен",
     link: yesterdayCatrenLink
 });
@@ -2175,7 +2175,7 @@ qaPairs.push({
 // Добавляем команды "Покажи катрен за (дата)" в массив qaPairs
 qaPairs.push({ 
     questions: ["Покажи катрен за"], 
-    answer: "https://raw.githubusercontent.com/Dmitrynest2012/message-of-love/main/open-site.mp3", 
+    answer: "https://raw.githubusercontent.com/Dmitrynest2012/message-of-love/main/open_suit.mp3", 
     type: "переход по ссылке на катрен за конкретную дату",
     getDateLink: function(userInput) {
         // Извлекаем из userInput дату и преобразуем ее в объект Date

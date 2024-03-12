@@ -2166,7 +2166,7 @@ qaPairs.push({
 
 // Добавляем ссылку на вчерашний катрен в массив qaPairs
 qaPairs.push({ 
-    questions: ["Покажи вчерашний катрен", "Покажи вчирашний катрен"], 
+    questions: ["Покажи вчерашний катрен"], 
     answer: "https://raw.githubusercontent.com/Dmitrynest2012/message-of-love/main/open-site.mp3", 
     type: "переход по ссылке на вчерашний катрен",
     link: yesterdayCatrenLink
@@ -2174,7 +2174,7 @@ qaPairs.push({
 
 // Добавляем команды "Покажи катрен за (дата)" в массив qaPairs
 qaPairs.push({ 
-    questions: ["Катрен за"], 
+    questions: ["Покажи катрен за"], 
     answer: "https://raw.githubusercontent.com/Dmitrynest2012/message-of-love/main/open-site.mp3", 
     type: "переход по ссылке на катрен за конкретную дату",
     getDateLink: function(userInput) {
@@ -2220,7 +2220,6 @@ function startListening() {
         qa.type === "переход по ссылке на Академию" ||
         qa.type === "переход по ссылке на Доктрину" ||
         qa.type === "переход по ссылке на сегодняшний катрен" ||
-        qa.type === "переход по ссылке на вчерашний катрен" ||
         qa.type === "переход по ссылке на катрен за конкретную дату" ) {
             const audio = new Audio();
             audio.src = qa.answer; // Устанавливаем ссылку как источник аудиофайла 
@@ -2232,8 +2231,7 @@ function startListening() {
             } else if (qa.type === "переход по ссылке на Доктрину") {
                 window.open("https://doktrina.info/", "_blank"); // Замените на фактическую ссылку
             } else if (qa.type === "переход по ссылке на сегодняшний катрен" || 
-            qa.type === "переход по ссылке на вчерашний катрен" ||
-            qa.type === "переход по ссылке на катрен за конкретную дату") {
+            qa.type === "переход по ссылке на вчерашний катрен" ) {
                 window.open(qa.link, "_blank"); // Замените на фактическую ссылку
             }
         }

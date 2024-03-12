@@ -2217,7 +2217,9 @@ function isYandexBrowser() {
 // Пример использования
 if (isYandexBrowser()) {
     // Логика для Яндекс.Браузера
-    videoPlayer.play();
+    document.addEventListener('click', function() {
+        videoPlayer.play();
+    });
 }
 
   
@@ -2229,9 +2231,10 @@ function isOperaBrowser() {
 // Пример использования
 if (isOperaBrowser()) {
     // Логика для браузера Opera
-    videoPlayer.play();
+    document.addEventListener('click', function() {
+        videoPlayer.play();
+    });
 }
-
 
 
     

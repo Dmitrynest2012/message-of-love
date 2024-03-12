@@ -2172,6 +2172,32 @@ qaPairs.push({
     link: yesterdayCatrenLink
 });
 
+// Добавляем команды "Покажи катрен за (дата)" в массив qaPairs
+qaPairs.push({ 
+    questions: ["Покажи катрен за"], 
+    answer: "https://raw.githubusercontent.com/Dmitrynest2012/message-of-love/main/open-site.mp3", 
+    type: "переход по ссылке на катрен за конкретную дату",
+    getDateLink: function(userInput) {
+        // Извлекаем из userInput дату и преобразуем ее в объект Date
+        const datePattern = /\b(\d+)\b\s+(\S+)\s+(\d+)\b/g;
+        const match = datePattern.exec(userInput);
+        if (!match) return null; // Если дата не распознана, возвращаем null
+        const day = match[1];
+        const month = match[2];
+        const year = match[3];
+        
+        // Форматируем месяц в числовой формат
+        const months = {
+            'января': '01', 'февраля': '02', 'марта': '03', 'апреля': '04', 'мая': '05', 'июня': '06',
+            'июля': '07', 'августа': '08', 'сентября': '09', 'октября': '10', 'ноября': '11', 'декабря': '12'
+        };
+        const formattedMonth = months[month.toLowerCase()];
+        if (!formattedMonth) return null; // Если месяц не распознан, возвращаем null
+        
+        const formattedDate = `${day}.${formattedMonth}.${year.slice(-2)}`;
+        return `https://blagayavest.info/poems/${formattedDate}.html`;
+    }
+});
 
 
 
@@ -2227,13 +2253,20 @@ function startListening() {
 function getQaByQuestion(question) {
     for (const pair of qaPairs) {
         for (const q of pair.questions) {
-            if (question.toLowerCase() === q.toLowerCase()) {
+            if (question.toLowerCase().includes(q.toLowerCase())) {
+                if (pair.getDateLink) {
+                    const link = pair.getDateLink(question);
+                    if (link) {
+                        return { ...pair, link }; // Возвращаем объект с добавленной ссылкой на катрен за указанную дату
+                    }
+                }
                 return pair;
             }
         }
     }
     return { questions: [], answer: "Извините, я не поняла вас.", type: "стандартный" };
 }
+
 
 const containerMessage = document.querySelector(".container");
 

@@ -2127,8 +2127,10 @@ buttonAndromeda.addEventListener('mouseleave', function() {
 
 // Генерируем ссылку на сегодняшний катрен
 const currentDateCatren = new Date();
-const formattedDate = currentDateCatren.toLocaleDateString('en-US').replace(/\//g, '.');
-const todayCatrenLink = `https://blagayavest.info/poems/${formattedDate}.html`;
+                const dayCatren = currentDateCatren.getDate().toString().padStart(2, '0');
+                const monthCatren = (currentDateCatren.getMonth() + 1).toString().padStart(2, '0');
+                const yearCatren = currentDateCatren.getFullYear().toString().slice(-2);
+                const todayCatrenLink = `https://blagayavest.info/poems/${dayCatren}.${monthCatren}.${yearCatren}.html`;
 
 // Добавляем ссылку на сегодняшний катрен в массив qaPairs
 qaPairs.push({ 

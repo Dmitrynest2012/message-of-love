@@ -2135,10 +2135,26 @@ buttonAndromeda.addEventListener('mouseleave', function() {
 
 // Генерируем ссылку на сегодняшний катрен
 const currentDateCatren = new Date();
-                const dayCatren = currentDateCatren.getDate().toString().padStart(2, '0');
-                const monthCatren = (currentDateCatren.getMonth() + 1).toString().padStart(2, '0');
-                const yearCatren = currentDateCatren.getFullYear().toString().slice(-2);
-                const todayCatrenLink = `https://blagayavest.info/poems/${dayCatren}.${monthCatren}.${yearCatren}.html`;
+const dayCatren = currentDateCatren.getDate().toString().padStart(2, '0');
+const monthCatren = (currentDateCatren.getMonth() + 1).toString().padStart(2, '0');
+const yearCatren = currentDateCatren.getFullYear().toString().slice(-2);
+const todayCatrenLink = `https://blagayavest.info/poems/${dayCatren}.${monthCatren}.${yearCatren}.html`;
+
+// Генерируем ссылку на вчерашний катрен
+const yesterdayDateCatren = new Date(currentDateCatren);
+yesterdayDateCatren.setDate(yesterdayDateCatren.getDate() - 1);
+const dayYesterdayCatren = yesterdayDateCatren.getDate().toString().padStart(2, '0');
+const monthYesterdayCatren = (yesterdayDateCatren.getMonth() + 1).toString().padStart(2, '0');
+const yearYesterdayCatren = yesterdayDateCatren.getFullYear().toString().slice(-2);
+const yesterdayCatrenLink = `https://blagayavest.info/poems/${dayYesterdayCatren}.${monthYesterdayCatren}.${yearYesterdayCatren}.html`;
+
+// Функция для форматирования даты в формат "dd.mm.yy"
+function formatDate(date) {
+    const day = date.getDate().toString().padStart(2, '0');
+    const month = (date.getMonth() + 1).toString().padStart(2, '0');
+    const year = date.getFullYear().toString().slice(-2);
+    return `${day}.${month}.${year}`;
+}
 
 // Добавляем ссылку на сегодняшний катрен в массив qaPairs
 qaPairs.push({ 
@@ -2147,6 +2163,15 @@ qaPairs.push({
     type: "переход по ссылке на сегодняшний катрен",
     link: todayCatrenLink
 });
+
+// Добавляем ссылку на вчерашний катрен в массив qaPairs
+qaPairs.push({ 
+    questions: ["Покажи вчерашний катрен"], 
+    answer: "https://raw.githubusercontent.com/Dmitrynest2012/message-of-love/main/open-site.mp3", 
+    type: "переход по ссылке на вчерашний катрен",
+    link: yesterdayCatrenLink
+});
+
 
 
 
@@ -2178,7 +2203,8 @@ function startListening() {
                 window.open("https://akegn.ru/", "_blank"); // Замените на фактическую ссылку
             } else if (qa.type === "переход по ссылке на Доктрину") {
                 window.open("https://doktrina.info/", "_blank"); // Замените на фактическую ссылку
-            } else if (qa.type === "переход по ссылке на сегодняшний катрен") {
+            } else if (qa.type === "переход по ссылке на сегодняшний катрен" || 
+            qa.type === "переход по ссылке на вчерашний катрен") {
                 window.open(qa.link, "_blank"); // Замените на фактическую ссылку
             }
         }

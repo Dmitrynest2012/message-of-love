@@ -2233,10 +2233,26 @@ function startListening() {
             } else if (qa.type === "переход по ссылке на сегодняшний катрен" || 
             qa.type === "переход по ссылке на вчерашний катрен" ||
             qa.type === "переход по ссылке на катрен за конкретную дату") {
-                startListening(); // Запускаем распознавание для получения даты
+                startListeningForDate(qa); // Запускаем распознавание для получения даты
 
             }
         }
+
+        function startListeningForDate(qa) {
+            recognition = new webkitSpeechRecognition();
+            recognition.lang = 'ru-RU';
+            recognition.continuous = false;
+        
+            recognition.onresult = function(event) {
+                const userInput = event.results[event.results.length - 1][0].transcript;
+                const dateLink = qa.getDateLink(userInput); // Получаем ссылку на катрен за указанную дату
+                if (dateLink) {
+                    window.open(dateLink, "_blank");
+                } else {
+                    // Если дата не распознана, можно вывести сообщение об ошибке или предложить повторить запрос
+                    console.log("Дата не распознана");
+                }
+            };
 
         recognition.stop();
         setTimeout(function() {

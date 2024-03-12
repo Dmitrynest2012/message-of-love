@@ -2187,7 +2187,7 @@ function getQaByQuestion(question) {
  // Устанавливаем атрибуты и свойства элементов
  videoPlayer.id = 'video-player';
  videoPlayer.controls = true;
- source.src = 'https://raw.githubusercontent.com/Dmitrynest2012/message-of-love/main/sound/flame_mini.mp4';
+ source.src = 'https://raw.githubusercontent.com/Dmitrynest2012/message-of-love/main/flame_mini.mp4';
  source.type = 'video/mp4';
 
  // Добавляем источник видео к элементу видеоплеера

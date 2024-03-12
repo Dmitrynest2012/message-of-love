@@ -2174,7 +2174,7 @@ qaPairs.push({
 
 // Добавляем команды "Покажи катрен за (дата)" в массив qaPairs
 qaPairs.push({ 
-    questions: ["Покажи катрен за"], 
+    questions: ["Катрен за"], 
     answer: "https://raw.githubusercontent.com/Dmitrynest2012/message-of-love/main/open-site.mp3", 
     type: "переход по ссылке на катрен за конкретную дату",
     getDateLink: function(userInput) {

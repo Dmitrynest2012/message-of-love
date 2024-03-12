@@ -2179,6 +2179,10 @@ function getQaByQuestion(question) {
 
 const containerMessage = document.querySelector(".container");
 
+
+
+
+
  // Создаем элементы видеоплеера
  const videoContainer = document.getElementById('video-container');
  const videoPlayer = document.createElement('video');
@@ -2186,7 +2190,9 @@ const containerMessage = document.querySelector(".container");
 
  // Устанавливаем атрибуты и свойства элементов
  videoPlayer.id = 'video-player';
- videoPlayer.controls = true;
+ videoPlayer.controls = false; // Скрываем элементы управления
+ videoPlayer.autoplay = true; // Автовоспроизведение
+ videoPlayer.loop = true; // Зацикливание видео
  source.src = 'flame_mini.mp4';
  source.type = 'video/mp4';
 

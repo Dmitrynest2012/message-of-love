@@ -753,6 +753,19 @@ body::before {
 
 
 
+.container video {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Заполняем видео в контейнере, сохраняя пропорции */
+    opacity: 0.25; /* Прозрачность в 50% */
+    z-index: 200;
+  }
+
+
+
 
 
 .image {

@@ -2119,8 +2119,31 @@ buttonAndromeda.addEventListener('mouseleave', function() {
     { questions: ["Покажи Академию", "Покажи Академи", "Покажи Акодеми", "Покажи Акадими"], answer: "https://raw.githubusercontent.com/Dmitrynest2012/message-of-love/main/open-site.mp3", type: "переход по ссылке на Академию" },
     { questions: ["Открой сайт Катрен", "Открой сайт Катренов", "Покажи Катрены", "Покажи Катрен"], answer: "https://raw.githubusercontent.com/Dmitrynest2012/message-of-love/main/open-site.mp3", type: "переход по ссылке на Катрены" },
     { questions: ["Открой сайт Доктрин", "Открой сайт Доктрины", "Покажи Доктрину", "Покажи Доктрин"], answer: "https://raw.githubusercontent.com/Dmitrynest2012/message-of-love/main/open-site.mp3", type: "переход по ссылке на Доктрину" },
+
+    { 
+        questions: ["Покажи сегодняшний катрен"], 
+        answer: "https://raw.githubusercontent.com/Dmitrynest2012/message-of-love/main/open-site.mp3", 
+        type: "переход по ссылке на сегодняшний катрен" 
+    },
     // Другие вопросы и ответы
 ];
+
+
+// Генерируем ссылку на сегодняшний катрен
+const currentDateCatren = new Date();
+const formattedDate = currentDateCatren.toLocaleDateString('en-US').replace(/\//g, '.');
+const todayCatrenLink = `https://blagayavest.info/poems/${formattedDate}.html`;
+
+// Добавляем ссылку на сегодняшний катрен в массив qaPairs
+qaPairs.push({ 
+    questions: ["Покажи сегодняшний катрен"], 
+    answer: "https://raw.githubusercontent.com/Dmitrynest2012/message-of-love/main/open-site.mp3", 
+    type: "переход по ссылке на сегодняшний катрен",
+    link: todayCatrenLink
+});
+
+
+
 
 let recognition;
 

@@ -765,9 +765,7 @@ body::before {
   }
 
 
-  .video-player {
-    display: none;
-}
+
 
   @media only screen and  (max-width: 600px) and (orientation: portrait) {
     .video-player {
@@ -776,7 +774,7 @@ body::before {
     height: 42.5%;
     object-fit: cover; /* Заполняем видео в контейнере, сохраняя пропорции */
         top: 57%;
-        display: block;
+
 
         left: 0px;
         opacity: 1; /* Прозрачность в 50% */

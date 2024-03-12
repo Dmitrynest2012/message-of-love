@@ -1106,6 +1106,7 @@ setInterval(checkAndShowNotification, 1000); // Вызываем функцию 
             // Скрываем элемент
             watchElement.style.display = 'none';
             titleVisitorsElement.style.display = 'none';
+            videoPlayer.display = 'none';
             // Применение стилей из медиа-запроса
             disableButtonAndromeda();
 
@@ -1118,6 +1119,7 @@ setInterval(checkAndShowNotification, 1000); // Вызываем функцию 
             // Скрываем элемент
             watchElement.style.display = 'block';
             titleVisitorsElement.style.display = 'block';
+            videoPlayer.display = 'block';
             if(xBcF == 1 || xBcF == true || xBcF){
                 buttonBuild.style.display = 'block';
                 } 
@@ -1155,6 +1157,7 @@ setInterval(checkAndShowNotification, 1000); // Вызываем функцию 
             // Скрываем элемент
             watchElement.style.display = 'none';
             titleVisitorsElement.style.display = 'none';
+            videoPlayer.display = 'none';
             
             if(xBcF == 1 || xBcF == true || xBcF){
                 buttonBuild.style.display = 'block';
@@ -1171,6 +1174,7 @@ setInterval(checkAndShowNotification, 1000); // Вызываем функцию 
             // Скрываем элемент
             watchElement.style.display = 'block';
             titleVisitorsElement.style.display = 'block';
+            videoPlayer.display = 'block';
             if(xBcF == 1 || xBcF == true || xBcF){
                 buttonBuild.style.display = 'block';
                 } 
@@ -1297,6 +1301,7 @@ setInterval(checkAndShowNotification, 1000); // Вызываем функцию 
               // Скрываем элемент
               watchElement.style.display = 'none';
               titleVisitorsElement.style.display = 'none';
+              videoPlayer.display = 'none';
               if(xBcF == 1 || xBcF == true || xBcF){
                 buttonBuild.style.display = 'block';
                 } 
@@ -1310,6 +1315,7 @@ setInterval(checkAndShowNotification, 1000); // Вызываем функцию 
               // Скрываем элемент
               watchElement.style.display = 'block';
               titleVisitorsElement.style.display = 'block';
+              videoPlayer.display = 'block';
               if(xBcF == 1 || xBcF == true || xBcF){
                 buttonBuild.style.display = 'block';
                 } 
@@ -1359,6 +1365,7 @@ setInterval(checkAndShowNotification, 1000); // Вызываем функцию 
             // Скрываем элемент
             watchElement.style.display = 'none';
             titleVisitorsElement.style.display = 'none';
+            videoPlayer.display = 'none';
 
             if(xBcF == 1 || xBcF == true || xBcF){
                 buttonBuild.style.display = 'block';
@@ -1376,6 +1383,7 @@ setInterval(checkAndShowNotification, 1000); // Вызываем функцию 
             // Скрываем элемент
             watchElement.style.display = 'block';
             titleVisitorsElement.style.display = 'block';
+            videoPlayer.display = 'block';
             // Применение стилей из медиа-запроса
            
             if(xBcF == 1 || xBcF == true || xBcF){

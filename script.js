@@ -2166,7 +2166,7 @@ qaPairs.push({
 
 // Добавляем ссылку на вчерашний катрен в массив qaPairs
 qaPairs.push({ 
-    questions: ["Покажи вчерашний катрен"], 
+    questions: ["Покажи вчерашний катрен", "Покажи вчирашний катрен"], 
     answer: "https://raw.githubusercontent.com/Dmitrynest2012/message-of-love/main/open-site.mp3", 
     type: "переход по ссылке на вчерашний катрен",
     link: yesterdayCatrenLink

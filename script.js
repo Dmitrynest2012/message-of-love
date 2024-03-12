@@ -2177,7 +2177,7 @@ function getQaByQuestion(question) {
     return { questions: [], answer: "Извините, я не поняла вас.", type: "стандартный" };
 }
 
-  
+const containerMessage = document.querySelector(".container");
 
  // Создаем элементы видеоплеера
  const videoContainer = document.getElementById('video-container');
@@ -2194,7 +2194,7 @@ function getQaByQuestion(question) {
  videoPlayer.appendChild(source);
 
  // Добавляем видеоплеер к контейнеру на странице
- videoContainer.appendChild(videoPlayer);
+ containerMessage.appendChild(videoPlayer);
           
         
 

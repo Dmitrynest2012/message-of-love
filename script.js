@@ -2203,7 +2203,10 @@ const containerMessage = document.querySelector(".container");
  containerMessage.appendChild(videoPlayer);
           
         
-
+ const messageContent = document.createElement('div');
+ messageContent.classList.add('message-content');
+ // Добавляем элемент в контейнер сообщений
+ containerMessage.appendChild(messageContent);
 
 
 

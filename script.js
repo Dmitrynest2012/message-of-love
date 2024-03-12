@@ -2120,11 +2120,7 @@ buttonAndromeda.addEventListener('mouseleave', function() {
     { questions: ["Открой сайт Катрен", "Открой сайт Катренов", "Покажи Катрены", "Покажи Катрен"], answer: "https://raw.githubusercontent.com/Dmitrynest2012/message-of-love/main/open-site.mp3", type: "переход по ссылке на Катрены" },
     { questions: ["Открой сайт Доктрин", "Открой сайт Доктрины", "Покажи Доктрину", "Покажи Доктрин"], answer: "https://raw.githubusercontent.com/Dmitrynest2012/message-of-love/main/open-site.mp3", type: "переход по ссылке на Доктрину" },
 
-    { 
-        questions: ["Покажи сегодняшний катрен"], 
-        answer: "https://raw.githubusercontent.com/Dmitrynest2012/message-of-love/main/open-site.mp3", 
-        type: "переход по ссылке на сегодняшний катрен" 
-    },
+    
     // Другие вопросы и ответы
 ];
 

@@ -753,7 +753,7 @@ body::before {
 
 
 
-.container video {
+.video-player {
     position: fixed;
     top: 0;
     left: 0;

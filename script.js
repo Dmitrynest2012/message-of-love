@@ -1107,6 +1107,7 @@ setInterval(checkAndShowNotification, 1000); // Вызываем функцию 
             watchElement.style.display = 'none';
             titleVisitorsElement.style.display = 'none';
             videoPlayer.display = 'none';
+            videoPlayer.style.opacity = '0';
             // Применение стилей из медиа-запроса
             disableButtonAndromeda();
 
@@ -1120,6 +1121,7 @@ setInterval(checkAndShowNotification, 1000); // Вызываем функцию 
             watchElement.style.display = 'block';
             titleVisitorsElement.style.display = 'block';
             videoPlayer.display = 'block';
+            videoPlayer.style.opacity = '0.25';
             if(xBcF == 1 || xBcF == true || xBcF){
                 buttonBuild.style.display = 'block';
                 } 
@@ -1158,6 +1160,7 @@ setInterval(checkAndShowNotification, 1000); // Вызываем функцию 
             watchElement.style.display = 'none';
             titleVisitorsElement.style.display = 'none';
             videoPlayer.display = 'none';
+            videoPlayer.style.opacity = '0';
             
             if(xBcF == 1 || xBcF == true || xBcF){
                 buttonBuild.style.display = 'block';
@@ -1175,6 +1178,7 @@ setInterval(checkAndShowNotification, 1000); // Вызываем функцию 
             watchElement.style.display = 'block';
             titleVisitorsElement.style.display = 'block';
             videoPlayer.display = 'block';
+            videoPlayer.style.opacity = '0.25';
             if(xBcF == 1 || xBcF == true || xBcF){
                 buttonBuild.style.display = 'block';
                 } 
@@ -1284,8 +1288,9 @@ setInterval(checkAndShowNotification, 1000); // Вызываем функцию 
                         buttonT.disabled = false;
                     }
                 } else {
-                    if (buttonT) {
                     const buttonT = document.getElementById('imageButton');
+                    if (buttonT) {
+                    
                         buttonT.disabled = true;
                     }
                 }
@@ -1302,6 +1307,7 @@ setInterval(checkAndShowNotification, 1000); // Вызываем функцию 
               watchElement.style.display = 'none';
               titleVisitorsElement.style.display = 'none';
               videoPlayer.display = 'none';
+              videoPlayer.style.opacity = '0';
               if(xBcF == 1 || xBcF == true || xBcF){
                 buttonBuild.style.display = 'block';
                 } 
@@ -1316,6 +1322,14 @@ setInterval(checkAndShowNotification, 1000); // Вызываем функцию 
               watchElement.style.display = 'block';
               titleVisitorsElement.style.display = 'block';
               videoPlayer.display = 'block';
+              if (isPortrait) {
+                // Ориентация экрана портретная
+                videoPlayer.style.opacity = '1';
+            
+            } else {
+                // Ориентация экрана не портретная
+                videoPlayer.style.opacity = '0.25';
+            }
               if(xBcF == 1 || xBcF == true || xBcF){
                 buttonBuild.style.display = 'block';
                 } 
@@ -1366,6 +1380,7 @@ setInterval(checkAndShowNotification, 1000); // Вызываем функцию 
             watchElement.style.display = 'none';
             titleVisitorsElement.style.display = 'none';
             videoPlayer.display = 'none';
+            videoPlayer.style.opacity = '0';
 
             if(xBcF == 1 || xBcF == true || xBcF){
                 buttonBuild.style.display = 'block';
@@ -1384,6 +1399,16 @@ setInterval(checkAndShowNotification, 1000); // Вызываем функцию 
             watchElement.style.display = 'block';
             titleVisitorsElement.style.display = 'block';
             videoPlayer.display = 'block';
+            // Устанавливаем нулевую прозрачность
+            if (isPortrait) {
+                // Ориентация экрана портретная
+                videoPlayer.style.opacity = '1';
+            
+            } else {
+                // Ориентация экрана не портретная
+                videoPlayer.style.opacity = '0.25';
+            }
+            
             // Применение стилей из медиа-запроса
            
             if(xBcF == 1 || xBcF == true || xBcF){
@@ -2283,6 +2308,7 @@ const containerMessage = document.querySelector(".container");
 
  // Устанавливаем атрибуты и свойства элементов
  videoPlayer.id = 'video-player';
+ videoPlayer.classList.add('video-player');
 
  videoPlayer.controls = false; // Скрываем элементы управления
  videoPlayer.autoplay = true; // Автовоспроизведение

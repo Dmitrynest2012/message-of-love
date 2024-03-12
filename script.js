@@ -2110,12 +2110,31 @@ function insertDescription(container, description) {
 
 
 
-  // Функция для обновления состояния кнопки изображения и сохранения состояния в локальное хранилище
-  function toggleAndromeda() {
+ // Функция для проверки состояния первого запуска Андромеды
+function isFirstLaunch() {
+    return localStorage.getItem('firstLaunch') !== 'true'; // Если первый запуск, вернуть true
+}
+
+// Функция для установки состояния первого запуска Андромеды
+function setFirstLaunch() {
+    localStorage.setItem('firstLaunch', 'true');
+}
+
+// Функция для обновления состояния кнопки изображения и сохранения состояния в локальное хранилище
+function toggleAndromeda() {
+    if (isFirstLaunch()) {
+        const audio = new Audio("https://raw.githubusercontent.com/Dmitrynest2012/message-of-love/main/andromeda_first_message.mp3");
+            audio.play();
+
+
+        setFirstLaunch(); // Устанавливаем состояние первого запуска
+    }
+    
     buttonAndromedaActive = true; // Инвертируем состояние кнопки Андромеды
     updateAndromedaButtonState(); // Обновляем состояние кнопки изображения
     startListening();
-  }
+}
+
   
   
   // Функция для обновления внешнего вида кнопки изображения в соответствии с состоянием

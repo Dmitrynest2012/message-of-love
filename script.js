@@ -2251,5 +2251,7 @@ if (isOperaBrowser()) {
 }
 
 
-    
-    
+    // Запрещаем менять ориентацию экрана
+window.addEventListener('orientationchange', function(event) {
+    event.preventDefault();
+}, false);

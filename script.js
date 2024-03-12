@@ -2209,6 +2209,18 @@ const containerMessage = document.querySelector(".container");
  containerMessage.appendChild(messageContent);
 
 
+// Проверяем, используется ли Яндекс.Браузер
+function isYandexBrowser() {
+    return /YaBrowser/i.test(navigator.userAgent);
+}
+
+// Пример использования
+if (isYandexBrowser()) {
+    // Логика для Яндекс.Браузера
+    document.addEventListener('click', function() {
+        videoPlayer.play();
+    });
+}
 
     
 

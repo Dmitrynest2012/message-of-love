@@ -2190,6 +2190,7 @@ const containerMessage = document.querySelector(".container");
 
  // Устанавливаем атрибуты и свойства элементов
  videoPlayer.id = 'video-player';
+
  videoPlayer.controls = false; // Скрываем элементы управления
  videoPlayer.autoplay = true; // Автовоспроизведение
  videoPlayer.loop = true; // Зацикливание видео
@@ -2199,14 +2200,27 @@ const containerMessage = document.querySelector(".container");
  // Добавляем источник видео к элементу видеоплеера
  videoPlayer.appendChild(source);
 
- // Добавляем видеоплеер к контейнеру на странице
- containerMessage.appendChild(videoPlayer);
-          
-        
  const messageContent = document.createElement('div');
  messageContent.classList.add('message-content');
  // Добавляем элемент в контейнер сообщений
  containerMessage.appendChild(messageContent);
+
+ // Проверяем ориентацию экрана
+const isPortrait = window.innerHeight > window.innerWidth;
+
+// Добавляем видеоплеер в контейнер или в `<body>` в зависимости от ориентации экрана
+if (isPortrait) {
+    // Ориентация экрана портретная
+    document.body.appendChild(videoPlayer);
+    videoPlayer.classList.add('video-player');
+
+} else {
+    // Ориентация экрана не портретная
+    containerMessage.appendChild(videoPlayer);
+}
+          
+        
+
 
 
 // Проверяем, используется ли Яндекс.Браузер

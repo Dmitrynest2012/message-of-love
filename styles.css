@@ -32,11 +32,10 @@ body {
 @media screen and (orientation: landscape) and (max-height: 600px) {
     /* Ваш стиль для альбомной ориентации и высоты экрана менее 600 пикселей */
     .body{
-        margin: 0;
-    padding: 0;
+        
         overflow-y: auto; /* Разрешаем вертикальную прокрутку */
         background-color: black;
-
+        background: linear-gradient(to right, rgba(53, 0, 168, 0.541), rgba(53, 0, 168, 0)); /* Линейный градиент */
     }
   }
 
@@ -899,6 +898,14 @@ body {
     }
 }
 
+@media screen and (orientation: landscape) and (max-height: 600px) {
+    /* Ваш стиль для альбомной ориентации и высоты экрана менее 600 пикселей */
+    .video-player {
+        position: fixed;
+        box-shadow: 0 0 80px 80px rgba(0, 0, 0, 0.9); /* Тень */
+    }
+}
+
 
 .message-content {
     position: fixed;
@@ -1028,6 +1035,14 @@ body {
         -1px 1px 1px rgba(48, 48, 48, 0.1); /* Тень влево-вниз */
     }
 }
+
+@media screen and (orientation: landscape) and (max-height: 600px) {
+    /* Ваш стиль для альбомной ориентации и высоты экрана менее 600 пикселей */
+    .text {
+        font-size: 0.9rem;
+
+    }
+  }
 
 
 

@@ -1234,21 +1234,32 @@ setInterval(checkAndShowNotification, 1000); // Вызываем функцию 
 
  // Применение стилей из медиа-запроса
     if (window.matchMedia("(max-width: 600px) and (orientation: portrait)").matches) {
+        container.style.background = 'linear-gradient(to bottom, rgba(0, 0, 0, 0), #3e2723, #3e2723)';
         
     } else {
             // Ждем завершения анимации, прежде чем обновлять переливающийся фон.
         setTimeout(function() {
+            document.body.style.backgroundColor = "black";
             document.body.style.background = "linear-gradient(to bottom, black 50%, #3e2723 100%)";
+            container.style.background = 'linear-gradient(to bottom, rgba(0, 0, 0, 0), #3e2723, #3e2723)';
         }, 300); // Подождите 500 миллисекунд, чтобы анимация завершилась
  
     }
       
 
+    // Проверяем условие для альбомного режима и высоты экрана
+    if (window.matchMedia("(orientation: landscape)").matches) {
+        // Устанавливаем фоновый цвет body в черный
+        setTimeout(function() {
+        document.body.style.backgroundColor = "black";
+        container.style.background = 'linear-gradient(to bottom, rgba(0, 0, 0, 0), #3e2723, #3e2723)';
+    }, 300); 
+    }
 
 
 
 
-         container.style.background = 'linear-gradient(to bottom, rgba(0, 0, 0, 0), #3e2723, #3e2723)';
+         
           
             // Скрыть элемент блока катрена
             document.querySelector('.quatrain').style.display = 'none';

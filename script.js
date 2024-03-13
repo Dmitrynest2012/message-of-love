@@ -342,6 +342,96 @@ imageButton.addEventListener('mouseleave', function() {
 
 
 
+
+// Создаем элемент кнопки
+const hamburgerButton = document.createElement('button');
+hamburgerButton.id = "hamburger-button";
+hamburgerButton.classList.add('hamburger-button'); // Добавляем класс для стилей кнопки
+
+// Устанавливаем символ иконки кнопки
+const iconSymbol = document.createTextNode('≡ ');
+hamburgerButton.appendChild(iconSymbol);
+
+
+
+// Добавляем кнопку в тело документа
+document.body.appendChild(hamburgerButton);
+
+
+
+
+
+let isHamburgerActive = false;
+
+// Функция для обновления состояния кнопки "Гамбургер" и сохранения состояния в локальное хранилище
+function toggleHamburger() {
+    isHamburgerActive = !isHamburgerActive; // Инвертируем состояние кнопки "Гамбургер"
+    updateHamburgerButtonState(); // Обновляем состояние кнопки "Гамбургер"
+    
+}
+
+
+// Функция для обновления внешнего вида кнопки "Гамбургер" в соответствии с состоянием
+function updateHamburgerButtonState() {
+    const hamburgerButton = document.getElementById('hamburger-button');
+    if (!hamburgerButton) return;
+
+    if (isHamburgerActive) {
+        hamburgerButton.style.backgroundColor = 'rgba(128, 0, 128, 0.5)';
+        
+    } else {
+        hamburgerButton.style.backgroundColor = 'rgba(128, 0, 128, 0.15)';
+        
+    }
+}
+
+
+
+// Функция для делания кнопки "Гамбургер" неактивной
+function disableHamburgerButton() {
+    if (hamburgerButton) {
+        hamburgerButton.disabled = true;
+    }
+}
+
+// Функция для делания кнопки "Гамбургер" активной
+function enableHamburgerButton() {
+    if (hamburgerButton) {
+        hamburgerButton.disabled = false;
+    }
+}
+
+
+
+
+// Добавляем обработчик события наведения мыши на кнопку "Гамбургер"
+hamburgerButton.addEventListener('mouseenter', function() {
+        hamburgerButton.style.backgroundColor = 'rgba(128, 0, 128, 0.75)';
+
+});
+
+// Добавляем обработчик события увода мыши с кнопки изображения
+hamburgerButton.addEventListener('mouseleave', function() {
+    // Возвращаем исходный цвет фона кнопки
+    hamburgerButton.style.backgroundColor = isHamburgerActive ? 'rgba(128, 0, 128, 0.5)' : 'rgba(128, 0, 128, 0.15)';
+});
+
+
+// Добавляем обработчик события клика на кнопку "Гамбургер"
+if (hamburgerButton) {
+    hamburgerButton.addEventListener('click', function() {
+        toggleHamburger();
+    });
+}
+
+
+
+
+
+
+
+
+
 // Проверка ориентации устройства
 function checkOrientation() {
     if (window.matchMedia("(orientation: portrait)").matches) {
@@ -1509,10 +1599,11 @@ setInterval(checkAndShowNotification, 1000); // Вызываем функцию 
 
     // Если не был найден посыл в текущем дне
     if (!nextSending) {
+        
         // Определяем первый посыл на следующий день
         const firstSending = new Date();
         firstSending.setDate(firstSending.getDate() + 1);
-        firstSending.setHours(json[0].from.hour, json[0].from.minute, 0);
+        firstSending.setHours(json[0].from.hour, json[0].from.minute, json[0].from.second || 0);
 
         
 
@@ -1525,6 +1616,9 @@ setInterval(checkAndShowNotification, 1000); // Вызываем функцию 
         secondsLeft = Math.floor((timeDiff % (1000 * 60)) / 1000);
 
         newText = `До следующего Посыла: ${hoursLeft} ч. ${minutesLeft} мин. ${secondsLeft} сек.`;
+
+
+        
 
 
         if (hoursLeft === 0 && minutesLeft <= 5) {

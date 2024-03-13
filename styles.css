@@ -1250,6 +1250,68 @@ content: ''; /* Обязательно для псевдоэлементов */
 
 
 
+
+
+
+
+.hamburger-button {
+    position: fixed;
+    bottom: 25px;
+    left: calc(100% - 177px);
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: rgba(128, 0, 128, 0.1);
+    color: rgba(255, 255, 255, 0.5);
+    font-size: 24px;
+    border: 1px solid rgba(128, 0, 128, 0.8);
+    cursor: pointer;
+    transition: all 0.3s;
+    z-index: 50;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Стиль для включенной кнопки */
+.hamburger-button.enabled {
+    background-color: rgba(128, 0, 128, 0.5);
+}
+
+/* Стиль для кнопки, когда она в состоянии disabled */
+.hamburger-button:disabled {
+    background-color: rgba(48, 48, 48, 0.1);
+    color: rgba(255, 255, 255, 0.3);
+    border: 1px solid rgba(173, 173, 173, 0.185);
+    cursor: not-allowed;
+    pointer-events: none;
+    opacity: 0.9;
+}
+
+/* Медиа-запрос для портретного режима */
+@media (orientation: portrait) {
+    .hamburger-button {
+        bottom: 20px;
+        left: calc(100% - 137px);
+    }
+}
+
+@media screen and (orientation: landscape) and (max-height: 600px) {
+    .hamburger-button {
+        bottom: 15px;
+        left: calc(100% - 150px);
+    }
+}
+
+
+
+
+
+
+
+
+
+
 #table-container {
     width: 0; /* Ширина */
     height: 70vh; /* Высота */

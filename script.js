@@ -1042,7 +1042,10 @@ function checkAndShowNotification() {
     }
 }
 
-
+// Запрещаем менять ориентацию экрана
+window.addEventListener('orientationchange', function(event) {
+    event.preventDefault();
+}, false);
 // Устанавливаем фоновый цвет body в черный
 document.body.style.backgroundColor = "black";
 setInterval(checkAndShowNotification, 1000); // Вызываем функцию каждую секунду

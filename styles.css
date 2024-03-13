@@ -765,8 +765,13 @@ body {
 @media screen and (orientation: landscape) and (max-height: 600px) {
     /* Ваш стиль для альбомной ориентации и высоты экрана менее 600 пикселей */
     .container{
-        width: 53%; /* Занимаем всю доступную ширину */
-        height: 19%;
+        bottom: auto;
+        top: 5px;
+        left: 51.5%;
+        transform: translateX(-0%);
+        position: fixed;
+        width: 46.5%; /* Занимаем всю доступную ширину */
+        height: 96%;
         border-top-right-radius: 0px;
         border-bottom-right-radius: 0px;
         overflow-y: auto; /* Включаем вертикальную прокрутку при необходимости */
@@ -962,12 +967,7 @@ body {
     }
 }
 
-@media screen and (orientation: landscape) and (max-height: 600px) {
-    /* Ваш стиль для альбомной ориентации и высоты экрана менее 600 пикселей */
-    .time {
-        font-size: 0.99rem;
-    }
-  }
+
 
 .moscow-time {
 
@@ -990,12 +990,7 @@ body {
     }
 }
 
-@media screen and (orientation: landscape) and (max-height: 600px) {
-    /* Ваш стиль для альбомной ориентации и высоты экрана менее 600 пикселей */
-    .moscow-time {
-        font-size: 0.6rem;
-    }
-  }
+
 
 .text {
 
@@ -1034,12 +1029,7 @@ body {
     }
 }
 
-@media screen and (orientation: landscape) and (max-height: 600px) {
-    /* Ваш стиль для альбомной ориентации и высоты экрана менее 600 пикселей */
-    .text {
-        font-size: 0.7rem;
-    }
-  }
+
 
 
 .text .animated {
@@ -1408,6 +1398,8 @@ body {
 @media screen and (orientation: landscape) and (max-height: 600px) {
     /* Ваш стиль для альбомной ориентации и высоты экрана менее 600 пикселей */
     .quatrain {
+        right: 50%;
+        top: 1%;
         font-size: 9px; 
         padding: 10px;
         margin-top: 10px;
@@ -1473,13 +1465,34 @@ body {
 @media screen and (orientation: landscape) and (max-height: 600px) {
     /* Ваш стиль для альбомной ориентации и высоты экрана менее 600 пикселей */
     .image-container{
-        border-top-right-radius: 0px;
-        border-bottom-right-radius: 0px;
-        width: 60%;
-        height: 60%;
+        position: fixed;
+        top: 5px;
+        left: 5px;
+        border-radius: 15px;
+        width: 49%;
+        height: 98%;
 
     }
   }
+
+  @media screen and (orientation: landscape) and (max-height: 600px) {
+    /* Ваш стиль для альбомной ориентации и высоты экрана менее 600 пикселей */
+    .image-container img {
+        position: fixed;
+        top: 0;
+        display: block;
+        width: 50%;
+        height: 98%;
+        border-radius: 15px;
+        object-fit: cover; /* Чтобы изображение занимало всю область */
+    }
+  }
+
+
+
+
+
+  
 
 .song-info {
     position: absolute;

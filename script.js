@@ -1043,8 +1043,13 @@ function checkAndShowNotification() {
 }
 
 
-// Устанавливаем фоновый цвет body в черный
-document.body.style.backgroundColor = "black";
+// Обработчик события изменения ориентации экрана
+window.addEventListener('orientationchange', function() {
+    // Перезагружаем страницу
+    location.reload();
+    // Устанавливаем фоновый цвет body в черный
+    document.body.style.backgroundColor = "black";
+}, false);
 setInterval(checkAndShowNotification, 1000); // Вызываем функцию каждую секунду
 
 

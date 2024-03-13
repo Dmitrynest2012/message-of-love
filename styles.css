@@ -18,9 +18,7 @@ body {
     transition: opacity 0.3s, background 0.3s linear; /* Длительность и тип анимации */
 }
 
-body::before {
-    opacity: 0;
-}
+
 
 @media only screen and (max-width: 600px) and (orientation: portrait) {
     body {
@@ -30,6 +28,24 @@ body::before {
         
     }
 }
+
+@media screen and (orientation: landscape) and (max-height: 600px) {
+    /* Ваш стиль для альбомной ориентации и высоты экрана менее 600 пикселей */
+    .body{
+        margin: 0;
+    padding: 0;
+        overflow-y: auto; /* Разрешаем вертикальную прокрутку */
+        background-color: black;
+
+    }
+  }
+
+  @media screen and (orientation: landscape) and (max-height: 600px) {
+    /* Ваш стиль для альбомной ориентации и высоты экрана менее 600 пикселей */
+    body::before {
+        opacity: 0;
+    }
+  }
 
 .buttonBuild {
     position: fixed;
@@ -312,6 +328,31 @@ body::before {
   }
 }
 
+@media screen and (orientation: landscape) and (max-height: 600px) {
+    /* Ваш стиль для альбомной ориентации и высоты экрана менее 600 пикселей */
+    .titleVisitors{
+        position: fixed;
+        top: 30px;
+        left: 0px;
+        
+        width: 90px;
+        margin-top: 20px;
+
+  padding: 5px;
+  padding-left: 17px;
+  padding-right: 10px;
+  border-top: 1px solid rgba(255, 255, 255, 0.219);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.219);
+  border-right: 1px solid rgba(255, 255, 255, 0.219);
+  border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px;
+  background: linear-gradient(to right, rgba(53, 0, 168, 0.541), rgba(53, 0, 168, 0)); /* Линейный градиент */
+  font-size: 9px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  opacity: 1;
+    }
+  }
+
 
 
 /* Стили для счетчика */
@@ -339,6 +380,17 @@ body::before {
 
     }
 }
+
+
+@media screen and (orientation: landscape) and (max-height: 600px) {
+    /* Ваш стиль для альбомной ориентации и высоты экрана менее 600 пикселей */
+    .ym-counter-image{
+        position: fixed;
+        top: 20px;
+        left: 15px;
+        opacity: 0.9;
+    }
+  }
 
 
 
@@ -644,6 +696,8 @@ body::before {
     z-index: -1; /* Поместить подложку под элемент .quatrain */
   }
 
+  
+
 
 .line {
     position: fixed;
@@ -668,7 +722,12 @@ body::before {
     }
 }
 
-
+@media screen and (orientation: landscape) and (max-height: 600px) {
+    /* Ваш стиль для альбомной ориентации и высоты экрана менее 600 пикселей */
+    .line {
+        display: none;
+    }
+  }
 
 
 @keyframes growShrink {
@@ -702,6 +761,59 @@ body::before {
         border-radius: 0px;
     }
 }
+
+@media screen and (orientation: landscape) and (max-height: 600px) {
+    /* Ваш стиль для альбомной ориентации и высоты экрана менее 600 пикселей */
+    .container{
+        width: 53%; /* Занимаем всю доступную ширину */
+        height: 19%;
+        border-top-right-radius: 0px;
+        border-bottom-right-radius: 0px;
+        overflow-y: auto; /* Включаем вертикальную прокрутку при необходимости */
+        padding: 5px;
+    }
+  }
+
+  @media screen and (orientation: landscape) and (max-height: 600px) {
+    /* Ваш стиль для альбомной ориентации и высоты экрана менее 600 пикселей */
+    .container:after{
+        border-top-right-radius: 0px;
+        border-bottom-right-radius: 0px;
+        height: 200%;
+
+    }
+  }
+
+  @media screen and (orientation: landscape) and (max-height: 600px) {
+    /* Ваш стиль для альбомной ориентации и высоты экрана менее 600 пикселей */
+    .container::-webkit-scrollbar {
+        width: 12px; /* Ширина полосы прокрутки */
+        border: 1px solid rgba(174, 0, 255, 0);
+        border-top-right-radius: 0px;
+        border-bottom-right-radius: 0px;
+        z-index: 80;
+    }
+  }
+
+  @media screen and (orientation: landscape) and (max-height: 600px) {
+    /* Ваш стиль для альбомной ориентации и высоты экрана менее 600 пикселей */
+    .container::-webkit-scrollbar-track {
+
+        
+        background: rgba(173, 173, 173, 0.315); /* Цвет фона трека */
+        border-top-right-radius: 0px; /* Закругление нижнего правого угла */
+        border-bottom-right-radius: 0px; /* Закругление нижнего правого угла */
+    }
+  }
+
+  @media screen and (orientation: landscape) and (max-height: 600px) {
+    /* Ваш стиль для альбомной ориентации и высоты экрана менее 600 пикселей */
+    .container::-webkit-scrollbar-thumb {
+
+        background: rgba(0, 0, 0, 0.534); /* Цвет полосы прокрутки */
+        
+    }
+  }
 
 
 
@@ -827,6 +939,8 @@ body::before {
 
 
 
+
+
 .time {
 
     font-size: 2rem;
@@ -848,6 +962,13 @@ body::before {
     }
 }
 
+@media screen and (orientation: landscape) and (max-height: 600px) {
+    /* Ваш стиль для альбомной ориентации и высоты экрана менее 600 пикселей */
+    .time {
+        font-size: 0.99rem;
+    }
+  }
+
 .moscow-time {
 
     background-color: #00000000;
@@ -868,6 +989,13 @@ body::before {
         
     }
 }
+
+@media screen and (orientation: landscape) and (max-height: 600px) {
+    /* Ваш стиль для альбомной ориентации и высоты экрана менее 600 пикселей */
+    .moscow-time {
+        font-size: 0.6rem;
+    }
+  }
 
 .text {
 
@@ -905,6 +1033,13 @@ body::before {
         -1px 1px 1px rgba(48, 48, 48, 0.1); /* Тень влево-вниз */
     }
 }
+
+@media screen and (orientation: landscape) and (max-height: 600px) {
+    /* Ваш стиль для альбомной ориентации и высоты экрана менее 600 пикселей */
+    .text {
+        font-size: 0.7rem;
+    }
+  }
 
 
 .text .animated {
@@ -1279,6 +1414,8 @@ body::before {
         margin-right: 10px;
     }
   }
+
+
   
 
 
@@ -1323,12 +1460,26 @@ body::before {
     box-shadow: 5px 0 10px rgba(0, 0, 0, 0.5), -5px 0 10px rgba(0, 0, 0, 0.5); /* Тень от левой и правой стороны */
 }
 
+
+
+
 .image-container img {
     display: block;
     width: 100%;
     height: 50%;
     object-fit: cover; /* Чтобы изображение занимало всю область */
 }
+
+@media screen and (orientation: landscape) and (max-height: 600px) {
+    /* Ваш стиль для альбомной ориентации и высоты экрана менее 600 пикселей */
+    .image-container{
+        border-top-right-radius: 0px;
+        border-bottom-right-radius: 0px;
+        width: 60%;
+        height: 60%;
+
+    }
+  }
 
 .song-info {
     position: absolute;

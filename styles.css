@@ -1128,7 +1128,13 @@ body {
     }
 }
 
-
+@media screen and (orientation: landscape) and (max-height: 600px) {
+    /* Ваш стиль для альбомной ориентации и высоты экрана менее 600 пикселей */
+    #audioButton {
+        bottom: 15px;
+        left: 53%; 
+    }
+}
 
 
 
@@ -1171,6 +1177,14 @@ body {
 @media (orientation: portrait) {
     #imageButton {
         left: 75px; /* Отступ от правой границы в портретном режиме */
+    }
+}
+
+@media screen and (orientation: landscape) and (max-height: 600px) {
+    /* Ваш стиль для альбомной ориентации и высоты экрана менее 600 пикселей */
+    #imageButton {
+        bottom: 15px;
+        left: 60%; 
     }
 }
 
@@ -1365,7 +1379,13 @@ body {
 }
 
 
-
+@media screen and (orientation: landscape) and (max-height: 600px) {
+    /* Ваш стиль для альбомной ориентации и высоты экрана менее 600 пикселей */
+    .andromeda-button {
+        bottom: 15px;
+        right: 40px; 
+    }
+}
 
 
 

@@ -1043,7 +1043,8 @@ function checkAndShowNotification() {
 }
 
 
-
+// Устанавливаем фоновый цвет body в черный
+document.body.style.backgroundColor = "black";
 setInterval(checkAndShowNotification, 1000); // Вызываем функцию каждую секунду
 
 

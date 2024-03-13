@@ -229,7 +229,7 @@ body {
     position: fixed;
     font-family: 'Play';
     font-size: 14px;
-    top: 20px;
+    top: 25px;
     left: 50%; /* Появление линии с середины контейнера */
     transform: translateX(-50%); /* Центрирование линии */
     z-index: 100;
@@ -242,7 +242,7 @@ body {
     position: fixed;
     font-family: 'Play';
     font-size: 14px;
-    top: 210px;
+    top: 230px;
     right: 51.5%;
     width: 90px;
     height: 15px;
@@ -272,7 +272,7 @@ body {
 
 .titleVisitors {
     position: fixed;
-        top: 30px;
+        top: 40px;
         left: 0px;
         
         width: 90px;
@@ -296,7 +296,7 @@ body {
 @media only screen and (max-width: 600px) and (orientation: portrait) {
     .titleVisitors {
         position: fixed;
-        top: 30px;
+        top: 40px;
         left: 0px;
         
         width: 90px;
@@ -395,7 +395,7 @@ content: ''; /* Обязательно для псевдоэлементов */
 @media only screen and (max-width: 600px) and (orientation: portrait) {
     .ym-counter-image {
         position: fixed;
-        top: 20px;
+        top: 15px;
         left: 15px;
         opacity: 0.9;
 
@@ -405,7 +405,7 @@ content: ''; /* Обязательно для псевдоэлементов */
 
 .ym-counter-image {
     position: fixed;
-    top: 20px;
+    top: 25px;
     left: 15px;
     opacity: 0.9;
 }
@@ -699,8 +699,8 @@ content: ''; /* Обязательно для псевдоэлементов */
     left: 50%;
 
     width: 46%;
-    max-width: 970px;
-    height: 93%;
+    max-width: 46%;
+    height: 92.5%;
     text-align: center;
     padding: 20px;
     color: white;
@@ -1190,7 +1190,7 @@ content: ''; /* Обязательно для псевдоэлементов */
     /* Ваш стиль для альбомной ориентации и высоты экрана менее 600 пикселей */
     #audioButton {
         bottom: 15px;
-        left: 53%; 
+        left: calc(50% + 15px); /* Отступ от левой границы вьюпорта */
     }
 }
 
@@ -1242,7 +1242,7 @@ content: ''; /* Обязательно для псевдоэлементов */
     /* Ваш стиль для альбомной ориентации и высоты экрана менее 600 пикселей */
     #imageButton {
         bottom: 15px;
-        left: 60%; 
+        left: calc(50% + 75px);
     }
 }
 
@@ -1395,7 +1395,7 @@ content: ''; /* Обязательно для псевдоэлементов */
     /* Ваш стиль для альбомной ориентации и высоты экрана менее 600 пикселей */
     .special-button {
         bottom: 15px;
-        left: 67%; 
+        left: calc(50% + 135px);
     }
 }
 
@@ -1563,6 +1563,7 @@ content: ''; /* Обязательно для псевдоэлементов */
     /* Другие параметры изображения */
     box-shadow: 5px 0 10px rgba(0, 0, 0, 0.5), -5px 0 10px rgba(0, 0, 0, 0.5); /* Тень от левой и правой стороны */
     height: 98%;
+    width: 49%;
     max-width: 49%;
     border-radius: 15px;
 }
@@ -1620,7 +1621,7 @@ content: ''; /* Обязательно для псевдоэлементов */
 
 .song-info {
     position: absolute;
-    top: 20px;
+    bottom: 20px;
     right: -100%; /* Добавляем отрицательный отступ справа */
     padding-right: 20px; /* Дополнительный отступ для текста */
     display: inline-block;

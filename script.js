@@ -363,12 +363,69 @@ document.body.appendChild(hamburgerButton);
 
 let isHamburgerActive = false;
 
-// Функция для обновления состояния кнопки "Гамбургер" и сохранения состояния в локальное хранилище
+// Функция для обновления состояния кнопки "Гамбургер" и создания/удаления контейнера "меню на ресурсы"
 function toggleHamburger() {
     isHamburgerActive = !isHamburgerActive; // Инвертируем состояние кнопки "Гамбургер"
     updateHamburgerButtonState(); // Обновляем состояние кнопки "Гамбургер"
     
+    // Получаем ссылку на контейнер "меню на ресурсы"
+    const menuContainer = document.getElementById('menu-container');
+
+    // Если кнопка "Гамбургер" активна, создаем контейнер "меню на ресурсы" и добавляем его в тело документа
+    if (isHamburgerActive) {
+        const newMenuContainer = document.createElement('div');
+        newMenuContainer.id = 'menu-container';
+        newMenuContainer.classList.add('menu-container');
+
+        // Создаем заголовок "Ссылки на ресурсы"
+        const title = document.createElement('h2');
+        title.textContent = 'Ссылки на ресурсы:';
+        newMenuContainer.appendChild(title);
+
+        // Создаем кнопку Академия с ссылкой
+        const linkButton1 = document.createElement('button');
+        linkButton1.id = 'resource-link-button1';
+        linkButton1.classList.add('encryptText');
+        linkButton1.innerHTML = 'Академия'; // Текст кнопки
+        linkButton1.addEventListener('click', function() {
+            // Открываем ссылку в новой вкладке
+            window.open('https://akegn.ru/', '_blank');
+        });
+        newMenuContainer.appendChild(linkButton1);
+
+        // Создаем кнопку Доктрина с ссылкой
+        const linkButton2 = document.createElement('button');
+        linkButton2.id = 'resource-link-button2';
+        linkButton2.classList.add('encryptText');
+        linkButton2.innerHTML = 'Доктрина'; // Текст кнопки
+        linkButton2.addEventListener('click', function() {
+            // Открываем ссылку в новой вкладке
+            window.open('https://doktrina.info/?yclid=3755516742685425663', '_blank');
+        });
+        newMenuContainer.appendChild(linkButton2);
+
+        // Создаем кнопку Благая весть с ссылкой
+        const linkButton3 = document.createElement('button');
+        linkButton3.id = 'resource-link-button3';
+        linkButton3.classList.add('encryptText');
+        linkButton3.innerHTML = 'Благая Весть'; // Текст кнопки
+        linkButton3.addEventListener('click', function() {
+            // Открываем ссылку в новой вкладке
+            window.open('https://blagayavest.info/', '_blank');
+        });
+        newMenuContainer.appendChild(linkButton3);
+
+        // Добавляем контейнер в тело документа
+        document.body.appendChild(newMenuContainer);
+    } else {
+        // Если кнопка "Гамбургер" неактивна и контейнер существует, удаляем его из документа
+        if (menuContainer) {
+            menuContainer.parentNode.removeChild(menuContainer);
+        }
+    }
 }
+
+
 
 
 // Функция для обновления внешнего вида кнопки "Гамбургер" в соответствии с состоянием

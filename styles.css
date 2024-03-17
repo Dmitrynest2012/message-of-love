@@ -609,9 +609,11 @@ content: ''; /* Обязательно для псевдоэлементов */
         border: 1px solid rgba(134, 134, 134, 0.521); /* Убираем границу */
         border-radius: 15px; /* Закругленные углы */
         padding: 10px 20px; /* Внутренний отступ */
+        font-family: 'Play';
         font-size: 16px; /* Размер шрифта */
         cursor: pointer; /* Изменяем курсор при наведении */
         transition: background-color 0.2s, color 0.3s, padding 0.2s; /* Плавные переходы */
+        z-index: 400;
     }
     
     .encryptText:hover {
@@ -1301,6 +1303,84 @@ content: ''; /* Обязательно для псевдоэлементов */
         bottom: 15px;
         left: calc(100% - 150px);
     }
+}
+
+.menu-container {
+    position: fixed;
+    display: flex; /* Размещаем элементы в контейнере в одну колонку */
+        flex-direction: column; /* Отображаем элементы вертикально по очереди */
+        justify-content: top; /* Выравниваем элементы по вертикали по центру */
+        align-items: center; /* Выравниваем элементы по горизонтали по центру */
+    top: 50%; /* Располагаем контейнер по вертикали посередине */
+    left: 50%; /* Располагаем контейнер по горизонтали посередине */
+    transform: translate(-50%, -50%); /* Центрируем контейнер */
+    width: 25%; /* Ширина контейнера 80% экрана */
+    height: 50%; /* Высота контейнера 75% экрана */
+    background-color: rgba(45, 0, 128, 0.7); /* Полупрозрачное темно-лавандовое окно */
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 15px; /* Закругляем углы контейнера */
+    font-family: 'Play';
+    padding: 20px; /* Внутренний отступ контейнера */
+    backdrop-filter: blur(12px); /* Применяем размытие к контейнеру */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); /* Тень для контейнера */
+    overflow-y: auto; /* Разрешаем вертикальную прокрутку */
+    z-index: 100; /* Устанавливаем контейнер поверх остального контента */
+}
+
+@media (orientation: portrait) {
+    .menu-container {
+        position: fixed;
+        width: 80%; /* Ширина контейнера 80% экрана */
+        height: 70%; /* Высота контейнера 75% экрана */
+        backdrop-filter: blur(5px); /* Применяем размытие к контейнеру */
+        
+    }
+}
+
+@media screen and (orientation: landscape) and (max-height: 600px) {
+    .menu-container {
+        position: fixed;
+        top: 10px;
+        left: 10px;
+        transform: translate(-0%, -0%); /* Центрируем контейнер */
+        width: 30%; /* Ширина контейнера 80% экрана */
+        height: 56%; /* Высота контейнера 75% экрана */
+        backdrop-filter: blur(5px); /* Применяем размытие к контейнеру */
+        z-index: 500;
+        
+    }
+}
+
+
+
+.menu-container::-webkit-scrollbar {
+    width: 12px; /* Ширина полосы прокрутки */
+    border: 1px solid rgba(174, 0, 255, 0);
+    border-top-right-radius: 15px;
+    border-bottom-right-radius: 15px;
+    z-index: 299; /* Индекс слоя */
+}
+
+
+
+.menu-container::-webkit-scrollbar-track {
+
+    
+    background: rgba(39, 0, 29, 0.068); /* Цвет фона трека */
+    border-top-right-radius: 15px; /* Закругление нижнего правого угла */
+    border-bottom-right-radius: 15px; /* Закругление нижнего правого угла */
+    background-clip: padding-box; /* Область отображения фона */
+    backdrop-filter: blur(9px); /* Размытие подложки */
+    
+}
+
+
+
+.menu-container::-webkit-scrollbar-thumb {
+
+    background: rgba(21, 0, 70, 0.904); /* Цвет полосы прокрутки */
+    border-radius: 15px 70px 70px 15px; /* Радиус скругления углов полосы */
+    
 }
 
 

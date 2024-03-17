@@ -1204,6 +1204,7 @@ setInterval(checkAndShowNotification, 1000); // Вызываем функцию 
             titleVisitorsElement.style.display = 'none';
             videoPlayer.display = 'none';
             videoPlayer.style.opacity = '0';
+            
             // Применение стилей из медиа-запроса
             disableButtonAndromeda();
 
@@ -1228,8 +1229,9 @@ setInterval(checkAndShowNotification, 1000); // Вызываем функцию 
             if(xBcF == 1 || xBcF == true || xBcF){
                 buttonBuild.style.display = 'block';
                 } 
-
+                
                 enableButtonAndromeda();
+
 
         }
             
@@ -1268,7 +1270,7 @@ setInterval(checkAndShowNotification, 1000); // Вызываем функцию 
             if(xBcF == 1 || xBcF == true || xBcF){
                 buttonBuild.style.display = 'block';
                 } 
-
+                
                 disableButtonAndromeda();
 
         } else {
@@ -1292,6 +1294,7 @@ setInterval(checkAndShowNotification, 1000); // Вызываем функцию 
             if(xBcF == 1 || xBcF == true || xBcF){
                 buttonBuild.style.display = 'block';
                 } 
+                
                 enableButtonAndromeda();
         }
 
@@ -1432,6 +1435,7 @@ setInterval(checkAndShowNotification, 1000); // Вызываем функцию 
               if(xBcF == 1 || xBcF == true || xBcF){
                 buttonBuild.style.display = 'block';
                 } 
+                
                 disableButtonAndromeda();
           } else {
               jsonFileRandomMusic = 'free-music.json';

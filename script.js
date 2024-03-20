@@ -2432,7 +2432,7 @@ qaPairs.push({
     type: "переход по ссылке на катрен за конкретную дату",
     getDateLink: function(userInput) {
         // Извлекаем из userInput дату и преобразуем ее в объект Date
-        const datePattern = /\b(\d+)\b\s+(\S+)\s+(\d+)\b/g;
+        const datePattern = /\b(\d+)\b\s+(\S+)\s+(\d+)\b\s+(\d+)\b/g;
         const match = datePattern.exec(userInput);
         if (!match) return null; // Если дата не распознана, возвращаем null
         const day = match[1];
@@ -2488,8 +2488,16 @@ function startListening() {
             } else if (qa.type === "переход по ссылке на сегодняшний катрен" || 
             qa.type === "переход по ссылке на вчерашний катрен" ) {
                 window.open(qa.link, "_blank"); // Замените на фактическую ссылку
+            } else if (qa.type === "переход по ссылке на катрен за конкретную дату") {
+                const link = qa.getDateLink(userInput);
+                if (link) {
+                    window.open(link, "_blank");
+                } else {
+                    console.log("Дата не распознана.");
+                }
             }
         }
+        
 
         recognition.stop();
         setTimeout(function() {

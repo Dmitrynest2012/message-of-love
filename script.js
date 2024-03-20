@@ -2455,6 +2455,7 @@ qaPairs.push({
 
 
 
+
 let recognition;
 
 function startListening() {

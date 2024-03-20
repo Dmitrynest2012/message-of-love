@@ -18,10 +18,27 @@
         }
 
         .container {
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 20px;
-        }
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    height: 90vh;
+    width: 50vw;
+    background-color: rgba(255, 255, 255, 0.1); /* прозрачность контейнера (можете изменить цвет или прозрачность по своему вкусу) */
+    padding: 20px;
+    border-radius: 15px;
+    box-sizing: border-box; /* учитывать padding внутри размеров элемента */
+}
+
+@media only screen and (max-width: 600px) and (orientation: portrait) {
+    .container {
+
+        width: 90vw;
+
+        
+    }
+}
+
 
         .commands {
             margin-top: 20px;
@@ -44,7 +61,7 @@
         <p>Список воспринимаемых предложений:</p>
         <div class="commands">
             <ul>
-                <li>Покажи Академию.</li>
+                <li>Покажи Академию. Открой Академию.</li>
                 <li>Покажи Катрены.</li>
                 <li>Покажи Доктрину.</li>
                 <li>Покажи сегодняшний катрен.</li>

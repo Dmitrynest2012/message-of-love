@@ -2427,12 +2427,12 @@ qaPairs.push({
 
 // Добавляем команды "Покажи катрен за (дата)" в массив qaPairs
 qaPairs.push({ 
-    questions: ["Покажи катрен за"], 
+    questions: ["Катрен за"], 
     answer: "https://raw.githubusercontent.com/Dmitrynest2012/message-of-love/main/open_suit.mp3", 
     type: "переход по ссылке на катрен за конкретную дату",
     getDateLink: function(userInput) {
         // Извлекаем из userInput дату и преобразуем ее в объект Date
-        const datePattern = /\b(\d+)\b\s+(\S+)\s+(\d+)\b/g;
+        const datePattern = /\b(\d+)\b\s+(\S+)\s+(\d+)\b\s+(\d+)\b/g;
         const match = datePattern.exec(userInput);
         if (!match) return null; // Если дата не распознана, возвращаем null
         const day = match[1];

@@ -2496,6 +2496,7 @@ function startListening() {
                     console.log("Дата не распознана.");
                 }
         }
+    }
 
         recognition.stop();
         setTimeout(function() {

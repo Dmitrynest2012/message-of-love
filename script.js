@@ -415,6 +415,25 @@ function toggleHamburger() {
         });
         newMenuContainer.appendChild(linkButton3);
 
+        // Создаем кнопку Андромеда с ссылкой
+        const linkButton4 = document.createElement('button');
+        linkButton4.id = 'resource-link-button4';
+        linkButton4.classList.add('encryptText');
+        linkButton4.innerHTML = 'Андромеда'; // Текст кнопки
+        linkButton4.addEventListener('click', function() {
+            // Открываем ссылку в новой вкладке
+            window.open('https://dmitrynest2012.github.io/message-of-love/andromeda.html', '_blank');
+        });
+        newMenuContainer.appendChild(linkButton4);
+
+
+
+
+
+
+
+        
+
         // Добавляем контейнер в тело документа
         document.body.appendChild(newMenuContainer);
     } else {

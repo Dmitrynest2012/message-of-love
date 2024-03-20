@@ -2488,7 +2488,13 @@ function startListening() {
             } else if (qa.type === "переход по ссылке на сегодняшний катрен" || 
             qa.type === "переход по ссылке на вчерашний катрен" ) {
                 window.open(qa.link, "_blank"); // Замените на фактическую ссылку
-            }
+            } else if (qa.type === "переход по ссылке на катрен за конкретную дату") {
+                const link = qa.getDateLink(userInput);
+                if (link) {
+                    window.open(link, "_blank");
+                } else {
+                    console.log("Дата не распознана.");
+                }
         }
 
         recognition.stop();

@@ -2367,17 +2367,21 @@ buttonAndromeda.addEventListener('mouseleave', function() {
 
 const qaPairs = [
     { 
-        questions: ["Покажи Академию", "Покажи Академи", "Покажи Акодеми", "Покажи Акадими"], 
+        questions: ["Покажи Академию", "Покажи Академи", "Покажи Акодеми", "Покажи Акадими",
+        "Открой Академию", "Аткрой Академию", "Открой сайт Академии", "Аткрой сайт Академии",
+        "Открой сайт Академи", "Аткрой сайт Академи"], 
         answer: "https://raw.githubusercontent.com/Dmitrynest2012/message-of-love/main/open_academy.mp3", 
         type: "переход по ссылке на Академию" 
     },
     { 
-        questions: ["Открой сайт Катрен", "Открой сайт Катренов", "Покажи Катрены", "Покажи Катрен"], 
+        questions: ["Открой сайт Катрен", "Открой сайт Катренов", "Аткрой сайт Катренов", "Открой сайт Катренов",
+        "Аткрой сайт Катрен", "Открой сайт Катрен", "Покажи Катрены", "Покажи Катрен"], 
         answer: "https://raw.githubusercontent.com/Dmitrynest2012/message-of-love/main/katrens_opens.mp3", 
         type: "переход по ссылке на Катрены" 
     },
     { 
-        questions: ["Открой сайт Доктрин", "Открой сайт Доктрины", "Покажи Доктрину", "Покажи Доктрин"], 
+        questions: ["Открой сайт Доктрин", "Открой сайт Доктрины", "Аткрой сайт Доктрин", "Аткрой сайт Доктрины",
+        "Покажи Доктрину", "Покажи Доктрин"], 
         answer: "https://raw.githubusercontent.com/Dmitrynest2012/message-of-love/main/open_doctrina.mp3", 
         type: "переход по ссылке на Доктрину" 
     }
@@ -2425,32 +2429,38 @@ qaPairs.push({
     link: yesterdayCatrenLink
 });
 
+// Добавляем ссылку на инструкцию в массив qaPairs
+qaPairs.push({ 
+    questions: ["Покажи инструкцию", "Покажи инструкци"], 
+    answer: "https://raw.githubusercontent.com/Dmitrynest2012/message-of-love/main/open_suit.mp3", 
+    type: "переход по ссылке на инструкцию",
+    link: "https://dmitrynest2012.github.io/message-of-love/andromeda.html"
+});
+
+
+
+
 // Добавляем команды "Покажи катрен за (дата)" в массив qaPairs
 qaPairs.push({ 
     questions: ["Катрен за"], 
     answer: "https://raw.githubusercontent.com/Dmitrynest2012/message-of-love/main/open_suit.mp3", 
     type: "переход по ссылке на катрен за конкретную дату",
-    getDateLink: function(userInput) {
-        // Извлекаем из userInput дату и преобразуем ее в объект Date
-        const datePattern = /\b(\d+)\b\s+(\S+)\s+(\d+)\b\s+(\d+)\b/g;
+    link: function(userInput) {
+        const datePattern = /\b(\d{1,2})[.\/-](\d{1,2})[.\/-](\d{2,4})\b/g;
         const match = datePattern.exec(userInput);
         if (!match) return null; // Если дата не распознана, возвращаем null
-        const day = match[1];
-        const month = match[2];
-        const year = match[3];
+        const day = match[1].padStart(2, '0');
+        const month = match[2].padStart(2, '0');
+        const year = match[3].slice(-2);
+        const formattedDate = `${day}.${month}.${year}`;
+        const link = `https://blagayavest.info/poems/${formattedDate}.html`;
         
-        // Форматируем месяц в числовой формат
-        const months = {
-            'января': '01', 'февраля': '02', 'марта': '03', 'апреля': '04', 'мая': '05', 'июня': '06',
-            'июля': '07', 'августа': '08', 'сентября': '09', 'октября': '10', 'ноября': '11', 'декабря': '12'
-        };
-        const formattedMonth = months[month.toLowerCase()];
-        if (!formattedMonth) return null; // Если месяц не распознан, возвращаем null
-        
-        const formattedDate = `${day}.${formattedMonth}.${year.slice(-2)}`;
-        return `https://blagayavest.info/poems/${formattedDate}.html`;
+        return link;
     }
 });
+
+
+
 
 
 
@@ -2475,7 +2485,7 @@ function startListening() {
         qa.type === "переход по ссылке на Доктрину" ||
         qa.type === "переход по ссылке на сегодняшний катрен" ||
         qa.type === "переход по ссылке на вчерашний катрен" ||
-        qa.type === "переход по ссылке на катрен за конкретную дату" ) {
+        qa.type === "переход по ссылке на инструкцию" ) {
             const audio = new Audio();
             audio.src = qa.answer; // Устанавливаем ссылку как источник аудиофайла 
             audio.play();
@@ -2488,13 +2498,8 @@ function startListening() {
             } else if (qa.type === "переход по ссылке на сегодняшний катрен" || 
             qa.type === "переход по ссылке на вчерашний катрен" ) {
                 window.open(qa.link, "_blank"); // Замените на фактическую ссылку
-            } else if (qa.type === "переход по ссылке на катрен за конкретную дату") {
-                const link = qa.getDateLink(userInput);
-                if (link) {
-                    window.open(link, "_blank");
-                } else {
-                    console.log("Дата не распознана.");
-                }
+            } else if (qa.type === "переход по ссылке на инструкцию") {
+                window.open(qa.link, "_blank"); // Замените на фактическую ссылку
             }
         }
         

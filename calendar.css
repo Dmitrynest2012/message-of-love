@@ -1,0 +1,87 @@
+/* General styles */
+body {
+    font-family: 'Play', sans-serif;
+    color: white;
+    background-color: black; /* Черный цвет фона */
+}
+
+/* Styles for month and year selects */
+.month, .year {
+    color: white;
+    background-color: black;
+    border: 1px solid gray;
+    border-radius: 10px; /* Закругление углов бордеров */
+    padding: 1px;
+    padding-left: 10px;
+    padding-right: 10px;
+    font-size: 16px;
+    margin-right: 10px; /* Добавим немного отступа справа */
+}
+
+
+/* Styles for the calendar */
+#calendar {
+    border-collapse: collapse;
+    width: 100%;
+
+}
+
+
+
+
+#calendar th, #calendar td {
+    border: 1px solid #dddddd6b;
+    padding: 8px;
+    text-align: center;
+}
+
+#calendar th {
+    background-color: #333; /* Цвет фона для заголовка календаря */
+    color: white; /* Цвет текста для заголовка календаря */
+}
+
+#calendar td:hover {
+    background-color: #4c00828a;
+    cursor: pointer;
+
+}
+
+/* Styles for events */
+.event {
+    position: relative;
+    background-color: #892be2b7; /* Фиолетовый цвет для ячеек с событиями */
+}
+
+.event .event-text {
+    display: none;
+    position: absolute; /* Позиционирование относительно ближайшего позиционированного родительского элемента */
+    background-color: #8a2be2;
+    color: white;
+    padding: 5px;
+    border-radius: 5px;
+    white-space: wrap; /* Текст не переносится на новую строку */
+    width: 100%; /* Фиксированная ширина всплывающего окна */
+    overflow-wrap: break-word; /* Перенос текста на следующую строку, если необходимо */
+    top: calc(100% + 5px); /* Расстояние от нижней границы ячейки до верхней границы подсказки */
+    left: 50%; /* Центрирование подсказки по горизонтали */
+    transform: translateX(-50%); /* Смещение подсказки на половину её ширины влево */
+}
+
+.event:hover .event-text {
+    display: block;
+    background-color: #4b0082;
+    z-index: 1;
+}
+
+
+
+.event-text {
+    border: 1px solid rgba(253, 0, 211, 0.733);
+    font-size: 14px;
+}
+
+@media (orientation: portrait) {
+    .event-text {
+        font-size: 11px; /* Увеличенный размер текста для портретной ориентации */
+    }
+}

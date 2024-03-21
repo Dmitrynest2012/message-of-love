@@ -426,12 +426,22 @@ function toggleHamburger() {
         });
         newMenuContainer.appendChild(linkButton4);
 
+        // Создаем кнопку Календарь с ссылкой
+        const linkButton5 = document.createElement('button');
+        linkButton5.id = 'resource-link-button5';
+        linkButton5.classList.add('encryptText');
+        linkButton5.innerHTML = 'Календарь'; // Текст кнопки
+        linkButton5.addEventListener('click', function() {
+            // Открываем ссылку в новой вкладке
+            window.open('https://dmitrynest2012.github.io/message-of-love/calendar.html', '_blank');
+        });
+        newMenuContainer.appendChild(linkButton5);
 
 
 
 
 
-
+        
         
 
         // Добавляем контейнер в тело документа

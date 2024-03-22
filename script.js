@@ -437,7 +437,16 @@ function toggleHamburger() {
         });
         newMenuContainer.appendChild(linkButton5);
 
-
+        // Создаем кнопку Календарь с ссылкой
+        const linkButton6 = document.createElement('button');
+        linkButton6.id = 'resource-link-button6';
+        linkButton6.classList.add('encryptText');
+        linkButton6.innerHTML = 'Кроссворды'; // Текст кнопки
+        linkButton6.addEventListener('click', function() {
+            // Открываем ссылку в новой вкладке
+            window.open('https://creators-crossword-puzzle12.glitch.me/', '_blank');
+        });
+        newMenuContainer.appendChild(linkButton6);
 
 
 

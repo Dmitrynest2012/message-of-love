@@ -377,10 +377,10 @@ function toggleHamburger() {
         newMenuContainer.id = 'menu-container';
         newMenuContainer.classList.add('menu-container');
 
-        // Создаем заголовок "Ссылки на ресурсы"
-        const title = document.createElement('h2');
-        title.textContent = 'Ссылки на ресурсы:';
-        newMenuContainer.appendChild(title);
+        // Создаем заголовок "Ссылки на основные ресурсы"
+        const title1 = document.createElement('h2');
+        title1.textContent = 'Ссылки на основные ресурсы:';
+        newMenuContainer.appendChild(title1);
 
         // Создаем кнопку Академия с ссылкой
         const linkButton1 = document.createElement('button');
@@ -414,6 +414,15 @@ function toggleHamburger() {
             window.open('https://blagayavest.info/', '_blank');
         });
         newMenuContainer.appendChild(linkButton3);
+
+
+        // Создаем заголовок "Прочее"
+        const title2 = document.createElement('h2');
+        title2.textContent = 'Прочее:';
+        newMenuContainer.appendChild(title2);
+
+
+
 
         // Создаем кнопку Андромеда с ссылкой
         const linkButton4 = document.createElement('button');

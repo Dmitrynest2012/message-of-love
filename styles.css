@@ -509,6 +509,10 @@ content: ''; /* Обязательно для псевдоэлементов */
         color: white;
     }
 
+    h2 {
+        font-size: 16px;
+    }
+
     .popup {
         position: fixed;
         top: 145px; /* Отступ сверху */

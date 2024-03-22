@@ -13,6 +13,7 @@ body {
 
 h2 {
     font-family: 'Play', sans-serif;
+    color: #ffa600;
 }
 
 
@@ -45,11 +46,16 @@ h2 {
 /* Styles for the calendar */
 #calendar {
     border-collapse: collapse;
-    width: 100%;
+    width: 50%;
 
 }
 
-
+@media (orientation: portrait) {
+    #calendar {
+        width: 100%;
+    
+    }
+}
 
 
 #calendar th, #calendar td {

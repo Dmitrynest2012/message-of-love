@@ -1,3 +1,17 @@
+// Применяем стиль для сегодняшних ячеек
+function applyTodayCellStyle(year, month) {
+    const today = new Date();
+    const calendarCells = document.querySelectorAll('#calendar tbody td');
+    calendarCells.forEach(cell => {
+        const cellDate = new Date(year, month, cell.textContent);
+        if (cellDate.toDateString() === today.toDateString()) {
+            cell.classList.add('today'); // Добавляем класс для сегодняшней ячейки
+        } else {
+            cell.classList.remove('today'); // Удаляем класс, если это не сегодняшняя ячейка
+        }
+    });
+}
+
 // Функция для загрузки JSON из файла
 function loadJSON(callback) {   
     const xobj = new XMLHttpRequest();
@@ -24,16 +38,27 @@ function addEventsToCalendar(events) {
                 parseInt(calendarCell.dataset.year) === year && 
                 parseInt(calendarCell.dataset.month) === month) {
                     calendarCell.classList.add('event');
-                    const eventText = document.createElement('span');
-                    // Добавляем перенос строки для текста события, содержащего символ '*'
-                    const eventContent = event.event.includes('*') ? event.event.split('*').join('<br>') : event.event;
-                    eventText.innerHTML = eventContent;
-                    eventText.classList.add('event-text');
-                    calendarCell.appendChild(eventText);
+                    calendarCell.addEventListener('mouseenter', function() {
+                        const eventText = document.createElement('span');
+                        const eventContent = event.event.includes('*') ? event.event.split('*').join('<br>') : event.event;
+                        eventText.innerHTML = eventContent;
+                        eventText.classList.add('event-text');
+                        calendarCell.appendChild(eventText); // Добавляем текст события в ячейку
+                    });
+                    calendarCell.addEventListener('mouseleave', function() {
+                        const eventText = calendarCell.querySelector('.event-text');
+                        if (eventText) {
+                            eventText.remove();
+                        }
+                    });
             }
         });
     });
 }
+
+
+
+
 
 
 
@@ -45,6 +70,9 @@ function generateCalendar() {
     const calendarWrapper = document.getElementById('calendar-wrapper');
     calendarWrapper.innerHTML = ''; // Очистить предыдущий календарь
   
+    const calendarContainer = document.createElement('div'); // Создаем общий контейнер для таблицы календаря и событий
+    calendarContainer.id = 'calendar-container';
+
     const table = document.createElement('table');
     table.id = 'calendar';
   
@@ -63,7 +91,7 @@ function generateCalendar() {
   
     table.appendChild(thead);
     table.appendChild(tbody);
-    calendarWrapper.appendChild(table);
+    calendarContainer.appendChild(table);
   
     const firstDayOfMonth = new Date(year, month, 1);
     const lastDayOfMonth = new Date(year, month + 1, 0);
@@ -98,7 +126,38 @@ function generateCalendar() {
     }
   
     tbody.appendChild(currentRow);
+
+    // Применяем стиль для сегодняшних ячеек
+    applyTodayCellStyle(year, month, calendarContainer);
+
+    // Загрузка данных из файла JSON и добавление событий
+    loadJSON(function(events) {
+        addEventsToCalendar(events, calendarContainer);
+    });
+
+    // Добавляем общий контейнер в календарный элемент
+    calendarWrapper.appendChild(calendarContainer);
 }
+
+// Функция для применения стиля для сегодняшних ячеек
+function applyTodayCellStyle(year, month, calendarContainer) {
+    const today = new Date();
+    const calendarCells = calendarContainer.querySelectorAll('#calendar tbody td');
+    calendarCells.forEach(cell => {
+        const cellDate = new Date(year, month, cell.textContent);
+        if (cellDate.toDateString() === today.toDateString()) {
+            cell.classList.add('today'); // Добавляем класс для сегодняшней ячейки
+        } else {
+            cell.classList.remove('today'); // Удаляем класс, если ячейка не сегодняшняя
+        }
+    });
+}
+
+// Вызываем функцию для генерации календаря сразу после загрузки страницы
+generateCalendar();
+
+
+
 
 // Вызываем функцию для загрузки данных из файла JSON и добавления событий
 loadJSON(function(events) {

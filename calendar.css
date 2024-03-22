@@ -39,7 +39,9 @@ h2 {
     font-size: 16px; /* Размер текста в выпадающем списке */
 }
 
-
+#calendar-wrapper {
+    background-color: #ffa60000;
+}
 
 
 
@@ -69,10 +71,16 @@ h2 {
     color: white; /* Цвет текста для заголовка календаря */
 }
 
+
+
 #calendar td:hover {
     background-color: #4c00828a;
     cursor: pointer;
 
+}
+
+#calendar-wrapper {
+    background-color: #4c00828a;
 }
 
 /* Styles for events */
@@ -90,7 +98,7 @@ h2 {
     border-radius: 5px;
     white-space: wrap;
     overflow-wrap: break-word;
-    top: 55%; /* Начало подсказки относительно верхней границы страницы */
+    top: 50%; /* Начало подсказки относительно верхней границы страницы */
     left: 10px; /* Начало подсказки относительно левой границы страницы */
 
     text-align: left; /* Выравниваем текст по левому краю */
@@ -114,3 +122,8 @@ h2 {
         width: 90%; /* Ширина подсказки в портретном режиме */
     }
 }
+
+.today {
+    background-color: rgb(74, 34, 219); /* Желтый цвет для сегодняшней ячейки */
+}
+

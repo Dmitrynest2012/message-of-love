@@ -25,13 +25,17 @@ function addEventsToCalendar(events) {
                 parseInt(calendarCell.dataset.month) === month) {
                     calendarCell.classList.add('event');
                     const eventText = document.createElement('span');
-                    eventText.textContent = event.event;
+                    // Добавляем перенос строки для текста события, содержащего символ '*'
+                    const eventContent = event.event.includes('*') ? event.event.split('*').join('<br>') : event.event;
+                    eventText.innerHTML = eventContent;
                     eventText.classList.add('event-text');
                     calendarCell.appendChild(eventText);
             }
         });
     });
 }
+
+
 
 // Функция для генерации календаря
 function generateCalendar() {

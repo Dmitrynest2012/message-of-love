@@ -1,9 +1,20 @@
+
 {
+    "name": "Приложение для Посылов",
+    "short_name": "Посылы",
+    "start_url": "/index.html",
+    "display": "standalone",
     "icons": [
-        {
-            "src": "https://github.com/Dmitrynest2012/message-of-love/raw/main/img/message-love-icon-192.png",
-            "sizes": "192x192",
-            "type": "image/png"
-        }
+      {
+        "src": "/img/message-love-icon-192.png",
+        "sizes": "192x192",
+        "type": "image/png"
+      },
+      {
+        "src": "/images/icon-512x512.png",
+        "sizes": "512x512",
+        "type": "image/png"
+      }
     ]
-}
+  }
+  

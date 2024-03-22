@@ -124,6 +124,7 @@ function toggleHamburger() {
         // Создаем заголовок "Ссылки на основные ресурсы"
         const title1 = document.createElement('h2');
         title1.textContent = 'Ссылки на основные ресурсы:';
+        title1.classList.add('h2White');
         newMenuContainer.appendChild(title1);
 
         // Создаем кнопку Академия с ссылкой
@@ -163,6 +164,7 @@ function toggleHamburger() {
         // Создаем заголовок "Прочее"
         const title2 = document.createElement('h2');
         title2.textContent = 'Прочее:';
+        title2.classList.add('h2White');
         newMenuContainer.appendChild(title2);
 
 

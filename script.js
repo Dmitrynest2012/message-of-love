@@ -1723,7 +1723,7 @@ setInterval(checkAndShowNotification, 1000); // Вызываем функцию 
         minutesLeft = Math.floor((timeDiff % (1000 * 60 * 60)) / (1000 * 60));
         secondsLeft = Math.floor((timeDiff % (1000 * 60)) / 1000);
 
-        newText = `До следующего Посыла: ${hoursLeft} ч. ${minutesLeft} мин. ${secondsLeft} сек.`;
+        newText = `До начала подготовки к следующему Посылу: ${hoursLeft} ч. ${minutesLeft} мин. ${secondsLeft} сек.`;
 
 
         
@@ -1758,7 +1758,7 @@ setInterval(checkAndShowNotification, 1000); // Вызываем функцию 
         minutesLeft = Math.floor((timeDiff % (1000 * 60 * 60)) / (1000 * 60));
         secondsLeft = Math.floor((timeDiff % (1000 * 60)) / 1000);
 
-        newText = `До следующего Посыла: ${hoursLeft} ч. ${minutesLeft} мин. ${secondsLeft} сек.`;
+        newText = `До начала подготовки к следующему Посылу: ${hoursLeft} ч. ${minutesLeft} мин. ${secondsLeft} сек.`;
 
         
             if (hoursLeft === 0 && minutesLeft <= 5) {

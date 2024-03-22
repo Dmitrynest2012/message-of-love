@@ -383,7 +383,7 @@ const qaPairs = [
     { 
         questions: ["Открой сайт Посыла", "Открой сайт Посылов", "Аткрой сайт Посыла", "Аткрой сайт Посылов",
         "Покажи Посыл", "Покажи Посылы"], 
-        answer: "https://raw.githubusercontent.com/Dmitrynest2012/message-of-love/main/open_doctrina.mp3", 
+        answer: "https://raw.githubusercontent.com/Dmitrynest2012/message-of-love/main/open_suit.mp3", 
         type: "переход по ссылке на Посыл" 
     }
     // Другие вопросы и ответы

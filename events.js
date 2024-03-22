@@ -40,10 +40,31 @@ function addEventsToCalendar(events) {
                     calendarCell.classList.add('event');
                     calendarCell.addEventListener('mouseenter', function() {
                         const eventText = document.createElement('span');
-                        const eventContent = event.event.includes('*') ? event.event.split('*').join('<br>') : event.event;
+                        let eventContent = event.event.includes('*') ? event.event.split('*').join('<br>') : event.event;
+                        // Добавляем жирность для текста, обрамленного символом ^, и закрашиваем его в золотой цвет
+                        eventContent = eventContent.replace(/\^([^\^]+)\^/g, '<b style="color: gold;">$1</b>');
                         eventText.innerHTML = eventContent;
                         eventText.classList.add('event-text');
                         calendarCell.appendChild(eventText); // Добавляем текст события в ячейку
+
+                        // Добавляем обработчик события щелчка мыши
+                        let clickTimeout;
+                        calendarCell.addEventListener('mousedown', function() {
+                            clickTimeout = setTimeout(function() {
+                                // Формируем URL для создания нового события в Яндекс Календаре
+                                const formattedDate = `${year}-${String(month + 1).padStart(2, '0')}-${String(day).padStart(2, '0')}`;
+                                const startTs = `${formattedDate}T00:00:00`;
+                                const endTs = `${formattedDate}T23:59:59`;
+                                const encodedEvent = encodeURIComponent(eventContent); // Кодируем текст события для передачи в URL
+                                const yandexCalendarURL = `https://calendar.yandex.ru/week/create?startTs=${startTs}&endTs=${endTs}&isAllDay=1&show_date=${formattedDate}&title=${encodedEvent}`;
+                                window.open(yandexCalendarURL, '_blank');
+                            }, 3000); // 3000 мс = 3 секунды
+                        });
+
+                        // Очищаем таймаут при отпускании кнопки мыши
+                        calendarCell.addEventListener('mouseup', function() {
+                            clearTimeout(clickTimeout);
+                        });
                     });
                     calendarCell.addEventListener('mouseleave', function() {
                         const eventText = calendarCell.querySelector('.event-text');
@@ -55,6 +76,15 @@ function addEventsToCalendar(events) {
         });
     });
 }
+
+
+
+
+
+
+
+
+
 
 
 

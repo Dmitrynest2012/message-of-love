@@ -1112,7 +1112,7 @@ content: ''; /* Обязательно для псевдоэлементов */
 
 
 .text .animated {
-    background: radial-gradient(circle, rgb(255, 100, 255), rgb(255, 255, 255));
+    background: radial-gradient(circle, rgb(255, 131, 255), rgb(255, 131, 255));
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;
@@ -1173,8 +1173,9 @@ content: ''; /* Обязательно для псевдоэлементов */
         font-size: 24px; /* Размер иконки */
         border: 1px solid rgba(128, 0, 128, 0.8); /* Тонкий бордер с альфа-каналом 0.5 */
         cursor: pointer; /* Устанавливаем курсор в виде указателя */
+        backdrop-filter: blur(5px); /* Применяем размытие к контейнеру */
         transition: all 0.3s; /* Плавный переход  */
-        z-index: 50;
+        z-index: 750;
     }
 
 
@@ -1216,10 +1217,11 @@ content: ''; /* Обязательно для псевдоэлементов */
     border: 1px solid rgba(128, 0, 128, 0.8); /* Тонкий бордер с альфа-каналом 0.5 */
     cursor: pointer; /* Устанавливаем курсор в виде указателя */
     transition: all 0.3s; /* Плавный переход  */
-    z-index: 50;
+    z-index: 750;
     display: flex; /* Используем flexbox для центрирования */
     justify-content: center; /* Центрирование по горизонтали */
     align-items: center; /* Центрирование по вертикали */
+    backdrop-filter: blur(5px); /* Применяем размытие к контейнеру */
 }
 
 
@@ -1273,10 +1275,11 @@ content: ''; /* Обязательно для псевдоэлементов */
     border: 1px solid rgba(128, 0, 128, 0.8);
     cursor: pointer;
     transition: all 0.3s;
-    z-index: 50;
+    z-index: 750;
     display: flex;
     justify-content: center;
     align-items: center;
+    backdrop-filter: blur(5px); /* Применяем размытие к контейнеру */
 }
 
 /* Стиль для включенной кнопки */
@@ -1512,10 +1515,11 @@ content: ''; /* Обязательно для псевдоэлементов */
     border: 1px solid rgba(128, 0, 128, 0.8); /* Тонкий бордер с альфа-каналом 0.5 */
     cursor: pointer; /* Устанавливаем курсор в виде указателя */
     transition: all 0.3s; /* Плавный переход  */
-    z-index: 50;
+    z-index: 750;
     display: flex; /* Используем flexbox для центрирования */
     justify-content: center; /* Центрирование по горизонтали */
     align-items: center; /* Центрирование по вертикали */
+    backdrop-filter: blur(5px); /* Применяем размытие к контейнеру */
 }
 
 .special-button:hover {
@@ -1572,10 +1576,11 @@ content: ''; /* Обязательно для псевдоэлементов */
     border: 1px solid rgba(128, 0, 128, 0.8); /* Тонкий бордер с альфа-каналом 0.5 */
     cursor: pointer; /* Устанавливаем курсор в виде указателя */
     transition: all 0.3s; /* Плавный переход  */
-    z-index: 50;
+    z-index: 750;
     display: flex; /* Используем flexbox для центрирования */
     justify-content: center; /* Центрирование по горизонтали */
     align-items: center; /* Центрирование по вертикали */
+    backdrop-filter: blur(5px); /* Применяем размытие к контейнеру */
 }
 
 /* Стиль для включенной кнопки */

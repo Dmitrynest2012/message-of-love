@@ -198,10 +198,11 @@ h2 {
     border: 1px solid rgba(128, 0, 128, 0.8);
     cursor: pointer;
     transition: all 0.3s;
-    z-index: 50;
+    z-index: 750;
     display: flex;
     justify-content: center;
     align-items: center;
+    backdrop-filter: blur(5px); /* Применяем размытие к контейнеру */
 }
 
 /* Стиль для включенной кнопки */
@@ -328,10 +329,11 @@ h2 {
     border: 1px solid rgba(128, 0, 128, 0.8); /* Тонкий бордер с альфа-каналом 0.5 */
     cursor: pointer; /* Устанавливаем курсор в виде указателя */
     transition: all 0.3s; /* Плавный переход  */
-    z-index: 50;
+    z-index: 750;
     display: flex; /* Используем flexbox для центрирования */
     justify-content: center; /* Центрирование по горизонтали */
     align-items: center; /* Центрирование по вертикали */
+    backdrop-filter: blur(5px); /* Применяем размытие к контейнеру */
 }
 
 /* Стиль для включенной кнопки */

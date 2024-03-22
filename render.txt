@@ -1354,3 +1354,24 @@ onlineUsersRef.on('value', (snapshot) => {
 
 Открываю сайт Посылов. Открываю Календарь. Открываю сайт Союза. А разве не лучше Знания напрямик от Создателя? 
 Отправляю ваши данные первому уровню, три ... два ... один ... . 
+
+
+
+    <!-- Для Android -->
+    <link rel="manifest" href="manifest.json">
+
+
+{
+    "name": "Приложение для Посылов",
+    "short_name": "Посылы",
+    "start_url": "https://dmitrynest2012.github.io/message-of-love/index.html",
+    "display": "standalone",
+    "icons": [
+      {
+        "src": "/img/message-love-icon-192.png",
+        "sizes": "192x192",
+        "type": "image/png"
+      }
+      
+    ]
+  }

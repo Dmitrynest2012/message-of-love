@@ -2433,6 +2433,12 @@ const qaPairs = [
         "Покажи Доктрину", "Покажи Доктрин"], 
         answer: "https://raw.githubusercontent.com/Dmitrynest2012/message-of-love/main/open_doctrina.mp3", 
         type: "переход по ссылке на Доктрину" 
+    },
+    { 
+        questions: ["Открой сайт Календаря", "Открой сайт Календар", "Аткрой сайт Календаря", "Аткрой сайт Календар",
+        "Открой сайт Колендаря", "Открой сайт Колендаря", "Покажи Колендарь", "Покажи Календарь"], 
+        answer: "https://raw.githubusercontent.com/Dmitrynest2012/message-of-love/main/open_suit.mp3", 
+        type: "переход по ссылке на Календарь" 
     }
     // Другие вопросы и ответы
 ];
@@ -2534,7 +2540,8 @@ function startListening() {
         qa.type === "переход по ссылке на Доктрину" ||
         qa.type === "переход по ссылке на сегодняшний катрен" ||
         qa.type === "переход по ссылке на вчерашний катрен" ||
-        qa.type === "переход по ссылке на инструкцию" ) {
+        qa.type === "переход по ссылке на инструкцию" ||
+        qa.type === "переход по ссылке на Календарь" ) {
             const audio = new Audio();
             audio.src = qa.answer; // Устанавливаем ссылку как источник аудиофайла 
             audio.play();
@@ -2549,6 +2556,8 @@ function startListening() {
                 window.open(qa.link, "_blank"); // Замените на фактическую ссылку
             } else if (qa.type === "переход по ссылке на инструкцию") {
                 window.open(qa.link, "_blank"); // Замените на фактическую ссылку
+            } else if (qa.type === "переход по ссылке на Календарь") {
+                window.open("https://dmitrynest2012.github.io/message-of-love/calendar.html", "_blank"); // Замените на фактическую ссылку
             }
         }
         

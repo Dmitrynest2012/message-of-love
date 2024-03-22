@@ -2,7 +2,7 @@
 {
     "name": "Приложение для Посылов",
     "short_name": "Посылы",
-    "start_url": "https://dmitrynest2012.github.io/message-of-love/",
+    "start_url": "https://dmitrynest2012.github.io/message-of-love/index.html",
     "display": "standalone",
     "icons": [
       {

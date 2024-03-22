@@ -30,6 +30,20 @@ h2 {
     margin-right: 10px; /* Добавим немного отступа справа */
 }
 
+.month:focus,
+.year:focus {
+    background-color: rgb(255, 174, 0); /* Цвет фона при нажатии */
+    color: #333;
+    border: 2px solid rgb(0, 0, 0);
+}
+
+.month:active,
+.year:active {
+    background-color: rgb(255, 174, 0); /* Цвет фона при нажатии */
+    color: #333;
+    border: 2px solid rgb(0, 0, 0);
+}
+
 
 
 .month option, .year option {
@@ -49,7 +63,7 @@ h2 {
 #calendar {
     border-collapse: collapse;
     width: 50%;
-
+    
 }
 
 @media (orientation: portrait) {
@@ -64,6 +78,7 @@ h2 {
     border: 1px solid #dddddd6b;
     padding: 8px;
     text-align: center;
+    transition: width 0.3s, height 0.3s; /* Плавное изменение ширины и высоты ячеек */
 }
 
 #calendar th {
@@ -73,11 +88,14 @@ h2 {
 
 
 
+
 #calendar td:hover {
     background-color: #4c00828a;
+    border-bottom: 1px solid rgb(195, 0, 255);
     cursor: pointer;
 
 }
+
 
 
 

@@ -1703,7 +1703,7 @@ setInterval(checkAndShowNotification, 1000); // Вызываем функцию 
     }
 
     
-    
+    сайт заблокирован
 
     // Если не был найден посыл в текущем дне
     if (!nextSending) {
